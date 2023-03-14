@@ -32,6 +32,7 @@ let colorIndex = ['#02CF2F', '#EE00D6', '#0190E0', '#FF7200', '#FF2500', '#AF161
 let check = 0;
 let listOpen = true;
 let autoResponsive = false;
+
 /**
  * This function is called when the user clicks on the contacts button in the menu. It loads the
  * contacts page and renders the content.
@@ -50,7 +51,6 @@ async function initContacts() {
  */
 async function renderContent() {
 	document.getElementById('content').innerHTML = '';
-	/* await enableContactsStyles(); */
 	await loadTask();
 	document.getElementById('content').innerHTML = renderContentHTML();
 }
@@ -129,7 +129,7 @@ function openEditContact(i) {
 	}
 	if (email == guestEmail) {
 	} else {
-		/* !guestLoggedIn ?  */ openEditContactsOf(allUsers, i) /* : openEditContactsOf(allFakeUsers, i) */;
+		openEditContactsOf(allUsers, i);
 	}
 }
 
@@ -163,7 +163,6 @@ function openNewContact() {
 		alert('Sorry, does not work with guest status!');
 		return;
 	}
-
 	document.getElementById('boardPopup').classList.remove('d-none');
 	document.getElementById('new_contact').classList.remove('d-none');
 	document.getElementById('new_contact').innerHTML = '';
@@ -197,8 +196,6 @@ function closeNewContact() {
  * After 500ms, add the class 'd-none' to the element with the id 'edit_contact'.
  */
 
-/* 
-!Bitte Änderungen anschauen und absegnen */
 function closeEditContact() {
 	const editContact = document.getElementById('edit_contact');
 	if (!editContact) {
@@ -212,11 +209,10 @@ function closeEditContact() {
 /**
  * Depending on guestLoggedIn it chooses the right contacts to show
  * @param {boolean} guestLoggedIn
- * @param {number} i= index of user of allUsers or allFakeUsers
+ * @param {number} i= 
  */
 function showContact(i) {
 	showContactOf(allUsers, i);
-	/* if (guestLoggedIn) showContactOf(allFakeUsers, i); */
 	showContactList();
 	document.getElementById('contactContainerRight').style.display = 'flex';
 }
@@ -246,7 +242,7 @@ function showContactList() {
 		document.getElementById('listing').style.removeProperty('display');
 		listOpen = true;
 		contactRight.style.display = 'none';
-	} else if (listOpen && window.innerWidth < 850 /*769*/) {
+	} else if (listOpen && window.innerWidth < 850) {
 		document.getElementById('Frame_97').style.marginLeft = '-460px';
 		document.getElementById('contactContainerRight').style.left = '0';
 		if (!listing) return;
@@ -335,7 +331,7 @@ async function deleteContactQuestion(i) {
 	if (guestLoggedIn || email == guestEmail) return;
 	if (deletionRequested(letter, deleteQuestionInner)) {
 		deleteQuestion.innerHTML = `Delete?`;
-		deleteQuestion.style = 'font-size: 20px'; // damit es auch in der mobilen version passt
+		deleteQuestion.style = 'font-size: 20px';
 	} else {
 		deleteUser(i);
 	}
@@ -351,50 +347,3 @@ async function deleteUser(i) {
 	await renderContent();
 	await userInAlphabetArray();
 }
-
-let allFakeUsers = [
-	{
-		name: 'Rosa Lilie',
-		email: 'rosalie@testSetUser.de',
-		password: 'rosi',
-		colorIndex: 8,
-		firstSecondLetter: 'RL',
-		phone: 123456789,
-	},
-	{
-		name: 'Peter Lustig',
-		email: 'peter@web.de',
-		colorIndex: 1,
-		firstSecondLetter: 'PL',
-		phone: 16789345345,
-	},
-	{
-		name: 'Anna Mueller',
-		email: 'anna.mueller@mail.com',
-		password: 'anna12345',
-		colorIndex: 4,
-		firstSecondLetter: 'AM',
-		phone: 987654321,
-	},
-	{
-		name: 'Max Mustermann',
-		email: 'max.mustermann@gmail.com',
-		colorIndex: 2,
-		firstSecondLetter: 'MM',
-		phone: 13572468,
-	},
-	{
-		name: 'Laura Schmidt',
-		email: 'laura.schmidt@outlook.com',
-		colorIndex: 7,
-		firstSecondLetter: 'LS',
-		phone: 246803579,
-	},
-	{
-		name: 'Guest',
-		email: 'guest@web.de',
-		colorIndex: 2,
-		firstSecondLetter: 'GG',
-		phone: '123123123123',
-	},
-];

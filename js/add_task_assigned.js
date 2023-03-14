@@ -262,8 +262,6 @@ function renderBadgesMemberOfTaskForce() {
 		const initials = member.firstSecondLetter;
 		const name = member.name;
 		const badgesIndex = member.colorIndex;
-
-		/* chooseColorForTaskForceBadge(initialFirstName, initialLastName); */
 		badgeContainer.innerHTML += generateBadgesTaskForceHtml(i, name, initials, badgesIndex);
 	});
 }

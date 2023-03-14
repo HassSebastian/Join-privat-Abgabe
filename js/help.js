@@ -1,15 +1,14 @@
 async function initHelp() {
-	await renderHelp();
+    await renderHelp();
 }
 
 function back() {
-	initSummary();
+    initSummary();
 }
 
 async function renderHelp() {
-	document.getElementById('content').innerHTML = '';
-	/* await enableHelp(); */
-	document.getElementById('content').innerHTML += /*html*/ `
+    document.getElementById('content').innerHTML = '';
+    document.getElementById('content').innerHTML += /*html*/ `
     <div class="helpContainer">
     <div class="helpContentContainer">
         <div class="headingHelpContainer">
