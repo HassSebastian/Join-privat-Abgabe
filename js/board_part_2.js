@@ -31,12 +31,21 @@ async function disablePopupWindow() {
 	}
 	if (selectedMenuBtnId == 4) {
 	} else {
-		setTimeout(await initBoard, 500);
+		// setTimeout(await initBoard, 500);
+		setTimeout(await renderAfterCloseTask, 500);
 		setTimeout(() => {
 			document.getElementById('boardPopup').classList.add('d-none');
 		}, 500);
 		searchAfterPopup();
 	}
+}
+
+async function renderAfterCloseTask() {
+	await renderBoard();
+	await createWorkStatusArrays();
+	renderAllCards();
+	loadContributorsLetter();
+	coworkersToAssignTo = transferallUserData();
 }
 
 /**
