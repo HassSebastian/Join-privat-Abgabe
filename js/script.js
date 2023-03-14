@@ -136,14 +136,18 @@ function deselectMenuButtonSlider(menuId) {
 	img1Id = img1Id + '1';
 	img2Id = img2Id + '1';
 	if (legalNoticeNotSelected()) {
-		document.getElementById(menuBtnId).style = menuSelectorStyles[0]['disabledBackground'];
-		document.getElementById(menuBtnId + '_text').style = menuSelectorStyles[0]['color1'];
-		document.getElementById(img1Id).classList.remove(menuSelectorStyles[0]['disableImg']);
-		document.getElementById(img2Id).classList.remove(menuSelectorStyles[0]['enableImg']);
+		legalNoticeNotSelectedStyle(menuBtnId, img1Id, img2Id);
 	}
 	if (legalNoticeSelected()) {
 		document.getElementById(menuBtnId).style = menuSelectorStyles[0]['disabledBackground'];
 	}
+}
+
+function legalNoticeNotSelectedStyle(menuBtnId, img1Id, img2Id) {
+	document.getElementById(menuBtnId).style = menuSelectorStyles[0]['disabledBackground'];
+	document.getElementById(menuBtnId + '_text').style = menuSelectorStyles[0]['color1'];
+	document.getElementById(img1Id).classList.remove(menuSelectorStyles[0]['disableImg']);
+	document.getElementById(img2Id).classList.remove(menuSelectorStyles[0]['enableImg']);
 }
 
 function otherMenuBtnPreSelected() {
