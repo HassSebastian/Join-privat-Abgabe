@@ -131,7 +131,6 @@ function generateAddTaskHtml() {
 
 	</div>
 
-	<!-- <div class="addTaskDivider" id= 'addTaskDiverder'></div> -->
 </div>
 	`;
 }

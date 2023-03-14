@@ -1,16 +1,15 @@
 async function initLegalNotice() {
-	await includeHTML();
-	await renderLegalNotice();
-	selectedMenuBtnId = 0;
-	selectedMenuButton(5);
-	loadContributorsLetter();
-	document.querySelector('.sliderMenu').classList.remove('showSliderMenu');
+    await includeHTML();
+    await renderLegalNotice();
+    selectedMenuBtnId = 0;
+    selectedMenuButton(5);
+    loadContributorsLetter();
+    document.querySelector('.sliderMenu').classList.remove('showSliderMenu');
 }
 
 async function renderLegalNotice() {
-	document.getElementById('content').innerHTML = '';
-	/* 	await enableLegalNotice(); */
-	document.getElementById('content').innerHTML += /*html*/ `
+    document.getElementById('content').innerHTML = '';
+    document.getElementById('content').innerHTML += /*html*/ `
         <div class="legal-wrapper">
             <h1>Legal Notice</h1>
 

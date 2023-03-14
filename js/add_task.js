@@ -11,7 +11,7 @@ let descripten = '';
 let category = '';
 let catColor = '';
 let assigndTo = '';
-let taskForce = []; // team that will be working on the current task
+let taskForce = [];
 let assignToArray = [];
 let dueDate = '';
 let prio = '';
@@ -24,7 +24,7 @@ let coworkersToAssignTo = [];
 let urgentBtn;
 let mediumBtn;
 let lowBtn;
-let addTaskOpened = false; //!Christian has stopped cleaning here. To be continued later ;)
+let addTaskOpened = false;
 
 async function initAddTask() {
 	transferArray = [];
@@ -34,11 +34,11 @@ async function initAddTask() {
 	newCatInputActive = false;
 	renderSubtasks();
 	selectedMenuButton(3);
-	renderLoggedUserInAssignDrobDownMenuIntoYou(); // Das habe ich für das You eingefügt!
-	renderContactsInAssignDropDownMenu(); //for dropdown menu in assignTo
+	renderLoggedUserInAssignDrobDownMenuIntoYou();
+	renderContactsInAssignDropDownMenu();
 	setFutureDatesOnlyForInputDueDate();
 	loadContributorsLetter();
-	taskForce = []; // Das muss noch hier rein oder in einer andere Datei!
+	taskForce = [];
 	addSubtaskMain();
 	addContactToTaskForceWithCheckBox(loggedInUserIndex);
 	setIndexOfGuest();
@@ -60,7 +60,6 @@ async function renderAddTask() {
 	setInnerHtmlById('content', '');
 	coworkersToAssignTo = transferallUserData();
 	addCheckAttributeToCoworkersToAssignTo();
-	/* await enableAddTaskStyles(); */
 	await loadExitingCategories();
 	document.getElementById('content').innerHTML += generateAddTaskHtml();
 }
@@ -80,10 +79,6 @@ function transferallUserData() {
  * Creates a copy of allUsers without password
  */
 function creatingTransferObjectOfContacts() {
-	/* const users = guestLoggedIn
-		? allFakeUsers
-		: allUsers; */
-
 	allUsers.forEach((user) => {
 		transferArray.push({
 			colorIndex: user.colorIndex,
@@ -171,8 +166,6 @@ function enableDisableCatList() {
 		borderBottomOnAssignedBoxButton('selectedCat');
 	}
 	catListStatus = !catListStatus;
-	/* tabletViewAddMarginTopCatList(); */ // edit by Bossi for responsivness 27.01
-	/* boardAddTaskMarginSettings(); */
 }
 
 /**
@@ -265,7 +258,6 @@ function setNewCategoryToList() {
 			selectCategory(+newCategoryIndex);
 			enableDisableCatList();
 		}
-
 		newCatInputActive = false;
 	}
 }
@@ -400,14 +392,11 @@ function requiredFieldAreNotValid() {
  */
 function currentDate() {
 	let date = new Date();
-
 	let day = date.getDate();
 	let month = date.getMonth() + 1;
 	let year = date.getFullYear();
-
 	if (month < 10) month = '0' + month;
 	if (day < 10) day = '0' + day;
-
 	let today = year + '-' + month + '-' + day;
 	return today;
 }
@@ -484,7 +473,6 @@ function noPrioritySelected() {
 
 function showRequiredTextPriority() {
 	document.getElementById('prioReq').style = 'opacity: 1';
-	/* return prioText; */
 }
 
 /**
@@ -549,7 +537,7 @@ function clearTaskTitleAndDescription() {
 }
 
 function clearSelectedCategory() {
-	document.getElementById('selectedCat').innerHTML = `
+	document.getElementById('selectedCat').innerHTML = /*html*/`
 	  <input disabled id='selectedCatInput' placeholder='Select task category' autocomplete='off'>
 	  <span id='sColor'></span>
 	  <div class='newCategoryImgDiv d-none' id='addTaskNewCatBtn'>
@@ -683,7 +671,6 @@ function btnNotSelected(cListLength) {
 
 function selectPrioBtn(selectedId, btnName) {
 	document.getElementById(selectedId).classList.add(`${btnName.toLowerCase()}-color`);
-
 	document.getElementById(`addTask${btnName}Span`).classList.add('color-white');
 	document.getElementById(`addTask${btnName}Img`).src = `./assets/img/${btnName.toLowerCase()}_white.png`;
 	prio = btnName;

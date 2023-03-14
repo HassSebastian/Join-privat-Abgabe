@@ -214,7 +214,7 @@ async function openSubPage(menuId) {
 
 function renderList() {
 	renderSummary();
-	renderBoard(); //hinzu gefügt//
+	renderBoard();
 	renderLegalNotice();
 }
 
