@@ -133,14 +133,6 @@ function setMenuBtnStyleSlider(menuId) {
 }
 
 
-function legalNoticeNotSelectedStyleAdd(menuBtnId, img1Id, img2Id) {
-	document.getElementById(menuBtnId).style = menuSelectorStyles[0]['background'];
-	document.getElementById(menuBtnId + '_text').style = menuSelectorStyles[0]['color'];
-	document.getElementById(img1Id).classList.add(menuSelectorStyles[0]['disableImg']);
-	document.getElementById(img2Id).classList.add(menuSelectorStyles[0]['enableImg']);
-}
-
-
 function deselectMenuButtonSlider(menuId) {
 	let menuBtnId = menuSelectorStyles[menuId]['menuName'];
 	let img1Id = menuSelectorStyles[menuId]['img1Id'];
@@ -165,6 +157,14 @@ function legalNoticeNotSelectedStyleRemove(menuBtnId, img1Id, img2Id) {
 }
 
 
+function legalNoticeNotSelectedStyleAdd(menuBtnId, img1Id, img2Id) {
+	document.getElementById(menuBtnId).style = menuSelectorStyles[0]['background'];
+	document.getElementById(menuBtnId + '_text').style = menuSelectorStyles[0]['color'];
+	document.getElementById(img1Id).classList.add(menuSelectorStyles[0]['disableImg']);
+	document.getElementById(img2Id).classList.add(menuSelectorStyles[0]['enableImg']);
+}
+
+
 function otherMenuBtnPreSelected() {
 	return selectedMenuBtnId;
 }
@@ -184,10 +184,7 @@ function deselectMenuButton(menuId) {
 	let img1Id = menuSelectorStyles[menuId]['img1Id'];
 	let img2Id = menuSelectorStyles[menuId]['img2Id'];
 	if (legalNoticeNotSelected()) {
-		document.getElementById(menuBtnId).style = menuSelectorStyles[0]['disabledBackground'];
-		document.getElementById(menuBtnId + '_text').style = menuSelectorStyles[0]['color1'];
-		document.getElementById(img1Id).classList.remove(menuSelectorStyles[0]['disableImg']);
-		document.getElementById(img2Id).classList.remove(menuSelectorStyles[0]['enableImg']);
+		legalNoticeNotSelectedStyleRemove(menuBtnId, img1Id, img2Id)
 	}
 	if (legalNoticeSelected()) {
 		document.getElementById(menuBtnId).style = menuSelectorStyles[0]['disabledBackground'];
