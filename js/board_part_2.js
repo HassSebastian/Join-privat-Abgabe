@@ -231,27 +231,34 @@ function resetAssignToList() {
  * </code>
  * @param taskIndex - the index of the task in the array
  */
-async function getTaskChanges(taskIndex) {
+function getTaskChanges(taskIndex) {
+	document.getElementById('titleEditReq').style = "color: #f6f7f8";
+	document.getElementById('descEditReq').style = "color: #f6f7f8";
 	let boardEditedTitle = document.getElementById('boardEditTitle').value;
 	let boardEditedDescripten = document.getElementById('boardEditDecription').value;
 	let boardEditedDueDate = document.getElementById('boardEditDueDate').value;
+	if (!boardEditedTitle || !boardEditedDescripten) {
+		if (!boardEditedTitle) {
+			document.getElementById('titleEditReq').style = "color:red";
+		}
+		if (!boardEditedDescripten) {
+			document.getElementById('descEditReq').style = "color:red";
+		}
+	} else {
+		saveEditTask(taskIndex, boardEditedTitle, boardEditedDescripten, boardEditedDueDate);
+	}
+}
+
+async function saveEditTask(taskIndex, boardEditedTitle, boardEditedDescripten, boardEditedDueDate) {
 	joinTaskArray[taskIndex]['assignedTo'] = taskForce;
 	joinTaskArray[taskIndex]['title'] = boardEditedTitle;
 	joinTaskArray[taskIndex]['descripten'] = boardEditedDescripten;
 	joinTaskArray[taskIndex]['dueDate'] = boardEditedDueDate;
 	joinTaskArray[taskIndex]['prio'] = boardEditedPrio;
-
 	await saveTask();
-	/* if (window.innerWidth > 1100) { */
 	await renderBoard();
 	await createWorkStatusArrays();
 	await renderAllCards();
-	/* 	} else {
-		disablePopupWindow();
-		await renderMobileBoardHtml();
-		await createWorkStatusArrays();
-		await renderAllCardsMobil();
-	} */
 }
 
 /**

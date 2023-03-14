@@ -982,15 +982,15 @@ boardSubheaders > * {
 	cursor: pointer;
 }
 
-.detailBtnDiv{
+.detailBtnDiv {
 	display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    position: sticky;
-    bottom: 0px;
-    order: 10;
+	justify-content: flex-end;
+	width: 100%;
+	position: sticky;
+	bottom: 0px;
+	order: 10;
 	z-index: 10;
-	gap: 10px;	
+	gap: 10px;
 	background: #ffffff;
 }
 
@@ -1012,7 +1012,7 @@ boardSubheaders > * {
 	z-index: 10;
 	left: calc(100% - 41px);
 	bottom: 0px;
-	position:sticky;
+	position: sticky;
 }
 
 .editButton:hover {
@@ -1256,7 +1256,7 @@ boardSubheaders > * {
 }
 
 .boardEditTitleContainer span {
-	width: 65px;
+	width: auto;
 	height: 25px;
 	font-family: 'Inter';
 	font-style: normal;
@@ -1288,7 +1288,7 @@ boardSubheaders > * {
 	line-height: 120%;
 	color: #000000;
 	flex: none;
-	order: 1;
+	/* order: 1; */
 	flex-grow: 0;
 }
 
@@ -1307,7 +1307,7 @@ boardSubheaders > * {
 }
 
 .boardEditDescriptionContainer span {
-	width: 154px;
+	width: auto;
 	height: 25px;
 	font-family: 'Inter';
 	font-style: normal;
@@ -1334,7 +1334,7 @@ boardSubheaders > * {
 	border: 1px solid #d1d1d1;
 	border-radius: 10px;
 	flex: none;
-	order: 1;
+	/* order: 1; */
 	flex-grow: 0;
 	font-family: 'Inter';
 	font-style: normal;
@@ -1386,7 +1386,7 @@ boardSubheaders > * {
 	border: 1px solid #d1d1d1;
 	border-radius: 10px;
 	flex: none;
-	order: 1;
+	/* order: 1; */
 	flex-grow: 0;
 	font-family: 'Inter';
 	font-style: normal;
@@ -1631,6 +1631,20 @@ boardSubheaders > * {
 	color: #0190e0;
 }
 
+#descEditReq,
+#titleEditReq {
+	height: 12px;
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 120%;
+	flex: none;
+	order: 2;
+	flex-grow: 0;
+	color: #f6f7f8;
+}
+
 @media screen and (max-width: 1350px) {
 	.boardContainer {
 		padding-left: 53px;
@@ -1638,7 +1652,6 @@ boardSubheaders > * {
 }
 
 @media screen and (max-width: 1400px) {
-
 	.toDoHeadline {
 		width: 401px !important;
 	}
@@ -1853,7 +1866,6 @@ boardSubheaders > * {
 		font-size: 36px;
 	}
 
-
 	.boardAddTaskAssignedBox input {
 		width: 95%;
 	}
@@ -2063,7 +2075,6 @@ boardSubheaders > * {
 	.inputOutContainer {
 		padding-top: 16px;
 	}
-
 
 	.btnsContainerboardTaskCardPopup {
 		position: absolute;

@@ -4,16 +4,16 @@
  * @param taskIndex - the index of the task in the joinTaskArray
  */
 function renderAssignToHtml2(taskIndex) {
-	let assignedList = joinTaskArray[taskIndex]['assignedTo'];
-	let divId = 'members';
-	document.getElementById(divId).innerHTML = '';
-	if (assignedToDataExists(assignedList)) {
-		for (let i = 0; i < assignedList.length; i++) {
-			let name = assignedList[i]['name'];
-			let nameLetters = assignedList[i].firstSecondLetter;
-			let assignToColor = colorIndex[assignedList[i].colorIndex];
-			let assignToTitle = name;
-			document.getElementById(divId).innerHTML += /*html*/ `
+    let assignedList = joinTaskArray[taskIndex]['assignedTo'];
+    let divId = 'members';
+    document.getElementById(divId).innerHTML = '';
+    if (assignedToDataExists(assignedList)) {
+        for (let i = 0; i < assignedList.length; i++) {
+            let name = assignedList[i]['name'];
+            let nameLetters = assignedList[i].firstSecondLetter;
+            let assignToColor = colorIndex[assignedList[i].colorIndex];
+            let assignToTitle = name;
+            document.getElementById(divId).innerHTML += /*html*/ `
         
                 <div  title='${assignToTitle}' style='background-color: ${assignToColor}'>
                     <span class='shortcut'>${nameLetters}</span>
@@ -22,10 +22,10 @@ function renderAssignToHtml2(taskIndex) {
             
                 
                 `;
-			/* 
+            /* 
                 ! Das Design stimmt nicht. Der NAme soll angezeigt werden und die Symbole untereinander */
-		}
-	}
+        }
+    }
 }
 
 /**
@@ -33,18 +33,18 @@ function renderAssignToHtml2(taskIndex) {
  * @param {*} taskIndex - this value is equal to the index position in the main array 'joinTaskArray'.
  */
 async function renderSubtaskHtml(taskIndex) {
-	document.getElementById('subtaskListTaskCard').innerHTML = '';
-	let subtaskArray = joinTaskArray[taskIndex]['subTasks'];
-	if (subtaskExist(subtaskArray)) {
-		for (let i = 0; i < subtaskArray.length; i++) {
-			let subtaskText = subtaskArray[i]['subtaskText'];
-			document.getElementById('subtaskListTaskCard').innerHTML += /*html*/ `
+    document.getElementById('subtaskListTaskCard').innerHTML = '';
+    let subtaskArray = joinTaskArray[taskIndex]['subTasks'];
+    if (subtaskExist(subtaskArray)) {
+        for (let i = 0; i < subtaskArray.length; i++) {
+            let subtaskText = subtaskArray[i]['subtaskText'];
+            document.getElementById('subtaskListTaskCard').innerHTML += /*html*/ `
                 <div>
                     <input type='checkbox' id='subtask${i}' onclick='checkboxSubtaskSelected(${i}, ${taskIndex}), renderBtnBySubtaskChange(${taskIndex})'>
                     <span>${subtaskText}</span>
                 </div>`;
-		}
-	}
+        }
+    }
 }
 
 /**
@@ -52,18 +52,21 @@ async function renderSubtaskHtml(taskIndex) {
  * @param taskIndex - the index of the task in the array of tasks
  */
 async function renderEditTaskCardHtml(taskIndex) {
-	document.getElementById('boardPopup').innerHTML = '';
-	document.getElementById('boardPopup').innerHTML = /*html*/ `
+    document.getElementById('boardPopup').innerHTML = '';
+    document.getElementById('boardPopup').innerHTML = /*html*/ `
         <div class='boardTaskCardPopup' onclick='stopClose(event)'>
         <img class='close_logo' src='./assets/img/close_logo.png' onclick='disablePopupWindow()'>
             <div class='boardTaskCardInnerContainer'>
+
                 <div class='boardEditTitleContainer'>
                     <span>Title</span>
                     <input type='text' placeholder='Enter a title' id='boardEditTitle'>
+                    <span class="requiredText" id="titleEditReq">This field is required</span>
                 </div>
                 <div class='boardEditDescriptionContainer'>
                     <span>Descripten</span>
                     <textarea name='Description'  cols='30' rows='10' placeholder='Enter Descriptiom' id='boardEditDecription'></textarea>
+                    <span class="requiredText" id="descEditReq">This field is required</span>
                 </div>
                 <div class='boardEditDateContainer'>
                     <span>Due Date</span>
@@ -148,54 +151,54 @@ async function renderEditTaskCardHtml(taskIndex) {
 let addTaskContactsResponsiveOn = false;
 let addTaskOpen;
 function startIntervalWhenOff() {
-	const interval = setInterval(() => {
-		if (window.innerWidth > 563 && !addTaskContactsResponsiveOn && addTaskOpen) {
-			showAddTaskPopupWindow();
-			addTaskContactsResponsiveOn = true;
-			clearInterval(interval);
-			startIntervalWhenOn();
-			addTaskOpen = true;
-		}
-	}, 100);
+    const interval = setInterval(() => {
+        if (window.innerWidth > 563 && !addTaskContactsResponsiveOn && addTaskOpen) {
+            showAddTaskPopupWindow();
+            addTaskContactsResponsiveOn = true;
+            clearInterval(interval);
+            startIntervalWhenOn();
+            addTaskOpen = true;
+        }
+    }, 100);
 }
 
 function startIntervalWhenOn() {
-	const interval = setInterval(() => {
-		if (window.innerWidth < 563 && addTaskContactsResponsiveOn && addTaskOpen) {
-			showAddTaskPopupWindow();
-			addTaskContactsResponsiveOn = false;
-			clearInterval(interval);
-			startIntervalWhenOff();
-			addTaskOpen = true;
-		}
-	}, 100);
+    const interval = setInterval(() => {
+        if (window.innerWidth < 563 && addTaskContactsResponsiveOn && addTaskOpen) {
+            showAddTaskPopupWindow();
+            addTaskContactsResponsiveOn = false;
+            clearInterval(interval);
+            startIntervalWhenOff();
+            addTaskOpen = true;
+        }
+    }, 100);
 }
 
 function addTaskContactAutomaticResponisive() {
-	startIntervalWhenOff();
-	startIntervalWhenOn();
+    startIntervalWhenOff();
+    startIntervalWhenOn();
 }
 
 function trackThatAddTaskIsClose() {
-	addTaskOpen = false;
+    addTaskOpen = false;
 }
 
 function allowAddTaskPopUp() {
-	addTaskOpen = true;
+    addTaskOpen = true;
 }
 /**
  * this function returns the popup Menu html string
  * @returns - Board popup Menu html string.
  */
 function renderAddTaskPopupHtml(workflow) {
-	addTaskContactAutomaticResponisive();
-	if (window.innerWidth > 563) {
-		document.getElementById('boardPopup').onclick = function () {
-			closeNewContact();
-			closeEditContact();
-			trackThatAddTaskIsClose();
-		};
-		return /*html*/ `
+    addTaskContactAutomaticResponisive();
+    if (window.innerWidth > 563) {
+        document.getElementById('boardPopup').onclick = function () {
+            closeNewContact();
+            closeEditContact();
+            trackThatAddTaskIsClose();
+        };
+        return /*html*/ `
         <div id='boardAddTaskPopup' onclick='stopClose(event)'>
             <img class='close_logo_edit_task' src='./assets/img/close_logo.png' onclick='disablePopupWindow(), trackThatAddTaskIsClose()'>
             <div class='boardAddTaskHeadlineDiv'>
@@ -350,9 +353,9 @@ function renderAddTaskPopupHtml(workflow) {
             </div>
         </div>
         `;
-	} else {
-		document.getElementById('boardPopup').onclick = function () {};
-		return /*html*/ `
+    } else {
+        document.getElementById('boardPopup').onclick = function () { };
+        return /*html*/ `
         <div class="addTaskMobileResponsiveBackground">
         	<div class="testResponsiv testResponsiveAddTaskContact" id="testResponsiv">
 	<div class="addTaskHeadlineDiv">
@@ -488,7 +491,7 @@ function renderAddTaskPopupHtml(workflow) {
 </div>
     </div>
         `;
-	}
+    }
 }
 
 /**
@@ -496,14 +499,14 @@ function renderAddTaskPopupHtml(workflow) {
  * @param {number} taskIndex - this value is equal to the index position in the main array 'joinTaskArray'.
  */
 function renderPopupTaskCardHtml(taskIndex) {
-	let cardTitle = joinTaskArray[taskIndex]['title'];
-	let cardDescription = joinTaskArray[taskIndex]['descripten'];
-	let cardCategory = joinTaskArray[taskIndex]['category'];
-	let cardDueDate = joinTaskArray[taskIndex]['dueDate'];
-	let taskPrio = joinTaskArray[taskIndex]['prio'];
-	let creator = joinTaskArray[taskIndex]['creator'];
-	document.getElementById('boardPopup').innerHTML = '';
-	document.getElementById('boardPopup').innerHTML = /*html*/ `
+    let cardTitle = joinTaskArray[taskIndex]['title'];
+    let cardDescription = joinTaskArray[taskIndex]['descripten'];
+    let cardCategory = joinTaskArray[taskIndex]['category'];
+    let cardDueDate = joinTaskArray[taskIndex]['dueDate'];
+    let taskPrio = joinTaskArray[taskIndex]['prio'];
+    let creator = joinTaskArray[taskIndex]['creator'];
+    document.getElementById('boardPopup').innerHTML = '';
+    document.getElementById('boardPopup').innerHTML = /*html*/ `
         <div class='boardTaskCardPopup' onclick='stopClose(event)'>
             <img class='close_logo' src='./assets/img/close_logo.png' onclick='disablePopupWindow()'>
             <div class='taskCardPopupCategory' id='taskCardPopupCategory' title= 'Created by: ${creator}'>
@@ -550,9 +553,9 @@ function renderPopupTaskCardHtml(taskIndex) {
         
         `;
 
-	setTaskCardPopupCatColor(taskIndex);
-	setTaskCardPopupPrioBackground(taskIndex);
-	renderSubtask(taskIndex);
-	renderAssignToHtml2(taskIndex);
-	renderMoveBtnMobil(taskIndex);
+    setTaskCardPopupCatColor(taskIndex);
+    setTaskCardPopupPrioBackground(taskIndex);
+    renderSubtask(taskIndex);
+    renderAssignToHtml2(taskIndex);
+    renderMoveBtnMobil(taskIndex);
 }
