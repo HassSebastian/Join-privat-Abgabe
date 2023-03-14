@@ -1,0 +1,160 @@
+/* !Das muss noch in andere Dateien verschoben werden! */
+
+@media screen and (max-width: 768px) {
+	/* ADD TASK */
+	.scroll {
+		width: unset;
+		right: 31px;
+		bottom: 80px !important;
+	}
+
+	.addTaskTitle,
+	.addTaskDescription,
+	.addTaskPrio,
+	.addTaskDate,
+	.addTaskAddCategoryBox,
+	.addTaskAssignedBox,
+	.subtask,
+	.addTaskAssignedBox button,
+	.inputDiv {
+		width: 100% !important;
+	}
+	.addTaskTitle input,
+	.addTaskDescription textarea {
+		width: 100%;
+	}
+
+	.addTaskPrio {
+		align-items: unset;
+	}
+
+	button input {
+		min-width: 100px !important;
+		width: 211px;
+	}
+
+	.addTaskCatList {
+		padding: unset;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.scroll {
+		/* width: unset; */
+		right: 8px;
+		left: 8px;
+		height: auto;
+		bottom: 80px;
+	}
+
+	/* SUMMARY */
+	.headingContainer {
+		width: 330px;
+	}
+
+	.summaryDisplayContainer {
+		width: 330px !important;
+	}
+
+	.cardsSummaryTop {
+		width: 100px !important;
+		height: 100px !important;
+	}
+
+	/* ADD TASK */
+
+	.frame164 {
+		left: 16px;
+	}
+
+	.frame154 {
+		left: 8px;
+	}
+
+	.urgencyLevelCard {
+		flex: 1 !important;
+		width: unset !important;
+	}
+
+	.addTaskDate {
+		margin-top: 14px;
+	}
+
+	/* Help */
+	/* .helpContainer {
+		width: calc(100vw - 32px);
+		height: 100vh;
+		margin: 0 16px !important;
+	} */
+
+	/*  .kanbanProjectManagementTool {
+    left: unset 1
+  } */
+
+	.helpOverlay {
+		right: 16px !important;
+		left: 16px !important;
+	}
+
+	/* Legal Notice */
+
+	.kanbanProjectManagementTool {
+		left: 16px !important;
+		right: 16px !important;
+	}
+
+	.textFieldContainer {
+		left: 16px !important;
+		right: 16px !important;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	/* ADD TASK */
+	.frame28 {
+		height: 160px;
+		width: 100%;
+	}
+
+	.addTaskPrioIcons {
+		flex-direction: column;
+		height: 140px;
+		width: 100%;
+	}
+
+	#addTaskUrgentSpan,
+	#addTaskMediumSpan,
+	#addTaskLowSpan {
+		height: 40px;
+		display: flex;
+		align-items: center;
+		/* 	padding-right: 16px;
+		padding-left: 16px; */
+	}
+
+	.addTaskPrio {
+		height: fit-content;
+	}
+
+	/* Contacts */
+	/* .overlayMasterContainer {
+		width: 100vw !important;
+	} */
+
+	/* .centerNewContactHeader {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+	.centerNewContactHeaderContainer {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: 289px;
+	} */
+
+	/* .overlayBlackContainer {
+		width: 100vw !important;
+	} */
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Styles -->
+		<link rel="stylesheet" href="./styles/style.css" id="stylesheetStyle" />
+		<link rel="stylesheet" href="./styles/fonts.css" />
+
+		<link rel="stylesheet" href="./styles/legal_notice.css" id="stylesheetLegalNotice" />
+		<link rel="stylesheet" href="./styles/summary.css" id="stylesheetsummary" />
+		<link rel="stylesheet" href="./styles/add_task.css" id="stylesheetAddTask" />
+		<link rel="stylesheet" href="./styles/board.css" id="stylesheetBoard" />
+		<link rel="stylesheet" href="./styles/contacts.css" id="stylesheetContacts" />
+		<link rel="stylesheet" href="./styles/help.css" id="stylesheetHelp" />
+
+		<script src="./js/generic_functions.js"></script>
+		<script src="./js/mini_backend.js" id="jsMiniBackend"></script>
+		<script src="./js/responsiv.js" id="jsResponsiv"></script>
+		<script src="./js/script.js" id="jsScript"></script>
+		<script src="./js/login.js"></script>
+		<script src="./js/add_task_templates.js" id="jsAddTaskTemplates"></script>
+		<script src="./js/add_task.js" id="jsAddTask"></script>
+		<script src="./js/add_task_assigned.js"></script>
+		<script src="./js/board_part_1.js" id="jsBoardPart1"></script>
+		<script src="./js/board_part_2.js" id="jsBoardPart2"></script>
+		<script src="./js/board_part_3.js" id="jsBoardPart3"></script>
+		<script src="./js/board_templates_part_1.js" id="jsBoardTemplatesPart1"></script>
+		<script src="./js/board_templates_part_2.js" id="jsBoardTemplatesPart2"></script>
+		<script src="./js/contacts_templates.js" id="jsContactsTemplates"></script>
+		<script src="./js/contacts.js" id="jsContacts"></script>
+		<script src="./js/legal_notice.js" id="jslegalNotice"></script>
+		<script src="./js/summary_templates.js"></script>
+		<script src="./js/summary.js" id="jsSummary"></script>
+
+		<script src="./js/help.js" id="jsHelp"></script>
+
+		<script src="./js/signUp.js" id="jsSignUp"></script>
+		<script src="./js/signUpTemplates.js" id="jsSignUpTemplates"></script>
+
+		<!-- mobil  -->
+		<!-- <link rel="stylesheet" href="./styles/mobil_template.css" id="stylesheetMobilTemplates" /> -->
+		<link rel="stylesheet" href="styles/responsiveTabletsDownwards.css" />
+
+		<link rel="icon" type="image/x-icon" href="./join_logo_black.png" />
+
+		<title>Join 407</title>
+	</head>
+
+	<body onload="loadApplicableSummary()">
+		<div class="outerContainer" w3-include-html="./assets/templates/desktop_template.html" id="desktopSummary"></div>
+		<!-- <div class="outerContainer d-none" w3-include-html="./assets/templates/mobil_template.html" id="mobilSummary"></div> -->
+	</body>
+</html>

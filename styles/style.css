@@ -1,0 +1,569 @@
+body {
+	margin: 0;
+	scroll-behavior: smooth;
+	user-select: none;
+	color: white;
+	font-family: 'inter-regular';
+	min-height: 100vh;
+	overflow: hidden;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.outerContainer {
+	display: flex;
+	justify-content: center;
+}
+
+.mainContainer {
+	display: flex;
+	justify-content: flex-start;
+	height: 100%;
+	width: 100vw;
+	position: absolute;
+}
+
+.sideMenu {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100vh;
+	width: 232px;
+	background-color: #2a3647;
+	color: #cdcdcd;
+	z-index: 2;
+}
+
+.d-none {
+	display: none !important;
+}
+
+.logo {
+	margin-top: 66px;
+	margin-left: 65.98px;
+	margin-right: 65.98px;
+	margin-bottom: 103px;
+}
+
+nav {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	height: 229px;
+	/* width: 232px; */
+	/* margin-bottom: 346px; */
+}
+
+table {
+	border-spacing: 0px;
+}
+
+td {
+	font-family: 'inter';
+	font-weight: 400;
+	font-size: 16px;
+	color: #cdcdcd;
+	height: 55.25px;
+	gap: 15px;
+}
+
+tr td:first-child {
+	width: 108.5px;
+	text-align: right;
+}
+
+tr td:nth-child(2) {
+	width: 15px;
+}
+
+tr td:nth-child(3) {
+	width: 108.5px;
+}
+
+#imgSummary1 {
+	display: inline-table;
+}
+
+#imgSummary2 {
+	display: none;
+}
+
+#imgBoard1 {
+	display: inline-table;
+}
+
+#imgBoard2 {
+	display: none;
+}
+
+#imgAddTask1 {
+	display: inline-table;
+}
+
+#imgAddTask2 {
+	display: none;
+}
+
+#imgContacts1 {
+	display: inline-table;
+}
+
+#imgContacts2 {
+	display: none;
+}
+
+#imgSummary11 {
+	display: inline-table;
+}
+
+#imgSummary21 {
+	display: none;
+}
+
+#imgBoard11 {
+	display: inline-table;
+}
+
+#imgBoard21 {
+	display: none;
+}
+
+#imgAddTask11 {
+	display: inline-table;
+}
+
+#imgAddTask21 {
+	display: none;
+}
+
+#imgContacts11 {
+	display: inline-table;
+}
+
+#imgContacts21 {
+	display: none;
+}
+
+.trHover:hover {
+	background-color: #091931 !important;
+	cursor: pointer;
+}
+
+.trHover:hover td:nth-child(3) {
+	color: #ffffff;
+}
+
+.trHover:hover td:nth-child(1) #imgSummary1 {
+	display: none;
+}
+
+.trHover:hover td:nth-child(1) #imgSummary2 {
+	display: inline-table;
+}
+
+.trHover:hover td:nth-child(1) #imgBoard1 {
+	display: none;
+}
+
+.trHover:hover td:nth-child(1) #imgBoard2 {
+	display: inline-table;
+}
+
+.trHover:hover td:nth-child(1) #imgAddTask1 {
+	display: none;
+}
+
+.trHover:hover td:nth-child(1) #imgAddTask2 {
+	display: inline-table;
+}
+
+.trHover:hover td:nth-child(1) #imgContacts1 {
+	display: none;
+}
+
+.trHover:hover td:nth-child(1) #imgContacts2 {
+	display: inline-table;
+}
+
+.imgDisplayNone {
+	opacity: 0;
+	display: none !important;
+}
+
+.imgDisplay {
+	display: inline-table !important;
+	opacity: 1;
+}
+
+.legalNotice {
+	height: 53px;
+	margin-bottom: 112.03px;
+}
+
+#btnLegalNotice {
+	cursor: pointer;
+}
+
+#btnLegalNotice:hover {
+	background-color: #091931 !important;
+}
+
+.rightContainer {
+	height: 100vh;
+	width: 100%;
+	position: relative;
+}
+
+.greetMobileOverlay {
+	position: absolute;
+	top: 89px;
+	bottom: 89px;
+	right: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #f6f7f8;
+	animation: greeting 1s;
+	animation-delay: 1s;
+}
+
+@keyframes greeting {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+.greetMobileContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: fit-content;
+}
+
+.greetingMobile {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 36px;
+	color: #2a3647;
+}
+
+.nameToBeingGreeted {
+	text-align: center;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 47px;
+	color: #29abe2;
+}
+
+.content {
+	height: 100vh;
+	width: 100%;
+	background-color: #f6f7f8;
+	color: #000000;
+	overflow: hidden;
+	padding-top: 89px;
+}
+
+.content::-webkit-scrollbar {
+	width: 0px;
+}
+
+.memberMenu {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0px 36px 0px 123px;
+	gap: 34px;
+	color: black;
+	position: absolute;
+	width: 100%;
+	height: 89px;
+	left: 0px;
+	right: 0;
+	top: 0px;
+	background: #ffffff;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+	z-index: 1;
+}
+
+.joinLogo {
+	height: 32px;
+	width: auto;
+}
+
+.memberMenu h1 {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+}
+
+#memberInfo {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 0px;
+	gap: 26px;
+	width: 106px;
+	height: 49px;
+	cursor: pointer;
+	font-family: 'Inter';
+}
+
+#memberInfo img:first-child {
+	width: 31px;
+	height: 31px;
+	cursor: pointer;
+}
+
+.logOut {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	/* align-items: center; */
+	top: 89px;
+	right: 25px;
+	width: 135px;
+	min-height: 53px;
+	cursor: pointer;
+	display: none;
+	z-index: 2;
+	background: #2a3647;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 20px 0px 20px 20px;
+	color: #cdcdcd;
+	overflow: hidden;
+}
+
+.innerDropDownContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.dropDownSpanHeader {
+	display: none;
+}
+
+.innerDropDownContainer span {
+	padding: 8px;
+	padding-left: 16px;
+	cursor: pointer;
+}
+
+.innerDropDownContainer span:hover {
+	background-color: #091931;
+}
+
+.logOutOn {
+	display: flex;
+}
+
+/* von Basti hinzugefügt*/
+#contributorsLogoHeadder {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	gap: 16px;
+	width: 49px;
+	height: 49px;
+	border-radius: 100%;
+}
+
+.sliderMenu {
+	display: none;
+	height: 100%;
+	width: fit-content;
+	color: #cdcdcd;
+	z-index: 1;
+	position: fixed;
+	left: -232px;
+	top: 89px;
+	bottom: 0;
+	align-items: center;
+	transition: 100ms ease-in-out;
+}
+
+.showSliderMenu {
+	transition: 100ms ease-in-out;
+	transform: translateX(232px);
+}
+
+.menuContainer {
+	height: 100%;
+	width: 232px;
+	background-color: #2a3647;
+	color: #cdcdcd;
+	/* margin-top: 89px; */
+}
+
+.menuButton img {
+	height: 50px;
+	background: #2a3647;
+	border-radius: 0% 50% 50% 0%;
+	padding: 10px;
+}
+
+.menuButton img:hover {
+	cursor: pointer;
+	background: #29abe2;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	transition: 100ms ease-in-out;
+}
+
+/* Bottom menu for mobile devices */
+.mobileBottomMenu {
+	display: none;
+	flex-direction: row;
+	justify-content: space-around;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 79px;
+	width: 100%;
+	background-color: #2a3647;
+}
+
+.mobileMenuBtnContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 6px;
+}
+
+.mobileMenuBtnContainer img {
+	height: 30px;
+	width: 30px;
+}
+
+.mobileMenuContactButtonImage {
+	height: 30px;
+	width: 25px !important;
+}
+
+.mobileMenuBtnContainer span {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	color: #cdcdcd;
+}
+
+@media screen and (max-width: 1500px) {
+	.outerContainer {
+		width: 100%;
+	}
+
+	.mainContainer {
+		justify-content: center;
+		overflow: hidden;
+		/* width: 100%; */
+	}
+}
+
+@media screen and (max-width: 1440px) {
+	.rightContainer {
+		width: calc(100% - 232px);
+	}
+
+	/* .content {
+		width: 100%;
+	} */
+}
+
+@media screen and (max-width: 1350px) {
+	/* Side Menu and Slider */
+
+	.sideMenu {
+		display: none !important;
+	}
+
+	.sliderMenu {
+		display: flex !important;
+	}
+
+	.rightContainer {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 1100px) {
+	.memberMenu {
+		z-index: 1;
+		padding: 0px 36px 0px 53px !important;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.memberMenu {
+		height: 79px;
+	}
+
+	.content {
+		padding-top: 79px;
+	}
+
+	.logOut {
+		top: 79px !important;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.memberMenu {
+		padding: 0 25px !important;
+	}
+
+	#memberInfo img {
+		display: none;
+	}
+
+	.memberMenu h1 {
+		display: none;
+	}
+
+	.dropDownSpanHeader {
+		display: flex;
+	}
+
+	.sliderMenu {
+		display: none !important;
+	}
+
+	.overview {
+		gap: 24px !important;
+	}
+
+	.mobileBottomMenu {
+		display: flex;
+	}
+}
+
+@media screen and (max-height: 1024px) {
+	.memberMenu {
+		padding: 0px 36px 0px 56px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (min-width: 769px) {
+	.joinLogo {
+		display: none;
+	}
+}

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>login</title>
+		<link rel="stylesheet" href="./styles/login.css" />
+		<link rel="stylesheet" href="./styles/fonts.css" />
+		<!-- <link rel="stylesheet" href="./styles/test.css" /> -->
+		<script src="./js/mini_backend.js"></script>
+		<script src="./js/script.js"></script>
+		<!-- <script src="./js/mobile_login.js"></script> -->
+		<script src="./js/login.js"></script>
+		<script src="./js/login_templates.js"></script>
+		<script src="./js/signUp.js"></script>
+		<script src="./js/signUpTemplates.js"></script>
+		<link rel="icon" type="image/x-icon" href="./join_logo_black.png" />
+	</head>
+
+	<body onload="initLoginMob()">
+		<div class="pageOneMob" id="pageOneMob"></div>
+
+		<div class="logIn" id="logIn">
+			<div class="notAJoinUser" id="notAJoinUserContainerMob">
+				<span>Not a Join user?</span>
+				<div onclick="notAJoinUserButtonMob()">Sign up</div>
+			</div>
+			<!-- <img class="logInLogoImgWhite" id="pageOneMobImgWhite" src="./assets/img/join_logo.png" alt="" /> -->
+			<a href="loginDesk.html">
+				<!-- <img src="./assets/img/join_logo_black.png" alt="" /> -->
+				<svg class="logInLogoImgBlack" id="pageOneMobImgBlack" width="100.03" height="121.97" viewBox="0 0 64 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M45.8539 0H31.6777V16.3095H45.8539V0Z" fill="#2A3647" />
+					<path d="M31.6783 29.5732H45.8544V52.5752C45.9192 58.1101 44.344 63.5393 41.329 68.1727C38.352 72.6745 32.6052 78.0307 21.973 78.0307C10.3922 78.0307 3.64218 72.554 0 69.5528L8.94188 58.5228C12.4968 61.4255 15.9209 63.8133 22.0276 63.8133C26.6512 63.8133 28.4941 61.9293 29.5737 60.2863C31.0413 58.0042 31.8004 55.3354 31.7546 52.619L31.6783 29.5732Z" fill="#2A3647" />
+					<path d="M24.4476 19.2773H10.2715V33.5166H24.4476V19.2773Z" fill="#29ABE2" />
+					<path d="M53.2818 71.3496C53.2818 74.3837 51.7442 76.0157 49.596 76.0157C47.4477 76.0157 46.041 74.077 46.041 71.5029C46.041 68.9289 47.4913 66.8916 49.7159 66.8916C51.9405 66.8916 53.2818 68.8961 53.2818 71.3496ZM47.6876 71.4701C47.6876 73.2993 48.4182 74.6465 49.6723 74.6465C50.9263 74.6465 51.6351 73.2226 51.6351 71.3606C51.6351 69.7285 50.9809 68.195 49.6723 68.195C48.3637 68.195 47.6876 69.6737 47.6876 71.4701Z" fill="#2A3647" />
+					<path d="M56.0947 67.0234V75.8737H54.5244V67.0234H56.0947Z" fill="#2A3647" />
+					<path d="M57.7949 75.8737V67.0234H59.5397L61.4153 70.6709C61.8981 71.6246 62.3277 72.6046 62.7021 73.6064C62.6039 72.511 62.5603 71.2514 62.5603 69.8494V67.0234H63.9997V75.8737H62.3749L60.4775 72.1496C59.9751 71.1713 59.5273 70.1657 59.1362 69.1374C59.1362 70.2328 59.2125 71.4705 59.2125 72.993V75.8628L57.7949 75.8737Z" fill="#2A3647" />
+				</svg>
+			</a>
+			<form action="" onsubmit="checkCorrectInput() ;return false">
+				<div class="loginMasterContainer" id="logInMasterContainerMob">
+					<div class="logInHeadlineContainer">
+						<span>Log in</span>
+						<div></div>
+					</div>
+					<div class="loginInputContainer">
+						<div class="loginoOutEmailContainer">
+							<div class="loginContainer">
+								<div class="loginInnerEmailContainer">
+									<input class="inputLogIn" type="email" placeholder="Email" id="inputEmailLogin" onclick="logInAtLocalstorage()" />
+									<img src="./assets/img/email_Logo.png" />
+								</div>
+							</div>
+							<span class="required" id="requiredEmailLogin">This field is required</span>
+						</div>
+						<div class="loginOutPasswordContainer">
+							<div class="loginContainer">
+								<div class="loginInnerPasswordContainer">
+									<input class="inputLogIn" type="password" placeholder="Password" id="inputPasswordLogin" pattern="[a-zA-Z0-9äöüßAÖÜ]*" />
+									<div onclick="passwordShowIcon('Login')">
+										<img src="./assets/img/password_logo.png" id="passwordLogo" />
+										<img src="./assets/img/pwShowButton.png" id="pwShowButton" class="d-none" />
+									</div>
+								</div>
+							</div>
+							<span class="required" id="requiredPasswordLogin">This field is required</span>
+						</div>
+					</div>
+					<div class="rememberMeContainer">
+						<div class="rememberMeBox">
+							<div>
+								<input type="checkbox" id="checkbox" name="checkbox" />
+							</div>
+							<span>Remember me</span>
+						</div>
+						<span class="loginForgotPassword" onclick="showForgotPasswordMob()">Forgot my password</span>
+					</div>
+					<div class="logInButtonContainer">
+						<button class="logInButton">
+							<span>Log in</span>
+						</button>
+						<button class="guestButton" onclick="guestLogIn()">
+							<span>Guest Log in</span>
+						</button>
+					</div>
+				</div>
+			</form>
+
+			<!--signup-->
+			<form action="" onsubmit="inputValueTest() ;return false">
+				<div class="signUpMasterContainer d-none" id="signInMasterContainerMob">
+					<div class="signUpHeadline">
+						<span>Sign up</span>
+						<div></div>
+					</div>
+					<div class="signupInputContainer">
+						<div class="signupOutContainer">
+							<div class="signupaContainer">
+								<div class="signupInnerContainer">
+									<input class="signupInputSignUp" type="text" placeholder="Name" id="inputNameSignUp" />
+									<img src="./assets/img/name_logo.png" />
+								</div>
+							</div>
+							<span class="required" id="requiredName">This field is required</span>
+						</div>
+						<div class="signupOutContainer">
+							<div class="signupaContainer">
+								<div class="signupInnerContainer">
+									<input class="signupInputSignUp" type="email" placeholder="Email" id="inputEmailSignUp" />
+									<img src="./assets/img/email_Logo.png" />
+								</div>
+							</div>
+							<span class="required" id="requiredEmail">This field is required</span>
+						</div>
+						<div class="signupOutContainer">
+							<div class="signupaContainer">
+								<div class="signupInnerContainer">
+									<input class="signupInputSignUp" type="password" placeholder="Password" id="inputPasswordSignUp" pattern="[a-zA-Z0-9äöüßAÖÜ]*" />
+									<div onclick="passwordShowIcon('SignUp')">
+										<img src="./assets/img/password_logo.png" id="passwordLogo" />
+										<img src="./assets/img/pwShowButton.png" id="pwShowButton" class="d-none" />
+									</div>
+								</div>
+							</div>
+							<span class="required" id="requiredPassword">This field is required</span>
+						</div>
+					</div>
+					<button class="signupButtonContainer">
+						<span id="signUpButton">Sign up</span>
+					</button>
+					<div class="arrowContainer" onclick="backToLogInMob()">
+						<img src="./assets/img/back_logo.png" />
+					</div>
+					<div class="contactSucc d-none" id="contactSucc">
+						<div class="contactSuccContainer">
+							<span>Contact succesfully created</span>
+						</div>
+					</div>
+				</div>
+			</form>
+
+			<!--forgotPW-->
+			<form class="formForgot d-none" id="formForgotPassword" action="" onsubmit="sendMailButton() ;return false">
+				<div class="forgotPasswordWindow" id="forgotPWMasterContainerMob">
+					<img onclick="backToLogInMob()" src="./assets/img/back_logo.png" alt="back to log-in page" />
+					<div class="innerContainerForgotPassword">
+						<h1>I forgot my password</h1>
+						<p>Don't worry! We will send you an email with the instructions to reset your password.</p>
+
+						<div class="forgotPasswordInputContainer">
+							<div class="inputfieldContainer">
+								<input class="inputForgot" type="email" placeholder="Email" id="inputForgot" />
+								<img src="./assets/img/email_Logo.png" alt="mail image" />
+							</div>
+							<span class="required" id="requiredEmailForgot">This field is required</span>
+							<!-- Btn Send Email -->
+							<div class="forgotButtonContainer">
+								<button class="forgotButton">
+									<span>Send me the email</span>
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="sentMassageDoneMaserContainerMob" id="sentMassageDoneMaserContainerMob">
+						<div class="sentMassageDoneContainerMob">
+							<img src="../../assets/img/sendCheck_logo.png" />
+							<span>An E-Mail has been sent to you</span>
+						</div>
+					</div>
+				</div>
+			</form>
+
+			<!--forgotReset-->
+			<form action="" onsubmit="resetbuttonContainerMob() ;return false">
+				<div class="forgotResetMasterContainer d-none" id="resetPWMasterContainerMob">
+					<div class="forgotResetResetHeadline">
+						<span>Reset your password</span>
+					</div>
+					<span class="forgotResetContent">Change your account password</span>
+					<div class="forgotResetInputContainer">
+						<div class="forgotResetOutContainer">
+							<div class="forgotResetaContainer">
+								<div class="forgotResetInnerContainer">
+									<input class="forgotResetInputPassword" type="password" placeholder="New password" id="inputNewPassword" pattern="[a-zA-Z0-9äöüßAÖÜ]*" />
+								</div>
+							</div>
+							<span class="required" id="requiredNewPassword">This field is required</span>
+						</div>
+						<div class="forgotResetOutContainer">
+							<div class="forgotResetaContainer">
+								<div class="forgotResetInnerContainer">
+									<input class="forgotResetInputPassword" type="password" placeholder="Confirm password" id="inputConfirmPassword" pattern="[a-zA-Z0-9äöüßAÖÜ]*" />
+								</div>
+							</div>
+							<span class="required" id="requiredConfirmPassword">This field is required</span>
+						</div>
+					</div>
+					<div class="forgotResetButtonContainer">
+						<button class="forgotResetResetButton">
+							<span>Continue</span>
+						</button>
+					</div>
+					<div class="arrowContainer" onclick="backToSignInMob()">
+						<img src="./assets/img/back_logo.png" />
+					</div>
+
+					<div class="pwResetContainerMob" id="pwResetContainerMob">
+						<div class="pwResetHeadlineContainerMob">
+							<span>You reset your password</span>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>JSDoc: Source: add_task.js</title>
+
+		<script src="scripts/prettify/prettify.js"></script>
+		<script src="scripts/prettify/lang-css.js"></script>
+		<!--[if lt IE 9]>
+			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css" />
+		<link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css" />
+	</head>
+
+	<body>
+		<div id="main">
+			<h1 class="page-title">Source: add_task.js</h1>
+
+			<section>
+				<article>
+					<pre class="prettyprint source linenums"><code>'use strict';
+
+let catListStatus = false;
+let assignListStatus = false;
+let newCatInputActive = false;
+let addTaskCategoryList = [];
+let joinTaskArray = [];
+let taskData = {};
+let title = '';
+let descripten = '';
+let category = '';
+let catColor = '';
+let assigndTo = '';
+let dueDate = '';
+let prio = '';
+let subTask = '';
+let subTaskArray = [];
+let selectedSubtasks = [];
+/* 
+!TEST ARRAY for renderFunciont (assignedContact list in dropdown menu) */
+let coworkersToAssignTo = [
+	{
+		firstName: 'Lisa',
+		lastName: 'Kammler',
+		email: 'lisa.kammler@webber.de',
+		check: false,
+	},
+	{
+		firstName: 'Christopher Kai',
+		lastName: 'Greenkohl',
+		email: 'ck.greeny@hotmail.com',
+		check: false,
+	},
+	{
+		firstName: 'Thorsten',
+		lastName: 'Kern',
+		email: 'thosten.kernel@hobby.com',
+		check: false,
+	},
+	{
+		firstName: 'Frieda',
+		lastName: 'April',
+		email: 'aPril_frieda@shite.sa',
+		check: false,
+	},
+	{
+		firstName: 'Helmut',
+		lastName: 'Müller',
+		email: 'sindSaödf@hurz.de',
+		check: false,
+	},
+	{
+		firstName: 'Bichtig',
+		lastName: 'Tuer',
+		email: 'sisdfsadfz.de',
+		check: false,
+	},
+	{
+		firstName: 'Smelly',
+		lastName: 'Arter',
+		email: 'hurz@de',
+		check: false,
+	},
+	{
+		firstName: 'Claudia',
+		lastName: 'Schiffer',
+		email: 'warmaljung@web.de',
+		check: false,
+	},
+	{
+		firstName: 'Wans',
+		lastName: 'Hurst',
+		email: 'wdg@web.de',
+		check: false,
+	},
+];
+
+let taskForce = []; // team that will be working on the current task
+
+async function initAddTask() {
+	await includeHTML();
+	await renderAddTask();
+	await loadExitingCategories();
+	renderCategoryList();
+	newCatInputActive = false;
+	renderSubtasks();
+	selectedMenuBtnId = 0;
+	selectedMenuButton(3);
+	renderContactsInAssignDropDownMenu(); //for dropdown menu in assignTo
+}
+
+/**
+ * This function render the HTML content of "Add Task Menu" into the content div of the HTML template.
+ *
+ */
+async function renderAddTask() {
+	document.getElementById('content').innerHTML = '';
+	document.getElementById('content').innerHTML += /*html*/ `
+	&lt;div class="addTaskHeadlineDiv">
+		&lt;h2 class="addTHeadline">Add Task&lt;/h2>
+	&lt;/div>
+	&lt;div class="addTaskBtnOuterContainer">
+		&lt;div class="addTaskBtnInnerContainer">
+			&lt;button
+				class="addTaskClear"
+				onmouseover="addTaskClearOn()"
+				onmouseout="addTaskClearOff()"
+				onclick="clearFormularData()"
+			>
+				&lt;span>Clear&lt;/span>
+				&lt;img id="addTaskClear" src="./assets/img/clearb.png" />
+			&lt;/button>
+			&lt;button class="addTaskCreate" onclick="checkInputs()">
+				&lt;span>Create Task&lt;/span>
+				&lt;img src="./assets/img/createb.png" />
+			&lt;/button>
+		&lt;/div>
+	&lt;/div>
+	&lt;!-- &lt;form onsubmit="goToPrio();return false"> -->
+	&lt;div class="addTaskAddTitleContainer">
+		&lt;div class="addTaskAddTitleBox">
+			&lt;h3>Title&lt;/h3>
+			&lt;form onsubmit="goToDescripten(); return false">
+				&lt;input
+					required
+					type="text"
+					placeholder="Enter a title"
+					id="addTaskTitle"
+					autocomplete="off"
+					minlength="3"
+				/>
+			&lt;/form>
+			&lt;span class="requiredText" id="titleReq">This field is required&lt;/span>
+		&lt;/div>
+
+		&lt;div class="addTaskAddDescriptenBox">
+			&lt;h3>Descripten&lt;/h3>
+			&lt;!-- &lt;form onblur='goToCategorySelection(); return false' id='formDesc' action='action.asp'> -->
+			&lt;textarea
+				form="formDesc"
+				type="text"
+				placeholder="Enter Descripten"
+				id="addTaskDescripten"
+				required
+				minlength="5"
+			>&lt;/textarea>
+			&lt;!-- &lt;/form> -->
+			&lt;span class="requiredText" id="descReq">This field is required&lt;/span>
+		&lt;/div>
+
+		&lt;div class="addTaskAddCategoryBox">
+			&lt;h3>Category&lt;/h3>
+			&lt;button onclick="enableDisableCatList()" id="selectedCat">
+				&lt;input
+					disabled
+					id="selectedCatInput"
+					placeholder="Select task category"
+					autocomplete="off"
+				/>
+				&lt;span id="sColor">&lt;/span>
+				&lt;div class="newCategoryImgDiv d-none" id="addTaskNewCatBtn">
+					&lt;img src="assets/img/new_cat_cancel.png" />
+					&lt;img src="assets/img/bnt_divider.png" class="btnDivider" />
+					&lt;img src="assets/img/akar-icons_check.png" />
+				&lt;/div>
+				&lt;img
+					src="assets/img/Vector 2.png"
+					class="dropdownImg"
+					id="dropdownImg"
+				/>
+			&lt;/button>
+			&lt;span class="listD-none requiredText" id="catReq"
+				>This field is required&lt;/span
+			>
+			&lt;ul class="addTaskCatList listD-none" id="CatListDropdown">&lt;/ul>
+			&lt;div class="addTaskAddCategoryColor listD-none" id="colorSelection">
+				&lt;div class="color0" id="color0Div" onclick="addColorToCat(0)">&lt;/div>
+				&lt;div class="color1" id="color1Div" onclick="addColorToCat(1)">&lt;/div>
+				&lt;div class="color2" id="color2Div" onclick="addColorToCat(2)">&lt;/div>
+				&lt;div class="color3" id="color3Div" onclick="addColorToCat(3)">&lt;/div>
+				&lt;div class="color4" id="color4Div" onclick="addColorToCat(4)">&lt;/div>
+				&lt;div class="color5" id="color5Div" onclick="addColorToCat(5)">&lt;/div>
+			&lt;/div>
+		&lt;/div>
+
+		&lt;div class="addTaskAssignedBox" id="addTaskAssignedBox">
+			&lt;h3>Assigned to&lt;/h3>
+			&lt;button id="addTaskAssignedButton" onclick="enableDisableAssignList()">
+				&lt;input
+						disabled
+						onclick="doNotCloseOnClick(event)"
+						id="selectedAssign"
+						name="selectedAssign"
+						class="inputselectedAssign"
+						placeholder="Select contacts to assign"
+						autocomplete="off"
+					/>
+				
+				&lt;div
+				id="assignToCancelConfirmImgContainer"
+				class="assignToCancelConfirmImgContainer d-none"
+				>
+					&lt;img
+					onclick="assignBoxBackToDefaultMode(), enableAssignList()"
+					class="assignToCancelIcon"
+					src="assets/img/cancel-black.png"
+					alt="cancel"
+					/>
+					&lt;img class="assignToDeviderIcon" src="assets/img/bnt_divider.png" />
+					&lt;img
+					onclick="frontEndDeveloper()"
+					class="assignToCheckIcon"
+					src="assets/img/akar-icons_check.png"
+					alt="confirm"
+					/>
+				&lt;/div>
+				&lt;img id="assignDropDownImg" src="assets/img/Vector 2.png" class="dropdownImg" />
+			&lt;/button>
+			&lt;span id="assignReq">This field is required&lt;/span>
+			&lt;div id="badgesTaskForce" class="badgesTaskForce">&lt;/div>
+			&lt;ul class="addTaskAssignList listD-none" id="dropdown2">
+
+				&lt;li onclick="assigendContactEmail()" class="inviteNewContacts">
+					Invite new contacts&lt;img
+						class="assignInviteNewContactImage"
+						src="assets/img/assigned_inviteNewContact.png"
+						alt=""
+					/>
+				&lt;/li>
+				&lt;li>
+		You
+		&lt;div  class="assignCheckboxContainer">
+			&lt;img class="checkBox" src="assets/img/check_box.png" alt="checkbox" />
+			&lt;img class="checkMark" src="assets/img/check_mark.png" />
+		&lt;/div>
+	&lt;/li>
+			&lt;/ul>
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="addTaskDivider">&lt;/div>
+
+		&lt;/div>
+
+		&lt;div class='addTaskRightContainer'>
+			&lt;div class='addTaskDate'>
+				&lt;h3>Due date&lt;/h3>
+				&lt;input required type="date" id='dueDate'>
+				&lt;span class='requiredText' id='dateReq'>This field is required&lt;/span>
+			&lt;/div>
+			&lt;div class='addTaskPrio'>
+				&lt;h3>Prio&lt;/h3>
+				&lt;div class='addTaskPrioIcons'>
+					&lt;div class='addTaskUrgent' id='addTaskUrgent' onclick='addPrio(0)'>
+						&lt;span id='addTaskUrgentSpan'>Urgent&lt;/span>
+						&lt;img id='addTaskUrgentImg' src="../assets/img/urgent_arrows.png">
+					&lt;/div>
+					&lt;div class='addTaskMedium' id='addTaskMedium' onclick='addPrio(1)'>
+						&lt;span id='addTaskMediumSpan'>Medium&lt;/span>
+						&lt;img id='addTaskMediumImg' src="../assets/img/prio_medium.png">
+					&lt;/div>
+					&lt;div class='addTaskLow' id='addTaskLow' onclick='addPrio(2)'>
+						&lt;span id='addTaskLowSpan'>Low&lt;/span>
+						&lt;img id='addTaskLowImg' src="../assets/img/prio_low.png">
+					&lt;/div>
+				&lt;/div>
+			&lt;/div>
+			&lt;div class='subtask'>
+				&lt;h3>Subtask&lt;/h3>
+				&lt;div class='inputDiv'>
+					&lt;form onsubmit='addSubtask(); return false' >
+					&lt;input
+					type="text"
+					placeholder="Add new subtask"
+					id="subTask"
+					autocomplete="off"
+					onfocus="subTaskInputentered()"
+					onblur="subTaskInputLeave()"
+					minlength="3"
+				/>
+				&lt;img
+					src="../assets/img/add_cross.png"
+					class="subtaskCross"
+					id="subtaskCross"
+					onclick="enterSubTaskInput()"
+				/>
+					&lt;/form>
+					&lt;div class='subTaskImgDiv d-none' id='subTaskImgDiv' >
+						&lt;img src="../assets/img/new_cat_cancel.png" onclick='resetSubtaskInput()'>
+						&lt;img src="../assets/img/bnt_divider.png" class='btnDivider'>
+						&lt;img src="../assets/img/akar-icons_check.png" onclick='addSubtask()'>
+					&lt;/div>
+					
+				&lt;/div>
+				
+				&lt;div class='addTaskCheckbox' id='subtaskCheckboxes'>
+					&lt;!-- &lt;div>
+						&lt;input type="checkbox">
+						&lt;span>Subtask 1&lt;/span>
+					&lt;/div> -->
+				&lt;/div>
+				
+				
+			&lt;/div>
+		&lt;/div>
+	&lt;!-- &lt;/form>  -->
+	&lt;div class="taskAddedToBoard" id="taskCreatedIndication">
+		&lt;div class="taskAddedToBoardContainer">
+			&lt;span>Task added to board&lt;/span>
+			&lt;img src="./assets/img/img_board_w.png" />
+		&lt;/div>
+	&lt;/div>    
+
+
+
+    `;
+}
+
+// this are test function for the HTML 5 Form validation !
+function goToDescripten() {
+	document.getElementById('addTaskDescripten').focus();
+}
+
+function goToPrio() {
+	document.getElementById('addTaskUrgent').focus();
+}
+// this are test function for the HTML 5 Form validation end!
+
+/**
+ * This function load the data(key:joinTaskArray) from local storage.
+ * Then it filter this data to create a JSON Array with existing categories.
+ */
+async function loadExitingCategories() {
+	loadTask();
+	addTaskCategoryList = [{ category: 'New Category', catColor: '' }];
+	for (let i = 0; i &lt; joinTaskArray.length; i++) {
+		let taskCategory = joinTaskArray[i]['category'];
+		let categoryColor = joinTaskArray[i]['catColor'];
+		addTaskCategoryList.push({
+			category: taskCategory,
+			catColor: categoryColor,
+		});
+	}
+}
+
+/**
+ * This function load the data(key:joinTaskArray) from local storage.
+ */
+function loadTask() {
+	if (joinTaskArrayExistInStorage()) {
+		let joinTaskArrayString = localStorage.getItem('joinTaskArray');
+		joinTaskArray = JSON.parse(joinTaskArrayString);
+	}
+}
+
+/**
+ * This function determind data(key:joinTaskArray) available in local storage.
+ *
+ * @returns true or false
+ */
+function joinTaskArrayExistInStorage() {
+	return localStorage.getItem('joinTaskArray');
+}
+
+/**
+ * This function enable or disable the Dropdown Menu of the category selector.
+ */
+function enableDisableCatList() {
+	if (categoryListAndNewCategoryInputNotActive()) {
+		document.getElementById('CatListDropdown').classList.remove('listD-none');
+		document.getElementById('addTaskAssignedBox').classList.add('addMarginTop');
+	} else {
+		document.getElementById('CatListDropdown').classList.add('listD-none');
+		document.getElementById('addTaskAssignedBox').classList.remove('addMarginTop');
+	}
+	catListStatus = !catListStatus;
+}
+
+/**
+ * This function determind "Dropdown Menu" of the category selector and "Category Input" active or not active.
+ *
+ * @returns true or false
+ */
+function categoryListAndNewCategoryInputNotActive() {
+	return !catListStatus &amp;&amp; !newCatInputActive;
+}
+
+/**
+ * This function render the category list of the dropdown menu category.
+ */
+function renderCategoryList() {
+	document.getElementById('CatListDropdown').innerHTML = '';
+	for (let i = 0; i &lt; addTaskCategoryList.length; i++) {
+		let categoryName = addTaskCategoryList[i]['category'];
+		let categoryColor = addTaskCategoryList[i]['catColor'];
+		if (categoryColorAvailable(categoryColor)) {
+			document.getElementById('CatListDropdown').innerHTML +=
+				dropdownCategoryListHtml(categoryName, categoryColor, i);
+		} else {
+			document.getElementById('CatListDropdown').innerHTML +=
+				dropdownCategoryListHtml1(categoryName, i);
+		}
+	}
+}
+
+/**
+ * this function checked, a backgroundcolor is set for this category.
+ * @param {number} categoryColor - This is a number that is equal to the css color classes. Example, if the number is 1
+ * the related css color class is 'color1'.
+ * @returns - true, if a backgroundcolor is set. if not, it returns false.
+ */
+function categoryColorAvailable(categoryColor) {
+	return categoryColor != '';
+}
+
+/**
+ * this function return the html code for the category list if backgroundcolor is available.
+ * @param {string} categoryName - is the category name as string.
+ * @param {number} categoryColor - is a number that is related to the category backgroundcolor.
+ * @param {number} i - is the index number of the category array.
+ * @returns - the html string for the category list if backgroundcolor is available.
+ */
+function dropdownCategoryListHtml(categoryName, categoryColor, i) {
+	return /*html*/ `
+        &lt;li onclick='selectCategory(${i})'>
+            ${categoryName}
+            &lt;div  class='color${categoryColor} addTaskColorDiv'>&lt;/div>
+        &lt;/li>`;
+}
+
+/**
+ * this function return the html code for the category list if backgroundcolor is not available.
+ * @param {string} categoryName - is the category name as string.
+ * @param {number} categoryColor - is a number that is related to the category backgroundcolor.
+ * @param {number} i - is the index number of the category array.
+ * @returns - the html string for the category list if backgroundcolor is not available.
+ */
+function dropdownCategoryListHtml1(categoryName, i) {
+	return /*html*/ `
+        &lt;li onclick='selectCategory(${i})'>
+            ${categoryName}
+        &lt;/li>`;
+}
+
+/**
+ * this function add a new category to the category list.
+ */
+function setNewCategoryToList() {
+	let newSetCategory = document.getElementById('selectedCatInput').value;
+	newSetCategory = newSetCategory.trim();
+	if (newSetCategory != '') {
+		let newCatColor = catColor;
+		let newCategoryItem = {
+			category: newSetCategory,
+			catColor: newCatColor,
+		};
+		addTaskCategoryList.push(newCategoryItem);
+		let newCategoryIndex = addTaskCategoryList.length - 1;
+		renderCategoryList();
+		selectCategory(+newCategoryIndex);
+		catListStatus = false;
+		newCatInputActive = false;
+	}
+}
+
+/**
+ * this function set the input field for a new category to 'selected a category'.
+ */
+function resetCatSelection() {
+	newCatInputActive = false;
+	catListStatus = !catListStatus;
+	document.getElementById('colorSelection').classList.add('listD-none');
+	document.getElementById('selectedCat').innerHTML = resetCatSelectionHtml();
+}
+
+/**
+ * this function return the input html code for the category selection 'selected a category'.
+ */
+function resetCatSelectionHtml() {
+	return /*html*/ `
+        &lt;input disabled id='selectedCatInput' placeholder='Select task category' autocomplete='off'>
+        &lt;span id='sColor'>&lt;/span>
+        &lt;div class='newCategoryImgDiv d-none' id='addTaskNewCatBtn'>
+            &lt;img src="../assets/img/new_cat_cancel.png">
+            &lt;img src="../assets/img/bnt_divider.png" class='btnDivider'>
+            &lt;img src="../assets/img/akar-icons_check.png">
+        &lt;/div>
+        &lt;img src="../assets/img/Vector 2.png" class='dropdownImg' id='dropdownImg'>`;
+}
+
+/**
+ * this function start subfunction to set the selected category (catId > 0) in the field category or open a input field to create a
+ * new category (catId = 0)
+ * @param {number} catId - this value is equal to the index of the category list of the selected category.
+ */
+function selectCategory(catId) {
+	if (newCategoryCreationIsSelected(catId)) {
+		setSettingsForNewCategoryInput();
+	} else {
+		setSettingsForExistingCategory(catId);
+	}
+}
+
+/**
+ * this function returns true or false for the if query. It is 'true' if the catId Value is 0.
+ * @param {number} catId - this value is equal to the index of the category list of the selected category.
+ * @returns - true or false for the if query
+ */
+function newCategoryCreationIsSelected(catId) {
+	return catId == 0;
+}
+
+/**
+ * this function render the category field to a input field to create a new category and
+ * create on the right side of the category field a enter and cancel button for the new entered category name.
+ */
+function setSettingsForNewCategoryInput() {
+	document.getElementById('selectedCat').innerHTML = newCategoryInputHtml();
+	newCatInputActive = true;
+	enableDisableCatList();
+	document.getElementById('addTaskNewCatBtn').classList.remove('d-none');
+	document.getElementById('dropdownImg').classList.add('d-none');
+	document.getElementById('colorSelection').classList.remove('listD-none');
+	document.getElementById('sColor').innerHTML = '';
+	addColorToCat(3);
+}
+
+/**
+ * this function render the html code for the category input field to create a new category.
+ * @returns - the html code for the input field category.
+ */
+function newCategoryInputHtml() {
+	return /*html*/ `
+        &lt;input id='selectedCatInput' placeholder='New Category' autocomplete='off'>
+        &lt;span id='sColor'>&lt;/span>
+        &lt;div class='newCategoryImgDiv d-none' id='addTaskNewCatBtn'>
+            &lt;img src="../assets/img/new_cat_cancel.png" onclick='resetCatSelection()'>
+            &lt;img src="../assets/img/bnt_divider.png" class='btnDivider'>
+            &lt;img src="../assets/img/akar-icons_check.png" onclick='setNewCategoryToList()'>
+        &lt;/div>
+        &lt;img src="../assets/img/Vector 2.png" class='dropdownImg' id='dropdownImg'>`;
+}
+
+/**
+ * this function perform the settings for the category field indication for a existing category.
+ * @param {number} catId - this value is equal to the index of the category list of the selected category.
+ */
+function setSettingsForExistingCategory(catId) {
+	let newCat = addTaskCategoryList[catId]['category'];
+	let categoryColor = addTaskCategoryList[catId]['catColor'];
+	document.getElementById('selectedCat').innerHTML = existingCategoryHtml(
+		newCat,
+		categoryColor
+	);
+	catColor = categoryColor;
+	enableDisableCatList();
+	document.getElementById('dropdownImg').classList.remove('d-none');
+	document.getElementById('colorSelection').classList.add('listD-none');
+}
+
+/**
+ * this function returns the HTML code for selected category. To show it in the category field.
+ * @param {*} newCat - this value is equal to the index of the addTaskCategoryList.
+ * @param {*} categoryColor - this value X is equal to the css colorX.
+ * @returns - the HTML code for the category field for a existing category.
+ */
+function existingCategoryHtml(newCat, categoryColor) {
+	return /*html*/ `
+        &lt;p id='selectedCatInput'>${newCat}&lt;/p>
+        &lt;span id='sColor'>&lt;div class='color${categoryColor} addTaskColorDiv'>&lt;/div>&lt;/span>
+        &lt;img src="../assets/img/Vector 2.png" class='dropdownImg' id='dropdownImg'>`;
+}
+
+/**
+ * this function set the settings for a selected catogory of the submenu of the new category creation.
+ * @param {number} colorId
+ */
+function addColorToCat(colorId) {
+	if (catColor != '' || catColor == '0') {
+		document
+			.getElementById('color' + catColor + 'Div')
+			.classList.remove('colorDivSelected');
+		catColor = '';
+	}
+	document.getElementById('color' + colorId + 'Div').classList.add('colorDivSelected');
+	catColor = colorId;
+}
+
+/**
+ * this function show a popup, that indicated that the new task is succsessfully created.
+ */
+function showAddDiv() {
+	document
+		.getElementById('taskCreatedIndication')
+		.classList.add('taskCreatedIndication');
+}
+
+/**
+ * this function inhibited to show a popup, that indicated that the new task is succsessfuly created.
+ */
+function notShowAddDiv() {
+	document
+		.getElementById('taskCreatedIndication')
+		.classList.remove('taskCreatedIndication');
+}
+
+/**
+ * this function check over some subfunction, all required form values are valid. If not it starts subfuction
+ * to indicated the required fields.
+ */
+function checkInputs() {
+	getReqiredFieldValues();
+	resetRequiredWarnings();
+	if (requiredFieldAreNotValid()) {
+		setRequiredTextWarnings();
+	} else {
+		createTaskData();
+	}
+}
+
+/**
+ * this function determind all required fields are filled out.
+ * @returns - returns true or false
+ */
+function requiredFieldAreNotValid() {
+	return title == '' || dueDate == '' || category == '' || descripten == '';
+}
+
+/**
+ * this function enable or disable the indication 'this field is required'.
+ */
+function setRequiredTextWarnings() {
+	if (title == '') {
+		document.getElementById('titleReq').style = 'opacity: 1;';
+	}
+	if (dueDate == '') {
+		document.getElementById('dateReq').style = 'opacity: 1;';
+	}
+	if (category == '') {
+		document.getElementById('catReq').style = 'opacity: 1;';
+		document.getElementById('catReq').classList.remove('listD-none');
+	}
+	if (descripten == '') {
+		document.getElementById('descReq').style = 'opacity: 1;';
+	}
+}
+
+/**
+ * this function get all required fields values.
+ */
+function getReqiredFieldValues() {
+	title = document.getElementById('addTaskTitle').value;
+	title = title.trim();
+	dueDate = document.getElementById('dueDate').value;
+	dueDate = dueDate.trim();
+	descripten = document.getElementById('addTaskDescripten').value;
+	descripten = descripten.trim();
+	if (newCatInputActive) {
+		category = document.getElementById('selectedCatInput').value;
+	} else {
+		category = document.getElementById('selectedCatInput').innerHTML;
+	}
+	category = category.trim();
+}
+
+/**
+ * this function disable all 'This field is required' indications.
+ */
+function resetRequiredWarnings() {
+	document.getElementById('titleReq').style = 'opacity: 0;';
+	document.getElementById('dateReq').style = 'opacity: 0;';
+	document.getElementById('catReq').style = 'opacity: 0;';
+	document.getElementById('descReq').style = 'opacity: 0;';
+}
+
+// ToDo must be reworked when all selection possible !!!!!!!!!!!!!!!!
+function clearFormularData() {
+	document.getElementById('addTaskTitle').value = '';
+	descripten = document.getElementById('addTaskDescripten').value = '';
+	document.getElementById('selectedCat').innerHTML = /*html*/ `
+        &lt;input disabled id='selectedCatInput' placeholder='Select task category' autocomplete='off'>
+        &lt;span id='sColor'>&lt;/span>
+        &lt;div class='newCategoryImgDiv d-none' id='addTaskNewCatBtn'>
+            &lt;img src="../assets/img/new_cat_cancel.png">
+            &lt;img src="../assets/img/bnt_divider.png" class='btnDivider'>
+            &lt;img src="../assets/img/akar-icons_check.png">
+        &lt;/div>
+        &lt;img src="../assets/img/Vector 2.png" class='dropdownImg' id='dropdownImg'>`;
+	document.getElementById('dueDate').value = '';
+	resetSubtaskSelections();
+	selectedSubtasks = [];
+	document.getElementById('titleReq').style = 'opacity: 0;';
+	document.getElementById('dateReq').style = 'opacity: 0;';
+	document.getElementById('catReq').style = 'opacity: 0;';
+	document.getElementById('catReq').classList.add('listD-none');
+	clearTaskForce(); // TEST von Christian
+}
+
+// save data to local storage/server!
+function createTaskData() {
+	loadTask();
+	getDataFromFomular();
+	fillTaskData();
+	pushTaskData();
+	saveTask();
+	showAddDiv();
+	setTimeout(initBoard, 1200);
+}
+
+// toDo this is a transition function that to have reworked after all data for task card avalable.
+function getDataFromFomular() {
+	descripten = document.getElementById('addTaskDescripten').value;
+	assigndTo = 'not included jet';
+	subTask = document.getElementById('subTask').value;
+}
+
+/**
+ * this fuction collect all data for the Taskcard in a JSON format.
+ */
+function fillTaskData() {
+	setSubtaskStatusForBoardToFalse();
+	taskData = {
+		title: title,
+		descripten: descripten,
+		category: category,
+		catColor: catColor,
+		assignedTo: assigndTo,
+		dueDate: dueDate,
+		prio: prio,
+		subTasks: selectedSubtasks,
+		workFlowStatus: 0,
+	};
+	catColor = '';
+}
+
+function setSubtaskStatusForBoardToFalse() {
+	for (let i = 0; i &lt; selectedSubtasks.length; i++) {
+		selectedSubtasks[i]['subtaskStatus'] = false;
+	}
+}
+
+/**
+ * this function push all Taskdata to the main Array.
+ */
+function pushTaskData() {
+	joinTaskArray.push(taskData);
+}
+
+/**
+ * this function save the main array to the local storage.
+ */
+function saveTask() {
+	localStorage.setItem('joinTaskArray', JSON.stringify(joinTaskArray));
+}
+
+// deleteJoinTaskArrayFromServer() is not used in this code, it is only to remove the Array from Server!!!!!!!!!!!
+function deleteJoinTaskArrayFromServer() {
+	localStorage.removeItem('joinTaskArray');
+}
+// save data to local storage/server end!
+
+/******************************************************************************** */
+function addTaskClearOn() {
+	document.getElementById('addTaskClear').src = '././assets/img/close_logo_blue.png';
+}
+
+function addTaskClearOff() {
+	document.getElementById('addTaskClear').src = './assets/img/close_logo.png';
+}
+
+function addPrio(prioIdIndex) {
+	let idList = ['addTaskUrgent', 'addTaskMedium', 'addTaskLow'];
+	let selectedId = idList[+prioIdIndex];
+	let cListLength = document.getElementById(selectedId).classList.length;
+	let btnName = selectedId.replace('addTask', '');
+	idList.splice(prioIdIndex, 1);
+	if (btnNotSelected(cListLength)) {
+		selectPrioBtn(selectedId, btnName);
+		unselectOtherBtn(idList);
+	} else {
+		removeBtnSelection(btnName);
+	}
+}
+
+function btnNotSelected(cListLength) {
+	return cListLength == 1;
+}
+
+function selectPrioBtn(selectedId, btnName) {
+	document.getElementById(selectedId).classList.add(`${btnName.toLowerCase()}-color`);
+	document.getElementById(`addTask${btnName}Span`).classList.add('color-white');
+	document.getElementById(
+		`addTask${btnName}Img`
+	).src = `./assets/img/${btnName.toLowerCase()}_white.png`;
+	prio = btnName;
+}
+
+function removeBtnSelection(btnName) {
+	document
+		.getElementById(`addTask${btnName}`)
+		.classList.remove(`${btnName.toLowerCase()}-color`);
+	document.getElementById(`addTask${btnName}Span`).classList.remove('color-white');
+	document.getElementById(
+		`addTask${btnName}Img`
+	).src = `./assets/img/${btnName.toLowerCase()}.png`;
+}
+
+function unselectOtherBtn(idList) {
+	for (let i = 0; i &lt; idList.length; i++) {
+		let selectedId = idList[i];
+		let cListLength = document.getElementById(selectedId).classList.length;
+		let btnName = selectedId.replace('addTask', '');
+		if (btnIsSelected(cListLength)) {
+			document
+				.getElementById(`addTask${btnName}`)
+				.classList.remove(`${btnName.toLowerCase()}-color`);
+			document
+				.getElementById(`addTask${btnName}Span`)
+				.classList.remove('color-white');
+			document.getElementById(
+				`addTask${btnName}Img`
+			).src = `./assets/img/${btnName.toLowerCase()}.png`;
+		}
+	}
+}
+
+function btnIsSelected(cListLength) {
+	return cListLength == 2;
+}
+
+// subtask functions
+function subTaskInputentered() {
+	document.getElementById('subtaskCross').classList.add('d-none');
+	document.getElementById('subTaskImgDiv').classList.remove('d-none');
+}
+
+function subTaskInputLeave() {
+	let subTaskText = document.getElementById('subTask').value;
+	subTaskText = subTaskText.trim();
+	if (subTaskText == '') {
+		document.getElementById('subtaskCross').classList.remove('d-none');
+		document.getElementById('subTaskImgDiv').classList.add('d-none');
+	}
+}
+
+function enterSubTaskInput() {
+	document.getElementById('subTask').onfocus();
+}
+
+function resetSubtaskInput() {
+	document.getElementById('subTask').value = '';
+	// document.getElementById('subtaskCross').classList.remove('d-none');
+	// document.getElementById('subTaskImgDiv').classList.add('d-none');
+	// subTaskInputLeave();
+}
+
+function addSubtask() {
+	let subTaskText = document.getElementById('subTask').value;
+	subTaskText = subTaskText.trim();
+	if (subTaskText != '' &amp;&amp; subTaskText.length >= 3) {
+		subTaskInputLeave();
+		// subTaskArray.push(subTaskText);
+		pushNewSubtaskDatatoArray(subTaskText);
+
+		renderSubtasks();
+		resetSubtaskInput();
+		// document.getElementById(`subtask${subTaskArray.length - 1}`).checked = true;
+		createSubtaskListToSave();
+	}
+}
+
+// new Array function here
+function pushNewSubtaskDatatoArray(subTaskText) {
+	let subtaskJson = { subtaskText: subTaskText, subtaskStatus: true };
+	subTaskArray.push(subtaskJson);
+}
+
+async function renderSubtasks() {
+	await subtaskListHtml();
+	for (let i = 0; i &lt; subTaskArray.length; i++) {
+		if (subTaskArray[i]['subtaskStatus']) {
+			document.getElementById(`subtask${i}`).checked = true;
+		}
+	}
+}
+
+async function subtaskListHtml() {
+	document.getElementById('subtaskCheckboxes').innerHTML = '';
+	for (let i = 0; i &lt; subTaskArray.length; i++) {
+		let subTaskTitle = subTaskArray[i]['subtaskText'];
+		document.getElementById('subtaskCheckboxes').innerHTML += /*html*/ `
+        &lt;div>
+            &lt;input type="checkbox" id='subtask${i}' onclick='subtaskSelectionChange(${i})'>
+            &lt;span>${subTaskTitle}&lt;/span>
+        &lt;/div>`;
+	}
+}
+
+function subtaskSelectionChange(subTaskIndex) {
+	let actualSubTaskStatus = document.getElementById(`subtask${subTaskIndex}`).checked;
+	if (actualSubTaskStatus) {
+		subTaskArray[subTaskIndex]['subtaskStatus'] = true;
+	} else {
+		subTaskArray[subTaskIndex]['subtaskStatus'] = false;
+	}
+	createSubtaskListToSave();
+}
+
+function createSubtaskListToSave() {
+	selectedSubtasks = [];
+	for (let i = 0; i &lt; subTaskArray.length; i++) {
+		let subTaskText = subTaskArray[i]['subtaskText'];
+		let subTaskStatus = subTaskArray[i]['subtaskStatus'];
+		let subtaskJson = { subtaskText: subTaskText, subtaskStatus: subTaskStatus };
+		if (subTaskStatus) {
+			selectedSubtasks.push(subtaskJson);
+		}
+	}
+}
+
+function resetSubtaskSelections() {
+	for (let i = 0; i &lt; subTaskArray.length; i++) {
+		document.getElementById(`subtask${i}`).checked = false;
+	}
+}
+
+/* 
+!Christian working here 
+*/
+/*=======================
+   ASSIGN TO FUNCTIONS (start: 24.12.2022)
+=======================*/
+
+/**
+ * Shows or hides dropdown menu of assign section
+ */
+function enableDisableAssignList() {
+	if (!assignListStatus) {
+		document.getElementById('dropdown2').classList.remove('listD-none');
+		borderBottomOffAssignedBoxButton();
+		showBadgesTaskForce();
+	} else {
+		borderBottomOnAssignedBoxButton();
+		document.getElementById('dropdown2').classList.add('listD-none');
+		hideBadgesTaskForce();
+	}
+	assignListStatus = !assignListStatus;
+}
+
+/**
+ * Just shows dropdown menu of assign list
+ */
+function enableAssignList() {
+	document.getElementById('dropdown2').classList.remove('listD-none');
+	assignListStatus = !assignListStatus;
+}
+
+/**
+ * When the user clicks the 'Add Task' button,
+ * the border radius of the 'Add Task' button will change
+ * to 10px 10px 0 0.
+ */
+function borderBottomOffAssignedBoxButton() {
+	document.getElementById(
+		'addTaskAssignedButton'
+	).style = `border-radius: 10px 10px 0 0;`;
+}
+
+/**
+ * It changes the border radius of the button with the id of 'addTaskAssignedButton'
+ * to 10px.
+ */
+function borderBottomOnAssignedBoxButton() {
+	document.getElementById(
+		'addTaskAssignedButton'
+	).style = `border-radius: 10px 10px 10px 10px;`;
+}
+
+function assignChangeInputPlaceholderToContactEmail() {
+	document.getElementsByName('selectedAssign')[0].placeholder = `Contact email`;
+}
+
+function enableInputAddTaskAssign() {
+	document.getElementById('selectedAssign').disabled = false;
+}
+
+function showCancelConfirmButtonsAssignSection() {
+	document
+		.getElementById('assignToCancelConfirmImgContainer')
+		.classList.remove('d-none');
+}
+
+function hideAssignDropDownImg() {
+	document.getElementById('assignDropDownImg').classList.add('d-none');
+}
+
+/**
+ * It activates focus of input field in assign section
+ */
+function assignInputAutoFocus() {
+	document.getElementById('selectedAssign').focus();
+}
+
+/**
+ * Prepares everything to to being able to assign someone to current task.
+ */
+function assigendContactEmail() {
+	assignChangeInputPlaceholderToContactEmail();
+	enableInputAddTaskAssign();
+	showCancelConfirmButtonsAssignSection();
+	hideAssignDropDownImg();
+	assignInputAutoFocus();
+	changeAssignPlaceholderColorToGrey();
+}
+
+/**
+ * "If the user clicks on the dropdown menu, don't close the dropdown menu."
+ *
+ * The function is called when the user clicks on the dropdown menu. The event.stopPropagation() method
+ * stops the event from bubbling up the DOM tree, preventing the event from being triggered on the
+ * parent element
+ * @param event - The event object.
+ */
+function doNotCloseOnClick(event) {
+	event.stopPropagation();
+}
+
+function assignInputPlaceholderToDefaultMode() {
+	document.getElementsByName(
+		'selectedAssign'
+	)[0].placeholder = `Select contacts to Assign`;
+}
+
+function assignInputValueToDefault() {
+	document.getElementById('selectedAssign').value = '';
+}
+
+function hideCancelConfirmButtons() {
+	document.getElementById('assignToCancelConfirmImgContainer').classList.add('d-none');
+}
+
+function showAssignDropDownImg() {
+	document.getElementById('assignDropDownImg').classList.remove('d-none');
+}
+
+function disableInputAddTasAssign() {
+	document.getElementById('selectedAssign').disabled = true;
+}
+
+function changeAssignPlaceholderColorToGrey() {
+	document.getElementById('selectedAssign').classList.add('greyPlaceholder');
+}
+
+function changeAssignPlaceholderColorToDefault() {
+	document.getElementById('selectedAssign').classList.remove('greyPlaceholder');
+}
+
+function assignBoxBackToDefaultMode() {
+	assignInputPlaceholderToDefaultMode();
+	changeAssignPlaceholderColorToDefault();
+	assignInputValueToDefault();
+	hideCancelConfirmButtons();
+	showAssignDropDownImg();
+	disableInputAddTasAssign();
+}
+
+/**
+ * Find the index of the member of the task force whose email address is the same as the email address
+ * passed in as a parameter.
+ * @param emailAddressLoggedUser - The email address of the member of the task force.
+ * @returns The index of the member of the task force.
+ */
+function findIndexOfMemberOfTaskForce(emailAddressLoggedUser) {
+	return taskForce.findIndex((memberOfTaskForce) => {
+		return memberOfTaskForce.email == emailAddressLoggedUser;
+	});
+}
+
+function addCheckMarkToCheckBox(contact) {
+	document.getElementById(`checkMark${contact}`).classList.remove('d-none');
+}
+
+function addSelectedContactToTaskForce(contact) {
+	taskForce.push(coworkersToAssignTo[contact]);
+}
+
+function removeCheckMarkFromCheckBox(contact) {
+	document.getElementById(`checkMark${contact}`).classList.add('d-none');
+}
+
+function removeSelectedContactFromTaskForce(index) {
+	taskForce.splice(index, 1);
+}
+
+/**
+ * @param addedToTaskForce - boolean, true if the contact is already in the task force, false if not
+ * @param contact - the contact that was selected
+ * @param indexOfMemberInTaskForce - The index of the contact in the task force array.
+ */
+function addRemoveToggleForTaskForce(
+	addedToTaskForce,
+	contact,
+	indexOfMemberInTaskForce
+) {
+	if (!addedToTaskForce) {
+		addCheckMarkToCheckBox(contact);
+		addSelectedContactToTaskForce(contact);
+		renderBadgesMemberOfTaskForce();
+	} else {
+		removeCheckMarkFromCheckBox(contact);
+		removeSelectedContactFromTaskForce(indexOfMemberInTaskForce);
+		renderBadgesMemberOfTaskForce();
+	}
+}
+
+/**
+ * It adds a contact to the task force if the contact is not already in the task force, and removes the
+ * contact from the task force if the contact is already in the task force.
+ * @param contact - the name of the contact
+ */
+function addContactToTaskForceWithCheckBox(contact) {
+	let addedToTaskForce = coworkersToAssignTo[contact].check;
+	let emailAddressLoggedUser = coworkersToAssignTo[contact].email;
+	let indexOfMemberOfTaskForce = findIndexOfMemberOfTaskForce(emailAddressLoggedUser);
+	addRemoveToggleForTaskForce(addedToTaskForce, contact, indexOfMemberOfTaskForce);
+	addedToTaskForce = !addedToTaskForce;
+	coworkersToAssignTo[contact].check = addedToTaskForce;
+}
+
+function generateAssignContactListForDropDownMenu(firstName, lastName, contact) {
+	return /*html*/ `
+	&lt;li onclick="addContactToTaskForceWithCheckBox(${contact})">
+		${firstName} ${lastName}
+		&lt;div  class="assignCheckboxContainer">
+			&lt;img class="checkBox" src="assets/img/check_box.png" alt="checkbox" />
+			&lt;img id="checkMark${contact}" class="checkMark d-none" src="assets/img/check_mark.png" />
+		&lt;/div>
+	&lt;/li>
+	`;
+}
+
+/**
+ * This function loops through the assignedContacts array and generates a list of contacts for the
+ * dropdown menu.
+ *! "contact" might not be the best name. To be reconsidered!!
+ */
+function renderContactsInAssignDropDownMenu() {
+	for (let contact = 0; contact &lt; coworkersToAssignTo.length; contact++) {
+		let firstName = coworkersToAssignTo[contact].firstName;
+		let lastName = coworkersToAssignTo[contact].lastName;
+		let assignedContactList = document.getElementById('dropdown2');
+		assignedContactList.innerHTML += generateAssignContactListForDropDownMenu(
+			firstName,
+			lastName,
+			contact
+		);
+	}
+}
+
+function setCheckStatusToFalse() {
+	taskForce.forEach((member) => {
+		member.check = false;
+	});
+}
+
+function checkStatusToFalse() {
+	for (let coworker = 0; coworker &lt; coworkersToAssignTo.length; coworker++) {
+		coworkersToAssignTo[coworker].check = false;
+		removeCheckMarkFromCheckBox(coworker);
+	}
+}
+
+let backgroundColorForBadges = [
+	'#02CF2F',
+	'#EE00D6',
+	'#0190E0',
+	'#FF7200',
+	'#FF2500',
+	'#AF1616',
+	'#FFC700',
+	'#3E0099',
+	'#462F8A',
+	'#FF7A00',
+];
+
+let index; // !Das muss nach oben, wenn oder weg jenachdem wie wir es letztlich machen
+
+/**
+ * Given a first name and a last name, return the index of the color to use for the task force badge.
+ * @param initialFirstName - The first letter of the first name of the user.
+ * @param initialLastName - The last name of the user.
+ */
+function chooseColorForTaskForceBadge(initialFirstName, initialLastName) {
+	let asciInintalFirstName = initialFirstName.charCodeAt(0);
+	let asciInintalLastName = initialLastName.charCodeAt(0);
+	let sum = asciInintalFirstName + asciInintalLastName;
+	index = sum % 10;
+}
+
+/**
+ * It takes in a bunch of parameters and returns a string of HTML.
+ * @param memberOfTaskForce - This is the name of the task force.
+ * @param firstName - "John"
+ * @param lastName - "Smith"
+ * @param initialFirstName - The first letter of the first name
+ * @param initialLastName - "S"
+ * @param index - the index of the current member in the array of members
+ * @returns A string of HTML.
+ */
+function generateBadgesTaskForceHtml(
+	memberOfTaskForce,
+	firstName,
+	lastName,
+	initialFirstName,
+	initialLastName,
+	index
+) {
+	return /*html*/ `
+		&lt;div
+			id="${memberOfTaskForce}"
+			class="badgeTaskForce"
+			title="${firstName} ${lastName}"
+			style="background-color:${backgroundColorForBadges[index]}"
+		>
+			${initialFirstName}${initialLastName}
+		&lt;/div>
+		`;
+}
+
+/**
+ * It takes the first and last name of each member of the task force and generates a badge for each
+ * member.
+ */
+function renderBadgesMemberOfTaskForce() {
+	let badgeContainer = document.getElementById('badgesTaskForce');
+	badgeContainer.innerHTML = '';
+	for (
+		let memberOfTaskForce = 0;
+		memberOfTaskForce &lt; taskForce.length;
+		memberOfTaskForce++
+	) {
+		const initialFirstName = taskForce[memberOfTaskForce].firstName.charAt(0);
+		const initialLastName = taskForce[memberOfTaskForce].lastName.charAt(0);
+		const firstName = taskForce[memberOfTaskForce].firstName;
+		const lastName = taskForce[memberOfTaskForce].lastName;
+		chooseColorForTaskForceBadge(initialFirstName, initialLastName);
+		badgeContainer.innerHTML += generateBadgesTaskForceHtml(
+			memberOfTaskForce,
+			firstName,
+			lastName,
+			initialFirstName,
+			initialLastName,
+			index
+		);
+	}
+}
+
+function hideBadgesTaskForce() {
+	document.getElementById('badgesTaskForce').classList.remove('d-none');
+}
+
+function showBadgesTaskForce() {
+	document.getElementById('badgesTaskForce').classList.add('d-none');
+}
+
+function closeDropDownAssignTo() {
+	assignListStatus = true;
+	enableDisableAssignList();
+}
+
+function clearTaskForce() {
+	checkStatusToFalse();
+	taskForce = [];
+	enableDisableAssignList();
+	console.table(taskForce.length);
+	renderBadgesMemberOfTaskForce();
+	closeDropDownAssignTo();
+}
+
+function frontEndDeveloper() {
+	document.getElementById('selectedAssign').value = `Just frontend. Sorry! ;)`;
+	alert('This function is part of backend. The course is about frontend though');
+}
+
+/**
+ * !NOCH ERLEDIGEN:
+FUnktion: Der, der die Task anlegt, erscheint automatisch in der Taksforce!!!!!!!
+ */
+</code></pre>
+				</article>
+			</section>
+		</div>
+
+		<nav>
+			<h2><a href="index.html">Home</a></h2>
+			<h3>Global</h3>
+			<ul>
+				<li><a href="global.html#addColorToCat">addColorToCat</a></li>
+				<li><a href="global.html#addContactToTaskForceWithCheckBox">addContactToTaskForceWithCheckBox</a></li>
+				<li><a href="global.html#addRemoveToggleForTaskForce">addRemoveToggleForTaskForce</a></li>
+				<li><a href="global.html#allowDrop">allowDrop</a></li>
+				<li><a href="global.html#assigendContactEmail">assigendContactEmail</a></li>
+				<li><a href="global.html#assignInputAutoFocus">assignInputAutoFocus</a></li>
+				<li><a href="global.html#awaitingFeedbackHtml">awaitingFeedbackHtml</a></li>
+				<li><a href="global.html#boardHtml">boardHtml</a></li>
+				<li><a href="global.html#borderBottomOffAssignedBoxButton">borderBottomOffAssignedBoxButton</a></li>
+				<li><a href="global.html#borderBottomOnAssignedBoxButton">borderBottomOnAssignedBoxButton</a></li>
+				<li><a href="global.html#categoryColorAvailable">categoryColorAvailable</a></li>
+				<li><a href="global.html#categoryListAndNewCategoryInputNotActive">categoryListAndNewCategoryInputNotActive</a></li>
+				<li><a href="global.html#checkInputs">checkInputs</a></li>
+				<li><a href="global.html#chooseColorForTaskForceBadge">chooseColorForTaskForceBadge</a></li>
+				<li><a href="global.html#createWorkStatusArrays">createWorkStatusArrays</a></li>
+				<li><a href="global.html#createWorkStatusJson">createWorkStatusJson</a></li>
+				<li><a href="global.html#disablePopupWindow">disablePopupWindow</a></li>
+				<li><a href="global.html#doNotCloseOnClick">doNotCloseOnClick</a></li>
+				<li><a href="global.html#doneHtml">doneHtml</a></li>
+				<li><a href="global.html#dropdownCategoryListHtml">dropdownCategoryListHtml</a></li>
+				<li><a href="global.html#dropdownCategoryListHtml1">dropdownCategoryListHtml1</a></li>
+				<li><a href="global.html#enableAssignList">enableAssignList</a></li>
+				<li><a href="global.html#enableDisableAssignList">enableDisableAssignList</a></li>
+				<li><a href="global.html#enableDisableCatList">enableDisableCatList</a></li>
+				<li><a href="global.html#enablePopupWindow">enablePopupWindow</a></li>
+				<li><a href="global.html#existingCategoryHtml">existingCategoryHtml</a></li>
+				<li><a href="global.html#fillTaskData">fillTaskData</a></li>
+				<li><a href="global.html#findIndexOfMemberOfTaskForce">findIndexOfMemberOfTaskForce</a></li>
+				<li><a href="global.html#generateBadgesTaskForceHtml">generateBadgesTaskForceHtml</a></li>
+				<li><a href="global.html#getReqiredFieldValues">getReqiredFieldValues</a></li>
+				<li><a href="global.html#highlight">highlight</a></li>
+				<li><a href="global.html#inProgressHtml">inProgressHtml</a></li>
+				<li><a href="global.html#joinTaskArrayExistInStorage">joinTaskArrayExistInStorage</a></li>
+				<li><a href="global.html#loadExitingCategories">loadExitingCategories</a></li>
+				<li><a href="global.html#loadJSONFromServer">loadJSONFromServer</a></li>
+				<li><a href="global.html#loadTask">loadTask</a></li>
+				<li><a href="global.html#moveTo">moveTo</a></li>
+				<li><a href="global.html#newCategoryCreationIsSelected">newCategoryCreationIsSelected</a></li>
+				<li><a href="global.html#newCategoryInputHtml">newCategoryInputHtml</a></li>
+				<li><a href="global.html#notShowAddDiv">notShowAddDiv</a></li>
+				<li><a href="global.html#pushTaskData">pushTaskData</a></li>
+				<li><a href="global.html#removeHighlight">removeHighlight</a></li>
+				<li><a href="global.html#renderAddTask">renderAddTask</a></li>
+				<li><a href="global.html#renderAddTaskPopup">renderAddTaskPopup</a></li>
+				<li><a href="global.html#renderAddTaskPopupHtml">renderAddTaskPopupHtml</a></li>
+				<li><a href="global.html#renderAllCards">renderAllCards</a></li>
+				<li><a href="global.html#renderAwaitingFeedbackCards">renderAwaitingFeedbackCards</a></li>
+				<li><a href="global.html#renderBadgesMemberOfTaskForce">renderBadgesMemberOfTaskForce</a></li>
+				<li><a href="global.html#renderBoard">renderBoard</a></li>
+				<li><a href="global.html#renderCategoryList">renderCategoryList</a></li>
+				<li><a href="global.html#renderContactsInAssignDropDownMenu">renderContactsInAssignDropDownMenu</a></li>
+				<li><a href="global.html#renderDoneCards">renderDoneCards</a></li>
+				<li><a href="global.html#renderInProgressCards">renderInProgressCards</a></li>
+				<li><a href="global.html#renderPopupTaskCard">renderPopupTaskCard</a></li>
+				<li><a href="global.html#renderSubtaskHtml">renderSubtaskHtml</a></li>
+				<li><a href="global.html#renderToDoCards">renderToDoCards</a></li>
+				<li><a href="global.html#requiredFieldAreNotValid">requiredFieldAreNotValid</a></li>
+				<li><a href="global.html#resetCatSelection">resetCatSelection</a></li>
+				<li><a href="global.html#resetCatSelectionHtml">resetCatSelectionHtml</a></li>
+				<li><a href="global.html#resetRequiredWarnings">resetRequiredWarnings</a></li>
+				<li><a href="global.html#resetWorkStatusArrays">resetWorkStatusArrays</a></li>
+				<li><a href="global.html#saveJSONToServer">saveJSONToServer</a></li>
+				<li><a href="global.html#saveTask">saveTask</a></li>
+				<li><a href="global.html#selectCategory">selectCategory</a></li>
+				<li><a href="global.html#setCategoryBackgroundColorForWorkStatus0">setCategoryBackgroundColorForWorkStatus0</a></li>
+				<li><a href="global.html#setCategoryBackgroundColorForWorkStatus1">setCategoryBackgroundColorForWorkStatus1</a></li>
+				<li><a href="global.html#setCategoryBackgroundColorForWorkStatus2">setCategoryBackgroundColorForWorkStatus2</a></li>
+				<li><a href="global.html#setCategoryBackgroundColorForWorkStatus3">setCategoryBackgroundColorForWorkStatus3</a></li>
+				<li><a href="global.html#setNewCategoryToList">setNewCategoryToList</a></li>
+				<li><a href="global.html#setRequiredTextWarnings">setRequiredTextWarnings</a></li>
+				<li><a href="global.html#setSettingsForExistingCategory">setSettingsForExistingCategory</a></li>
+				<li><a href="global.html#setSettingsForNewCategoryInput">setSettingsForNewCategoryInput</a></li>
+				<li><a href="global.html#setTaskCardPopupCatColor">setTaskCardPopupCatColor</a></li>
+				<li><a href="global.html#setTaskCardPopupPrioBackground">setTaskCardPopupPrioBackground</a></li>
+				<li><a href="global.html#showAddDiv">showAddDiv</a></li>
+				<li><a href="global.html#startDrag">startDrag</a></li>
+				<li><a href="global.html#stopClose">stopClose</a></li>
+				<li><a href="global.html#toDoCardHtml">toDoCardHtml</a></li>
+			</ul>
+		</nav>
+
+		<br class="clear" />
+
+		<footer>Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Fri Dec 30 2022 13:00:23 GMT+0100 (Mitteleuropäische Normalzeit)</footer>
+
+		<script>
+			prettyPrint();
+		</script>
+		<script src="scripts/linenumber.js"></script>
+	</body>
+</html>

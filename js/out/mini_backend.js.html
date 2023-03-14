@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: mini_backend.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: mini_backend.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>let jsonFromServer = {};
+let BASE_SERVER_URL;
+
+const backend = {
+    setItem: function(key, item) {
+        jsonFromServer[key] = item;
+        return saveJSONToServer();
+    },
+    getItem: function(key) {
+        if (!jsonFromServer[key]) {
+            return null;
+        }
+        return jsonFromServer[key];
+    },
+    deleteItem: function(key) {
+        delete jsonFromServer[key];
+        return saveJSONToServer();
+    }
+};
+window.onload = async function() {
+    downloadFromServer();
+}
+
+async function downloadFromServer() {
+    let result = await loadJSONFromServer();
+    jsonFromServer = JSON.parse(result);
+}
+
+function setURL(url) {
+    BASE_SERVER_URL = url;
+}
+
+/**
+ * Loads a JSON or JSON Array to the Server
+ * payload {JSON | Array} - The payload you want to store
+ */
+
+async function loadJSONFromServer() {
+    let response = await fetch(BASE_SERVER_URL + '/nocors.php?json=database&amp;noache=' + (new Date().getTime()));
+    return await response.text();
+
+}
+
+function loadJSONFromServerOld() {
+    return new Promise(function(resolve, reject) {
+        let xhttp = new XMLHttpRequest();
+        let proxy = determineProxySettings();
+        let serverURL = proxy + BASE_SERVER_URL + '/nocors.php?json=database&amp;noache=' + (new Date().getTime());
+
+
+
+
+        xhttp.open('GET', serverURL);
+
+        xhttp.onreadystatechange = function(oEvent) {
+            if (xhttp.readyState === 4) {
+                if (xhttp.status >= 200 &amp;&amp; xhttp.status &lt;= 399) {
+                    resolve(xhttp.responseText);
+                } else {
+                    reject(xhttp.statusText);
+                }
+            }
+        };
+
+        xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhttp.send();
+
+    });
+}
+
+
+
+
+
+/**
+ * Saves a JSON or JSON Array to the Server
+ */
+function saveJSONToServer() {
+    return new Promise(function(resolve, reject) {
+        let xhttp = new XMLHttpRequest();
+        let proxy = determineProxySettings();
+        let serverURL = proxy + BASE_SERVER_URL + '/save_json.php';
+        xhttp.open('POST', serverURL);
+
+        xhttp.onreadystatechange = function(oEvent) {
+            if (xhttp.readyState === 4) {
+                if (xhttp.status >= 200 &amp;&amp; xhttp.status &lt;= 399) {
+                    resolve(xhttp.responseText);
+                } else {
+                    reject(xhttp.statusText);
+                }
+            }
+        };
+
+        xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhttp.send(JSON.stringify(jsonFromServer));
+
+    });
+}
+
+
+function determineProxySettings() {
+    return '';
+
+    if (window.location.href.indexOf('.developerakademie.com') > -1) {
+        return '';
+    } else {
+        return 'https://cors-anywhere.herokuapp.com/';
+    }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addColorToCat">addColorToCat</a></li><li><a href="global.html#addContactToTaskForceWithCheckBox">addContactToTaskForceWithCheckBox</a></li><li><a href="global.html#addRemoveToggleForTaskForce">addRemoveToggleForTaskForce</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#assigendContactEmail">assigendContactEmail</a></li><li><a href="global.html#assignInputAutoFocus">assignInputAutoFocus</a></li><li><a href="global.html#awaitingFeedbackHtml">awaitingFeedbackHtml</a></li><li><a href="global.html#boardHtml">boardHtml</a></li><li><a href="global.html#borderBottomOffAssignedBoxButton">borderBottomOffAssignedBoxButton</a></li><li><a href="global.html#borderBottomOnAssignedBoxButton">borderBottomOnAssignedBoxButton</a></li><li><a href="global.html#categoryColorAvailable">categoryColorAvailable</a></li><li><a href="global.html#categoryListAndNewCategoryInputNotActive">categoryListAndNewCategoryInputNotActive</a></li><li><a href="global.html#checkInputs">checkInputs</a></li><li><a href="global.html#chooseColorForTaskForceBadge">chooseColorForTaskForceBadge</a></li><li><a href="global.html#createWorkStatusArrays">createWorkStatusArrays</a></li><li><a href="global.html#createWorkStatusJson">createWorkStatusJson</a></li><li><a href="global.html#disablePopupWindow">disablePopupWindow</a></li><li><a href="global.html#doNotCloseOnClick">doNotCloseOnClick</a></li><li><a href="global.html#doneHtml">doneHtml</a></li><li><a href="global.html#dropdownCategoryListHtml">dropdownCategoryListHtml</a></li><li><a href="global.html#dropdownCategoryListHtml1">dropdownCategoryListHtml1</a></li><li><a href="global.html#enableAssignList">enableAssignList</a></li><li><a href="global.html#enableDisableAssignList">enableDisableAssignList</a></li><li><a href="global.html#enableDisableCatList">enableDisableCatList</a></li><li><a href="global.html#enablePopupWindow">enablePopupWindow</a></li><li><a href="global.html#existingCategoryHtml">existingCategoryHtml</a></li><li><a href="global.html#fillTaskData">fillTaskData</a></li><li><a href="global.html#findIndexOfMemberOfTaskForce">findIndexOfMemberOfTaskForce</a></li><li><a href="global.html#generateBadgesTaskForceHtml">generateBadgesTaskForceHtml</a></li><li><a href="global.html#getReqiredFieldValues">getReqiredFieldValues</a></li><li><a href="global.html#highlight">highlight</a></li><li><a href="global.html#inProgressHtml">inProgressHtml</a></li><li><a href="global.html#joinTaskArrayExistInStorage">joinTaskArrayExistInStorage</a></li><li><a href="global.html#loadExitingCategories">loadExitingCategories</a></li><li><a href="global.html#loadJSONFromServer">loadJSONFromServer</a></li><li><a href="global.html#loadTask">loadTask</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#newCategoryCreationIsSelected">newCategoryCreationIsSelected</a></li><li><a href="global.html#newCategoryInputHtml">newCategoryInputHtml</a></li><li><a href="global.html#notShowAddDiv">notShowAddDiv</a></li><li><a href="global.html#pushTaskData">pushTaskData</a></li><li><a href="global.html#removeHighlight">removeHighlight</a></li><li><a href="global.html#renderAddTask">renderAddTask</a></li><li><a href="global.html#renderAddTaskPopup">renderAddTaskPopup</a></li><li><a href="global.html#renderAddTaskPopupHtml">renderAddTaskPopupHtml</a></li><li><a href="global.html#renderAllCards">renderAllCards</a></li><li><a href="global.html#renderAwaitingFeedbackCards">renderAwaitingFeedbackCards</a></li><li><a href="global.html#renderBadgesMemberOfTaskForce">renderBadgesMemberOfTaskForce</a></li><li><a href="global.html#renderBoard">renderBoard</a></li><li><a href="global.html#renderCategoryList">renderCategoryList</a></li><li><a href="global.html#renderContactsInAssignDropDownMenu">renderContactsInAssignDropDownMenu</a></li><li><a href="global.html#renderDoneCards">renderDoneCards</a></li><li><a href="global.html#renderInProgressCards">renderInProgressCards</a></li><li><a href="global.html#renderPopupTaskCard">renderPopupTaskCard</a></li><li><a href="global.html#renderSubtaskHtml">renderSubtaskHtml</a></li><li><a href="global.html#renderToDoCards">renderToDoCards</a></li><li><a href="global.html#requiredFieldAreNotValid">requiredFieldAreNotValid</a></li><li><a href="global.html#resetCatSelection">resetCatSelection</a></li><li><a href="global.html#resetCatSelectionHtml">resetCatSelectionHtml</a></li><li><a href="global.html#resetRequiredWarnings">resetRequiredWarnings</a></li><li><a href="global.html#resetWorkStatusArrays">resetWorkStatusArrays</a></li><li><a href="global.html#saveJSONToServer">saveJSONToServer</a></li><li><a href="global.html#saveTask">saveTask</a></li><li><a href="global.html#selectCategory">selectCategory</a></li><li><a href="global.html#setCategoryBackgroundColorForWorkStatus0">setCategoryBackgroundColorForWorkStatus0</a></li><li><a href="global.html#setCategoryBackgroundColorForWorkStatus1">setCategoryBackgroundColorForWorkStatus1</a></li><li><a href="global.html#setCategoryBackgroundColorForWorkStatus2">setCategoryBackgroundColorForWorkStatus2</a></li><li><a href="global.html#setCategoryBackgroundColorForWorkStatus3">setCategoryBackgroundColorForWorkStatus3</a></li><li><a href="global.html#setNewCategoryToList">setNewCategoryToList</a></li><li><a href="global.html#setRequiredTextWarnings">setRequiredTextWarnings</a></li><li><a href="global.html#setSettingsForExistingCategory">setSettingsForExistingCategory</a></li><li><a href="global.html#setSettingsForNewCategoryInput">setSettingsForNewCategoryInput</a></li><li><a href="global.html#setTaskCardPopupCatColor">setTaskCardPopupCatColor</a></li><li><a href="global.html#setTaskCardPopupPrioBackground">setTaskCardPopupPrioBackground</a></li><li><a href="global.html#showAddDiv">showAddDiv</a></li><li><a href="global.html#startDrag">startDrag</a></li><li><a href="global.html#stopClose">stopClose</a></li><li><a href="global.html#toDoCardHtml">toDoCardHtml</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Fri Dec 30 2022 13:00:23 GMT+0100 (Mitteleuropäische Normalzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

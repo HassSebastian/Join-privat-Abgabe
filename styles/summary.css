@@ -1,0 +1,796 @@
+.summaryContainer {
+	display: flex;
+	flex-direction: column;
+	padding: 82px 53px 16px 123px;
+	width: fit-content;
+	/* height: 100%;
+	max-height: 768px; */
+	justify-content: space-between;
+	gap: 87px;
+}
+
+.summaryContainerLeft {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.title {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0px;
+	gap: 30px;
+	/* position: absolute; */
+	width: fit-content;
+	height: 73px;
+	/* left: 355px; */
+	top: 171px;
+}
+
+.kanbanboardTitleSummary {
+	/* padding-bottom: 19px; */
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 120%;
+}
+
+.title h3 {
+	display: flex;
+	align-items: center;
+	width: fit-content;
+	height: 73px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 61px;
+	/* line-height: 120%; */
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.title img {
+	width: 0px;
+	height: 59px;
+	border: 3px solid #29abe2;
+}
+
+.title h4 {
+	width: 304px;
+	height: 32px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 26px;
+	line-height: 120%;
+	color: #2a3647;
+	flex: none;
+	order: 2;
+	flex-grow: 0;
+}
+
+.summaryMain {
+	display: flex;
+	gap: 67px;
+}
+
+.welcome {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 3px;
+	/* position: absolute; */
+	width: 385px;
+	height: 136px;
+	left: 770px;
+	top: 533px;
+}
+
+.welcome h4 {
+	width: 338px;
+	height: 56px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 47px;
+	line-height: 120%;
+	color: #2a3647;
+	margin-block-start: 0;
+	margin-block-end: 0;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.welcome h3 {
+	width: 385px;
+	height: fit-content;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 36px; /* 64px  */
+	line-height: 120%;
+	color: #29abe2;
+	margin-block-start: 0;
+	margin-block-end: 0;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.overview {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 35px;
+	width: 580px;
+	height: fit-content;
+}
+
+.taskOverview {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: space-between;
+	padding: 0px;
+	/* gap: 35px; */
+	width: 580px;
+	/* height: 170px; */
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+#taskInBoard,
+#taskInProgress,
+#awaitingFeedback,
+.ugencySummary,
+#toDo,
+#toDoDone {
+	cursor: pointer;
+}
+
+#taskInBoard,
+#taskInProgress,
+#awaitingFeedback {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 25px 0px;
+	gap: 13px;
+	width: 170px;
+	height: 170px;
+	background: #ffffff;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 30px;
+	flex: none;
+	order: 2;
+}
+
+#taskInBoard:hover,
+#taskInProgress:hover,
+#awaitingFeedback:hover {
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	background: #2a3647;
+}
+
+#taskInBoard:hover *,
+#taskInProgress:hover *,
+#awaitingFeedback:hover * {
+	color: white;
+}
+
+#taskInBoardAmount,
+#taskInProgressAmount,
+#awaitingFeedbackAmount {
+	width: 41px;
+	/* height: 77px; */
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 64px;
+	line-height: 120%;
+	text-align: center;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	display: flex;
+	justify-content: center;
+}
+
+#taskInBoard p,
+#taskInProgress p,
+#awaitingFeedback p {
+	width: 87px;
+	/* height: 50px; */
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	text-align: center;
+	color: #2a3647;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	margin-block-start: 0px;
+	margin-block-end: 0px;
+}
+
+.ugencySummary {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 28px 48px;
+
+	width: 100%;
+	height: 150px;
+	background: #ffffff;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 30px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.ugencySummary:hover {
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	background: #2a3647;
+}
+
+.urgencyCenterContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 60px;
+}
+
+.ugent {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0px;
+	gap: 18px;
+	width: 130px;
+	height: 75px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.ugentImgContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	gap: 10px;
+	width: 60px;
+	height: 60px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.ugentImg {
+	width: 60px;
+	height: 60px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.ugentAmount {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	width: 52px;
+	height: 75px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.ugentAmount span {
+	width: 50px;
+	height: 56px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 47px;
+	line-height: 120%;
+	text-align: center;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.ugentAmount p {
+	width: 52px;
+	height: 19px;
+	font-family: 'Inter';
+	/* font-style: normal; */
+	/* font-weight: 400; */
+	font-size: 16px;
+	/* line-height: 120%; */
+	color: #2a3647;
+	/* flex: none; */
+	order: 1;
+	/* flex-grow: 0; */
+	margin-block-start: 0px;
+	margin-block-end: 0px;
+	text-align: center;
+}
+
+.ugentVerticalLine {
+	width: 0px;
+	height: 102.02px;
+	border: 2px solid #d1d1d1;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.deadlineData {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0px;
+	/* width: 178px; */
+	height: 57px;
+	flex: none;
+	order: 2;
+	flex-grow: 0;
+}
+
+#deadlineDate {
+	width: max-content;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 21px;
+	line-height: 120%;
+	color: #2a3647;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	margin-block-start: 0px;
+	margin-block-end: 0px;
+}
+
+.deadlineText {
+	/* width: 170px; */
+	height: 19px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 120%;
+	/* color: #2a3647; */
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	color: red;
+	margin: unset;
+}
+
+.toDoData {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0px;
+	gap: 35px;
+	width: 100%;
+	height: 150px;
+	flex: none;
+	order: 2;
+	flex-grow: 0;
+}
+
+.toDo,
+.toDoDone {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 38px 19px;
+	gap: 18px;
+	width: 272.5px;
+	height: 100%;
+	background: #ffffff;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 30px;
+	flex-basis: 100%;
+}
+
+.toDoHover,
+.toDoDoneHover {
+	background: #2a3647;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.toDoHoverSpanP {
+	color: white !important;
+}
+
+.toDoDoneSvgContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 69px;
+	height: 69px;
+	background-color: #2a3647;
+	border-radius: 50%;
+}
+
+.toDo svg,
+.toDoDone svg {
+	width: fit-content;
+	height: fit-content;
+	color: white;
+}
+
+.toDoAmountData {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0px;
+	width: fit-content;
+	height: fit-content;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.toDoAmountData span {
+	width: fit-content;
+	height: 77px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 64px;
+	line-height: 120%;
+	text-align: center;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.toDoAmountData p {
+	width: 60px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #2a3647;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	margin-block-start: 0px;
+	margin-block-end: 0px;
+	text-align: center;
+}
+
+.summaryContainerRight {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 385px;
+}
+
+.ugencySummary:hover span,
+.ugencySummary:hover p,
+.ugencySummary:hover b,
+.toDo:hover,
+.toDo:hover span,
+.toDo:hover p,
+.toDoDone:hover,
+.toDoDone:hover span,
+.toDoDone:hover p {
+	color: white !important;
+	background-color: #2a3647;
+}
+
+.toDoDone:hover .toDoDoneSvgContainer {
+	background-color: #ffffff;
+}
+
+.toDoDone:hover .toDoDoneSvgContainer svg {
+	color: black;
+}
+
+.toDoDone:hover .toDoDoneSvgContainer svg path {
+	stroke: black;
+}
+
+/* display: flex;
+justify-content: center;
+ */
+
+@media screen and (max-height: 900px) {
+	/* 1024 oder 900% */
+	.summaryContainer {
+		padding: 0px 53px 16px 50px;
+		gap: 20px;
+	}
+
+	.title h3 {
+		font-size: 36px;
+	}
+
+	.overview {
+		width: 460px;
+	}
+
+	.taskOverview {
+		width: 460px;
+	}
+
+	#taskInBoard,
+	#taskInProgress,
+	#awaitingFeedback {
+		width: 130px;
+		height: 130px;
+		gap: unset;
+	}
+
+	.urgencyCenterContainer {
+		gap: 40px;
+	}
+
+	.ugencySummary,
+	.toDoData {
+		height: 120px;
+	}
+
+	.amountSummary {
+		font-size: 47px !important;
+	}
+	.toDoAmountData span {
+		height: fit-content;
+	}
+
+	.nameTask {
+		font-size: 14px !important;
+	}
+
+	.ugentAmount p {
+		font-size: 14px;
+	}
+}
+
+@media screen and (max-height: 768px) {
+	.kanbanboardTitleSummary,
+	.title h4 {
+		display: none;
+	}
+
+	.title h3 {
+		height: max-content;
+	}
+
+	.overview {
+		padding-top: 24px !important;
+	}
+}
+
+@media screen and (max-width: 1150px) {
+	.welcome {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.sliderMenu {
+		top: 79px;
+	}
+
+	.title h3 {
+		font-size: 50px;
+	}
+
+	.summaryContainerRight {
+		display: none;
+	}
+
+	.summaryContainer {
+		display: flex;
+		align-items: center;
+		padding: 82px 53px 16px 53px;
+		width: 100vw;
+	}
+}
+
+@media screen and (max-width: 768px), (max-height: 768px) {
+	.summaryContainer {
+		padding: 33px;
+		gap: 20px;
+	}
+
+	.summaryContainerLeft::before {
+		content: '';
+		border: 3px solid #29abe2;
+		width: 90px;
+	}
+	.title {
+		height: fit-content;
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		gap: unset;
+		width: 360px;
+	}
+	.title img {
+		display: none;
+	}
+
+	.title h3 {
+		font-size: 47px;
+		margin: unset;
+	}
+
+	.title h4 {
+		font-size: 21px;
+		margin: unset;
+	}
+
+	.overview {
+		width: 360px;
+		padding-top: 41px;
+	}
+
+	.taskOverview {
+		width: 360px;
+	}
+
+	#taskInBoard,
+	#taskInProgress,
+	#awaitingFeedback {
+		width: 110px;
+		height: 110px;
+		gap: unset;
+	}
+
+	.ugentImgContainer {
+		width: unset;
+	}
+
+	.ugencySummary,
+	.toDoData {
+		height: 110px;
+		width: 360px !important;
+	}
+
+	.toDoData {
+		gap: 15px;
+	}
+
+	.toDo,
+	.toDoDone {
+		flex-basis: 100% !important;
+	}
+
+	#toDoImg,
+	#toDoDoneImg,
+	#urgentImg {
+		width: 40px;
+		height: 40px;
+	}
+
+	.amountSummary {
+		font-size: 47px !important;
+	}
+
+	.toDoAmountData span {
+		height: fit-content;
+	}
+
+	.nameTask {
+		font-size: 14px !important;
+	}
+
+	.ugencySummary {
+		padding: 28px 0;
+	}
+	.urgencyCenterContainer {
+		gap: 20px;
+	}
+
+	.ugent {
+		width: 108px;
+		height: 73px;
+	}
+
+	.ugentVerticalLine {
+		height: 68px;
+	}
+
+	.ugentAmount p {
+		font-size: 14px;
+	}
+
+	#deadlineDate {
+		font-size: 16px;
+	}
+
+	.deadlineText {
+		font-size: 14px;
+	}
+
+	.toDoDoneSvgContainer {
+		width: 40px;
+		height: 40px;
+		padding: 10px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.title {
+		width: 338px;
+	}
+
+	.summaryContainer {
+		padding: 8px;
+	}
+
+	.title h3 {
+		font-size: 36px;
+	}
+
+	.title h4 {
+		font-size: 18px;
+	}
+
+	.overview,
+	.taskOverview {
+		width: 338px;
+	}
+
+	#taskInBoard,
+	#taskInProgress,
+	#awaitingFeedback {
+		width: 100px;
+		height: 100px;
+		gap: unset;
+	}
+
+	.ugencySummary,
+	.toDoData {
+		height: 100px;
+		width: 338px !important;
+	}
+
+	.amountSummary {
+		font-size: 32px !important;
+		height: fit-content !important;
+	}
+
+	.nameTask {
+		height: fit-content !important;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.kanbanboardTitleSummary {
+		display: none;
+	}
+}

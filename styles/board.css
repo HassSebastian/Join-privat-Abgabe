@@ -1,0 +1,2301 @@
+.boardContainer {
+	position: absolute;
+	top: 89px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	flex-direction: column;
+	padding: 87px 16px 0 70px;
+}
+
+.board {
+	position: relative;
+	width: 1440px;
+	height: 1024px;
+	overflow-y: scroll;
+	background: #f6f7f8;
+}
+
+.boardOverlay {
+	display: flex;
+	/* 	flex-direction: row; */
+	align-items: center;
+	justify-content: space-between;
+	padding: 0px;
+	/* gap: 474px; */
+	/* position: absolute; */
+	width: 100%;
+	max-width: 1500px;
+	height: 73px;
+	/* left: 302px; */
+	top: 171px;
+	margin-bottom: 100px;
+}
+
+.boardHeadline {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 1px;
+	width: 176px;
+	/* height: 73px; */
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.boardHeadline span {
+	width: 176px;
+	/* height: 73px; */
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 61px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.inputOutContainer {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 35px;
+	width: 423px;
+	/* height: 51px; */
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.inputContainer {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 13px 21px;
+	gap: 10px;
+	width: 251px;
+	height: 51px;
+	background: #ffffff;
+	border: 1px solid #a8a8a8;
+	border-radius: 10px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.inputInContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	gap: 10px;
+	width: 226px;
+	height: 31px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.vector {
+	width: 0px;
+	height: 31px;
+	border: 1px solid #d1d1d1;
+	flex: none;
+	margin-left: 60px;
+	order: 0;
+	flex-grow: 0;
+}
+
+.inputInContainer img {
+	width: 20.31px;
+	height: 20.31px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.inputFontContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	gap: 13px;
+	width: 100px;
+	height: 19px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.inputFontContainer input {
+	width: 100px;
+	/* height: 19px; */
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 120%;
+	display: flex;
+	align-items: center;
+	/* color: #D1D1D1; */
+	color: #2a3647;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	border: 0px;
+	outline: none;
+}
+
+.addTaskButton {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 18px 10px;
+	gap: 10px;
+	width: 137px;
+	height: 51px;
+	background: #2a3647;
+	border: 1px solid #2a3647;
+	border-radius: 10px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	border: 0;
+	cursor: pointer;
+}
+
+.addTaskButton:hover {
+	background: #29abe2;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	transition: 100ms ease-in-out;
+}
+
+.addTaskButton span {
+	width: 92px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 21px;
+	line-height: 120%;
+	color: #ffffff;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.plusOutContainer {
+	width: 15px;
+	height: 15px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.plusInContainer img {
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	left: 112px;
+	top: 18px;
+}
+
+.menuOverlay {
+	position: absolute;
+	width: 1145px;
+	height: 327px;
+	left: 267px;
+	top: 57px;
+	/* background: #F6F7F8; */
+}
+
+.menuTask {
+	position: absolute;
+	width: 1058px;
+	height: 30px;
+	left: 35px;
+	bottom: 11px;
+}
+
+.menu {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0px;
+	gap: 6px;
+	position: absolute;
+	width: 230px;
+	height: 30px;
+	left: 828px;
+	top: 0px;
+	/* edit by Bossi 24.12.2022 */
+	/* margin-top: -36px; */
+}
+
+.menu span {
+	width: max-content;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 21px;
+	line-height: 120%;
+	color: #2a3647;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.menuPlusButton {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 3px;
+	gap: 10px;
+	width: 30px;
+	height: 30px;
+	border: 2px solid #2a3647;
+	border-radius: 10px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	cursor: pointer;
+	background-image: url('../assets/img/plus_logo_black.png');
+	background-position: center;
+	background-size: 15px 15px;
+	background-repeat: no-repeat;
+}
+
+.menuPlusButton:hover {
+	background-image: url('../assets/img/plus_logo_blue.png');
+	border: 2px solid #29abe2;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	transition: 100ms ease-in-out;
+}
+
+.menuPlusButton img {
+	width: 15px;
+	height: 15px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.done {
+	left: 828px;
+}
+
+.feedback {
+	left: 552px;
+}
+
+.progress {
+	left: 276px;
+}
+
+.todo {
+	left: 0px;
+}
+
+.canbanBoard {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-start;
+	padding: 0px;
+	/* gap: 26px; */
+	/* position: absolute; */
+	width: 100%;
+	max-width: 1500px;
+	height: auto;
+	/* left: 302px; */
+	top: 408px;
+	bottom: 0;
+	overflow: hidden;
+}
+
+.canbanBoard::-webkit-scrollbar {
+	width: 0px;
+}
+
+.canbanContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 250px;
+	height: calc(100vh - 380px);
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	overflow: scroll;
+	padding-top: 24px;
+}
+
+.taskBackground {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 18px 19px;
+	gap: 10px;
+	width: 250px;
+	height: 239px;
+	background: #ffffff;
+	box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+	border-radius: 30px;
+	margin-top: 8px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	cursor: pointer;
+}
+
+.taskBackground:active {
+	rotate: 5deg;
+}
+
+.taskContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 20px;
+	width: 209px;
+	height: 203px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.boardTaskCategory {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 4px 25px;
+	gap: 10px;
+	min-width: 103px;
+	height: 27px;
+	border-radius: 8px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.boardTaskCategory span {
+	width: max-content;
+	height: 19px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 120%;
+	color: #ffffff;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+/* .design {
+    background: #FF7A00;
+}
+
+.sales {
+    background: #FC71FF;
+}
+
+.backoffice {
+    background: #1FD7C1;
+}
+
+.marketing {
+    background: #0038FF;
+}
+
+.media {
+    background: #FFC701;
+} */
+
+.taskHeadline {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 10px;
+	width: 207px;
+	height: 67px;
+	border-radius: 10px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.taskHeadlineContent {
+	width: 100%;
+	height: 19px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 120%;
+	color: #2a3647;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	overflow: hidden;
+}
+
+.taskContent {
+	width: 207px;
+	height: 38px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 120%;
+	color: #a8a8a8;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	overflow: hidden;
+}
+
+.doneBar {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	gap: 20px;
+	width: 209px;
+	height: 14px;
+	flex: none;
+	order: 2;
+	flex-grow: 0;
+}
+
+.doneBarOuter {
+	width: 138px;
+	height: 8px;
+	/* background: #F4F4F4; */
+	/* background: #29ABE2; */
+	border-radius: 2px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.doneBar span {
+	width: 51px;
+	height: 14px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.contributorsPrio {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	gap: 35px;
+	width: 207px;
+	height: 35px;
+	flex: none;
+	order: 3;
+	flex-grow: 0;
+}
+
+.contributorsLogoContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0px;
+	width: 93px;
+	height: 35px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.contributorsLogo {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 10px 8px;
+	gap: 10px;
+	width: 35px;
+	height: 35px;
+	border: 1px solid #ffffff;
+	border-radius: 58px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	margin: 0px -6px;
+}
+
+.contributorsLogo span {
+	height: 14px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 120%;
+	color: #ffffff;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.blue {
+	background: #0190e0;
+}
+
+.pink {
+	background: #ee00d6;
+}
+
+.litegreen {
+	background: #02cf2f;
+}
+
+.yellow {
+	background: #ffa800;
+}
+
+.lila {
+	background: #9327ff;
+}
+
+.black {
+	background: #2a3647;
+}
+
+.orange {
+	background: #ff5c00;
+}
+
+.green {
+	background: #4e963d;
+}
+
+.liteblue {
+	background: #32daff;
+}
+
+.prio {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 10px 18px;
+	gap: 10px;
+	width: 32px;
+	height: 32px;
+	background: #ffffff;
+	border-radius: 10px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.prio img {
+	width: 17px;
+	height: 12px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.drag-area-highlight {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+.boardSubheaders {
+	/* position: absolute; */
+	width: 100%;
+	height: 57px;
+	/* left: 267px; */
+	top: 327px;
+	display: flex;
+	justify-content: space-between;
+
+	background: #f6f7f8;
+}
+
+boardSubheaders > * {
+	flex-basis: 100%;
+}
+
+.boardSubtitleContainer {
+	/* position: absolute; */
+	width: 1058px;
+	height: 30px;
+	left: 45px;
+	bottom: 11px;
+}
+
+.toDoAreaHeader {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0px;
+	/* gap: 35px; */
+
+	/* position: absolute; */
+	/* width: 230px; */
+	height: 30px;
+	left: 0px;
+	top: 0px;
+}
+
+.toDoAreaHeader span {
+	/* width: 57px; */
+	height: 25px;
+
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 21px;
+	line-height: 120%;
+	/* or 25px */
+
+	color: #2a3647;
+
+	/* Inside auto layout */
+
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.inProgressAreaHeader {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0px;
+	/* gap: 35px; */
+
+	/* position: absolute; */
+	/* width: 230px; */
+	height: 30px;
+	left: 276px;
+	top: 0px;
+}
+
+.inProgressAreaHeader span {
+	/* width: 116px; */
+	height: 25px;
+
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 21px;
+	line-height: 120%;
+	/* or 25px */
+
+	color: #2a3647;
+
+	/* Inside auto layout */
+
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.awaitingFeedbackAreaHeader {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0px;
+	gap: 6px;
+	/* position: absolute; */
+	/* width: 230px; */
+	height: 30px;
+	left: 545px;
+	top: 0px;
+}
+
+.awaitingFeedbackAreaHeader span {
+	/* width: max-content; */
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 21px;
+	line-height: 120%;
+	color: #2a3647;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.doneAreaHeader {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0px;
+	/* gap: 35px; */
+
+	/* position: absolute; */
+	/* width: 230px; */
+	height: 30px;
+	left: 828px;
+	top: 0px;
+}
+
+.doneAreaHeader span {
+	width: 54px;
+	height: 25px;
+
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 21px;
+	line-height: 120%;
+	color: #2a3647;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+/* add by Bossi 25.12 */
+.shadowOverlay {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100%;
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.2);
+	left: 0px;
+	top: 0;
+	z-index: 10;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+/* Copy from boardTaskCardPopup.css */
+.boardTaskCardPopup {
+	padding: 50px;
+
+	isolation: isolate;
+
+	/* width: 573px;
+	height: 774px;  changed by Bossi 28.02 to:*/
+	width: 623px;
+	height: 824px;
+
+	background: #ffffff;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 30px;
+	cursor: auto;
+	position: absolute;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+
+	/* edited by Bossi 01.03 */
+	overflow: hidden;
+	overflow-y: scroll;
+}
+
+.taskCardPopupTaskInnerContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 25px;
+	height: calc(100vh - 255px);
+}
+
+.boardTaskCardInnerContainer {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.taskCardPopupCategory {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	padding: 4px 36.5px;
+	gap: 10px;
+	width: fit-content;
+	height: 40px;
+	background: #fc71ff;
+	border-radius: 8px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	z-index: 0;
+	margin-bottom: 25px;
+}
+
+.taskCardPopupCategory span {
+	/* width: 69px; */
+	height: 32px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 27px;
+	line-height: 120%;
+	color: #ffffff;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.taskCardPopupTask {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 1px;
+	width: 100%;
+	max-height: 150px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	z-index: 1;
+	overflow: hidden;
+	overflow-y: scroll;
+}
+
+.taskCardPopupTask span {
+	width: 100%;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 61px;
+	line-height: 120%;
+	color: #2a3647;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.taskCardPopupDescription {
+	width: 100%;
+	/* height: 50px; */
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 2;
+	flex-grow: 0;
+	z-index: 2;
+	max-height: 100px;
+	overflow: hidden;
+	overflow-y: scroll;
+	min-height: 50px;
+}
+
+.taskCardPopupDateContainer {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 25px;
+	width: 246px;
+	height: 25px;
+	flex: none;
+	order: 3;
+	flex-grow: 0;
+	z-index: 3;
+}
+
+.taskCardPopupDateText {
+	width: 99px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.taskCardPopupDueDate {
+	/* width: 122px; */
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.taskCardPopupPriorityContainer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0px;
+	gap: 25px;
+	width: 238px;
+	height: 33px;
+	flex: none;
+	order: 4;
+	flex-grow: 0;
+	z-index: 4;
+}
+
+.taskCardPopupPriorityContainer span {
+	width: 82px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.urgency {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 4px 18px;
+	gap: 10px;
+	width: 131px;
+	height: 33px;
+	background: #ff3d00;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.urgency span {
+	width: max-content;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #ffffff;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.urgency img {
+	width: 17px;
+	height: 12px;
+	transform: rotate(-360deg);
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.assigned,
+.boardSubtaskTitle {
+	width: 134px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 5;
+	flex-grow: 0;
+	z-index: 5;
+}
+
+.close_logo {
+	position: sticky; /* changed from absolute by Bossi 01.03*/
+	width: 21.65px;
+	height: 21.65px;
+	/* right: 41px; */
+	/* left: 96%; */
+	/* top: 34px; */
+	top: 0px;
+	/* right: 32px; */
+	left: calc(100% - 21px);
+
+	transform: rotate(90deg);
+	flex: none;
+	/* order: 9; */
+	flex-grow: 0;
+	z-index: 9;
+	cursor: pointer;
+}
+
+.editButton {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	gap: 6px;
+	position: absolute;
+	width: 57px;
+	height: 57px;
+	right: 32px;
+	/* left: calc(100% - 41px); */
+	bottom: 32px;
+	background: #2a3647;
+	border-radius: 10px;
+	flex: none;
+	order: 10;
+	flex-grow: 0;
+	z-index: 10;
+}
+
+.editButton:hover {
+	background: #29abe2;
+	border-radius: 10px;
+	transition: 100ms ease-in-out;
+	cursor: pointer;
+}
+
+/* .editButton img {
+    width: 5.64px;
+    height: 30.9px;
+    transform: matrix(-0.85, -0.52, -0.52, 0.85, 0, 0);
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+} */
+
+.members {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 0px;
+	/* gap: 25px; */
+	width: 315px;
+	height: fit-content;
+	flex: none;
+	order: 6;
+	flex-grow: 0;
+	z-index: 6;
+}
+
+.members div {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 10px 8px;
+	gap: 10px;
+	width: 45px;
+	height: 45px;
+	/* background: #9327FF; */
+	border: 2px solid #ffffff;
+	border-radius: 58px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.boardSubtasksTitleDiv {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0px;
+	/* gap: 25px; */
+	width: 231px;
+	height: 45px;
+	flex: none;
+	order: 6;
+	flex-grow: 0;
+	z-index: 6;
+}
+
+.boardSubtasksDiv {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 10px;
+	width: 86%;
+	height: 169px;
+	flex: none;
+	order: 6;
+	flex-grow: 0;
+	z-index: 6;
+	overflow: hidden;
+	overflow-y: scroll;
+	/* height changed and flex-wrap hinzugefügt */
+	flex-wrap: wrap;
+}
+
+.boardSubtasksDiv div span {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+}
+
+.shortcut {
+	width: 22px;
+	height: 19px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 120%;
+	color: #ffffff;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+/* .name {
+    width: 161px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    text-align: center;
+    color: #000000;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+} */
+
+/* .davidEisenberg {
+    background: #9327FF;
+}
+
+.benediktZiegler {
+    background: #FFA800;
+}
+
+.marcelBauer {
+    background: #0223CF;
+}
+
+.stefanieFarber {
+    background: #CB02CF;
+} */
+
+/* add by Bossi */
+/* boardAddTaskPopup*/
+
+#boardAddTaskPopup {
+	position: absolute;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	width: 1116px;
+	max-height: 100vh;
+	height: 855px;
+	background: #ffffff;
+	box-shadow: 0px 0px 4px rgb(0 0 0 / 10%);
+	border-radius: 30px;
+	/* left: 1429px; */
+	/* left: 1291px; */
+	transition: 500ms ease-in-out;
+	transform: translateX(1500px);
+}
+
+.boardAddTaskPopupOverlay {
+	transition: 500ms ease-in-out;
+	transform: translateX(0px) !important;
+}
+
+.boardAddTaskHeadlineDiv {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 1px;
+	position: absolute;
+	width: 466px;
+	height: 78px;
+	left: 74px;
+	top: 63px;
+}
+
+.boardAddTaskAddTitleContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 14px;
+	position: absolute;
+	width: 422px;
+	height: 506px;
+	left: 74px;
+	top: 182px;
+}
+
+.boardAddTaskAddTitleBox {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 8px;
+	width: 422px;
+	height: 104px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.boardAddTaskDivider {
+	position: absolute;
+	width: 0px;
+	height: 669px;
+	left: 555px;
+	top: 182px;
+	border: 2px solid #d1d1d1;
+}
+
+.boardAddTaskRightContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	padding: 0px;
+	gap: 14px;
+	position: absolute;
+	width: 422px;
+	height: 356px;
+	left: 614px;
+	top: 185px;
+}
+
+.boardAddTaskBtnOuterContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 0px;
+	gap: 4px;
+	position: absolute;
+	width: 338px;
+	height: 61px;
+	right: 75px;
+	bottom: 72px;
+}
+
+.boardAddTaskBtnInnerContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	gap: 25px;
+	width: 338px;
+	height: 61px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.boardtaskAddedToBoard {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	position: absolute;
+	width: 326px;
+	height: 74px;
+	filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.1));
+	/* top: 1073px; */
+	top: 1129px;
+	/* left: 358px; */
+	/* left: 568px; */
+}
+
+/* Edit Task Card css classes */
+
+.close_logo_edit_task {
+	position: absolute;
+	width: 21.65px;
+	height: 21.65px;
+	left: 1056px;
+	top: 26px;
+	transform: rotate(90deg);
+	flex: none;
+	order: 9;
+	flex-grow: 0;
+	z-index: 9;
+	cursor: pointer;
+}
+
+.boardEditTitleContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 5px;
+	position: absolute;
+	/* width: 422px; */
+	height: 81px;
+	/* left: 101px; */
+	/* top: 53px; */
+	top: 16px;
+	right: 0;
+	left: 0;
+}
+
+.boardEditTitleContainer span {
+	width: 65px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.boardEditTitleContainer input {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 13px 21px;
+	gap: 10px;
+	width: 100%;
+	height: 51px;
+	background: #ffffff;
+	border: 1px solid #d1d1d1;
+	border-radius: 10px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.boardEditDescriptionContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 5px;
+	position: absolute;
+	/* width: 422px; */
+	height: 149px;
+	/* top: 154px; */
+	top: 117px;
+	right: 0;
+	left: 0;
+}
+
+.boardEditDescriptionContainer span {
+	width: 154px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.boardEditDescriptionContainer textarea {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 18px 21px;
+	gap: 10px;
+	isolation: isolate;
+	width: 100%;
+	height: 119px;
+	background: #ffffff;
+	border: 1px solid #d1d1d1;
+	border-radius: 10px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+}
+
+.boardEditDateContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 5px;
+	position: absolute;
+	width: 100%;
+	height: 81px;
+	right: 0;
+	left: 0;
+	/* top: 333px; */
+	top: 296px;
+}
+
+.boardEditDateContainer span {
+	/* width: 91px; */
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.boardEditDateContainer input {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 18px 21px;
+	gap: 10px;
+	isolation: isolate;
+	width: 100%;
+	height: 51px;
+	background: #ffffff;
+	border: 1px solid #d1d1d1;
+	border-radius: 10px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	/* width: 119px;
+    height: 25px; */
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+}
+
+/* editTaskCard Classes */
+
+.editTaskCardPrio {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 5px;
+
+	position: absolute;
+	width: 100%;
+	height: 91px;
+	left: 0;
+	right: 0;
+	/* top: 444px; */
+	top: 407px;
+}
+
+.editTaskCardPrio h3 {
+	width: 39px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.editTaskCardPrioBtn {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	gap: 10px;
+	width: 100%;
+	height: 61px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.btnsContainerboardTaskCardPopup {
+	position: absolute;
+	bottom: 24px;
+	right: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+
+.editTaskOkBtn {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 18px 10px;
+	gap: 10px;
+	cursor: pointer;
+
+	/* position: absolute; */
+	width: 83px;
+	height: 61px;
+	/* 	left: 508px;
+	top: 719px; */
+	/* changed top by Bossi 01.03 */
+	/* top: 762px; */
+
+	background: #2a3647;
+	border-radius: 10px;
+
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 21px;
+	line-height: 120%;
+	/* or 25px */
+	color: #ffffff;
+	border: 0;
+}
+
+.editTaskOkBtn:hover {
+	background: #29abe2;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
+	/* border-color: #29ABE2; */
+	border-width: 0px;
+}
+
+/* Delete Button edited by Bossi  */
+.deleteButton {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 18px 10px;
+	gap: 10px;
+	/* position: absolute; */
+	height: 61px;
+	left: 470.31px;
+	top: 787px;
+	background: #2a3647;
+	border-radius: 10px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 21px;
+	line-height: 120%;
+	/* or 25px */
+	color: #ffffff;
+	border: 0;
+}
+
+/* deleteButton:hover edit by Basti*/
+.deleteButton:hover {
+	background: #29abe2;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
+	border-width: 0px;
+}
+
+.boardAddTaskDividerBoard {
+	position: absolute;
+	width: 0px;
+	height: 669px;
+	left: 555px;
+	top: 145px;
+	border: 2px solid #d1d1d1;
+}
+
+.addTaskAssignedBox2 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 8px;
+	width: 422px;
+	height: 84px;
+	flex: none;
+	order: 3;
+	flex-grow: 0;
+	margin-top: 12px;
+	position: absolute;
+	top: 578px;
+	left: 101px;
+}
+
+.boardAddTaskAssignedBox {
+	position: absolute;
+	/* top: 578px; */
+	top: 541px;
+	left: 0;
+	right: 0;
+	/* width: 67.307%; */ /* inserted by Bossi 28.02 */
+
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 8px;
+	width: 100%;
+	height: fit-content;
+	flex: none;
+	order: 3;
+	flex-grow: 0;
+}
+
+.boardAddTaskAssignedBox h3 {
+	width: 118px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	margin-block-start: 0px;
+	margin-block-end: 0px;
+}
+
+.boardAddTaskAssignedBox button {
+	position: relative;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 18px 21px;
+	gap: 10px;
+	isolation: isolate;
+	width: 100%;
+	height: 51px;
+	background: #ffffff;
+	border: 1px solid #d1d1d1;
+	border-radius: 10px 10px 10px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	cursor: pointer;
+}
+
+.boardAddTaskAssignedBox input {
+	border: 0;
+	background-color: transparent;
+	outline: none;
+	font-family: 'Inter';
+	font-style: normal;
+	font-size: 21px;
+	font-weight: 400;
+	color: black;
+}
+
+.boardAddTaskAssignedBox ul {
+	width: 100%;
+}
+
+.boardAddTaskAssignedBox input::placeholder {
+	/* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: black;
+	opacity: 1;
+	/* Firefox */
+}
+
+.boardAddTaskAssignedBox input:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: black;
+}
+
+.boardAddTaskAssignedBox input::-ms-input-placeholder {
+	/* Microsoft Edge */
+	color: black;
+}
+
+.moveBtnMobil {
+	display: none;
+}
+
+.moveBtnMobil button {
+	border-radius: 10px;
+	/* display: flex;
+    align-items: center; */
+	width: 120px;
+	height: 40px;
+	padding: 5px 5px;
+	box-sizing: border-box;
+	background-color: #2a3647;
+	color: white;
+	cursor: pointer;
+	/* 	position: absolute; */
+	/* right: 41px; */
+	bottom: 16px;
+}
+
+.moveBtnMobil button:hover {
+	color: #0190e0;
+	/* opacity: 0.8; */
+}
+
+@media screen and (max-width: 1350px) {
+	.boardContainer {
+		padding-left: 53px;
+	}
+}
+
+@media screen and (max-width: 1400px) {
+	/* board */
+
+	.toDoHeadline {
+		width: 401px !important;
+	}
+
+	.boardTaskCardOuterContainer {
+		left: 22px !important;
+	}
+
+	.boardTaskCardOuterContainer {
+		height: 640px !important;
+	}
+
+	.boardTaskCardOuterContainer {
+		width: 100% !important;
+	}
+
+	.toDoOuterContainer {
+		flex-direction: unset !important;
+		align-items: unset !important;
+		width: 86% !important;
+		flex-wrap: wrap;
+	}
+}
+
+@media screen and (max-width: 1300px) {
+	/* Board Add Task */
+	.shadowOverlay {
+		width: 100%;
+	}
+
+	.boardAddTaskPopupOverlay {
+		width: 560px !important;
+		overflow: hidden;
+		overflow-y: scroll;
+	}
+
+	.close_logo_edit_task {
+		left: 510px;
+		position: sticky;
+	}
+
+	.boardAddTaskDividerBoard {
+		display: none;
+	}
+
+	.boardAddTaskRightContainer {
+		left: 73px;
+		top: 814px;
+	}
+
+	.boardAddTaskBtnOuterContainer {
+		left: 158px;
+		top: 1360px;
+	}
+
+	.boardAddTaskBtnInnerContainer {
+		margin-bottom: 100px;
+	}
+
+	.addTaskCheckBox {
+		flex-wrap: wrap;
+		flex-direction: row;
+		width: 100%;
+		max-height: 90px;
+		overflow: scroll;
+	}
+
+	.taskCreatedIndication {
+		transform: translateY(-1000px) !important;
+	}
+
+	.boardtaskAddedToBoard {
+		left: calc(50% - 168px);
+		/* left: 130px; */
+		top: calc((50% - 37px) + 1000px);
+		/* top: calc(100% + 500px); */
+	}
+
+	.rightContainer {
+		width: 100%;
+	}
+
+	.deleteButton {
+		left: 470.31px !important;
+		top: 787px !important;
+	}
+
+	.boardAddTaskHeadlineDiv {
+		position: sticky;
+		background-color: #ffffff;
+		flex-direction: unset;
+		align-items: center;
+		height: 167px;
+		width: 429px;
+		top: 0px;
+		margin-top: -26px;
+		z-index: 1;
+	}
+
+	.addTaskCheckbox {
+		flex-direction: unset !important;
+		width: 420px !important;
+		flex-wrap: wrap;
+		height: fit-content !important;
+		overflow: hidden;
+		overflow-y: scroll;
+	}
+
+	#boardEditDueDate {
+		font-size: 21px !important;
+	}
+}
+
+@media screen and (max-width: 1100px) {
+	.boardOverlay {
+		margin-bottom: 40px;
+	}
+
+	.boardContainer {
+		padding-right: 53px;
+	}
+
+	.canbanBoard {
+		flex-direction: column !important;
+		overflow-y: scroll;
+	}
+
+	.columnBoard {
+		flex-direction: row;
+		width: 100%;
+	}
+
+	.canbanContainer {
+		width: 100%;
+		height: unset;
+		padding: 24px 0;
+	}
+
+	.toDoAreaHeader,
+	.inProgressAreaHeader,
+	.awaitingFeedbackAreaHeader,
+	.doneAreaHeader {
+		width: 250px;
+	}
+
+	#toDoDiv,
+	#progressDiv,
+	#awaitingDiv,
+	#doneDiv {
+		display: flex;
+		width: 100%;
+		gap: 6px;
+	}
+
+	.moveBtnMobil {
+		display: flex;
+		position: absolute !important;
+		bottom: 32px;
+		height: 57px !important;
+		/* width: 310px; */
+		gap: 10px;
+		order: 6;
+	}
+
+	.moveBtnMobil button {
+		height: 57px !important;
+	}
+
+	.canbanContainer {
+		height: fit-content !important;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.boardHeadline span {
+		font-size: 50px;
+	}
+
+	.boardContainer {
+		top: 79px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.boardOverlay {
+		flex-direction: column;
+		align-items: flex-start;
+		height: fit-content;
+	}
+
+	.boardHeadline span {
+		font-size: 47px;
+	}
+
+	.inputOutContainer {
+		padding-top: 20px;
+	}
+
+	.canbanBoard {
+		padding-bottom: 79px;
+	}
+	.boardContainer {
+		padding: 32px;
+		justify-content: unset;
+	}
+	.boardTaskCardPopup {
+		height: 100%;
+		width: 100%;
+		border-radius: 0;
+		overflow: scroll;
+	}
+	.taskCardPopupTask span {
+		font-size: 36px;
+	}
+
+	/* edit by Bossi 01.03 */
+	/* .boardEditTitleContainer,
+	.boardEditTitleContainer input,
+	.boardEditDescriptionContainer,
+	.boardEditDescriptionContainer textarea,
+	.boardEditDateContainer,
+	.boardEditDateContainer input,
+	.editTaskCardPrio,
+	.editTaskCardPrioBtn,
+	.boardAddTaskAssignedBox {
+		width: calc(100% - 50px) !important;
+		left: 25px;
+	} */
+	/* 
+	.boardAddTaskAssignedBox button,
+	.boardAddTaskAssignedBox ul {
+		width: calc(100% - 50px) !important;
+	} */
+
+	.boardAddTaskAssignedBox input {
+		width: 95%;
+	}
+
+	.editTaskOkBtn {
+		left: calc(100% - 158px);
+		top: 800px;
+	}
+}
+/* @media screen and (max-height: 900px) {
+	.boardContainer {
+		position: absolute;
+		top: 89px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		display: flex;
+		flex-direction: column;
+		padding: 0px 16px 0 50px;
+	}
+
+	.boardHeadline span {
+		font-size: 36px;
+	}
+
+	.boardOverlay {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0px;
+
+		width: 100%;
+		max-width: 1500px;
+		height: 73px;
+
+		top: 171px;
+		margin-bottom: 50px;
+	}
+
+	.canbanContainer {
+		height: calc(100vh - 217px);
+	}
+} */
+@media screen and (max-height: 780px) {
+	.boardTaskCardPopup {
+		height: 100%;
+		/* overflow: scroll; */
+	}
+
+	.deleteButton,
+	.editTaskOkBtn {
+		height: 45px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.boardOverlay {
+		margin-bottom: 20px;
+	}
+
+	.moveBtnMobil {
+		bottom: 16px;
+	}
+
+	.editButton,
+	.close_logo {
+		right: 16px;
+	}
+
+	.editButton {
+		bottom: 16px;
+	}
+
+	.boardTaskCardPopup {
+		padding: 24px 12px 0px 12px;
+	}
+
+	.taskCardPopupTaskInnerContainer {
+		overflow: scroll;
+	}
+
+	.btnsContainerboardTaskCardPopup {
+		position: absolute;
+		/* bottom: 24px; */
+		/* right: 24px; */
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		top: 12px;
+		left: 0;
+		right: 0;
+		bottom: unset;
+	}
+
+	.boardContainer {
+		padding: 8px;
+	}
+
+	.boardContainer {
+		height: calc(100vh - 158px);
+		padding-bottom: unset !important;
+	}
+
+	.kanbanboardTitleSummary {
+		padding-bottom: 19px;
+		font-family: 'Inter';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 120%;
+	}
+
+	.boardHeadline span {
+		font-size: 36px;
+	}
+
+	.addTaskButton {
+		height: 40px;
+		width: 40px;
+		position: absolute;
+		top: 8px;
+		right: 8px;
+	}
+
+	.addTaskButton span {
+		display: none;
+	}
+	.inputOutContainer {
+		height: fit-content;
+	}
+
+	.plusOutContainer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.toDoAreaHeader,
+	.inProgressAreaHeader,
+	.awaitingFeedbackAreaHeader,
+	.doneAreaHeader {
+		width: 100%;
+	}
+
+	.taskBackground {
+		width: 100%;
+	}
+
+	.taskBackground {
+		display: block;
+	}
+
+	.taskContainer {
+		width: 100%;
+	}
+
+	.taskHeadline {
+		width: unset;
+	}
+
+	.taskContent {
+		width: unset;
+	}
+
+	.doneBar {
+		width: 100%;
+		justify-content: space-between;
+		/* gap: unset; */
+	}
+
+	.doneBarOuter {
+		max-width: 180px !important;
+		width: 100%;
+	}
+
+	.contributorsPrio {
+		justify-content: space-between;
+		width: 100%;
+	}
+
+	.editTaskCardPrioBtn span {
+		display: none !important;
+	}
+
+	.boardAddTaskAssignedBox {
+		padding-bottom: 24px;
+	}
+}
+
+@media screen and (min-width: 480px) {
+	.kanbanboardTitleSummary {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 430px) {
+	.boardAddTaskAssignedBox input {
+		font-size: 16px;
+	}
+}
+
+@media screen and (max-height: 768px) {
+	.boardTaskCardInnerContainer {
+		overflow: scroll;
+	}
+
+	.taskCardPopupTaskInnerContainer {
+		height: calc(100vh - 240px);
+	}
+
+	.boardHeadline span {
+		font-size: 36px;
+	}
+
+	.boardOverlay {
+		margin-bottom: 16px;
+	}
+
+	.kanbanboardTitleSummary {
+		display: none;
+	}
+
+	.addTaskButton {
+		right: 8px;
+		top: 8px;
+	}
+
+	.boardContainer {
+		padding: 8px;
+	}
+
+	.inputOutContainer {
+		padding-top: 16px;
+	}
+
+	.btnsContainerboardTaskCardPopup {
+		position: absolute;
+		/* bottom: 24px; */
+		/* right: 24px; */
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		top: 12px;
+		left: 0;
+		right: 0;
+		bottom: unset;
+	}
+}

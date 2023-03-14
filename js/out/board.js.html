@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: board.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: board.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>let workStatusArray = [];
+let workStatus0Array = [];
+let workStatus1Array = [];
+let workStatus2Array = [];
+let workStatus3Array = [];
+let currentDraggedElement;
+let categoryBackgroundColors = [
+    '#8aa4ff',
+    '#ff0000',
+    '#2ad300',
+    '#ff8a00',
+    '#e200be',
+    '#0038ff'
+];
+let prioColorAndUrlArray = [
+    {
+    'urgent': ['#FF3D00', './assets/img/urgent_white.png'],
+    'medium': ['#FFA800', './assets/img/medium_white.png'],
+    'low': ['#7AE229', './assets/img/low_white.png'],
+    }
+];
+
+
+async function initBoard() {
+    await includeHTML();
+    await renderBoard();
+    selectedMenuBtnId = 0;
+    selectedMenuButton(2);
+    loadTask();
+    await createWorkStatusArrays();
+    renderAllCards();
+}
+
+
+/**
+ * this function render the basic board html structur into the HTML template div content.
+ */
+async function renderBoard() {
+    document.getElementById('content').innerHTML = '';
+    document.getElementById('content').innerHTML += boardHtml();
+}
+
+
+/**
+ * this function returns the basic board html string
+ * @returns - basic board html string
+ */
+function boardHtml(){
+    return /*html*/`
+        &lt;div class="boardOverlay">
+            &lt;div class="boardHeadline">
+                &lt;span>Board&lt;/span>
+            &lt;/div>
+            &lt;div class="inputOutContainer">
+                &lt;div class="inputContainer">
+                    &lt;div class="inputInContainer">
+                        &lt;div class="inputFontContainer">
+                            &lt;span>Find Task&lt;/span>
+                        &lt;/div>
+                        &lt;div class="vector">&lt;/div>
+                        &lt;img src="./assets/img/search_logo.png">
+                    &lt;/div>
+                &lt;/div>
+                &lt;button class="addTaskButton" onclick='showAddTaskPopupWindow()'>
+                    &lt;span>Add task&lt;/span>
+                    &lt;div class="plusOutContainer">
+                        &lt;img src="./assets/img/plus_logo_white.png">
+                    &lt;/div>
+                &lt;/button>
+            &lt;/div>
+        &lt;/div>
+        &lt;div class='frame191'>
+            &lt;div class='frame192'>
+                &lt;div class="frame136">
+                    &lt;span>To do&lt;/span>
+                    &lt;button class="menuPlusButton" onclick='showAddTaskPopupWindow()'>
+                        &lt;!-- &lt;img src="./assets/img/plus.svg"> -->
+                    &lt;/button>
+                &lt;/div>
+                &lt;div class='frame149'>
+                    &lt;span>In progress&lt;/span>
+                    &lt;button class="menuPlusButton" onclick='showAddTaskPopupWindow()'>
+                        &lt;!-- &lt;img src="./assets/img/plus_logo_black.png"> -->
+                    &lt;/button>
+                &lt;/div>
+                &lt;div class='frame137'>
+                    &lt;span>Anwaiting Feedback&lt;/span>
+                    &lt;button class="menuPlusButton" onclick='showAddTaskPopupWindow()'>
+                        &lt;!-- &lt;img src="./assets/img/plus_logo_black.png"> -->
+                    &lt;/button>
+                &lt;/div>
+                
+                &lt;div class='frame138'>
+                    &lt;span>Done&lt;/span>
+                        &lt;button class="menuPlusButton" onclick='showAddTaskPopupWindow()'>
+                        &lt;!-- &lt;img src="./assets/img/plus_logo_black.png"> -->
+                    &lt;/button>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+        &lt;div class="canbanBoard">
+            &lt;div class="canbanContainer dragArea" id='dropArea0' ondrop="moveTo(0); removeHighlight('dropArea0')"  ondragleave="removeHighlight('dropArea0')" ondragover="allowDrop(event); highlight('dropArea0')">
+                &lt;div id='toDoDiv'>
+                    
+                &lt;/div>
+            &lt;/div>
+            &lt;div class="canbanContainer dragArea" id='dropArea1' ondrop="moveTo(1); removeHighlight('dropArea1')" ondragleave="removeHighlight('dropArea1')" ondragover="allowDrop(event); highlight('dropArea1')">
+                &lt;div id='progressDiv'>
+                    
+                &lt;/div>
+            &lt;/div>
+            &lt;div class="canbanContainer dragArea" id='dropArea2' ondrop="moveTo(2); removeHighlight('dropArea2')" ondragleave="removeHighlight('dropArea2')" ondragover="allowDrop(event); highlight('dropArea2')">
+                &lt;div id='awaitingDiv'>
+                    
+                &lt;/div>
+            &lt;/div>
+            &lt;div class="canbanContainer dragArea" id='dropArea3' ondrop="moveTo(3); removeHighlight('dropArea3')" ondragleave="removeHighlight('dropArea3')" ondragover="allowDrop(event); highlight('dropArea3')">
+                &lt;div id='doneDiv'>
+                    
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+
+        &lt;div class='shadowOverlay d-none' id='boardPopup' onclick='disablePopupWindow()'>
+            &lt;div class="boardTaskCardPopup" onclick='stopClose(event)'>
+                &lt;div class="taskCardPopupCategory">
+                    &lt;span>Sales&lt;/span>
+                &lt;/div>
+                &lt;div class="taskCardPopupTask">
+                    &lt;span>Call potencial clients&lt;/span>
+                &lt;/div>
+                &lt;span class="taskCardPopupDescription">Make the product presentation to prospective buyers&lt;/span>
+                &lt;div class="taskCardPopupDateContainer">
+                    &lt;span class="taskCardPopupDateText">Due date:&lt;/span>
+                    &lt;span class="taskCardPopupDueDate">05-08-2022&lt;/span>
+                &lt;/div>
+                &lt;div class="taskCardPopupPriorityContainer">
+                    &lt;!-- classes down must be changed later ! -->
+                &lt;span>Priority:&lt;/span>
+                &lt;div class="urgency">
+                    &lt;span>Urgent&lt;/span>
+                    &lt;img src="./assets/img/urgent_white.png" alt="">
+                &lt;/div>
+            &lt;/div>
+            &lt;span class="assigned">Assigned To:&lt;/span>
+            &lt;img class="close_logo" src="./assets/img/close_logo.png" onclick='disablePopupWindow()'>
+            &lt;div class="editButton">
+                &lt;img src="./assets/img/edit_button.png">
+            &lt;/div>
+        
+            &lt;div class="members">
+                &lt;div class="davidEisenberg">
+                    &lt;span class="shortcut">DE&lt;/span>
+                &lt;/div>
+                &lt;span class="name">David Eisenberg&lt;/span>
+            &lt;/div>
+            &lt;div class="members">
+                &lt;div class="benediktZiegler">
+                    &lt;span class="shortcut">BZ&lt;/span>
+                &lt;/div>
+                &lt;span class="name">Benedikt Ziegler&lt;/span>
+            &lt;/div>
+            &lt;div class="members">
+                &lt;div class="marcelBauer">
+                    &lt;span class="shortcut">MB&lt;/span>
+                &lt;/div>
+                &lt;span class="name">Marcel Bauer&lt;/span>
+            &lt;/div>
+            &lt;div class="members">
+                &lt;div class="stefanieFarber">
+                    &lt;span class="shortcut">SF&lt;/span>
+                &lt;/div>
+                &lt;span class="name">Stefanie Farber&lt;/span>
+            &lt;/div>
+
+            &lt;!-- &lt;/div> -->
+        &lt;/div>`;
+}
+
+
+// todo if already done delete this function. And rename descriten to description, also in AddTask ! This function is only for info.
+function arrayExample() {
+    taskData = {
+        'title': title,
+        'descripten': descripten,
+        'category': category,
+        'catColor': catColor,
+        'assignedTo': assigndTo,
+        'dueDate': dueDate,
+        'prio': prio,
+        'subTasks': selectedSubtasks,
+        'workFlowStatus': 0,
+    };
+}
+
+
+/**
+ * This function clear all Arrays related to the workstatus.
+ * The workstatus is releted to the progress of processing of the task.
+ */
+function resetWorkStatusArrays() {
+    workStatus0Array = [];
+    workStatus1Array = [];
+    workStatus2Array = [];
+    workStatus3Array = [];
+    workStatusArray = [
+        workStatus0Array,
+        workStatus1Array,
+        workStatus2Array,
+        workStatus3Array
+    ];
+}
+
+
+/**
+ * This function fill the four workstatus arrays with the related data.
+ * The workstatus 0 is equal to the status 'todo'. The workstatus 1 is equal to 'in progress', and so on.
+ */
+async function createWorkStatusArrays() {
+    resetWorkStatusArrays();
+    for (let index = 0; index &lt; 4; index++) {
+        for (let i = 0; i &lt; joinTaskArray.length; i++) {
+            const element = joinTaskArray[i]['workFlowStatus'];
+            if (element == index) {
+                let cardTitle = joinTaskArray[i]['title'];
+                let cardDescription = joinTaskArray[i]['descripten'];
+                let cardCatColor = joinTaskArray[i]['catColor'];
+                let cardCategory = joinTaskArray[i]['category'];
+                let cardPrio = joinTaskArray[i]['prio'];
+                let subTasks = joinTaskArray[i]['subTasks'];
+                let taskIndex = i;
+                workStatusArray[index].push(createWorkStatusJson(cardTitle, cardDescription, cardCatColor, cardCategory, cardPrio, subTasks, taskIndex));
+            }
+        }
+    }
+}
+
+
+/**
+ * This function create a JSON file for the workstatus Arrays.
+ * @param {string} cardTitle - is the title of the related task.
+ * @param {string} cardDescription - is the descripten of the related task.
+ * @param {number} cardCatColor - is a number that is ralated to a fixed backgroundcolor for the category.
+ * @param {string} cardCategory - is the category of the related task.
+ * @param {string} cardPrio - is the priority of the related task.
+ * @param {array} subTasks - is a array with all subtask of the related task.
+ * @param {number} taskIndex - is the index number of the related task in the main array 'jsonTaskArray'.
+ * @returns - a json.
+ */
+function createWorkStatusJson(cardTitle, cardDescription, cardCatColor, cardCategory, cardPrio, subTasks, taskIndex) {
+    return {
+        'cardTitle': cardTitle,
+        'cardDescription': cardDescription,
+        'cardCatColor': cardCatColor,
+        'cardCategory': cardCategory,
+        'cardPrio': cardPrio,
+        'subTasks': subTasks,
+        'taskIndex': taskIndex,
+    };
+}
+
+
+/**
+ * this function call subfunction to render all task cards.
+ */
+function renderAllCards() {
+    renderToDoCards();
+    renderInProgressCards();
+    renderAwaitingFeedbackCards();
+    renderDoneCards();
+}
+
+
+/**
+ * this function render all todo cards.
+ */
+// toDo class design löschen !?
+function renderToDoCards() {
+    document.getElementById('toDoDiv').innerHTML = '';
+    for (let i = 0; i &lt; workStatus0Array.length; i++) {
+        let cardPrio = workStatus0Array[i]['cardPrio'];
+        let subTasksAmount = workStatus0Array[i]['subTasks'].length;
+        document.getElementById('toDoDiv').innerHTML += toDoCardHtml(i);
+    }
+    setCategoryBackgroundColorForWorkStatus0();
+}
+
+
+
+
+/**
+ * this function returns the html code for each todo task card.
+ * @param {number} arrayIndex - is the index number of the workStatus0Array.
+ * @returns - the html string for each todo task card.
+ */
+function toDoCardHtml(arrayIndex){
+    let cardTitle = workStatus0Array[arrayIndex]['cardTitle'];
+    let cardDescription = workStatus0Array[arrayIndex]['cardDescription'];
+    let cardCategory = workStatus0Array[arrayIndex]['cardCategory'];
+    let taskIndex = workStatus0Array[arrayIndex]['taskIndex'];
+    let workStatusArrayNo = 0;
+    let subTasksAmount = workStatus0Array[arrayIndex]['subTasks'].length;
+    let subTaskDoneAmount = determindSubTasksDone(arrayIndex, workStatusArrayNo);
+    return /*html*/`
+        &lt;div class='taskBackground' id='taskCard${taskIndex}' draggable='true' ondragstart='startDrag(${taskIndex})' onclick='enablePopupWindow(); renderPopupTaskCard(${taskIndex})'>
+            &lt;div class='taskContainer'>
+                &lt;div class='boardTaskCategory' id='toDoCardCat${arrayIndex}'>
+                    &lt;span>${cardCategory}&lt;/span>
+                &lt;/div>
+                &lt;div class='taskHeadline'>
+                    &lt;span class='taskHeadlineContent'>${cardTitle}&lt;/span>
+                    &lt;span class='taskContent'>${cardDescription}&lt;/span>
+                &lt;/div>
+                &lt;div class='doneBar'>
+                    &lt;div>&lt;/div>
+                    &lt;span>${subTaskDoneAmount}/${subTasksAmount} Done&lt;/span>
+                &lt;/div>
+                &lt;div class='contributorsPrio'>
+                    &lt;div class='contributorsLogoContainer'>
+                        &lt;div class='contributorsLogo blue'>
+                            &lt;span>SM&lt;/span>
+                        &lt;/div>
+                        &lt;div class='contributorsLogo pink'>
+                            &lt;span>MV&lt;/span>
+                        &lt;/div>
+                        &lt;div class='contributorsLogo litegreen'>
+                            &lt;span>EF&lt;/span>
+                        &lt;/div>
+                    &lt;/div>
+
+                    &lt;div class='prio'>
+                        &lt;img src='./assets/img/low.png'>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>`;
+}
+
+
+function determindSubTasksDone(arrayIndex, workStatusArrayNo){
+    let doneAmount = 0;
+    for (let i = 0; i &lt; workStatusArray[workStatusArrayNo][arrayIndex]['subTasks'].length; i++) {
+        let subTaskStatus = workStatusArray[workStatusArrayNo][arrayIndex]['subTasks'][i]['subtaskStatus'];
+        if (subTaskStatus){
+            doneAmount += 1;
+        }
+    }
+    return doneAmount;
+}
+
+
+/**
+ * this function set the backgroundcolor of the catogory in the todo task card.
+ */
+function setCategoryBackgroundColorForWorkStatus0() {
+    for (let i = 0; i &lt; workStatus0Array.length; i++) {
+        let cardCatColor = workStatus0Array[i]['cardCatColor'];
+        let catBackground = categoryBackgroundColors[cardCatColor];
+        document.getElementById(`toDoCardCat${i}`).style = `background-color: ${catBackground};`;
+    }
+}
+
+
+/**
+ * this function render all in progress cards.
+ */
+function renderInProgressCards() {
+    document.getElementById('progressDiv').innerHTML = '';
+    for (let i = 0; i &lt; workStatus1Array.length; i++) {
+        let cardPrio = workStatus1Array[i]['cardPrio'];
+        let subTasks = workStatus1Array[i]['subTasks'];
+        document.getElementById('progressDiv').innerHTML += inProgressHtml(i);
+    }
+    setCategoryBackgroundColorForWorkStatus1();
+}
+
+
+/**
+ * this function returns the html code for each in progress task card.
+ * @param {number} arrayIndex - is the index number of the workStatus1Array.
+ * @returns - the html string for each in progress task card
+ */
+function inProgressHtml(arrayIndex){
+        let cardTitle = workStatus1Array[arrayIndex]['cardTitle'];
+        let cardDescription = workStatus1Array[arrayIndex]['cardDescription'];
+        let cardCategory = workStatus1Array[arrayIndex]['cardCategory'];
+        let taskIndex = workStatus1Array[arrayIndex]['taskIndex'];
+        let workStatusArrayNo = 1;
+        let subTasksAmount = workStatus1Array[arrayIndex]['subTasks'].length;
+        let subTaskDoneAmount = determindSubTasksDone(arrayIndex, workStatusArrayNo);
+        return /*html*/`
+            &lt;div class='taskBackground' id='taskCard${taskIndex}' draggable='true' ondragstart='startDrag(${taskIndex})' onclick='enablePopupWindow(); renderPopupTaskCard(${taskIndex})'>
+                &lt;div class='taskContainer'>
+                    &lt;div class='boardTaskCategory' id='progressCard${arrayIndex}'>
+                        &lt;span>${cardCategory}&lt;/span>
+                    &lt;/div>
+                    &lt;div class='taskHeadline'>
+                        &lt;span class='taskHeadlineContent'>${cardTitle}&lt;/span>
+                        &lt;span class='taskContent'>${cardDescription}&lt;/span>
+                    &lt;/div>
+                    &lt;div class='doneBar'>
+                        &lt;div>&lt;/div>
+                        &lt;span>${subTaskDoneAmount}/${subTasksAmount} Done&lt;/span>
+                    &lt;/div>
+                    &lt;div class='contributorsPrio'>
+                        &lt;div class='contributorsLogoContainer'>
+                            &lt;div class='contributorsLogo blue'>
+                                &lt;span>SM&lt;/span>
+                            &lt;/div>
+                            &lt;div class='contributorsLogo pink'>
+                                &lt;span>MV&lt;/span>
+                            &lt;/div>
+                            &lt;div class='contributorsLogo litegreen'>
+                                &lt;span>EF&lt;/span>
+                            &lt;/div>
+                        &lt;/div>
+
+                        &lt;div class='prio'>
+                            &lt;img src='./assets/img/low.png'>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>`;
+}
+
+
+/**
+ * this function set the backgroundcolor of the catogory in the in progress task card.
+ */
+function setCategoryBackgroundColorForWorkStatus1() {
+    for (let i = 0; i &lt; workStatus1Array.length; i++) {
+        let cardCatColor = workStatus1Array[i]['cardCatColor'];
+        let catBackground = categoryBackgroundColors[cardCatColor];
+        document.getElementById(`progressCard${i}`).style = `background-color: ${catBackground};`;
+    }
+}
+
+
+/**
+ * this function render all awaiting feedback cards.
+ */
+function renderAwaitingFeedbackCards() {
+    document.getElementById('awaitingDiv').innerHTML = '';
+    for (let i = 0; i &lt; workStatus2Array.length; i++) {
+        let cardPrio = workStatus2Array[i]['cardPrio'];
+        let subTasks = workStatus2Array[i]['subTasks'];
+        document.getElementById('awaitingDiv').innerHTML += awaitingFeedbackHtml(i);
+    }
+    setCategoryBackgroundColorForWorkStatus2();
+}
+
+
+/**
+ * this function returns the html code for each awaitingFeedback task card.
+ * @param {number} arrayIndex - is the index number of the workStatus2Array.
+ * @returns - the html string for each awaitingFeedback task card
+ */
+function awaitingFeedbackHtml(arrayIndex){
+    let cardTitle = workStatus2Array[arrayIndex]['cardTitle'];
+    let cardDescription = workStatus2Array[arrayIndex]['cardDescription'];
+    let cardCategory = workStatus2Array[arrayIndex]['cardCategory'];
+    let taskIndex = workStatus2Array[arrayIndex]['taskIndex'];
+    let workStatusArrayNo = 2;
+    let subTasksAmount = workStatus2Array[arrayIndex]['subTasks'].length;
+    let subTaskDoneAmount = determindSubTasksDone(arrayIndex, workStatusArrayNo);
+    return /*html*/`
+        &lt;div class='taskBackground' id='taskCard${taskIndex}' draggable='true' ondragstart='startDrag(${taskIndex})' onclick='enablePopupWindow(); renderPopupTaskCard(${taskIndex})'>
+            &lt;div class='taskContainer'>
+                &lt;div class='boardTaskCategory' id='feedbackCard${arrayIndex}'>
+                    &lt;span>${cardCategory}&lt;/span>
+                &lt;/div>
+                &lt;div class='taskHeadline'>
+                    &lt;span class='taskHeadlineContent'>${cardTitle}&lt;/span>
+                    &lt;span class='taskContent'>${cardDescription}&lt;/span>
+                &lt;/div>
+                &lt;div class='doneBar'>
+                    &lt;div>&lt;/div>
+                    &lt;span>${subTaskDoneAmount}/${subTasksAmount} Done&lt;/span>
+                &lt;/div>
+                &lt;div class='contributorsPrio'>
+                    &lt;div class='contributorsLogoContainer'>
+                        &lt;div class='contributorsLogo blue'>
+                            &lt;span>SM&lt;/span>
+                        &lt;/div>
+                        &lt;div class='contributorsLogo pink'>
+                            &lt;span>MV&lt;/span>
+                        &lt;/div>
+                        &lt;div class='contributorsLogo litegreen'>
+                            &lt;span>EF&lt;/span>
+                        &lt;/div>
+                    &lt;/div>
+
+                    &lt;div class='prio'>
+                        &lt;img src='./assets/img/low.png'>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>`;
+}
+
+
+/**
+ * this function set the backgroundcolor of the catogory in the awaiting feedback task card.
+ */
+function setCategoryBackgroundColorForWorkStatus2() {
+    for (let i = 0; i &lt; workStatus2Array.length; i++) {
+        let cardCatColor = workStatus2Array[i]['cardCatColor'];
+        let catBackground = categoryBackgroundColors[cardCatColor];
+        document.getElementById(`feedbackCard${i}`).style = `background-color: ${catBackground};`;
+    }
+}
+
+
+/**
+ * this function render all done cards.
+ */
+function renderDoneCards() {
+    document.getElementById('doneDiv').innerHTML = '';
+    for (let i = 0; i &lt; workStatus3Array.length; i++) {
+        let cardPrio = workStatus3Array[i]['cardPrio'];
+        let subTasks = workStatus3Array[i]['subTasks'];
+        document.getElementById('doneDiv').innerHTML += doneHtml(i);
+    }
+    setCategoryBackgroundColorForWorkStatus3();
+}
+
+
+/**
+ * this function returns the html code for each done task card.
+ * @param {number} arrayIndex - is the index number of the workStatus3Array.
+ * @returns - the html string for each done task card
+ */
+function doneHtml(arrayIndex){
+    let cardTitle = workStatus3Array[arrayIndex]['cardTitle'];
+    let cardDescription = workStatus3Array[arrayIndex]['cardDescription'];
+    let cardCategory = workStatus3Array[arrayIndex]['cardCategory'];
+    let taskIndex = workStatus3Array[arrayIndex]['taskIndex'];
+    let workStatusArrayNo = 3;
+    let subTasksAmount = workStatus3Array[arrayIndex]['subTasks'].length;
+    let subTaskDoneAmount = determindSubTasksDone(arrayIndex, workStatusArrayNo);
+    return /*html*/`
+        &lt;div class='taskBackground' id='taskCard${taskIndex}' draggable='true' ondragstart='startDrag(${taskIndex})' onclick='enablePopupWindow(); renderPopupTaskCard(${taskIndex})'>
+            &lt;div class='taskContainer'>
+                &lt;div class='boardTaskCategory' id='doneCard${arrayIndex}'>
+                    &lt;span>${cardCategory}&lt;/span>
+                &lt;/div>
+                &lt;div class='taskHeadline'>
+                    &lt;span class='taskHeadlineContent'>${cardTitle}&lt;/span>
+                    &lt;span class='taskContent'>${cardDescription}&lt;/span>
+                &lt;/div>
+                &lt;div class='doneBar'>
+                    &lt;div>&lt;/div>
+                    &lt;span>${subTaskDoneAmount}/${subTasksAmount} Done&lt;/span>
+                &lt;/div>
+                &lt;div class='contributorsPrio'>
+                    &lt;div class='contributorsLogoContainer'>
+                        &lt;div class='contributorsLogo blue'>
+                            &lt;span>SM&lt;/span>
+                        &lt;/div>
+                        &lt;div class='contributorsLogo pink'>
+                            &lt;span>MV&lt;/span>
+                        &lt;/div>
+                        &lt;div class='contributorsLogo litegreen'>
+                            &lt;span>EF&lt;/span>
+                        &lt;/div>
+                    &lt;/div>
+                    &lt;div class='prio'>
+                        &lt;img src='./assets/img/low.png'>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>`;
+}
+
+
+/**
+ * this function set the backgroundcolor of the catogory in the done task card.
+ */
+function setCategoryBackgroundColorForWorkStatus3() {
+    for (let i = 0; i &lt; workStatus3Array.length; i++) {
+        let cardCatColor = workStatus3Array[i]['cardCatColor'];
+        let catBackground = categoryBackgroundColors[cardCatColor];
+        document.getElementById(`doneCard${i}`).style = `background-color: ${catBackground};`;
+    }
+}
+
+
+/**
+ * thie function cache the id of the dragged element.
+ * @param {string} id - the id is the id of the dragged element.
+ */
+function startDrag(id) {
+    currentDraggedElement = id;
+}
+
+
+/**
+ * this function allows to drop an draggable element.
+ * @param {event} ev 
+ */
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+
+/**
+ * this function set a new workstatus in the main task array 'joinTaskArray' as number.
+ * @param {number} area - is related to the droparea, example: area=0, droparea is 0, this is equal to workstatus0 equal
+ * to todo tasks.
+ */
+async function moveTo(area) {
+    // toDo if abfrage ob es verschoben werden darf !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // if (joinTaskArray[currentDraggedElement]['workFlowStatus'] == 2){
+        
+    // }
+    joinTaskArray[currentDraggedElement]['workFlowStatus'] = area;
+    await saveTask();
+    await createWorkStatusArrays();
+    renderAllCards();
+}
+
+
+/**
+ * this function change the backgroundcolor of the droparea, if a dragged element is over it.
+ * @param {string} id - is the id of the element where the dragged element is over it.
+ */
+function highlight(id) {
+    document.getElementById(id).classList.add('drag-area-highlight');
+}
+
+
+/**
+ * this function reset the backgroundcolor settings during hovering of thedragged element.
+ * @param {string} id - is the id of the element where the dragged element is dropped.
+ */
+function removeHighlight(id) {
+    document.getElementById(id).classList.remove('drag-area-highlight');
+}
+
+
+// Testarea PopupCard ***********************************************************************************************
+
+// basic function for the popup window
+
+/**
+ * this function remove the d-none class from the popup window. The result is that the Popup Window is shown.
+ */
+function enablePopupWindow(){
+    document.getElementById('boardPopup').classList.remove('d-none');
+}
+
+
+/**
+ * this function add the d-none class to the popup window. The result is that the Popup Window not shown.
+ */
+function disablePopupWindow(){
+    document.getElementById('boardPopup').classList.add('d-none');
+}
+
+
+/**
+ * this function prevent the closure of the popup window when clicking on the Popup Task Card.
+ */
+function stopClose(event){
+    event.stopPropagation();
+}
+
+
+// basic function popup end
+
+
+// render function for the detail view of the task card.
+
+/**
+ * this function render the HTML code for the detail view of a taskcard.
+ * @param {number} taskIndex - this value is equal to the index position in the main array 'joinTaskArray'.
+ */
+function renderPopupTaskCard(taskIndex){
+    let cardTitle = joinTaskArray[taskIndex]['title'];
+    let cardDescription = joinTaskArray[taskIndex]['descripten'];
+    let cardCategory = joinTaskArray[taskIndex]['category'];
+    let cardDueDate = joinTaskArray[taskIndex]['dueDate'];
+    let taskPrio = joinTaskArray[taskIndex]['prio'];
+    let subtaskArray = joinTaskArray[taskIndex]['subTasks'];
+    document.getElementById('boardPopup').innerHTML = '';
+    document.getElementById('boardPopup').innerHTML = /*html*/`
+        &lt;div class="boardTaskCardPopup" onclick='stopClose(event)'>
+            &lt;div class="taskCardPopupCategory" id='taskCardPopupCategory'>
+                &lt;span>${cardCategory}&lt;/span>
+            &lt;/div>
+            &lt;div class="taskCardPopupTask">
+                &lt;span>${cardTitle}&lt;/span>
+            &lt;/div>
+            &lt;span class="taskCardPopupDescription">${cardDescription}&lt;/span>
+            &lt;div class="taskCardPopupDateContainer">
+                &lt;span class="taskCardPopupDateText">Due date:&lt;/span>
+                &lt;span class="taskCardPopupDueDate">${cardDueDate}&lt;/span>
+            &lt;/div>
+            &lt;div class="taskCardPopupPriorityContainer">
+                &lt;!-- classes down must be changed later ! -->
+            &lt;span>Priority:&lt;/span>
+            &lt;div class="urgency" id='prioContainer'>
+                &lt;span>${taskPrio}&lt;/span>
+                &lt;img src="./assets/img/urgent_white.png" id='cardPrioImg'>
+            &lt;/div>
+        &lt;/div>
+
+        &lt;span class="assigned">Assigned To:&lt;/span>
+        &lt;img class="close_logo" src="./assets/img/close_logo.png" onclick='disablePopupWindow()'>
+        &lt;div class="editButton" onclick='openEditTaskCard(${taskIndex})'>
+            &lt;img src="./assets/img/edit_button.png">
+        &lt;/div>
+    
+        &lt;div class="members">
+            &lt;div class="davidEisenberg">
+                &lt;span class="shortcut" title='David Eisenberg'>DE&lt;/span>
+            &lt;/div>
+            &lt;div class="benediktZiegler">
+                &lt;span class="shortcut" title='Benedikt Ziegler'>BZ&lt;/span>
+            &lt;/div>
+            &lt;div class="marcelBauer">
+                &lt;span class="shortcut" title='Marcel Bauer'>MB&lt;/span>
+            &lt;/div>
+            &lt;div class="stefanieFarber">
+                &lt;span class="shortcut" title='Stefanie Farber'>SF&lt;/span>
+            &lt;/div>
+        &lt;/div>
+        
+        &lt;div class='boardSubtasksTitleDiv'>
+            &lt;span class='boardSubtaskTitle'>Subtasks:&lt;/span>
+                
+        &lt;/div >
+        &lt;div class='boardSubtasksDiv' id='subtaskListTaskCard'>
+            &lt;!-- &lt;div>
+                &lt;input type="checkbox" id='subtask0' onclick='checkboxSubtaskSelected(0)'>
+                &lt;span>move the Taskcard to in progress&lt;/span>
+            &lt;/div>
+            &lt;div>
+                &lt;input type="checkbox" id='subtask1' onclick='checkboxSubtaskSelected(1)'>
+                &lt;span>edit this Taskcard, rename the title&lt;/span>
+            &lt;/div>
+            &lt;div>
+                &lt;input type="checkbox" id='subtask2' onclick='checkboxSubtaskSelected(2)'>
+                &lt;span>verschiebe&lt;/span>
+            &lt;/div>
+            &lt;div>
+                &lt;input type="checkbox" id='subtask3' onclick='checkboxSubtaskSelected(3)'>
+                &lt;span>verschiebe&lt;/span>
+            &lt;/div> -->
+        &lt;/div>
+        
+        `;
+
+    setTaskCardPopupCatColor(taskIndex);
+    setTaskCardPopupPrioBackground(taskIndex);
+    renderSubtask(taskIndex);
+}
+
+
+async function renderSubtask(taskIndex){
+    await renderSubtaskHtml(taskIndex);
+    setSubTaskStatus(taskIndex);
+}
+
+
+/**
+ * this function render the HTML code for the subTasks in the board detail view taskcard.
+ * @param {*} taskIndex - this value is equal to the index position in the main array 'joinTaskArray'.
+ */
+async function renderSubtaskHtml(taskIndex){
+    document.getElementById('subtaskListTaskCard').innerHTML = '';
+    let subtaskArray = joinTaskArray[taskIndex]['subTasks'];
+    if (subtaskArray.length > 0){
+        for (let i = 0; i &lt; subtaskArray.length; i++) {
+            let subtaskText = subtaskArray[i]['subtaskText'];
+            document.getElementById('subtaskListTaskCard').innerHTML += /*html*/`
+                &lt;div>
+                    &lt;input type="checkbox" id='subtask${i}' onclick='checkboxSubtaskSelected(${i}, ${taskIndex})'>
+                    &lt;span>${subtaskText}&lt;/span>
+                &lt;/div>`;      
+        }
+    }
+}
+
+
+function setSubTaskStatus(taskIndex){
+    let subtaskArray = joinTaskArray[taskIndex]['subTasks'];
+    for (let i = 0; i &lt; subtaskArray.length; i++) {
+        if (subtaskArray[i]['subtaskStatus']){
+            document.getElementById(`subtask${i}`).checked = true;
+        }
+    }
+}
+
+
+// test function to determind which subtask is performed.
+async function checkboxSubtaskSelected(subTaskIndex, taskIndex){
+    let checkboxStatus = document.getElementById(`subtask${subTaskIndex}`).checked;
+    joinTaskArray[taskIndex]['subTasks'][subTaskIndex]['subtaskStatus'] = checkboxStatus;
+    let subTaskText= joinTaskArray[taskIndex]['subTasks'][subTaskIndex]['subtaskText'];
+    let subTaskStatus = joinTaskArray[taskIndex]['subTasks'][subTaskIndex]['subtaskStatus'];
+    joinTaskArray[taskIndex]['subTasks'][subTaskIndex]['subtaskStatus'] = checkboxStatus;
+    await saveTask();
+}
+
+
+/**
+ * this function set the category background-color of the category.
+ * @param {number} taskIndex -this value is equal to the index number of the main array "joinTaskArray", where
+ * the task card information is stored.
+ */
+function setTaskCardPopupCatColor(taskIndex){
+    let cardCatColorIndex = joinTaskArray[taskIndex]['catColor'];
+    let cardCatColor = categoryBackgroundColors[cardCatColorIndex];
+    document.getElementById('taskCardPopupCategory').style = `background-color: ${cardCatColor};`;
+}
+
+
+/**
+ * This function sets the background color of the prio button and transfers the url of the image associated with the prio button.
+ * @param {*} taskIndex --this value is equal to the index number of the main array "joinTaskArray", where
+ * the task card information is stored.
+ */
+function setTaskCardPopupPrioBackground(taskIndex){
+    let cardPrio = joinTaskArray[taskIndex]['prio'];
+    cardPrio = cardPrio.toLowerCase();
+    let cardPrioBackground = prioColorAndUrlArray[0][cardPrio][0];
+    let cardPrioImgSrc = prioColorAndUrlArray[0][cardPrio][1];
+    document.getElementById('prioContainer').style = `background-color: ${cardPrioBackground};`;
+    document.getElementById('cardPrioImg').src = cardPrioImgSrc;
+}
+
+
+// Edit Taskcard popup
+async function openEditTaskCard(taskIndex){
+    await renderEditTaskCardHtml();
+    renderEditTaskCardInputFields(taskIndex)
+}
+
+
+async function renderEditTaskCardHtml(){
+    document.getElementById('boardPopup').innerHTML = '';
+    document.getElementById('boardPopup').innerHTML = /*html*/`
+        &lt;div class="boardTaskCardPopup" onclick='stopClose(event)'>
+            &lt;img class="close_logo" src="./assets/img/close_logo.png" onclick='disablePopupWindow()'>
+            &lt;div class='boardEditTitleContainer'>
+                &lt;span>Title&lt;/span>
+                &lt;input type="text" placeholder="Enter a title" id='boardEditTitle'>
+            &lt;/div>
+            &lt;div class='boardEditDescriptionContainer'>
+                &lt;span>Descripten&lt;/span>
+                &lt;textarea name="Description"  cols="30" rows="10" placeholder="Enter Descriptiom" id='boardEditDecription'>&lt;/textarea>
+            &lt;/div>
+            &lt;div class='boardEditDateContainer'>
+                &lt;span>Due Date&lt;/span>
+                &lt;input type="date" id='boardEditDueDate'>
+            &lt;/div>
+
+            &lt;div class='editTaskCardPrio'>
+                &lt;h3>Prio&lt;/h3>
+                &lt;div class='editTaskCardPrioBtn'>
+                    &lt;div class='addTaskUrgent' id='addTaskUrgent' onclick='addPrio(0)'>
+                        &lt;span id='addTaskUrgentSpan'>Urgent&lt;/span>
+                        &lt;img id='addTaskUrgentImg' src="../assets/img/urgent_arrows.png">
+                    &lt;/div>
+                    &lt;div class='addTaskMedium' id='addTaskMedium' onclick='addPrio(1)'>
+                        &lt;span id='addTaskMediumSpan'>Medium&lt;/span>
+                        &lt;img id='addTaskMediumImg' src="../assets/img/prio_medium.png">
+                    &lt;/div>
+                    &lt;div class='addTaskLow' id='addTaskLow' onclick='addPrio(2)'>
+                        &lt;span id='addTaskLowSpan'>Low&lt;/span>
+                        &lt;img id='addTaskLowImg' src="../assets/img/prio_low.png">
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+
+            &lt;button class='editTaskOkBtn'>Ok &lt;img src="../assets/img/akar-icons_check_white.png" >&lt;/button>
+        &lt;/div>`;
+}
+
+
+function renderEditTaskCardInputFields(taskIndex){
+    let cardTitle = joinTaskArray[taskIndex]['title'];
+    let cardDescription = joinTaskArray[taskIndex]['descripten'];
+    let cardCategory = joinTaskArray[taskIndex]['category'];
+    let cardDueDate = joinTaskArray[taskIndex]['dueDate'];
+    let taskPrio = joinTaskArray[taskIndex]['prio'];
+    let prioArray = {'Urgent': 0, 'Medium': 1 , 'Low': 2};
+    let taskPrioNumber = prioArray[taskPrio];
+    addPrio(taskPrioNumber);
+    document.getElementById('boardEditTitle'). value = cardTitle;
+    document.getElementById('boardEditDecription').value = cardDescription;
+    document.getElementById('boardEditDueDate').value = cardDueDate;
+}
+
+
+function getDataFromEditTaskCard(){
+    // taskData = {
+    //     'title': title,
+    //     'descripten': descripten,
+    //     'category': category,
+    //     'catColor': catColor,
+    //     'assignedTo': assigndTo,
+    //     'dueDate': dueDate,
+    //     'prio': prio,
+    //     'subTasks': selectedSubtasks,
+    //     'workFlowStatus': 0,
+    // };
+}
+
+  
+
+// render function for the detail view of the task card end.
+
+
+// render function for the creation of a new task card.
+async function showAddTaskPopupWindow(){
+    enablePopupWindow();
+    await renderAddTaskPopup();
+    loadExitingCategories();
+    renderCategoryList();
+    newCatInputActive = false;
+    renderSubtasks();
+}
+
+
+/**
+ * this function render the popup menu AddTask.
+ */
+async function renderAddTaskPopup(){
+    document.getElementById('boardPopup').innerHTML = '';
+    document.getElementById('boardPopup').innerHTML = renderAddTaskPopupHtml();
+}
+
+
+/**
+ * this function returns the popup Menu html string
+ * @returns - Board popup Menu html string.
+ */
+function renderAddTaskPopupHtml(){
+    return /*html*/`
+        &lt;div id='boardAddTaskPopup' onclick='stopClose(event)'>
+            &lt;div class='boardAddTaskHeadlineDiv'>
+                &lt;h2 class='addTHeadline'>Add Task&lt;/h2>
+            &lt;/div>
+            &lt;div class='boardAddTaskBtnOuterContainer'>
+                &lt;div class='boardAddTaskBtnInnerContainer'>
+                    &lt;button class='addTaskClear' onmouseover='addTaskClearOn()' onmouseout='addTaskClearOff()' onclick='clearFormularData()'>
+                        &lt;span>Clear&lt;/span> 
+                        &lt;img id="addTaskClear" src="./assets/img/clearb.png">
+                    &lt;/button>
+                    &lt;button class='addTaskCreate' onclick='checkInputs()'>
+                        &lt;span>Create Task&lt;/span>
+                        &lt;img src="./assets/img/createb.png">  
+                    &lt;/button>
+                &lt;/div>
+            &lt;/div>
+            &lt;div class='boardAddTaskAddTitleContainer'>
+                &lt;div class='addTaskAddTitleBox'>
+                    &lt;h3>Title&lt;/h3>
+                    &lt;form onsubmit='goToDescripten(); return false' >
+                        &lt;input  required type="text" placeholder='Enter a title' id='addTaskTitle' autocomplete='off' minlength='3'>
+                    &lt;/form>
+                    &lt;span class='requiredText' id='titleReq'>This field is required&lt;/span>
+                &lt;/div>
+
+                &lt;div class='addTaskAddDescriptenBox'>
+                    &lt;h3>Descripten&lt;/h3>
+                    &lt;!-- &lt;form onblur='goToCategorySelection(); return false' id='formDesc' action='action.asp'> -->
+                    &lt;textarea form='formDesc' type="text" placeholder='Enter Descripten' id='addTaskDescripten'  required minlength='5'>&lt;/textarea>
+                    &lt;!-- &lt;/form> -->
+                    &lt;span class='requiredText' id='descReq'>This field is required&lt;/span>
+                &lt;/div>
+
+                &lt;div class='addTaskAddCategoryBox'>
+                    &lt;h3>Category&lt;/h3>
+                    &lt;button onclick=enableDisableCatList() id='selectedCat'>
+                        &lt;input disabled id='selectedCatInput' placeholder='Select task category' autocomplete='off'>
+                        &lt;span id='sColor'>&lt;/span>
+                        &lt;div class='newCategoryImgDiv d-none' id='addTaskNewCatBtn'>
+                            &lt;img src="../assets/img/new_cat_cancel.png">
+                            &lt;img src="../assets/img/bnt_divider.png" class='btnDivider'>
+                            &lt;img src="../assets/img/akar-icons_check.png">
+                        &lt;/div>
+                        &lt;img src="../assets/img/Vector 2.png" class='dropdownImg' id='dropdownImg'>
+                    &lt;/button>
+                    &lt;span class='listD-none requiredText' id='catReq'>This field is required&lt;/span>
+                    &lt;ul class="addTaskCatList listD-none" id='CatListDropdown'>
+                        
+                    &lt;/ul>
+                    &lt;div class='addTaskAddCategoryColor listD-none' id='colorSelection'>
+                        &lt;div class='color0' id='color0Div' onclick='addColorToCat(0)'>&lt;/div>
+                        &lt;div class='color1' id='color1Div' onclick='addColorToCat(1)'>&lt;/div>
+                        &lt;div class='color2' id='color2Div' onclick='addColorToCat(2)'>&lt;/div>
+                        &lt;div class='color3' id='color3Div' onclick='addColorToCat(3)'>&lt;/div>
+                        &lt;div class='color4' id='color4Div' onclick='addColorToCat(4)'>&lt;/div>
+                        &lt;div class='color5' id='color5Div' onclick='addColorToCat(5)'>&lt;/div>
+                    &lt;/div>
+                &lt;/div>
+
+                &lt;div class='addTaskAssignedBox' id='addTaskAssignedBox'>
+                    &lt;h3>Assigned to&lt;/h3>
+                    &lt;button onclick=enableDisableAssignList()>&lt;span id='selectedAssign'>Select contacts to Assign&lt;/span>&lt;img src="../assets/img/Vector 2.png" class='dropdownImg'>&lt;/button>
+                    &lt;span id='assignReq'>This field is required&lt;/span>
+                    &lt;ul class="addTaskAssignList listD-none" id="dropdown2">
+                        &lt;li>New Assign&lt;/li>
+                        &lt;li>Assign 2&lt;/li>
+                        &lt;li>Assign 3&lt;/li>
+                    &lt;/ul>
+                &lt;/div>
+            &lt;/div>
+
+            &lt;div class='boardAddTaskDivider'>
+
+            &lt;/div>
+
+            &lt;div class='boardAddTaskRightContainer'>
+                &lt;div class='addTaskDate'>
+                    &lt;h3>Due date&lt;/h3>
+                    &lt;input required type="date" id='dueDate'>
+                    &lt;span class='requiredText' id='dateReq'>This field is required&lt;/span>
+                &lt;/div>
+                &lt;div class='addTaskPrio'>
+                    &lt;h3>Prio&lt;/h3>
+                    &lt;div class='addTaskPrioIcons'>
+                        &lt;div class='addTaskUrgent' id='addTaskUrgent' onclick='addPrio(0)'>
+                            &lt;span id='addTaskUrgentSpan'>Urgent&lt;/span>
+                            &lt;img id='addTaskUrgentImg' src="../assets/img/urgent_arrows.png">
+                        &lt;/div>
+                        &lt;div class='addTaskMedium' id='addTaskMedium' onclick='addPrio(1)'>
+                            &lt;span id='addTaskMediumSpan'>Medium&lt;/span>
+                            &lt;img id='addTaskMediumImg' src="../assets/img/prio_medium.png">
+                        &lt;/div>
+                        &lt;div class='addTaskLow' id='addTaskLow' onclick='addPrio(2)'>
+                            &lt;span id='addTaskLowSpan'>Low&lt;/span>
+                            &lt;img id='addTaskLowImg' src="../assets/img/prio_low.png">
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+                &lt;div class='subtask'>
+                    &lt;h3>Subtask&lt;/h3>
+                    &lt;div class='inputDiv'>
+                        &lt;form onsubmit='addSubtask(); return false' >
+                            &lt;input type="text" placeholder='Add new subtask' id='subTask' autocomplete='off' onfocus='subTaskInputentered()' onblur='subTaskInputLeave()' minlength='3'>
+                            &lt;img src="../assets/img/add_cross.png" class='subtaskCross' id='subtaskCross' onclick='enterSubTaskInput()'>
+                        &lt;/form>
+                        &lt;div class='subTaskImgDiv d-none' id='subTaskImgDiv' >
+                            &lt;img src="../assets/img/new_cat_cancel.png" onclick='resetSubtaskInput()'>
+                            &lt;img src="../assets/img/bnt_divider.png" class='btnDivider'>
+                            &lt;img src="../assets/img/akar-icons_check.png" onclick='addSubtask()'>
+                        &lt;/div>
+                        
+                    &lt;/div>
+                    
+                    &lt;div class='addTaskCheckbox' id='subtaskCheckboxes'>
+        
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+        &lt;!-- &lt;/form>  -->
+        &lt;div class="boardtaskAddedToBoard" id='test'>
+            &lt;div class="taskAddedToBoardContainer">
+                &lt;span>Task added to board&lt;/span>
+                &lt;img src="./assets/img/img_board_w.png">
+            &lt;/div>
+        &lt;/div>`;
+}
+
+
+
+
+
+// Testarea PopupCard end***********************************************************************************************</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addColorToCat">addColorToCat</a></li><li><a href="global.html#addContactToTaskForceWithCheckBox">addContactToTaskForceWithCheckBox</a></li><li><a href="global.html#addRemoveToggleForTaskForce">addRemoveToggleForTaskForce</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#assigendContactEmail">assigendContactEmail</a></li><li><a href="global.html#assignInputAutoFocus">assignInputAutoFocus</a></li><li><a href="global.html#awaitingFeedbackHtml">awaitingFeedbackHtml</a></li><li><a href="global.html#boardHtml">boardHtml</a></li><li><a href="global.html#borderBottomOffAssignedBoxButton">borderBottomOffAssignedBoxButton</a></li><li><a href="global.html#borderBottomOnAssignedBoxButton">borderBottomOnAssignedBoxButton</a></li><li><a href="global.html#categoryColorAvailable">categoryColorAvailable</a></li><li><a href="global.html#categoryListAndNewCategoryInputNotActive">categoryListAndNewCategoryInputNotActive</a></li><li><a href="global.html#checkInputs">checkInputs</a></li><li><a href="global.html#chooseColorForTaskForceBadge">chooseColorForTaskForceBadge</a></li><li><a href="global.html#createWorkStatusArrays">createWorkStatusArrays</a></li><li><a href="global.html#createWorkStatusJson">createWorkStatusJson</a></li><li><a href="global.html#disablePopupWindow">disablePopupWindow</a></li><li><a href="global.html#doNotCloseOnClick">doNotCloseOnClick</a></li><li><a href="global.html#doneHtml">doneHtml</a></li><li><a href="global.html#dropdownCategoryListHtml">dropdownCategoryListHtml</a></li><li><a href="global.html#dropdownCategoryListHtml1">dropdownCategoryListHtml1</a></li><li><a href="global.html#enableAssignList">enableAssignList</a></li><li><a href="global.html#enableDisableAssignList">enableDisableAssignList</a></li><li><a href="global.html#enableDisableCatList">enableDisableCatList</a></li><li><a href="global.html#enablePopupWindow">enablePopupWindow</a></li><li><a href="global.html#existingCategoryHtml">existingCategoryHtml</a></li><li><a href="global.html#fillTaskData">fillTaskData</a></li><li><a href="global.html#findIndexOfMemberOfTaskForce">findIndexOfMemberOfTaskForce</a></li><li><a href="global.html#generateBadgesTaskForceHtml">generateBadgesTaskForceHtml</a></li><li><a href="global.html#getReqiredFieldValues">getReqiredFieldValues</a></li><li><a href="global.html#highlight">highlight</a></li><li><a href="global.html#inProgressHtml">inProgressHtml</a></li><li><a href="global.html#joinTaskArrayExistInStorage">joinTaskArrayExistInStorage</a></li><li><a href="global.html#loadExitingCategories">loadExitingCategories</a></li><li><a href="global.html#loadJSONFromServer">loadJSONFromServer</a></li><li><a href="global.html#loadTask">loadTask</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#newCategoryCreationIsSelected">newCategoryCreationIsSelected</a></li><li><a href="global.html#newCategoryInputHtml">newCategoryInputHtml</a></li><li><a href="global.html#notShowAddDiv">notShowAddDiv</a></li><li><a href="global.html#pushTaskData">pushTaskData</a></li><li><a href="global.html#removeHighlight">removeHighlight</a></li><li><a href="global.html#renderAddTask">renderAddTask</a></li><li><a href="global.html#renderAddTaskPopup">renderAddTaskPopup</a></li><li><a href="global.html#renderAddTaskPopupHtml">renderAddTaskPopupHtml</a></li><li><a href="global.html#renderAllCards">renderAllCards</a></li><li><a href="global.html#renderAwaitingFeedbackCards">renderAwaitingFeedbackCards</a></li><li><a href="global.html#renderBadgesMemberOfTaskForce">renderBadgesMemberOfTaskForce</a></li><li><a href="global.html#renderBoard">renderBoard</a></li><li><a href="global.html#renderCategoryList">renderCategoryList</a></li><li><a href="global.html#renderContactsInAssignDropDownMenu">renderContactsInAssignDropDownMenu</a></li><li><a href="global.html#renderDoneCards">renderDoneCards</a></li><li><a href="global.html#renderInProgressCards">renderInProgressCards</a></li><li><a href="global.html#renderPopupTaskCard">renderPopupTaskCard</a></li><li><a href="global.html#renderSubtaskHtml">renderSubtaskHtml</a></li><li><a href="global.html#renderToDoCards">renderToDoCards</a></li><li><a href="global.html#requiredFieldAreNotValid">requiredFieldAreNotValid</a></li><li><a href="global.html#resetCatSelection">resetCatSelection</a></li><li><a href="global.html#resetCatSelectionHtml">resetCatSelectionHtml</a></li><li><a href="global.html#resetRequiredWarnings">resetRequiredWarnings</a></li><li><a href="global.html#resetWorkStatusArrays">resetWorkStatusArrays</a></li><li><a href="global.html#saveJSONToServer">saveJSONToServer</a></li><li><a href="global.html#saveTask">saveTask</a></li><li><a href="global.html#selectCategory">selectCategory</a></li><li><a href="global.html#setCategoryBackgroundColorForWorkStatus0">setCategoryBackgroundColorForWorkStatus0</a></li><li><a href="global.html#setCategoryBackgroundColorForWorkStatus1">setCategoryBackgroundColorForWorkStatus1</a></li><li><a href="global.html#setCategoryBackgroundColorForWorkStatus2">setCategoryBackgroundColorForWorkStatus2</a></li><li><a href="global.html#setCategoryBackgroundColorForWorkStatus3">setCategoryBackgroundColorForWorkStatus3</a></li><li><a href="global.html#setNewCategoryToList">setNewCategoryToList</a></li><li><a href="global.html#setRequiredTextWarnings">setRequiredTextWarnings</a></li><li><a href="global.html#setSettingsForExistingCategory">setSettingsForExistingCategory</a></li><li><a href="global.html#setSettingsForNewCategoryInput">setSettingsForNewCategoryInput</a></li><li><a href="global.html#setTaskCardPopupCatColor">setTaskCardPopupCatColor</a></li><li><a href="global.html#setTaskCardPopupPrioBackground">setTaskCardPopupPrioBackground</a></li><li><a href="global.html#showAddDiv">showAddDiv</a></li><li><a href="global.html#startDrag">startDrag</a></li><li><a href="global.html#stopClose">stopClose</a></li><li><a href="global.html#toDoCardHtml">toDoCardHtml</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Fri Dec 30 2022 13:00:23 GMT+0100 (Mitteleuropäische Normalzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

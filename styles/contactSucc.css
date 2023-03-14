@@ -1,0 +1,44 @@
+body{
+    margin: 0;
+    user-select: none;
+}
+.contactSucc{
+    display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 0px;
+position: relative;
+width: 326px;
+height: 74px;
+filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.1));
+}
+.contactSuccContainer{
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+width: 326px;
+height: 74px;
+background: #2A3647;
+box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+border-radius: 20px;
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+.contactSuccContainer span{
+    width: 279px;
+height: 25px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 21px;
+line-height: 120%;
+color: #FFFFFF;
+text-align: center;
+flex: none;
+order: 0;
+flex-grow: 0;
+}

@@ -1,0 +1,91 @@
+body {
+	font-family: Inter;
+}
+
+*::-webkit-scrollbar {
+	display: none;
+}
+
+.content {
+	overflow: hidden;
+}
+
+.helpContainer {
+	display: flex;
+	justify-content: center;
+	height: 100vh;
+}
+
+.helpContentContainer {
+	padding: 0 50px;
+	max-width: 100%;
+}
+
+.headingHelpContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+}
+
+.headingHelpContainer h1 {
+	font-size: 61px;
+}
+
+.back {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	right: 16px;
+	cursor: pointer;
+}
+
+.helpMainContent {
+	overflow: hidden scroll;
+	height: calc(100vh - 250px);
+}
+
+.definitionContainer h2,
+.manualContainer h2 {
+	font-size: 27px;
+}
+
+.stepsManualContainer {
+	counter-reset: counter-name;
+}
+
+.steps {
+	display: flex;
+}
+
+.stepsManualContainer .steps::before {
+	counter-increment: counter-name;
+	content: counter(counter-name) '.   ';
+	font-size: 27px;
+	display: flex;
+	align-items: center;
+}
+
+.steps p {
+	padding-left: 12px;
+}
+
+@media screen and (max-width: 768px) {
+	.headingHelpContainer h1 {
+		font-size: 47px;
+	}
+
+	.helpContentContainer {
+		padding: 0 36px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.helpContentContainer {
+		padding: 0 6px;
+	}
+
+	.headingHelpContainer h1 {
+		font-size: 36px;
+	}
+}

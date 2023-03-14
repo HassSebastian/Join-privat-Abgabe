@@ -1,0 +1,183 @@
+/* Board Add Task Marginsets */
+.addMarginCatList{
+    margin-top: 89px;
+}
+
+.addMarginAssignList{
+    margin-top: 43px;
+}
+
+.addMarginBothList{
+    margin-top: 103px;
+}
+
+
+@media screen and (max-width: 1440px) {
+    /* board */
+    
+    .canbanBoard {
+        left: 22% !important;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    /* board */
+
+    .toDoHeadline {
+        width: 401px !important;
+    }
+
+    .boardTaskCardOuterContainer {
+        left: 22px !important;
+    }
+
+    .boardTaskCardOuterContainer {
+        height: 640px !important;
+    }
+
+    .boardTaskCardOuterContainer {
+        width: 100% !important;
+    }
+
+    .toDoOuterContainer {
+        flex-direction: unset !important;
+        align-items: unset !important;
+        width: 86% !important;
+        flex-wrap: wrap;
+    }
+
+    /* board Detail View */
+    .boardTaskCardPopup {
+        left: unset;
+        top: unset;
+        box-sizing: border-box;
+        width: 423px;
+    }
+
+    .boardTaskDetail {
+        justify-content: center !important;
+        display: flex;
+        width: unset !important;
+        height: 935px !important;
+        margin-top: 89px !important;
+        margin-bottom: unset !important;
+        align-items: center;
+    }
+
+    .moveBtnMobil {
+        left: -18px !important;
+        top: 635px !important;
+    }
+
+}
+
+@media screen and (max-width: 1300px) {
+    /* Board Add Task */
+    .shadowOverlay{
+        width: 100%;
+    }
+    .boardAddTaskPopupOverlay{
+        width: 560px !important;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+
+    .close_logo_edit_task{
+        left: 510px;
+        position: sticky;
+    }
+
+    .boardAddTaskDividerBoard{
+        display: none;
+    }
+
+    .boardAddTaskRightContainer{
+        left: 73px;
+        top: 814px;
+    }
+
+    .boardAddTaskBtnOuterContainer{
+        left: 158px;
+        top: 1360px;
+    }
+
+    .boardAddTaskBtnInnerContainer{
+        margin-bottom: 100px;
+    }
+
+    .addTaskCheckBox{
+        flex-wrap: wrap;
+        flex-direction: row;
+        width: 100%;
+        max-height: 90px;
+        overflow: scroll;
+    }
+
+    .boardtaskAddedToBoard{
+        left: 130px;
+        top: 1270px;
+        top: calc(100% + 500px);
+    }
+
+    .rightContainer {
+        width: 100%;
+    }
+
+
+    
+}
+
+
+@media screen and (max-width: 768px) {
+
+    /* board reset*/
+    .boardTaskCardOuterContainer {
+        left: 33px !important;
+    }
+
+    .boardTaskCardOuterContainer {
+        height: 550px !important;
+    }
+
+    .boardTaskCardOuterContainer {
+        width: 363px !important;
+    }
+
+    .toDoOuterContainer {
+        flex-direction: column !important;
+        width: 363px;
+        align-items: center;
+    }
+
+    .toDoHeadline {
+        width: 363px !important;
+    }
+
+    .boardTaskCardPopup {
+        left: 480px !important;
+        top: 117px !important;
+        box-sizing: unset !important;
+        width: 573px !important;
+    }
+
+    .boardTaskDetail {
+        justify-content: unset !important;
+        display: unset !important;
+        width: 420px !important;
+        height: 766px !important;
+        margin-top: 80px !important;
+        margin-bottom: 80px !important;
+        align-items: unset !important;
+    }
+
+    .moveBtnMobil {
+        left: 33px !important;
+        top: 685px !important;
+    }
+}
+
+
+
+
+
+/* new Main Classes for AddTask due to responsivness */

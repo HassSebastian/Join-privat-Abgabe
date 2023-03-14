@@ -1,0 +1,210 @@
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	overflow: hidden;
+	background-color: #f6f7f8;
+	font-family: 'Inter';
+	text-decoration: none;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.d-none {
+	display: none !important;
+}
+
+/* forgot */
+.formForgot {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.forgotPasswordWindow {
+	position: relative;
+	width: 652px;
+	height: 462px;
+	padding: 24px 35px;
+	border-radius: 30px;
+	background-color: white;
+	box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+	overflow: hidden;
+}
+
+.forgotPasswordWindow > img {
+	cursor: pointer;
+}
+
+.innerContainerForgotPassword,
+.innerResetContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.innerContainerForgotPassword h1 {
+	font-size: 61px;
+	margin: unset;
+}
+
+.innerContainerForgotPassword h1 {
+	text-align: center;
+}
+
+.innerContainerForgotPassword p {
+	font-size: 21px;
+	text-align: center;
+}
+
+.forgotPasswordInputContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 422px;
+	gap: 8px;
+}
+
+.inputfieldContainer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 422px;
+	height: 51px;
+	padding: 13px 21px;
+	border: 1px solid #d1d1d1;
+	border-radius: 10px;
+}
+
+.inputfieldContainer input,
+.forgotResetInputPassword {
+	border: transparent;
+	height: 25px;
+	font-family: 'Inter';
+	margin: unset;
+	padding: unset;
+	outline: 0;
+	font-size: 21px;
+}
+
+.inputfieldContainer span {
+	width: 100%;
+	text-align: start;
+}
+
+.required {
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+	width: 100%;
+}
+
+.forgotButton {
+	justify-content: center;
+	align-items: center;
+	width: 264px;
+	height: 51px;
+	background: #2a3647;
+	border-radius: 8px;
+	flex: none;
+	border: 0;
+}
+
+.forgotButton span {
+	width: 189px;
+	font-family: 'Inter';
+	font-weight: 700;
+	font-size: 21px;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+/* Email has been sent */
+
+.sentMassageDoneMaserContainerMob {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	width: 326px;
+	height: 74px;
+	filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.1));
+	bottom: 30px;
+	z-index: 3;
+	overflow: hidden;
+	transform: translateY(300px);
+
+	border-radius: 10px;
+}
+
+.sentMassageDoneMaserContainerMobSlide {
+	transform: translateY(0px) !important;
+	transition: 500ms ease-in-out;
+}
+
+.sentMassageDoneMaserContainerMob span {
+	color: white;
+}
+
+.sentMassageDoneContainerMob {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0px 17px;
+	gap: 10px;
+	width: 326px;
+	height: 74px;
+	background: #2a3647;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+	border-radius: 20px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+/* reset*/
+.formRestPassword {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.resetPasswordWindow {
+	position: relative;
+	width: 652px;
+	height: 462px;
+	padding: 24px 35px;
+	border-radius: 30px;
+	background-color: white;
+	box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+	overflow: hidden;
+}
+
+.mainResetContentContainer,
+.inputContainer {
+	display: flex;
+	flex-direction: column;
+}
+
+.innerResetContainer h1 {
+	font-size: 61px;
+	margin: unset;
+	text-align: center;
+}

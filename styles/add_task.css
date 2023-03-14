@@ -1,0 +1,1849 @@
+* {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+	display: none;
+}
+
+.testResponsiv {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	width: 100%;
+	height: fit-content;
+	padding: 82px 0 0 123px;
+}
+
+.testResponsiveAddTaskContact {
+	margin-bottom: 0 !important;
+	overflow-x: hidden !important;
+}
+
+.addTaskMobileResponsiveBackground {
+	background-color: #f6f7f8;
+	position: absolute;
+	top: 0;
+	bottom: 0px;
+	width: 100%;
+}
+
+.addTaskHeadlineDiv {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 1px;
+	/* position: absolute; */
+	width: 466px;
+	height: 78px;
+	left: 123px;
+	top: 82px;
+}
+
+.addTHeadline {
+	width: 466px;
+	height: 78px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 61px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	margin-block-start: 0px;
+	margin-block-end: 0px;
+}
+
+.addTaskBtnOuterContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 0px;
+	gap: 4px;
+	position: absolute;
+	width: 338px;
+	height: 61px;
+	right: 0;
+	bottom: 0; /* MIt dem WErt passt es in der Desktopansicht */
+}
+
+.addTaskBtnOuterContainerContacts {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 0px;
+	gap: 4px;
+	position: absolute;
+	width: 338px;
+	height: 61px;
+	right: 0;
+	bottom: -95px;
+}
+
+.addTaskBtnInnerContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 0px;
+	gap: 25px;
+	width: 338px;
+	height: 61px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.addTaskBtnInnerContainerContacts {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	gap: 25px;
+	width: 338px;
+	height: 61px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.addTaskClear {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 18px 10px;
+	gap: 10px;
+	width: 136px;
+	/* height: 61px; */
+	border: 1px solid #2a3647;
+	border-radius: 10px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	cursor: pointer;
+}
+
+.addTaskClearContacts {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 18px 10px;
+	gap: 10px;
+	width: 136px;
+	/* height: 61px; */
+	border: 1px solid #2a3647;
+	border-radius: 10px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	cursor: pointer;
+}
+
+.addTaskClear:hover {
+	border: 2px solid #29abe2;
+	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+	transition: 100ms ease-in-out;
+}
+
+.addTaskClear:hover * {
+	color: #29abe2;
+	transition: 100ms ease-in-out;
+}
+
+.addTaskCreate {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 18px 10px;
+	gap: 10px;
+	width: 177px;
+	height: 61px;
+	background: #2a3647;
+	border-radius: 10px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	border: 0;
+	cursor: pointer;
+}
+
+.addTaskCreateContacts {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 18px 10px;
+	gap: 10px;
+	width: 177px;
+	height: 61px;
+	background: #2a3647;
+	border-radius: 10px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	border: 0;
+	cursor: pointer;
+}
+
+.addTaskCreate:hover {
+	background: #29abe2;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	transition: 100ms ease-in-out;
+}
+
+.addTaskClear span {
+	width: 53px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #2a3647;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.addTaskClearContacts span {
+	width: 53px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #2a3647;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.addTaskCreate span {
+	width: 123px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 21px;
+	line-height: 120%;
+	color: #ffffff;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.addTaskCreateContacts span {
+	width: 123px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 21px;
+	line-height: 120%;
+	color: #ffffff;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+/* .addTaskClearImgContainer {
+    
+    width: 24px;
+    height: 24px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.addTaskCreateImgContainer {
+    
+    width: 24px;
+    height: 24px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+} */
+
+/* .addTaskClear img {
+    position: absolute;
+    left: 28.16%;
+    right: 28.15%;
+    top: 28.15%;
+    bottom: 28.15%;
+
+    border: 2px solid #2A3647;
+}
+
+.addTaskCreate img {
+    position: absolute;
+    left: 16.67%;
+    right: 16.67%;
+    top: 25%;
+    bottom: 25%;
+
+    border: 2px solid #FFFFFF;
+} */
+
+.mainAddTaskContainer {
+	display: flex;
+	width: fit-content;
+	position: relative;
+	overflow-x: hidden !important;
+}
+
+.addTaskAddTitleContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 14px;
+	width: fit-content;
+	height: fit-content;
+	left: 123px;
+	top: 201px;
+	padding-right: 59px;
+}
+
+.addTaskAddTitleBox {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 8px;
+	width: 100%;
+	height: 104px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.addTaskAddTitleBox h3 {
+	width: 65px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	margin-block-start: 0px;
+	margin-block-end: 0px;
+	margin-block-start: 0px;
+	margin-block-end: 0px;
+}
+
+.formAddTaskTitle {
+	width: 100%;
+}
+
+.addTaskAddTitleBox input {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 13px 21px;
+	gap: 10px;
+	width: 100%;
+	height: 51px;
+	background: #ffffff;
+	border: 1px solid #d1d1d1;
+	border-radius: 10px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	cursor: pointer;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+}
+
+::placeholder {
+	color: #d1d1d1;
+}
+
+.requiredText {
+	height: 12px;
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 120%;
+	flex: none;
+	order: 2;
+	flex-grow: 0;
+	color: #fbbbc4;
+}
+
+#titleReq {
+	opacity: 0;
+}
+
+#prioReq {
+	opacity: 0;
+}
+
+#descReq {
+	opacity: 0;
+}
+
+#assignReq {
+	opacity: 0;
+	display: none;
+}
+
+#dateReq {
+	opacity: 0;
+}
+
+#catReq {
+	opacity: 0;
+}
+
+.addTaskAddDescriptenBox {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 8px;
+	width: 100%;
+	height: 172px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.addTaskAddDescriptenBox h3 {
+	width: 154px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	margin-block-start: 0px;
+	margin-block-end: 0px;
+}
+
+.addTaskAddDescriptenBox textarea {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 18px 21px;
+	gap: 10px;
+	isolation: isolate;
+	width: 100%;
+	height: 119px;
+	background: #ffffff;
+	border: 1px solid #d1d1d1;
+	border-radius: 10px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	cursor: pointer;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+}
+
+.addTaskAddCategoryBox {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 8px;
+	width: 100%;
+	height: 104px;
+	flex: none;
+	order: 2;
+	flex-grow: 0;
+}
+
+.addTaskAddCategoryBox h3 {
+	width: 93px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	margin-block-start: 0px;
+	margin-block-end: 0px;
+}
+
+.addTaskAddCategoryBox button {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 18px 21px;
+	gap: 10px;
+	isolation: isolate;
+	width: 100%;
+	height: 51px;
+	background: #ffffff;
+	border: 1px solid #d1d1d1;
+	border-radius: 10px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	cursor: pointer;
+	position: relative;
+}
+
+.d-none {
+	display: none !important;
+}
+
+.addTaskAddCategoryBox button input {
+	/* width: 205px; */
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	z-index: 0;
+	text-align: left;
+	border: 0;
+	outline: none;
+	cursor: pointer;
+	background-color: transparent;
+}
+
+.addTaskAddCategoryBox button p {
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	z-index: 0;
+	text-align: left;
+	border: 0;
+	outline: none;
+	cursor: pointer;
+}
+
+.dropdownImg {
+	position: absolute;
+	width: 16px;
+	height: 8px;
+	right: 14px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	z-index: 1;
+}
+
+.newCategoryImgDiv {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	gap: 9px;
+	position: absolute;
+	width: 66px;
+	height: 31px;
+	right: 14px;
+	top: 11px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	z-index: 1;
+	cursor: pointer;
+}
+
+.newCategoryImgDiv img {
+	width: 24px;
+	height: 24px;
+
+	/* Inside auto layout */
+
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.addTaskCatList {
+	background: #ffffff;
+	border-top: 0px;
+	border-bottom: 1px;
+	border-left: 1px;
+	border-right: 1px;
+	border-color: #d1d1d1;
+	border-style: solid;
+	width: 100%;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	margin-top: -13px;
+	margin-bottom: -5px;
+	z-index: 1;
+	list-style-type: none;
+	padding: 0;
+}
+
+.listD-none {
+	display: none !important;
+}
+
+.addMarginTop {
+	margin-top: 75.57px !important;
+}
+
+.addTaskCatList {
+	min-height: 103px;
+	/* width: 100%; */
+	overflow: hidden;
+	overflow-y: scroll;
+}
+
+.addTaskCatList li {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	z-index: 0;
+
+	display: flex;
+	justify-content: flex-start;
+	padding: 13px 21px;
+	align-items: center;
+	gap: 10px;
+}
+
+.addTaskCatList li:hover {
+	background-color: #d1d1d1;
+	background-size: 100%;
+	cursor: pointer;
+}
+
+.addTaskAddCategoryColor {
+	width: 402px;
+	height: 20px;
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 120%;
+	flex: none;
+	order: 2;
+	flex-grow: 0;
+	padding-left: 20px;
+	display: flex;
+	gap: 24px;
+}
+
+.addTaskAddCategoryColor div {
+	height: 12px;
+	width: 12px;
+	border-radius: 100%;
+	border: 1px solid #d1d1d1;
+	cursor: pointer;
+}
+
+.addTaskColorDiv {
+	height: 12px;
+	width: 12px;
+	border-radius: 100%;
+	border: 1px solid #d1d1d1;
+}
+
+.colorDivSelected {
+	border: 2px solid #ffffff;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#catReq {
+	opacity: 0;
+}
+
+.color0 {
+	background-color: #8aa4ff;
+}
+
+.color1 {
+	background-color: #ff0000;
+}
+
+.color2 {
+	background-color: #2ad300;
+}
+
+.color3 {
+	background-color: #ff8a00;
+}
+
+.color4 {
+	background-color: #e200be;
+}
+
+.color5 {
+	background-color: #0038ff;
+}
+
+.addTaskAssignedBox {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 8px;
+	width: 100%;
+	height: fit-content;
+	flex: none;
+	order: 3;
+	flex-grow: 0;
+}
+
+.addTaskAssignedBox h3 {
+	width: 118px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	margin-block-start: 0px;
+	margin-block-end: 0px;
+}
+
+.addTaskAssignedBox button {
+	position: relative;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 18px 21px;
+	gap: 10px;
+	isolation: isolate;
+	width: 100%;
+	height: 51px;
+	background: #ffffff;
+	border: 1px solid #d1d1d1;
+	border-radius: 10px 10px 10px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	cursor: pointer;
+}
+
+.addTaskAssignedBox input {
+	border: 0;
+	background-color: transparent;
+	outline: none;
+	font-family: 'Inter';
+	font-style: normal;
+	font-size: 21px;
+	font-weight: 400;
+	color: black;
+}
+
+.addTaskAssignedBox input::placeholder {
+	/* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: black;
+	opacity: 1;
+	/* Firefox */
+}
+
+.addTaskAssignedBox input:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: black;
+}
+
+.addTaskAssignedBox input::-ms-input-placeholder {
+	/* Microsoft Edge */
+	color: black;
+}
+
+.greyPlaceholder::placeholder {
+	/* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: #d1d1d1 !important;
+	opacity: 1;
+	/* Firefox */
+}
+
+.greyPlaceholder:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: #d1d1d1 !important;
+}
+
+.greyPlaceholder::-ms-input-placeholder {
+	/* Microsoft Edge */
+	color: #d1d1d1 !important;
+}
+
+.addTaskAssignedBox button span {
+	width: 100%;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	z-index: 0;
+	text-align: left;
+}
+
+.grey {
+	color: #d1d1d1 !important;
+}
+
+.black {
+	color: #000000 !important;
+}
+
+.assignToCancelConfirmImgContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	gap: 9px;
+
+	position: absolute;
+	width: 66px;
+	height: 31px;
+	left: 341px;
+	top: 11px;
+
+	/* Inside auto layout */
+
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	z-index: 1;
+}
+
+.assignToCancelConfirmImgContainer img {
+	width: 24px;
+	height: 24px !important;
+}
+
+.badgesTaskForce {
+	display: flex;
+	gap: 5px;
+	width: 422px;
+	flex-wrap: wrap;
+}
+
+.badgeTaskForce {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 45px;
+	width: 45px;
+	color: white;
+	background-color: red;
+	border-radius: 100%;
+	font-size: 21px;
+	cursor: pointer;
+	font-family: 'Inter';
+}
+
+.addTaskAssignList {
+	background: #ffffff;
+	border-top: 0px;
+	border-bottom: 1px;
+	border-left: 1px;
+	border-right: 1px;
+	border-color: #d1d1d1;
+	border-style: solid;
+	width: 100%;
+	height: 124px;
+	overflow-y: scroll;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	/* margin-top: -38px; */
+	margin-top: -9px;
+	z-index: 1;
+	list-style-type: none;
+	padding: 0;
+	cursor: pointer;
+}
+
+.addTaskAssignList li {
+	background: #ffffff !important;
+	position: relative;
+	width: 422px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 21px;
+	gap: 10px;
+	isolation: isolate;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	font-size: 21px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	cursor: pointer;
+}
+
+.addTaskAssignList li:hover {
+	background-color: #d1d1d1 !important;
+	background-size: 100%;
+}
+
+.addTaskListElements:hover {
+	background-color: #d1d1d1 !important;
+}
+
+.assignCheckboxContainer {
+	position: relative;
+	height: 17px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* 
+!checkbox */
+.checkBox {
+	position: absolute;
+	background: #000000;
+	border-radius: 3px;
+	height: 13px;
+	width: 13px;
+	background: #000000;
+	border-radius: 3px;
+	/* left: 392px; */
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.checkMark {
+	position: absolute;
+	background: #000000;
+	border-radius: 1px;
+}
+
+.inviteNewContacts {
+	display: flex;
+	justify-content: space-between;
+}
+
+.assignInviteNewContactImage {
+	position: absolute;
+	right: 11px;
+}
+
+.addTaskDivider {
+	position: absolute;
+	/* position: relative; */
+	width: 0px;
+	height: 551px;
+	/* left: 836px; */
+	left: 604px;
+	top: 201px;
+	border: 1px solid #d1d1d1;
+}
+
+.addTaskRightContainer {
+	width: fit-content;
+	height: 551px;
+	padding-left: 59px;
+	border-left: 2px solid #d1d1d1;
+	position: relative;
+}
+
+.addTaskDate {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 7px;
+	width: 100%;
+	height: 104px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.addTaskDate h3 {
+	width: 91px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	margin-block-start: 0px;
+	margin-block-end: 0px;
+}
+
+.addTaskDate input {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 18px 21px;
+	gap: 10px;
+	isolation: isolate;
+	width: 100%;
+	height: 51px;
+	background: #ffffff;
+	border: 1px solid #d1d1d1;
+	border-radius: 10px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	cursor: pointer;
+
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #d1d1d1;
+}
+
+.addTaskDate input::-webkit-calendar-picker-indicator {
+	cursor: pointer;
+}
+
+.addTaskPrio {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 8px;
+	width: fit-content;
+	height: fit-content;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.addTaskPrio h3 {
+	width: 39px;
+	height: fit-content;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	margin-block-start: 0px;
+	margin-block-end: 0px;
+	padding-top: 14px;
+}
+
+.addTaskPrioIcons {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	gap: 10px;
+	width: fit-content;
+	height: 61px;
+	flex: none;
+	/* order: 1; */
+	flex-grow: 0;
+	/* padding-top: 13px; */
+}
+
+.addTaskUrgent,
+.addTaskMedium,
+.addTaskLow {
+	width: 136px;
+	height: 51px;
+}
+
+.addTaskUrgent {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 18px 10px;
+	gap: 10px;
+	/* width: 116px;
+	height: 15px; */
+	background: #ffffff;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	cursor: pointer;
+}
+
+.addTaskUrgent span {
+	width: 68px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.addTaskUrgent img {
+	width: 20px;
+	height: 14.51px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.addTaskMedium {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 18px 10px;
+	gap: 10px;
+	/* width: 110px;
+	height: 15px; */
+	background: #ffffff;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	cursor: pointer;
+}
+
+.addTaskMedium span {
+	width: 80px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.addTaskMedium img {
+	width: 20px;
+	height: 7.45px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.addTaskLow {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 18px 10px;
+	gap: 10px;
+	/* width: 116px;
+	height: 15px; */
+	background: #ffffff;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+	flex: none;
+	order: 2;
+	flex-grow: 0;
+	cursor: pointer;
+}
+
+.addTaskLow span {
+	width: 42px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.addTaskLow img {
+	width: 20px;
+	height: 14.51px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.subtask {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 8px;
+
+	width: 100%;
+	height: fit-content;
+
+	/* Inside auto layout */
+
+	flex: none;
+	order: 2;
+	flex-grow: 0;
+	padding-top: 30px;
+}
+
+.subtask h3 {
+	width: 92px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	margin-block-start: 0px;
+	margin-block-end: 0px;
+}
+
+.inputDiv {
+	position: relative;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 18px 21px;
+	gap: 10px;
+	isolation: isolate;
+	width: 100%;
+	height: 51px;
+	background: #ffffff;
+	border: 1px solid #d1d1d1;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.subtask input {
+	width: 178px;
+	height: 25px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	z-index: 0;
+	border: 0;
+	outline: none;
+}
+
+.subtaskCross {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	gap: 9px;
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	right: 17px;
+	top: 14px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	z-index: 1;
+	cursor: pointer;
+}
+
+.subTaskImgDiv {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	gap: 9px;
+
+	position: absolute;
+	width: 66px;
+	height: 31px;
+	right: 22px;
+	top: 11px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	z-index: 1;
+}
+
+.subTaskImgDiv img {
+	width: 24px;
+	height: 24px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	cursor: pointer;
+}
+
+.addTaskCheckbox {
+	/* display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 20px;
+    width: 110px;
+    height: 19px;
+    flex: none;
+    order: 2;
+    flex-grow: 0; */
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	/* align-items: center; */
+	padding: 0px;
+	gap: 8px;
+	width: 300px;
+	height: fit-content;
+	flex: none;
+	order: 2;
+	flex-grow: 0;
+	overflow: hidden;
+	/* overflow-y: scroll; */
+	margin-top: 10px;
+}
+
+.addTaskCheckbox input {
+	width: 16px;
+	height: 16px;
+	border-radius: 3px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	cursor: pointer;
+}
+
+.addTaskCheckbox span {
+	width: 74px;
+	height: 19px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 120%;
+	color: #000000;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+/* add to Board animation */
+.content {
+	overflow: hidden !important;
+	/* overflow-y: scroll;   edit by Basti / ich finde den Fehler nicht mehr */
+}
+
+.taskAddedToBoard {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	position: absolute;
+	width: 326px;
+	height: 74px;
+	filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.1));
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin-right: auto;
+	margin-left: auto;
+	transform: translateX(-1000px);
+	z-index: 2;
+}
+
+.taskCreatedIndication {
+	transform: translateY(-680px);
+	transition-delay: 900ms;
+	transition-duration: 300ms;
+	transition: transform 200ms ease-in-out;
+}
+
+.taskAddedToBoardContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	width: 326px;
+	height: 74px;
+	background: #2a3647;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+	border-radius: 20px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.taskAddedToBoardContainer span {
+	width: 235px;
+	height: 24px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 21px;
+	line-height: 120%;
+	color: #ffffff;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+}
+
+.taskAddedToBoardContainer img {
+	width: 22px;
+	height: 26px;
+	transform: rotate(-90deg);
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.btnDivider {
+	width: 0px !important;
+	height: 31px !important;
+	border: 1px solid #d1d1d1;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	cursor: none !important;
+}
+
+/*********************************************************************************/
+/*********************************************************************************/
+.addTaskUrgent:hover {
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.addTaskMedium:hover {
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.addTaskLow:hover {
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.color-white {
+	color: white !important;
+}
+
+.urgent-color {
+	background: #ff3d00;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.medium-color {
+	background: #ffa800;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.low-color {
+	background: #7ae229;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/*********************************************************************************/
+/*********************************************************************************/
+
+@media screen and (max-width: 1300px) {
+	.rightContainer {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 1100px) {
+	.addTaskAddTitleContainer {
+		padding-right: 35px;
+		width: 100%;
+	}
+
+	.addTaskRightContainer {
+		padding-left: 35px;
+	}
+
+	.addTaskAssignList {
+		z-index: 1 !important;
+	}
+
+	.addTaskAssignList li {
+		width: 100% !important;
+	}
+
+	.addTaskCatList {
+		z-index: 0 !important;
+	}
+
+	.testResponsiv {
+		height: 1413px;
+		left: 0px;
+		margin-bottom: 82px;
+	}
+
+	.addTaskBtnOuterContainerNewTopValue {
+		top: 1345px !important;
+	}
+
+	.addTaskBtnOuterContainerNewTopValue1 {
+		top: 1420px !important;
+	}
+
+	.addTaskBtnOuterContainerNewTopValue2 {
+		top: 1495px !important;
+	}
+
+	.addTaskLow {
+		flex: 1 !important;
+	}
+
+	.addTaskMedium {
+		flex: 1 !important;
+	}
+
+	.addTaskUrgent {
+		flex: 1 !important;
+	}
+
+	/* 	.addTaskPrioIcons {
+		gap: 35px !important;
+	} */
+
+	.taskAddedToBoard {
+		left: 0px !important;
+		top: 531px !important;
+	}
+
+	.addTaskPrio,
+	.subtask {
+		order: 0;
+	}
+
+	.testResponsiv {
+		padding: 0px 0 0 50px;
+	}
+
+	.mainAddTaskContainer * {
+		font-size: 18px !important;
+	}
+
+	.addTaskHeadlineDiv {
+		height: fit-content;
+	}
+
+	.addTHeadline {
+		font-size: 36px;
+		height: 73px;
+		vertical-align: center;
+		display: flex;
+		align-items: center;
+	}
+
+	.requiredText {
+		font-size: 12px !important;
+	}
+
+	.addTaskBtnOuterContainer {
+		bottom: 0;
+	}
+
+	.addTaskBtnOuterContainerContacts {
+		bottom: 0;
+	}
+
+	.addTaskAssignList li {
+		padding: 6px 21px;
+	}
+
+	.addTaskCatList li {
+		padding: 6px 21px;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.sliderMenu {
+		top: 79px;
+	}
+
+	.testResponsiv {
+		padding: 0 50px 0 50px !important;
+	}
+
+	.addTaskBtnOuterContainer {
+		position: unset;
+		padding-top: 20px;
+		height: fit-content;
+	}
+
+	.addTaskBtnOuterContainerContacts {
+		position: unset;
+		padding-top: 20px;
+		height: fit-content;
+	}
+
+	.addTaskHeadlineDiv {
+		width: 100%;
+	}
+
+	.mainAddTaskContainer {
+		flex-direction: column;
+		width: 100% !important;
+		overflow: scroll;
+		height: calc(100vh - 143px);
+		padding-bottom: 109px;
+	}
+
+	.addTaskAddTitleContainer {
+		padding: unset;
+	}
+
+	form {
+		width: 100%;
+	}
+
+	.addTaskRightContainer {
+		border: unset;
+		padding-left: unset;
+		padding-top: 36px;
+		width: 100%;
+	}
+
+	.addTaskPrio {
+		width: 100%;
+	}
+
+	.addTaskPrioIcons {
+		width: 100%;
+	}
+
+	.addTaskBtnOuterContainer {
+		bottom: -90px;
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.addTaskBtnOuterContainerContacts {
+		bottom: -90px;
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.testResponsiv {
+		padding: 0 34px !important;
+		height: auto;
+		overflow: scroll;
+	}
+
+	.mainAddTaskContainerContacts {
+		height: calc(100vh - 59px) !important;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.addTaskBtnOuterContainer {
+		position: absolute;
+	}
+
+	.addTaskBtnOuterContainerContacts {
+		position: absolute;
+	}
+
+	.testResponsiv {
+		padding: 0 8px !important;
+		position: unset;
+		height: fit-content;
+	}
+
+	.mainAddTaskContainer {
+		position: unset;
+		/* height: auto; */
+		/* !wie stell man dich richtig ein automatisch geht nicht */
+	}
+
+	.addTaskRightContainer {
+		position: unset;
+	}
+
+	.addTaskBtnOuterContainer {
+		top: 18px;
+		left: unset;
+		height: 51px;
+		right: 25px;
+		width: fit-content;
+		z-index: 2;
+		width: fit-content;
+		padding: 0;
+	}
+
+	.addTaskBtnOuterContainerContacts {
+		top: 14px;
+		left: unset;
+		height: 51px;
+		right: 25px;
+		width: fit-content;
+		z-index: 2;
+		width: fit-content;
+		padding: 0;
+	}
+
+	.addTaskBtnInnerContainerContacts {
+		width: unset;
+		height: 100%;
+		gap: 16px;
+	}
+
+	.addTaskClear {
+		display: none;
+	}
+
+	.addTaskClearContacts {
+		height: 38px;
+		width: 38px;
+	}
+
+	.addTaskCreateContacts {
+		height: 38px;
+		width: 38px;
+	}
+
+	.addTaskClearContacts span {
+		display: none;
+	}
+
+	.addTaskCreateContacts span {
+		display: none;
+	}
+}
+
+@media screen and (max-height: 900px) {
+	.testResponsiv {
+		padding: 0px 0 0 50px;
+	}
+
+	.mainAddTaskContainer * {
+		font-size: 18px !important;
+	}
+
+	.addTaskHeadlineDiv {
+		height: fit-content;
+	}
+
+	.addTHeadline {
+		font-size: 36px;
+		height: 73px;
+		vertical-align: center;
+		display: flex;
+		align-items: center;
+	}
+
+	.requiredText {
+		font-size: 12px !important;
+	}
+
+	.addTaskBtnOuterContainer {
+		bottom: 0;
+	}
+
+	.addTaskBtnOuterContainerContacts {
+		bottom: 0;
+	}
+
+	.addTaskAssignList li {
+		padding: 6px 21px;
+	}
+
+	.addTaskCatList li {
+		padding: 6px 21px;
+	}
+}
+
+@media screen and (max-height: 768px) {
+	.mainAddTaskContainer {
+		/* flex-direction: column; */
+		/* width: 100% !important; */
+		overflow: scroll;
+		height: calc(100vh - 176px);
+		padding-bottom: 130px;
+	}
+}

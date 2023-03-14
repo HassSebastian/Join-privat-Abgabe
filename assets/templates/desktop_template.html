@@ -1,0 +1,134 @@
+<div class="mainContainer">
+	<div class="sideMenu">
+		<div class="topSideMenu">
+			<img src=".\assets\img/join_logo.png" class="logo" />
+			<nav>
+				<table>
+					<tr class="trHover" id="btn_summary_menu" onclick="initSummary()">
+						<td><img src=".\assets\img/img_summary.png" id="imgSummary1" /><img src=".\assets\img/img_summary_w.png" id="imgSummary2" /></td>
+						<td></td>
+						<td id="btn_summary_menu_text">Summary</td>
+					</tr>
+					<tr class="trHover" id="btn_board_menu" onclick="initBoard()">
+						<td><img src=".\assets\img/img_board.png" id="imgBoard1" /><img src=".\assets\img/img_board_w.png" id="imgBoard2" /></td>
+						<td></td>
+						<td id="btn_board_menu_text">Board</td>
+					</tr>
+					<tr class="trHover" id="btn_add_task_menu" onclick="initAddTask()">
+						<td><img src=".\assets\img/img_board.png" id="imgAddTask1" /><img src=".\assets\img/img_board_w.png" id="imgAddTask2" /></td>
+						<td></td>
+						<td id="btn_add_task_menu_text">Add Task</td>
+					</tr>
+					<tr class="trHover" id="btn_contacts_menu" onclick="initContacts()">
+						<td><img src=".\assets\img/img_contacts.png" id="imgContacts1" /><img src=".\assets\img/img_contacts_w.png" id="imgContacts2" /></td>
+						<td></td>
+						<td id="btn_contacts_menu_text">Contacts</td>
+					</tr>
+				</table>
+			</nav>
+		</div>
+
+		<nav class="legalNotice">
+			<table>
+				<tr id="btnLegalNotice" onclick="initLegalNotice()" title="Legal Notice">
+					<td><img src="./assets/img/i.png" alt="Legal Notice" /></td>
+					<td></td>
+					<td>Legal notice</td>
+				</tr>
+			</table>
+		</nav>
+	</div>
+
+	<div class="sliderMenu">
+		<div class="menuContainer">
+			<img src=".\assets\img/join_logo.png" class="logo" />
+			<nav>
+				<table>
+					<tr class="trHover" id="btn_summary_menu1" onclick="initSummary()">
+						<td><img src=".\assets\img/img_summary.png" id="imgSummary11" /><img src=".\assets\img/img_summary_w.png" id="imgSummary21" /></td>
+						<td></td>
+						<td id="btn_summary_menu1_text">Summary</td>
+					</tr>
+					<tr class="trHover" id="btn_board_menu1" onclick="initBoard()">
+						<td><img src=".\assets\img/img_board.png" id="imgBoard11" /><img src=".\assets\img/img_board_w.png" id="imgBoard21" /></td>
+						<td></td>
+						<td id="btn_board_menu1_text">Board</td>
+					</tr>
+					<tr class="trHover" id="btn_add_task_menu1" onclick="initAddTask()">
+						<td><img src=".\assets\img/img_add_task.png" id="imgAddTask11" /><img src=".\assets\img/img_add_task_w.png" id="imgAddTask21" /></td>
+						<td></td>
+						<td id="btn_add_task_menu1_text">Add Task</td>
+					</tr>
+					<tr class="trHover" id="btn_contacts_menu1" onclick="initContacts()">
+						<td><img src=".\assets\img/img_contacts.png" id="imgContacts11" /><img src=".\assets\img/img_contacts_w.png" id="imgContacts21" /></td>
+						<td></td>
+						<td id="btn_contacts_menu1_text">Contacts</td>
+					</tr>
+				</table>
+			</nav>
+			<nav class="legalNotice">
+				<table>
+					<tr id="btnLegalNotice1" onclick="initLegalNotice()" title="Legal Notice">
+						<td>
+							<img src="./assets/img/i.png" alt="Legal Notice" />
+						</td>
+						<td></td>
+						<td>Legal notice</td>
+					</tr>
+				</table>
+			</nav>
+		</div>
+		<div class="menuButton">
+			<img src="./assets/img/join_logo.png" onclick="enableDisableSliderMenu()" />
+		</div>
+	</div>
+
+	<div class="rightContainer" onclick="hideSlideMenu()">
+		<div id="greetMobileOverlay" class="greetMobileOverlay d-none">
+			<div class="greetMobileContainer">
+				<div id="greetingMobile" class="greetingMobile">Good Morning</div>
+				<div id="nameToBeingGreeted" class="nameToBeingGreeted">Christian Greenfield</div>
+			</div>
+		</div>
+		<div class="memberMenu">
+			<img class="joinLogo" src="../assets/img/join_logo_black.png" alt="join logo" />
+			<h1>Kanban Project Management Tool</h1>
+			<div id="memberInfo">
+				<img src="./assets/img/question_mark.png" alt="Help" title="Help" onclick="initHelp()" />
+				<div>
+					<div id="contributorsLogoHeadder" onclick="logOutBtn()">
+						<span id="contributorsLogoHeadderLetters"></span>
+					</div>
+
+					<!-- <img src="./assets/img/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash 1.png" onclick="logOutBtn()"/> -->
+				</div>
+			</div>
+		</div>
+		<div class="logOut" id="logOut">
+			<div class="innerDropDownContainer">
+				<span class="dropDownSpanHeader" onclick="initHelp()">Help</span>
+				<span class="dropDownSpanHeader" onclick="initLegalNotice()">Legal Notice</span>
+				<span onclick="logOut()">Log out</span>
+			</div>
+		</div>
+		<div class="content" id="content"></div>
+	</div>
+	<nav class="mobileBottomMenu">
+		<div onclick="initSummary()" class="mobileMenuBtnContainer">
+			<img src="./assets/img/img_summary_w.png" alt="summary button image" class="btnMobileMenuImg" />
+			<span class="btnMobileBtnName">Summary</span>
+		</div>
+		<div onclick="initBoard()" class="mobileMenuBtnContainer">
+			<img src="./assets/img/img_board.png" alt="board button image" class="btnMobileMenuImg" />
+			<span class="btnMobileBtnName">Board</span>
+		</div>
+		<div onclick="initAddTask()" class="mobileMenuBtnContainer">
+			<img src="assets/img/img_add_task.png" alt="add task button image" class="btnMobileMenuImg" />
+			<span class="btnMobileBtnName">Add Task</span>
+		</div>
+		<div onclick="initContacts()" class="mobileMenuBtnContainer">
+			<img class="mobileMenuContactButtonImage" src="assets/img/img_contact-larger.png" alt="contacts button image" class="btnMobileMenuImg" />
+			<span class="btnMobileBtnName">Contacts</span>
+		</div>
+	</nav>
+</div>

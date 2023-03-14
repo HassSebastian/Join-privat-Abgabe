@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    user-select: none;
+}
+
+.d-none {
+    display: none !important;
+}
+
+/************************************************************/
+/******************** startLogoAnimation ********************/
+/**/.page1 {                                              /**/
+/**/    position: relative;                               /**/
+/**/    width: 100%;                                      /**/
+/**/    height: 100vh;                                    /**/
+/**/    background: #F6F7F8;                            /**/
+/**/}                                                     /**/
+/**/                                                      /**/
+/**/.page1joinLogoContainer {                             /**/
+/**/    position: absolute;                               /**/
+/**/    left: 40.49%;                                     /**/
+/**/    right: 40.49%;                                    /**/
+/**/    top: 33.69%;                                      /**/
+/**/    bottom: 33.68%;                                   /**/
+/**/    height: 274px;                                    /**/
+/**/    transition: 500ms 200ms ease-in-out;              /**/
+/**/                                                      /**/
+/**/}                                                     /**/
+/**/                                                      /**/
+/**/.page1joinLogoContainerMove {                         /**/
+/**/    left: 5.35%;                                      /**/
+/**/    right: 87.71%;                                    /**/
+/**/    top: 7.81%;                                       /**/
+/**/    bottom: 80.28%;                                   /**/
+/**/    height: 121.97px;                                 /**/
+/**/    transition: 500ms 200ms ease-in-out;              /**/
+/**/}                                                     /**/
+/************************************************************/
+/************************************************************/
+
