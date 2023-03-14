@@ -537,12 +537,15 @@ function renderPopupTaskCardHtml(taskIndex) {
                 </div >
                 <div class='boardSubtasksDiv' id='subtaskListTaskCard'></div>
                 
-               
                 </div>
-                <div class='moveBtnMobil' id='moveBtnMobil'></div>
-                <div class='editButton' onclick='openEditTaskCard(${taskIndex})'>
-                    <img src='./assets/img/edit_button.png'>
+
+                <div class='detailBtnDiv'>
+                    <div class='moveBtnMobil' id='moveBtnMobil'></div>
+                    <div class='editButton' onclick='openEditTaskCard(${taskIndex})'>
+                        <img src='./assets/img/edit_button.png'>
+                    </div>
                 </div>
+                
         </div>
         
         `;

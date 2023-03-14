@@ -838,7 +838,8 @@ boardSubheaders > * {
 	flex-direction: column;
 	align-items: flex-start;
 	gap: 25px;
-	height: calc(100vh - 255px);
+	/* cleared by Bossi */
+	/* height: calc(100vh - 255px); */
 }
 
 .boardTaskCardInnerContainer {
@@ -1071,6 +1072,19 @@ boardSubheaders > * {
 	cursor: pointer;
 }
 
+/* edited detailBtnDiv by Bossi */
+.detailBtnDiv{
+	display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    position: sticky;
+    bottom: 0px;
+    order: 10;
+	z-index: 10;
+	gap: 10px;	
+	background: #ffffff;
+}
+
 .editButton {
 	display: flex;
 	flex-direction: row;
@@ -1078,18 +1092,25 @@ boardSubheaders > * {
 	align-items: center;
 	padding: 0px;
 	gap: 6px;
-	position: absolute;
+
+	/* position: absolute;
+	bottom: 32px; */
+
 	width: 57px;
 	height: 57px;
 	right: 32px;
 	/* left: calc(100% - 41px); */
-	bottom: 32px;
+	
 	background: #2a3647;
 	border-radius: 10px;
 	flex: none;
-	order: 10;
+	order: 12;
 	flex-grow: 0;
 	z-index: 10;
+	/* edit by Bossi */
+	left: calc(100% - 41px);
+	bottom: 0px;
+	position:sticky;
 }
 
 .editButton:hover {
@@ -1157,18 +1178,23 @@ boardSubheaders > * {
 
 .boardSubtasksDiv {
 	display: flex;
-	flex-direction: column;
+	/* changed by Bossi  flex-direction*/
+	/* flex-direction: column; */
 	align-items: flex-start;
 	padding: 0px;
 	gap: 10px;
 	width: 86%;
-	height: 169px;
+	/* height: 169px; */
+	/* changed by Bossi */
+	min-height: 102px;
 	flex: none;
 	order: 6;
-	flex-grow: 0;
+	
 	z-index: 6;
+	/* changed by Bossi flex-grow, overflow */
+	/* flex-grow: 0;
 	overflow: hidden;
-	overflow-y: scroll;
+	overflow-y: scroll; */
 	/* height changed and flex-wrap hinzugefügt */
 	flex-wrap: wrap;
 }
@@ -1604,7 +1630,6 @@ boardSubheaders > * {
 	align-items: center;
 	padding: 18px 10px;
 	gap: 10px;
-	cursor: pointer;
 
 	/* position: absolute; */
 	width: 83px;
@@ -1789,7 +1814,7 @@ boardSubheaders > * {
 	border-radius: 10px;
 	/* display: flex;
     align-items: center; */
-	width: 120px;
+	width: 150px;
 	height: 40px;
 	padding: 5px 5px;
 	box-sizing: border-box;
@@ -1971,16 +1996,21 @@ boardSubheaders > * {
 
 	.moveBtnMobil {
 		display: flex;
-		position: absolute !important;
-		bottom: 32px;
+		/* position: absolute !important;  */
+		/* bottom: 32px; */
 		height: 57px !important;
-		/* width: 310px; */
+		width: 310px;
 		gap: 10px;
-		order: 6;
+		order: 11;
+		/*changed by Bossi */
+		bottom: 0px;
+		position: sticky;
+		z-index: 7;
 	}
 
 	.moveBtnMobil button {
 		height: 57px !important;
+		cursor: pointer;
 	}
 
 	.canbanContainer {
@@ -2234,6 +2264,11 @@ boardSubheaders > * {
 		display: none !important;
 	}
 
+	.moveBtnMobil {
+		flex-direction: column;
+		height: 124px !important;
+	}
+
 	.boardAddTaskAssignedBox {
 		padding-bottom: 24px;
 	}
@@ -2251,13 +2286,20 @@ boardSubheaders > * {
 	}
 }
 
+@media screen and (max-width: 400px) {
+	.moveBtnMobil {
+		flex-direction: column;
+		height: 124px !important;
+	}
+}
+
 @media screen and (max-height: 768px) {
 	.boardTaskCardInnerContainer {
 		overflow: scroll;
 	}
 
 	.taskCardPopupTaskInnerContainer {
-		height: calc(100vh - 240px);
+		height: calc(100vh - 320px);
 	}
 
 	.boardHeadline span {
@@ -2284,6 +2326,19 @@ boardSubheaders > * {
 	.inputOutContainer {
 		padding-top: 16px;
 	}
+
+	/* .canbanContainer {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 250px;
+		height: calc(100vh - 224px);
+		flex: none;
+		order: 0;
+		flex-grow: 0;
+		overflow: scroll;
+		padding-top: 24px;
+	} */
 
 	.btnsContainerboardTaskCardPopup {
 		position: absolute;
