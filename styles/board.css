@@ -19,16 +19,12 @@
 
 .boardOverlay {
 	display: flex;
-	/* 	flex-direction: row; */
 	align-items: center;
 	justify-content: space-between;
 	padding: 0px;
-	/* gap: 474px; */
-	/* position: absolute; */
 	width: 100%;
 	max-width: 1500px;
 	height: 73px;
-	/* left: 302px; */
 	top: 171px;
 	margin-bottom: 100px;
 }
@@ -40,7 +36,6 @@
 	padding: 0px;
 	gap: 1px;
 	width: 176px;
-	/* height: 73px; */
 	flex: none;
 	order: 0;
 	flex-grow: 0;
@@ -48,7 +43,6 @@
 
 .boardHeadline span {
 	width: 176px;
-	/* height: 73px; */
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 700;
@@ -67,7 +61,6 @@
 	padding: 0px;
 	gap: 35px;
 	width: 423px;
-	/* height: 51px; */
 	flex: none;
 	order: 1;
 	flex-grow: 0;
@@ -138,7 +131,6 @@
 
 .inputFontContainer input {
 	width: 100px;
-	/* height: 19px; */
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 400;
@@ -146,7 +138,6 @@
 	line-height: 120%;
 	display: flex;
 	align-items: center;
-	/* color: #D1D1D1; */
 	color: #2a3647;
 	flex: none;
 	order: 0;
@@ -217,7 +208,6 @@
 	height: 327px;
 	left: 267px;
 	top: 57px;
-	/* background: #F6F7F8; */
 }
 
 .menuTask {
@@ -240,8 +230,6 @@
 	height: 30px;
 	left: 828px;
 	top: 0px;
-	/* edit by Bossi 24.12.2022 */
-	/* margin-top: -36px; */
 }
 
 .menu span {
@@ -317,12 +305,9 @@
 	justify-content: space-between;
 	align-items: flex-start;
 	padding: 0px;
-	/* gap: 26px; */
-	/* position: absolute; */
 	width: 100%;
 	max-width: 1500px;
 	height: auto;
-	/* left: 302px; */
 	top: 408px;
 	bottom: 0;
 	overflow: hidden;
@@ -410,26 +395,6 @@
 	flex-grow: 0;
 }
 
-/* .design {
-    background: #FF7A00;
-}
-
-.sales {
-    background: #FC71FF;
-}
-
-.backoffice {
-    background: #1FD7C1;
-}
-
-.marketing {
-    background: #0038FF;
-}
-
-.media {
-    background: #FFC701;
-} */
-
 .taskHeadline {
 	display: flex;
 	flex-direction: column;
@@ -491,8 +456,6 @@
 .doneBarOuter {
 	width: 138px;
 	height: 8px;
-	/* background: #F4F4F4; */
-	/* background: #29ABE2; */
 	border-radius: 2px;
 	flex: none;
 	order: 0;
@@ -636,10 +599,8 @@
 }
 
 .boardSubheaders {
-	/* position: absolute; */
 	width: 100%;
 	height: 57px;
-	/* left: 267px; */
 	top: 327px;
 	display: flex;
 	justify-content: space-between;
@@ -652,7 +613,6 @@ boardSubheaders > * {
 }
 
 .boardSubtitleContainer {
-	/* position: absolute; */
 	width: 1058px;
 	height: 30px;
 	left: 45px;
@@ -665,30 +625,19 @@ boardSubheaders > * {
 	justify-content: space-between;
 	align-items: center;
 	padding: 0px;
-	/* gap: 35px; */
-
-	/* position: absolute; */
-	/* width: 230px; */
 	height: 30px;
 	left: 0px;
 	top: 0px;
 }
 
 .toDoAreaHeader span {
-	/* width: 57px; */
 	height: 25px;
-
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 700;
 	font-size: 21px;
 	line-height: 120%;
-	/* or 25px */
-
 	color: #2a3647;
-
-	/* Inside auto layout */
-
 	flex: none;
 	order: 0;
 	flex-grow: 0;
@@ -700,30 +649,19 @@ boardSubheaders > * {
 	justify-content: space-between;
 	align-items: center;
 	padding: 0px;
-	/* gap: 35px; */
-
-	/* position: absolute; */
-	/* width: 230px; */
 	height: 30px;
 	left: 276px;
 	top: 0px;
 }
 
 .inProgressAreaHeader span {
-	/* width: 116px; */
 	height: 25px;
-
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 700;
 	font-size: 21px;
 	line-height: 120%;
-	/* or 25px */
-
 	color: #2a3647;
-
-	/* Inside auto layout */
-
 	flex: none;
 	order: 0;
 	flex-grow: 0;
@@ -736,15 +674,12 @@ boardSubheaders > * {
 	align-items: center;
 	padding: 0px;
 	gap: 6px;
-	/* position: absolute; */
-	/* width: 230px; */
 	height: 30px;
 	left: 545px;
 	top: 0px;
 }
 
 .awaitingFeedbackAreaHeader span {
-	/* width: max-content; */
 	height: 25px;
 	font-family: 'Inter';
 	font-style: normal;
@@ -763,10 +698,6 @@ boardSubheaders > * {
 	justify-content: space-between;
 	align-items: center;
 	padding: 0px;
-	/* gap: 35px; */
-
-	/* position: absolute; */
-	/* width: 230px; */
 	height: 30px;
 	left: 828px;
 	top: 0px;
@@ -775,7 +706,6 @@ boardSubheaders > * {
 .doneAreaHeader span {
 	width: 54px;
 	height: 25px;
-
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 700;
@@ -787,7 +717,6 @@ boardSubheaders > * {
 	flex-grow: 0;
 }
 
-/* add by Bossi 25.12 */
 .shadowOverlay {
 	display: flex;
 	justify-content: center;
@@ -803,17 +732,11 @@ boardSubheaders > * {
 	overflow: hidden;
 }
 
-/* Copy from boardTaskCardPopup.css */
 .boardTaskCardPopup {
 	padding: 50px;
-
 	isolation: isolate;
-
-	/* width: 573px;
-	height: 774px;  changed by Bossi 28.02 to:*/
 	width: 623px;
 	height: 824px;
-
 	background: #ffffff;
 	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
 	border-radius: 30px;
@@ -827,8 +750,6 @@ boardSubheaders > * {
 	margin-bottom: auto;
 	margin-left: auto;
 	margin-right: auto;
-
-	/* edited by Bossi 01.03 */
 	overflow: hidden;
 	overflow-y: scroll;
 }
@@ -838,8 +759,6 @@ boardSubheaders > * {
 	flex-direction: column;
 	align-items: flex-start;
 	gap: 25px;
-	/* cleared by Bossi */
-	/* height: calc(100vh - 255px); */
 }
 
 .boardTaskCardInnerContainer {
@@ -867,7 +786,6 @@ boardSubheaders > * {
 }
 
 .taskCardPopupCategory span {
-	/* width: 69px; */
 	height: 32px;
 	font-family: 'Inter';
 	font-style: normal;
@@ -911,7 +829,6 @@ boardSubheaders > * {
 
 .taskCardPopupDescription {
 	width: 100%;
-	/* height: 50px; */
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 400;
@@ -957,7 +874,6 @@ boardSubheaders > * {
 }
 
 .taskCardPopupDueDate {
-	/* width: 122px; */
 	height: 25px;
 	font-family: 'Inter';
 	font-style: normal;
@@ -1054,25 +970,18 @@ boardSubheaders > * {
 }
 
 .close_logo {
-	position: sticky; /* changed from absolute by Bossi 01.03*/
+	position: sticky;
 	width: 21.65px;
 	height: 21.65px;
-	/* right: 41px; */
-	/* left: 96%; */
-	/* top: 34px; */
 	top: 0px;
-	/* right: 32px; */
 	left: calc(100% - 21px);
-
 	transform: rotate(90deg);
 	flex: none;
-	/* order: 9; */
 	flex-grow: 0;
 	z-index: 9;
 	cursor: pointer;
 }
 
-/* edited detailBtnDiv by Bossi */
 .detailBtnDiv{
 	display: flex;
     justify-content: flex-end;
@@ -1092,22 +1001,15 @@ boardSubheaders > * {
 	align-items: center;
 	padding: 0px;
 	gap: 6px;
-
-	/* position: absolute;
-	bottom: 32px; */
-
 	width: 57px;
 	height: 57px;
 	right: 32px;
-	/* left: calc(100% - 41px); */
-	
 	background: #2a3647;
 	border-radius: 10px;
 	flex: none;
 	order: 12;
 	flex-grow: 0;
 	z-index: 10;
-	/* edit by Bossi */
 	left: calc(100% - 41px);
 	bottom: 0px;
 	position:sticky;
@@ -1120,22 +1022,12 @@ boardSubheaders > * {
 	cursor: pointer;
 }
 
-/* .editButton img {
-    width: 5.64px;
-    height: 30.9px;
-    transform: matrix(-0.85, -0.52, -0.52, 0.85, 0, 0);
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-} */
-
 .members {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	flex-wrap: wrap;
 	padding: 0px;
-	/* gap: 25px; */
 	width: 315px;
 	height: fit-content;
 	flex: none;
@@ -1154,7 +1046,6 @@ boardSubheaders > * {
 	gap: 10px;
 	width: 45px;
 	height: 45px;
-	/* background: #9327FF; */
 	border: 2px solid #ffffff;
 	border-radius: 58px;
 	flex: none;
@@ -1167,7 +1058,6 @@ boardSubheaders > * {
 	flex-direction: row;
 	align-items: center;
 	padding: 0px;
-	/* gap: 25px; */
 	width: 231px;
 	height: 45px;
 	flex: none;
@@ -1178,24 +1068,14 @@ boardSubheaders > * {
 
 .boardSubtasksDiv {
 	display: flex;
-	/* changed by Bossi  flex-direction*/
-	/* flex-direction: column; */
 	align-items: flex-start;
 	padding: 0px;
 	gap: 10px;
 	width: 86%;
-	/* height: 169px; */
-	/* changed by Bossi */
 	min-height: 102px;
 	flex: none;
 	order: 6;
-	
 	z-index: 6;
-	/* changed by Bossi flex-grow, overflow */
-	/* flex-grow: 0;
-	overflow: hidden;
-	overflow-y: scroll; */
-	/* height changed and flex-wrap hinzugefügt */
 	flex-wrap: wrap;
 }
 
@@ -1220,40 +1100,6 @@ boardSubheaders > * {
 	flex-grow: 0;
 }
 
-/* .name {
-    width: 161px;
-    height: 25px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 21px;
-    line-height: 120%;
-    text-align: center;
-    color: #000000;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-} */
-
-/* .davidEisenberg {
-    background: #9327FF;
-}
-
-.benediktZiegler {
-    background: #FFA800;
-}
-
-.marcelBauer {
-    background: #0223CF;
-}
-
-.stefanieFarber {
-    background: #CB02CF;
-} */
-
-/* add by Bossi */
-/* boardAddTaskPopup*/
-
 #boardAddTaskPopup {
 	position: absolute;
 	right: 0;
@@ -1270,8 +1116,6 @@ boardSubheaders > * {
 	background: #ffffff;
 	box-shadow: 0px 0px 4px rgb(0 0 0 / 10%);
 	border-radius: 30px;
-	/* left: 1429px; */
-	/* left: 1291px; */
 	transition: 500ms ease-in-out;
 	transform: translateX(1500px);
 }
@@ -1380,13 +1224,8 @@ boardSubheaders > * {
 	width: 326px;
 	height: 74px;
 	filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.1));
-	/* top: 1073px; */
 	top: 1129px;
-	/* left: 358px; */
-	/* left: 568px; */
 }
-
-/* Edit Task Card css classes */
 
 .close_logo_edit_task {
 	position: absolute;
@@ -1410,10 +1249,7 @@ boardSubheaders > * {
 	padding: 0px;
 	gap: 5px;
 	position: absolute;
-	/* width: 422px; */
 	height: 81px;
-	/* left: 101px; */
-	/* top: 53px; */
 	top: 16px;
 	right: 0;
 	left: 0;
@@ -1464,9 +1300,7 @@ boardSubheaders > * {
 	padding: 0px;
 	gap: 5px;
 	position: absolute;
-	/* width: 422px; */
 	height: 149px;
-	/* top: 154px; */
 	top: 117px;
 	right: 0;
 	left: 0;
@@ -1522,12 +1356,10 @@ boardSubheaders > * {
 	height: 81px;
 	right: 0;
 	left: 0;
-	/* top: 333px; */
 	top: 296px;
 }
 
 .boardEditDateContainer span {
-	/* width: 91px; */
 	height: 25px;
 	font-family: 'Inter';
 	font-style: normal;
@@ -1556,8 +1388,6 @@ boardSubheaders > * {
 	flex: none;
 	order: 1;
 	flex-grow: 0;
-	/* width: 119px;
-    height: 25px; */
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 400;
@@ -1566,8 +1396,6 @@ boardSubheaders > * {
 	color: #000000;
 }
 
-/* editTaskCard Classes */
-
 .editTaskCardPrio {
 	display: flex;
 	flex-direction: column;
@@ -1575,13 +1403,11 @@ boardSubheaders > * {
 	align-items: flex-start;
 	padding: 0px;
 	gap: 5px;
-
 	position: absolute;
 	width: 100%;
 	height: 91px;
 	left: 0;
 	right: 0;
-	/* top: 444px; */
 	top: 407px;
 }
 
@@ -1630,24 +1456,15 @@ boardSubheaders > * {
 	align-items: center;
 	padding: 18px 10px;
 	gap: 10px;
-
-	/* position: absolute; */
 	width: 83px;
 	height: 61px;
-	/* 	left: 508px;
-	top: 719px; */
-	/* changed top by Bossi 01.03 */
-	/* top: 762px; */
-
 	background: #2a3647;
 	border-radius: 10px;
-
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 700;
 	font-size: 21px;
 	line-height: 120%;
-	/* or 25px */
 	color: #ffffff;
 	border: 0;
 }
@@ -1656,11 +1473,9 @@ boardSubheaders > * {
 	background: #29abe2;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;
-	/* border-color: #29ABE2; */
 	border-width: 0px;
 }
 
-/* Delete Button edited by Bossi  */
 .deleteButton {
 	display: flex;
 	flex-direction: row;
@@ -1668,7 +1483,6 @@ boardSubheaders > * {
 	align-items: center;
 	padding: 18px 10px;
 	gap: 10px;
-	/* position: absolute; */
 	height: 61px;
 	left: 470.31px;
 	top: 787px;
@@ -1679,12 +1493,10 @@ boardSubheaders > * {
 	font-weight: 700;
 	font-size: 21px;
 	line-height: 120%;
-	/* or 25px */
 	color: #ffffff;
 	border: 0;
 }
 
-/* deleteButton:hover edit by Basti*/
 .deleteButton:hover {
 	background: #29abe2;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -1720,12 +1532,9 @@ boardSubheaders > * {
 
 .boardAddTaskAssignedBox {
 	position: absolute;
-	/* top: 578px; */
 	top: 541px;
 	left: 0;
 	right: 0;
-	/* width: 67.307%; */ /* inserted by Bossi 28.02 */
-
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -1790,19 +1599,15 @@ boardSubheaders > * {
 }
 
 .boardAddTaskAssignedBox input::placeholder {
-	/* Chrome, Firefox, Opera, Safari 10.1+ */
 	color: black;
 	opacity: 1;
-	/* Firefox */
 }
 
 .boardAddTaskAssignedBox input:-ms-input-placeholder {
-	/* Internet Explorer 10-11 */
 	color: black;
 }
 
 .boardAddTaskAssignedBox input::-ms-input-placeholder {
-	/* Microsoft Edge */
 	color: black;
 }
 
@@ -1812,8 +1617,6 @@ boardSubheaders > * {
 
 .moveBtnMobil button {
 	border-radius: 10px;
-	/* display: flex;
-    align-items: center; */
 	width: 150px;
 	height: 40px;
 	padding: 5px 5px;
@@ -1821,14 +1624,11 @@ boardSubheaders > * {
 	background-color: #2a3647;
 	color: white;
 	cursor: pointer;
-	/* 	position: absolute; */
-	/* right: 41px; */
 	bottom: 16px;
 }
 
 .moveBtnMobil button:hover {
 	color: #0190e0;
-	/* opacity: 0.8; */
 }
 
 @media screen and (max-width: 1350px) {
@@ -1838,7 +1638,6 @@ boardSubheaders > * {
 }
 
 @media screen and (max-width: 1400px) {
-	/* board */
 
 	.toDoHeadline {
 		width: 401px !important;
@@ -1865,7 +1664,6 @@ boardSubheaders > * {
 }
 
 @media screen and (max-width: 1300px) {
-	/* Board Add Task */
 	.shadowOverlay {
 		width: 100%;
 	}
@@ -1913,9 +1711,7 @@ boardSubheaders > * {
 
 	.boardtaskAddedToBoard {
 		left: calc(50% - 168px);
-		/* left: 130px; */
 		top: calc((50% - 37px) + 1000px);
-		/* top: calc(100% + 500px); */
 	}
 
 	.rightContainer {
@@ -1996,13 +1792,10 @@ boardSubheaders > * {
 
 	.moveBtnMobil {
 		display: flex;
-		/* position: absolute !important;  */
-		/* bottom: 32px; */
 		height: 57px !important;
 		width: 310px;
 		gap: 10px;
 		order: 11;
-		/*changed by Bossi */
 		bottom: 0px;
 		position: sticky;
 		z-index: 7;
@@ -2060,24 +1853,6 @@ boardSubheaders > * {
 		font-size: 36px;
 	}
 
-	/* edit by Bossi 01.03 */
-	/* .boardEditTitleContainer,
-	.boardEditTitleContainer input,
-	.boardEditDescriptionContainer,
-	.boardEditDescriptionContainer textarea,
-	.boardEditDateContainer,
-	.boardEditDateContainer input,
-	.editTaskCardPrio,
-	.editTaskCardPrioBtn,
-	.boardAddTaskAssignedBox {
-		width: calc(100% - 50px) !important;
-		left: 25px;
-	} */
-	/* 
-	.boardAddTaskAssignedBox button,
-	.boardAddTaskAssignedBox ul {
-		width: calc(100% - 50px) !important;
-	} */
 
 	.boardAddTaskAssignedBox input {
 		width: 95%;
@@ -2088,44 +1863,9 @@ boardSubheaders > * {
 		top: 800px;
 	}
 }
-/* @media screen and (max-height: 900px) {
-	.boardContainer {
-		position: absolute;
-		top: 89px;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		display: flex;
-		flex-direction: column;
-		padding: 0px 16px 0 50px;
-	}
-
-	.boardHeadline span {
-		font-size: 36px;
-	}
-
-	.boardOverlay {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 0px;
-
-		width: 100%;
-		max-width: 1500px;
-		height: 73px;
-
-		top: 171px;
-		margin-bottom: 50px;
-	}
-
-	.canbanContainer {
-		height: calc(100vh - 217px);
-	}
-} */
 @media screen and (max-height: 780px) {
 	.boardTaskCardPopup {
 		height: 100%;
-		/* overflow: scroll; */
 	}
 
 	.deleteButton,
@@ -2162,8 +1902,6 @@ boardSubheaders > * {
 
 	.btnsContainerboardTaskCardPopup {
 		position: absolute;
-		/* bottom: 24px; */
-		/* right: 24px; */
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -2247,7 +1985,6 @@ boardSubheaders > * {
 	.doneBar {
 		width: 100%;
 		justify-content: space-between;
-		/* gap: unset; */
 	}
 
 	.doneBarOuter {
@@ -2327,23 +2064,9 @@ boardSubheaders > * {
 		padding-top: 16px;
 	}
 
-	/* .canbanContainer {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		width: 250px;
-		height: calc(100vh - 224px);
-		flex: none;
-		order: 0;
-		flex-grow: 0;
-		overflow: scroll;
-		padding-top: 24px;
-	} */
 
 	.btnsContainerboardTaskCardPopup {
 		position: absolute;
-		/* bottom: 24px; */
-		/* right: 24px; */
 		display: flex;
 		align-items: center;
 		justify-content: center;

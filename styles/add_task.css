@@ -3,7 +3,6 @@
 	scrollbar-width: none;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
 *::-webkit-scrollbar {
 	display: none;
 }
@@ -36,7 +35,6 @@
 	align-items: flex-start;
 	padding: 0px;
 	gap: 1px;
-	/* position: absolute; */
 	width: 466px;
 	height: 78px;
 	left: 123px;
@@ -70,7 +68,7 @@
 	width: 338px;
 	height: 61px;
 	right: 0;
-	bottom: 0; /* MIt dem WErt passt es in der Desktopansicht */
+	bottom: 0;
 }
 
 .addTaskBtnOuterContainerContacts {
@@ -124,7 +122,6 @@
 	padding: 18px 10px;
 	gap: 10px;
 	width: 136px;
-	/* height: 61px; */
 	border: 1px solid #2a3647;
 	border-radius: 10px;
 	flex: none;
@@ -142,7 +139,6 @@
 	padding: 18px 10px;
 	gap: 10px;
 	width: 136px;
-	/* height: 61px; */
 	border: 1px solid #2a3647;
 	border-radius: 10px;
 	flex: none;
@@ -259,44 +255,6 @@
 	order: 0;
 	flex-grow: 0;
 }
-
-/* .addTaskClearImgContainer {
-    
-    width: 24px;
-    height: 24px;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-}
-
-.addTaskCreateImgContainer {
-    
-    width: 24px;
-    height: 24px;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-} */
-
-/* .addTaskClear img {
-    position: absolute;
-    left: 28.16%;
-    right: 28.15%;
-    top: 28.15%;
-    bottom: 28.15%;
-
-    border: 2px solid #2A3647;
-}
-
-.addTaskCreate img {
-    position: absolute;
-    left: 16.67%;
-    right: 16.67%;
-    top: 25%;
-    bottom: 25%;
-
-    border: 2px solid #FFFFFF;
-} */
 
 .mainAddTaskContainer {
 	display: flex;
@@ -527,7 +485,6 @@
 }
 
 .addTaskAddCategoryBox button input {
-	/* width: 205px; */
 	height: 25px;
 	font-family: 'Inter';
 	font-style: normal;
@@ -597,9 +554,6 @@
 .newCategoryImgDiv img {
 	width: 24px;
 	height: 24px;
-
-	/* Inside auto layout */
-
 	flex: none;
 	order: 0;
 	flex-grow: 0;
@@ -633,7 +587,6 @@
 
 .addTaskCatList {
 	min-height: 103px;
-	/* width: 100%; */
 	overflow: hidden;
 	overflow-y: scroll;
 }
@@ -649,7 +602,6 @@
 	order: 0;
 	flex-grow: 0;
 	z-index: 0;
-
 	display: flex;
 	justify-content: flex-start;
 	padding: 13px 21px;
@@ -788,36 +740,28 @@
 }
 
 .addTaskAssignedBox input::placeholder {
-	/* Chrome, Firefox, Opera, Safari 10.1+ */
 	color: black;
 	opacity: 1;
-	/* Firefox */
 }
 
 .addTaskAssignedBox input:-ms-input-placeholder {
-	/* Internet Explorer 10-11 */
 	color: black;
 }
 
 .addTaskAssignedBox input::-ms-input-placeholder {
-	/* Microsoft Edge */
 	color: black;
 }
 
 .greyPlaceholder::placeholder {
-	/* Chrome, Firefox, Opera, Safari 10.1+ */
 	color: #d1d1d1 !important;
 	opacity: 1;
-	/* Firefox */
 }
 
 .greyPlaceholder:-ms-input-placeholder {
-	/* Internet Explorer 10-11 */
 	color: #d1d1d1 !important;
 }
 
 .greyPlaceholder::-ms-input-placeholder {
-	/* Microsoft Edge */
 	color: #d1d1d1 !important;
 }
 
@@ -852,15 +796,11 @@
 	align-items: center;
 	padding: 0px;
 	gap: 9px;
-
 	position: absolute;
 	width: 66px;
 	height: 31px;
 	left: 341px;
 	top: 11px;
-
-	/* Inside auto layout */
-
 	flex: none;
 	order: 1;
 	flex-grow: 0;
@@ -906,7 +846,6 @@
 	overflow-y: scroll;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	/* margin-top: -38px; */
 	margin-top: -9px;
 	z-index: 1;
 	list-style-type: none;
@@ -953,8 +892,6 @@
 	align-items: center;
 }
 
-/* 
-!checkbox */
 .checkBox {
 	position: absolute;
 	background: #000000;
@@ -963,7 +900,6 @@
 	width: 13px;
 	background: #000000;
 	border-radius: 3px;
-	/* left: 392px; */
 	flex: none;
 	order: 1;
 	flex-grow: 0;
@@ -987,10 +923,8 @@
 
 .addTaskDivider {
 	position: absolute;
-	/* position: relative; */
 	width: 0px;
 	height: 551px;
-	/* left: 836px; */
 	left: 604px;
 	top: 201px;
 	border: 1px solid #d1d1d1;
@@ -1103,9 +1037,7 @@
 	width: fit-content;
 	height: 61px;
 	flex: none;
-	/* order: 1; */
 	flex-grow: 0;
-	/* padding-top: 13px; */
 }
 
 .addTaskUrgent,
@@ -1122,8 +1054,6 @@
 	align-items: center;
 	padding: 18px 10px;
 	gap: 10px;
-	/* width: 116px;
-	height: 15px; */
 	background: #ffffff;
 	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
 	border-radius: 10px;
@@ -1162,8 +1092,6 @@
 	align-items: center;
 	padding: 18px 10px;
 	gap: 10px;
-	/* width: 110px;
-	height: 15px; */
 	background: #ffffff;
 	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
 	border-radius: 10px;
@@ -1202,8 +1130,6 @@
 	align-items: center;
 	padding: 18px 10px;
 	gap: 10px;
-	/* width: 116px;
-	height: 15px; */
 	background: #ffffff;
 	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
 	border-radius: 10px;
@@ -1241,12 +1167,8 @@
 	align-items: flex-start;
 	padding: 0px;
 	gap: 8px;
-
 	width: 100%;
 	height: fit-content;
-
-	/* Inside auto layout */
-
 	flex: none;
 	order: 2;
 	flex-grow: 0;
@@ -1332,7 +1254,6 @@
 	align-items: center;
 	padding: 0px;
 	gap: 9px;
-
 	position: absolute;
 	width: 66px;
 	height: 31px;
@@ -1354,21 +1275,9 @@
 }
 
 .addTaskCheckbox {
-	/* display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-    gap: 20px;
-    width: 110px;
-    height: 19px;
-    flex: none;
-    order: 2;
-    flex-grow: 0; */
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	/* align-items: center; */
 	padding: 0px;
 	gap: 8px;
 	width: 300px;
@@ -1377,7 +1286,6 @@
 	order: 2;
 	flex-grow: 0;
 	overflow: hidden;
-	/* overflow-y: scroll; */
 	margin-top: 10px;
 }
 
@@ -1405,10 +1313,8 @@
 	flex-grow: 0;
 }
 
-/* add to Board animation */
 .content {
 	overflow: hidden !important;
-	/* overflow-y: scroll;   edit by Basti / ich finde den Fehler nicht mehr */
 }
 
 .taskAddedToBoard {
@@ -1486,8 +1392,6 @@
 	cursor: none !important;
 }
 
-/*********************************************************************************/
-/*********************************************************************************/
 .addTaskUrgent:hover {
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -1518,9 +1422,6 @@
 	background: #7ae229;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
-/*********************************************************************************/
-/*********************************************************************************/
 
 @media screen and (max-width: 1300px) {
 	.rightContainer {
@@ -1579,10 +1480,6 @@
 	.addTaskUrgent {
 		flex: 1 !important;
 	}
-
-	/* 	.addTaskPrioIcons {
-		gap: 35px !important;
-	} */
 
 	.taskAddedToBoard {
 		left: 0px !important;
@@ -1737,8 +1634,6 @@
 
 	.mainAddTaskContainer {
 		position: unset;
-		/* height: auto; */
-		/* !wie stell man dich richtig ein automatisch geht nicht */
 	}
 
 	.addTaskRightContainer {
@@ -1840,8 +1735,6 @@
 
 @media screen and (max-height: 768px) {
 	.mainAddTaskContainer {
-		/* flex-direction: column; */
-		/* width: 100% !important; */
 		overflow: scroll;
 		height: calc(100vh - 176px);
 		padding-bottom: 130px;
