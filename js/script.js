@@ -17,7 +17,7 @@ let menuSelectorStyles = [
 		menuName: 'btn_board_menu',
 		img1Id: 'imgBoard1',
 		img2Id: 'imgBoard2',
-		url: './board.html', //hinzu gefügt//
+		url: './board.html',
 	},
 	{
 		menuName: 'btn_add_task_menu',
@@ -36,6 +36,7 @@ let menuSelectorStyles = [
 	},
 ];
 
+
 let colorUserIndex = ['#02CF2F', '#EE00D6', '#0190E0', '#FF7200', '#FF2500', '#AF1616', '#FFC700', '#3E0099', '#462F8A', '#FF7A00', '#000000'];
 
 let selectedMenuBtnId;
@@ -45,9 +46,11 @@ function initLoginStart() {
 	window.location.href = 'loginDesk.html';
 }
 
+
 async function loadApplicableSummary() {
 	init();
 }
+
 
 let desktopView;
 let viewchange = false;
@@ -56,6 +59,7 @@ async function init() {
 	await includeHTML();
 	initSummary();
 }
+
 
 async function includeHTML() {
 	let includeElements = document.querySelectorAll(`[${includeAttribute}]`);
@@ -71,6 +75,7 @@ async function includeHTML() {
 	}
 }
 
+
 function selectedMenuButton(menuId) {
 	if (selectedMenuNotShownAndNotLegalNotice(menuId)) {
 		setMenuBtnStyle(menuId);
@@ -82,6 +87,7 @@ function selectedMenuButton(menuId) {
 	enableDisableScrollContent();
 }
 
+
 function enableDisableScrollContent() {
 	if (selectedMenuBtnId == 4) {
 		document.getElementById('content').style = 'overflow: hidden; overflow-y: hidden;';
@@ -91,22 +97,22 @@ function enableDisableScrollContent() {
 	}
 }
 
+
 function selectedMenuNotShownAndNotLegalNotice(menuId) {
 	return selectedMenuBtnId != menuId && menuId != 5;
 }
+
 
 function selectedMenuIsLegalNoticeAndNotShown(menuId) {
 	return menuId == 5 && selectedMenuBtnId != 5;
 }
 
+
 function setMenuBtnStyle(menuId) {
 	let menuBtnId = menuSelectorStyles[menuId]['menuName'];
 	let img1Id = menuSelectorStyles[menuId]['img1Id'];
 	let img2Id = menuSelectorStyles[menuId]['img2Id'];
-	document.getElementById(menuBtnId).style = menuSelectorStyles[0]['background'];
-	document.getElementById(menuBtnId + '_text').style = menuSelectorStyles[0]['color'];
-	document.getElementById(img1Id).classList.add(menuSelectorStyles[0]['disableImg']);
-	document.getElementById(img2Id).classList.add(menuSelectorStyles[0]['enableImg']);
+	legalNoticeNotSelectedStyleAdd(menuBtnId, img1Id, img2Id);
 	if (otherMenuBtnPreSelected()) {
 		deselectMenuButton(selectedMenuBtnId);
 	}
@@ -115,6 +121,7 @@ function setMenuBtnStyle(menuId) {
 	}
 }
 
+
 function setMenuBtnStyleSlider(menuId) {
 	let menuBtnId = menuSelectorStyles[menuId]['menuName'];
 	let img1Id = menuSelectorStyles[menuId]['img1Id'];
@@ -122,11 +129,17 @@ function setMenuBtnStyleSlider(menuId) {
 	menuBtnId = menuBtnId + '1';
 	img1Id = img1Id + '1';
 	img2Id = img2Id + '1';
+	legalNoticeNotSelectedStyleAdd(menuBtnId, img1Id, img2Id);
+}
+
+
+function legalNoticeNotSelectedStyleAdd(menuBtnId, img1Id, img2Id) {
 	document.getElementById(menuBtnId).style = menuSelectorStyles[0]['background'];
 	document.getElementById(menuBtnId + '_text').style = menuSelectorStyles[0]['color'];
 	document.getElementById(img1Id).classList.add(menuSelectorStyles[0]['disableImg']);
 	document.getElementById(img2Id).classList.add(menuSelectorStyles[0]['enableImg']);
 }
+
 
 function deselectMenuButtonSlider(menuId) {
 	let menuBtnId = menuSelectorStyles[menuId]['menuName'];
@@ -136,23 +149,26 @@ function deselectMenuButtonSlider(menuId) {
 	img1Id = img1Id + '1';
 	img2Id = img2Id + '1';
 	if (legalNoticeNotSelected()) {
-		legalNoticeNotSelectedStyle(menuBtnId, img1Id, img2Id);
+		legalNoticeNotSelectedStyleRemove(menuBtnId, img1Id, img2Id);
 	}
 	if (legalNoticeSelected()) {
 		document.getElementById(menuBtnId).style = menuSelectorStyles[0]['disabledBackground'];
 	}
 }
 
-function legalNoticeNotSelectedStyle(menuBtnId, img1Id, img2Id) {
+
+function legalNoticeNotSelectedStyleRemove(menuBtnId, img1Id, img2Id) {
 	document.getElementById(menuBtnId).style = menuSelectorStyles[0]['disabledBackground'];
 	document.getElementById(menuBtnId + '_text').style = menuSelectorStyles[0]['color1'];
 	document.getElementById(img1Id).classList.remove(menuSelectorStyles[0]['disableImg']);
 	document.getElementById(img2Id).classList.remove(menuSelectorStyles[0]['enableImg']);
 }
 
+
 function otherMenuBtnPreSelected() {
 	return selectedMenuBtnId;
 }
+
 
 function setLegalNoticeBtnStyle(menuId) {
 	let menuBtnId = menuSelectorStyles[menuId]['menuName'];
@@ -161,6 +177,7 @@ function setLegalNoticeBtnStyle(menuId) {
 		deselectMenuButton(selectedMenuBtnId);
 	}
 }
+
 
 function deselectMenuButton(menuId) {
 	let menuBtnId = menuSelectorStyles[menuId]['menuName'];
@@ -180,13 +197,16 @@ function deselectMenuButton(menuId) {
 	}
 }
 
+
 function legalNoticeNotSelected() {
 	return selectedMenuBtnId != 5;
 }
 
+
 function legalNoticeSelected() {
 	return selectedMenuBtnId == 5;
 }
+
 
 async function openSubPage(menuId) {
 	let url = menuSelectorStyles[menuId]['url'];
@@ -194,20 +214,24 @@ async function openSubPage(menuId) {
 	await window.open(url, target);
 }
 
+
 function renderList() {
 	renderSummary();
 	renderBoard(); //hinzu gefügt//
 	renderLegalNotice();
 }
 
+
 function logOutBtn() {
 	document.getElementById('logOut').classList.toggle('logOutOn');
 }
+
 
 function logOut() {
 	window.location.href = './index.html';
 	localStorage.removeItem('loggedUser');
 }
+
 
 function loadContributorsLetter() {
 	let colorIndex = allUsers[loggedUser[0]].colorIndex;
