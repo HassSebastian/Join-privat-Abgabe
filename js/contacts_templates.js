@@ -4,18 +4,18 @@
  */
 function renderContentHTML() {
     return /*html*/ `
-    <div class="shadowOverlay d-none" id="boardPopup" onclick="closeNewContact(), closeEditContact()"></div>
+        <div class="shadowOverlay d-none" id="boardPopup" onclick="closeNewContact(), closeEditContact()"></div>
 		<div class="contactsContainer">
 			<div class="Frame_97" id="Frame_97">
 				<div class="Contact_list" id="Contact_list"></div>
 			</div>
 			<div class="contactContainerRight" id="contactContainerRight">
                 <div class="contactContainerList">
-				<div class="better_with_a_team">
-					<h1>Contacts</h1>
-					<div class="vector_5"></div>
-					<span>Better with a team</span>
-				</div>
+				    <div class="better_with_a_team">
+					    <h1>Contacts</h1>
+					    <div class="vector_5"></div>
+					    <span>Better with a team</span>
+				    </div>
                 </div>
 				<div class="showContact" id="showContact"></div>
 			</div>
@@ -35,7 +35,7 @@ function renderContentHTML() {
  * @param {boolean} guestLoggedIn
  */
 function chooseRightUserArray() {
-	/* !guestLoggedIn ?  */ calculateUserInAlphabetArray(allUsers); /* : null; */
+    calculateUserInAlphabetArray(allUsers);
 }
 
 /**
@@ -430,7 +430,7 @@ async function editContactSave(name, email, password, phone, firstLetter, second
         firstSecondLetter: firstLetter + secondLetter,
         phone: phone,
     };
-    await saveTask(); // ! Speichert die einen Task oder einen bearbeiteten Kontakt?
+    await saveTask();
     closeEditContact();
     document.getElementById('showContact').classList.add('d-none');
     userInAlphabetArray();

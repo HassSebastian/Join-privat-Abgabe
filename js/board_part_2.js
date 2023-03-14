@@ -1,6 +1,3 @@
-// Testarea PopupCard ***********************************************************************************************
-
-// basic function for the popup window
 
 /**
  * this function remove the d-none class from the popup window. The result is that the Popup Window is shown.
@@ -8,7 +5,6 @@
 async function enablePopupWindow(taskIndex) {
 	if (document.getElementById(`taskCard${taskIndex}`)) {
 		document.getElementById('boardPopup').classList.remove('d-none');
-		// await enableBoardPopup();
 	} else {
 		document.getElementById('boardPopup').classList.remove('d-none');
 		setTimeout(() => {
@@ -31,7 +27,6 @@ async function disablePopupWindow() {
 	}
 	if (selectedMenuBtnId == 4) {
 	} else {
-		// setTimeout(await initBoard, 500);
 		setTimeout(await renderAfterCloseTask, 500);
 		setTimeout(() => {
 			document.getElementById('boardPopup').classList.add('d-none');
@@ -151,7 +146,6 @@ function setTaskCardPopupPrioBackground(taskIndex) {
 	document.getElementById('cardPrioImg').src = cardPrioImgSrc;
 }
 
-// Edit Taskcard popup
 
 /**
  * It opens a modal window with a form to edit a task.
@@ -313,8 +307,8 @@ async function showAddTaskPopupWindow(workflow) {
 	await loadExitingCategories();
 	renderCategoryList();
 	newCatInputActive = false;
-	renderLoggedUserInAssignDrobDownMenuIntoYou(); // Das habe ich für das You eingefügt!
-	renderContactsInAssignDropDownMenu(); //for dropdown menu in assignTo
+	renderLoggedUserInAssignDrobDownMenuIntoYou();
+	renderContactsInAssignDropDownMenu();
 	setFutureDatesOnlyForInputDueDate();
 	loadContributorsLetter();
 	addSubtaskMain();

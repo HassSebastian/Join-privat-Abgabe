@@ -342,8 +342,6 @@ function renderAddTaskPopupHtml(workflow) {
                     </div>   
                 </div>
 
-                
-    
             </div>
         </div>
         <div class='boardtaskAddedToBoard' id='taskCreatedIndication'>
@@ -361,8 +359,6 @@ function renderAddTaskPopupHtml(workflow) {
 	<div class="addTaskHeadlineDiv">
 		<h2 class="addTHeadline">Add Task</h2>
 	</div>
-
-	
 
 	<div class="mainAddTaskContainer mainAddTaskContainerContacts ">
 	<div class="taskAddedToBoard" id="taskCreatedIndication">
@@ -484,10 +480,8 @@ function renderAddTaskPopupHtml(workflow) {
 			
 		</div>
 		
-
 	</div>
 
-	<!-- <div class="addTaskDivider" id= 'addTaskDiverder'></div> -->
 </div>
     </div>
         `;
@@ -529,9 +523,7 @@ function renderPopupTaskCardHtml(taskIndex) {
                     </div>
                 </div>
 
-                <span class='assigned'>Assigned To:</span>
-                <!-- <img class='close_logo' src='./assets/img/close_logo.png' onclick='disablePopupWindow()'> -->
-                
+                <span class='assigned'>Assigned To:</span>                
         
                 <div class='members' id='members'></div>            
             

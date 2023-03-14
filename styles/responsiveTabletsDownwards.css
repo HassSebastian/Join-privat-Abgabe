@@ -1,7 +1,4 @@
-/* !Das muss noch in andere Dateien verschoben werden! */
-
 @media screen and (max-width: 768px) {
-	/* ADD TASK */
 	.scroll {
 		width: unset;
 		right: 31px;
@@ -40,7 +37,6 @@
 
 @media screen and (max-width: 500px) {
 	.scroll {
-		/* width: unset; */
 		right: 8px;
 		left: 8px;
 		height: auto;
@@ -80,17 +76,6 @@
 		margin-top: 14px;
 	}
 
-	/* Help */
-	/* .helpContainer {
-		width: calc(100vw - 32px);
-		height: 100vh;
-		margin: 0 16px !important;
-	} */
-
-	/*  .kanbanProjectManagementTool {
-    left: unset 1
-  } */
-
 	.helpOverlay {
 		right: 16px !important;
 		left: 16px !important;
@@ -128,33 +113,9 @@
 		height: 40px;
 		display: flex;
 		align-items: center;
-		/* 	padding-right: 16px;
-		padding-left: 16px; */
 	}
 
 	.addTaskPrio {
 		height: fit-content;
 	}
-
-	/* Contacts */
-	/* .overlayMasterContainer {
-		width: 100vw !important;
-	} */
-
-	/* .centerNewContactHeader {
-		width: 100%;
-		display: flex;
-		justify-content: center;
-	}
-
-	.centerNewContactHeaderContainer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		width: 289px;
-	} */
-
-	/* .overlayBlackContainer {
-		width: 100vw !important;
-	} */
 }

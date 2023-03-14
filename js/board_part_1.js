@@ -28,7 +28,6 @@ async function initBoard() {
 	renderAllCards();
 	loadContributorsLetter();
 	coworkersToAssignTo = transferallUserData();
-	/* await checkBoardInitMode(); */
 }
 
 async function initBoardNormal() {
@@ -46,11 +45,9 @@ async function initBoardNormal() {
 async function renderBoard() {
 	document.getElementById('content').innerHTML = '';
 	if (!(selectedMenuBtnId == 2)) {
-		/* await enableBoardStyles(); */
 		await loadTask();
 	}
 	document.getElementById('content').innerHTML += boardHtml();
-	// document.getElementById('content').innerHTML += boardHtmlRESPOSIV();
 }
 
 /**

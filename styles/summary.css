@@ -3,8 +3,6 @@
 	flex-direction: column;
 	padding: 82px 53px 16px 123px;
 	width: fit-content;
-	/* height: 100%;
-	max-height: 768px; */
 	justify-content: space-between;
 	gap: 87px;
 }
@@ -22,15 +20,12 @@
 	align-items: center;
 	padding: 0px;
 	gap: 30px;
-	/* position: absolute; */
 	width: fit-content;
 	height: 73px;
-	/* left: 355px; */
 	top: 171px;
 }
 
 .kanbanboardTitleSummary {
-	/* padding-bottom: 19px; */
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 400;
@@ -47,7 +42,6 @@
 	font-style: normal;
 	font-weight: 700;
 	font-size: 61px;
-	/* line-height: 120%; */
 	color: #000000;
 	flex: none;
 	order: 0;
@@ -86,7 +80,6 @@
 	align-items: flex-start;
 	padding: 0px;
 	gap: 3px;
-	/* position: absolute; */
 	width: 385px;
 	height: 136px;
 	left: 770px;
@@ -115,7 +108,7 @@
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 700;
-	font-size: 36px; /* 64px  */
+	font-size: 36px;
 	line-height: 120%;
 	color: #29abe2;
 	margin-block-start: 0;
@@ -141,9 +134,7 @@
 	align-items: flex-start;
 	justify-content: space-between;
 	padding: 0px;
-	/* gap: 35px; */
 	width: 580px;
-	/* height: 170px; */
 	flex: none;
 	order: 0;
 	flex-grow: 0;
@@ -193,7 +184,6 @@
 #taskInProgressAmount,
 #awaitingFeedbackAmount {
 	width: 41px;
-	/* height: 77px; */
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 600;
@@ -212,7 +202,6 @@
 #taskInProgress p,
 #awaitingFeedback p {
 	width: 87px;
-	/* height: 50px; */
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 400;
@@ -233,7 +222,6 @@
 	justify-content: center;
 	align-items: center;
 	padding: 28px 48px;
-
 	width: 100%;
 	height: 150px;
 	background: #ffffff;
@@ -323,14 +311,9 @@
 	width: 52px;
 	height: 19px;
 	font-family: 'Inter';
-	/* font-style: normal; */
-	/* font-weight: 400; */
 	font-size: 16px;
-	/* line-height: 120%; */
 	color: #2a3647;
-	/* flex: none; */
 	order: 1;
-	/* flex-grow: 0; */
 	margin-block-start: 0px;
 	margin-block-end: 0px;
 	text-align: center;
@@ -351,7 +334,6 @@
 	align-items: center;
 	justify-content: space-between;
 	padding: 0px;
-	/* width: 178px; */
 	height: 57px;
 	flex: none;
 	order: 2;
@@ -375,14 +357,12 @@
 }
 
 .deadlineText {
-	/* width: 170px; */
 	height: 19px;
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 120%;
-	/* color: #2a3647; */
 	flex: none;
 	order: 1;
 	flex-grow: 0;
@@ -522,12 +502,7 @@
 	stroke: black;
 }
 
-/* display: flex;
-justify-content: center;
- */
-
 @media screen and (max-height: 900px) {
-	/* 1024 oder 900% */
 	.summaryContainer {
 		padding: 0px 53px 16px 50px;
 		gap: 20px;

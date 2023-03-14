@@ -40,7 +40,6 @@ body {
 }
 
 .notAJoinUser span {
-	/* width: 161px; */
 	height: 25px;
 	font-family: 'Inter';
 	font-style: normal;
@@ -100,7 +99,6 @@ body {
 .logInLogoImgBlack {
 	position: absolute;
 	left: 70px;
-	/* right: 87.71%; */
 	top: 80px;
 	bottom: 80.28%;
 	animation: logoBlack 2s ease-in-out;
@@ -621,8 +619,6 @@ body {
 
 .arrowContainer {
 	position: absolute;
-	/* width: 37px;
-	height: 37px; */
 	left: 31px;
 	top: 35px;
 	flex: none;
@@ -1090,7 +1086,6 @@ body {
 
 	.rememberMeContainer {
 		flex-direction: column-reverse;
-		/* justify-content: space-between; */
 		align-items: center;
 		height: 69px;
 		width: 327px;
@@ -1196,7 +1191,6 @@ body {
 	.logInLogoImgBlack {
 		position: absolute;
 		left: 38px;
-		/* right: 87.71%; */
 		top: 38px;
 		bottom: 80.28%;
 		width: 64px;

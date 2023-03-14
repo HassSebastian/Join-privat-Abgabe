@@ -1,4 +1,3 @@
-// Searchfunction for board
 
 let searchTerm;
 
@@ -25,11 +24,7 @@ function startSearch() {
 }
 
 function searchAfterPopup() {
-	/* if (innerWidth <= 1300) {
-		searchAfterPopupMobil();
-	} else { */
 	searchAfterPopupDesktop();
-	/* 	} */
 }
 
 /**
@@ -73,8 +68,6 @@ function searchAfterPopupMobil() {
 	}
 }
 
-/*
-! HIER WEITER */
 
 async function renderBtnBySubtaskChange(taskIndex) {
 	await saveChangesDetailView();
@@ -84,11 +77,7 @@ async function renderBtnBySubtaskChange(taskIndex) {
 async function saveChangesDetailView() {
 	await saveTask();
 	await createWorkStatusArrays();
-	/* 	if (window.innerWidth < 1400) {
-		renderAllCardsMobil();
-	} else { */
 	renderAllCards();
-	/* 	} */
 }
 
 async function renderMoveBtnMobil(taskIndex) {
@@ -107,9 +96,6 @@ async function renderMoveBtnMobil(taskIndex) {
 	}
 }
 
-/* 
-!Functions for moving cards on mobile devices
- */
 
 let arrayMoveBtnText = [
 	{

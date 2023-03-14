@@ -52,8 +52,6 @@ nav {
 	align-items: center;
 	flex-direction: column;
 	height: 229px;
-	/* width: 232px; */
-	/* margin-bottom: 346px; */
 }
 
 table {
@@ -333,7 +331,6 @@ tr td:nth-child(3) {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	/* align-items: center; */
 	top: 89px;
 	right: 25px;
 	width: 135px;
@@ -372,7 +369,6 @@ tr td:nth-child(3) {
 	display: flex;
 }
 
-/* von Basti hinzugefügt*/
 #contributorsLogoHeadder {
 	display: flex;
 	justify-content: center;
@@ -408,7 +404,6 @@ tr td:nth-child(3) {
 	width: 232px;
 	background-color: #2a3647;
 	color: #cdcdcd;
-	/* margin-top: 89px; */
 }
 
 .menuButton img {
@@ -425,7 +420,6 @@ tr td:nth-child(3) {
 	transition: 100ms ease-in-out;
 }
 
-/* Bottom menu for mobile devices */
 .mobileBottomMenu {
 	display: none;
 	flex-direction: row;
@@ -472,7 +466,6 @@ tr td:nth-child(3) {
 	.mainContainer {
 		justify-content: center;
 		overflow: hidden;
-		/* width: 100%; */
 	}
 }
 
@@ -480,15 +473,9 @@ tr td:nth-child(3) {
 	.rightContainer {
 		width: calc(100% - 232px);
 	}
-
-	/* .content {
-		width: 100%;
-	} */
 }
 
 @media screen and (max-width: 1350px) {
-	/* Side Menu and Slider */
-
 	.sideMenu {
 		display: none !important;
 	}
