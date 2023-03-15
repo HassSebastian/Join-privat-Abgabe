@@ -17,7 +17,7 @@ async function outLogoutMob() {
  * and loading the necessary tasks.
  */
 async function initLoginMob() {
-	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
+	setURL('https://developerakademie.net/smallest_backend_ever');
 	await loadTask();
 }
 
