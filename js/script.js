@@ -90,10 +90,10 @@ async function includeHTML() {
  * @param {number} menuId 
  */
 function selectedMenuButton(menuId) {
-	if (selectedMenuNotShownAndNotLegalNotice(menuId)) {
+	if (selectedMenuNotShownAndNotLegalNotice(menuId) && selectedMenuBtnId != menuId) {
 		setMenuBtnStyle(menuId);
 	}
-	if (selectedMenuIsLegalNoticeAndNotShown) {
+	if (selectedMenuIsLegalNoticeAndNotShown && selectedMenuBtnId != menuId) {
 		setLegalNoticeBtnStyle(menuId);
 	}
 	selectedMenuBtnId = menuId;
