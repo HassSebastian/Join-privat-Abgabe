@@ -56,40 +56,12 @@ async function renderContent() {
 }
 
 /**
- * This function is called when the user clicks the "Submit" button. It calls the
- * calculateUserInAlphabetArray() function, which calculates the number of times each letter in the
- * alphabet appears in the user's input, and then it calls the alphabet() function, which displays the
- * results.
+ * Clears and rewrites the alphabetOrd array.
  */
 async function userInAlphabetArray() {
-	alphabetOrd = {
-		A: [],
-		B: [],
-		C: [],
-		D: [],
-		E: [],
-		F: [],
-		G: [],
-		H: [],
-		I: [],
-		J: [],
-		K: [],
-		L: [],
-		M: [],
-		N: [],
-		O: [],
-		P: [],
-		Q: [],
-		R: [],
-		S: [],
-		T: [],
-		U: [],
-		V: [],
-		W: [],
-		X: [],
-		Y: [],
-		Z: [],
-	};
+	for (let key in alphabetOrd) {
+		alphabetOrd[key] = [];
+	}
 	chooseRightUserArray();
 	alphabet();
 	if (window.innerWidth > 850) {
@@ -97,6 +69,10 @@ async function userInAlphabetArray() {
 	}
 }
 
+/**
+ * Responds to changes in the size of the browser window and adjusts the display of the contact list accordingly.
+ * @returns {void}
+ */
 window.onresize = function contactListAutomaticResponisive() {
 	const rightContainer = document.getElementById('contactContainerRight');
 
@@ -121,6 +97,11 @@ function alphabet() {
 	calculateAndShowAlphabet();
 }
 
+/**
+ * 
+ * @param {*} i 
+ * @returns 
+ */
 function openEditContact(i) {
 	let email = allUsers[i].email;
 	if (guestLoggedIn) {
