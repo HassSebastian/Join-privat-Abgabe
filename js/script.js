@@ -34,6 +34,8 @@ let menuSelectorStyles = [
 		menuName: 'btnLegalNotice',
 		url: './legalNotice.html',
 	},
+	{	menuName: 'btnLegalNotice1',
+		url: './legalNotice.html'}
 ];
 
 
@@ -172,7 +174,13 @@ function otherMenuBtnPreSelected() {
 
 function setLegalNoticeBtnStyle(menuId) {
 	let menuBtnId = menuSelectorStyles[menuId]['menuName'];
-	document.getElementById(menuBtnId).style = menuSelectorStyles[0]['background'];
+	let menuBtnId2 = menuSelectorStyles[menuId+1]['menuName'];
+	if (menuBtnId) {
+		document.getElementById(menuBtnId).style = menuSelectorStyles[0]['background'];
+	}
+	if (menuBtnId2 == 'btnLegalNotice1'){
+		document.getElementById(menuBtnId2).style = menuSelectorStyles[0]['background'];
+	}
 	if (otherMenuBtnPreSelected()) {
 		deselectMenuButton(selectedMenuBtnId);
 	}

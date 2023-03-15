@@ -208,6 +208,17 @@ tr td:nth-child(3) {
 	background-color: #091931 !important;
 }
 
+#btnLegalNotice1 {
+	cursor: pointer;
+}
+
+#btnLegalNotice1:hover {
+	background-color: #091931 !important;
+}
+
+
+
+
 .rightContainer {
 	height: 100vh;
 	width: 100%;
