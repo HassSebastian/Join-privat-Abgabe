@@ -1,4 +1,3 @@
-
 /**
  * this function remove the d-none class from the popup window. The result is that the Popup Window is shown.
  */
@@ -35,6 +34,9 @@ async function disablePopupWindow() {
 	}
 }
 
+/**
+ * Renders the board and updates the work status arrays after closing a task.
+ */
 async function renderAfterCloseTask() {
 	await renderBoard();
 	await createWorkStatusArrays();
@@ -49,10 +51,6 @@ async function renderAfterCloseTask() {
 function stopClose(event) {
 	event.stopPropagation();
 }
-
-// basic function popup end
-
-// render function for the detail view of the task card.
 
 /**
  * If the length of the assignedList is greater than 0, then return true. Otherwise, return false.
@@ -252,6 +250,15 @@ function getTaskChanges(taskIndex) {
 	}
 }
 
+/**
+* Saves the edited task with the given details.
+* @async
+* @param {number} taskIndex - The index of the task to be edited.
+* @param {string} boardEditedTitle - The edited title of the task.
+* @param {string} boardEditedDescripten - The edited description of the task.
+* @param {string} boardEditedDueDate - The edited due date of the task.
+* @returns {Promise<void>}
+*/
 async function saveEditTask(taskIndex, boardEditedTitle, boardEditedDescripten, boardEditedDueDate) {
 	joinTaskArray[taskIndex]['assignedTo'] = taskForce;
 	joinTaskArray[taskIndex]['title'] = boardEditedTitle;
@@ -290,10 +297,6 @@ function actualClickedPrioBtnIsSet(index, statusNames) {
 	return statusNames[index] == boardEditedPrio;
 }
 
-// render function for the detail view of the task card end.
-
-// render function for the creation of a new task card.
-
 /**
  * Show the add task popup window by enabling the popup window, rendering the add task popup, loading
  * the existing categories, rendering the category list, setting the new category input to inactive,
@@ -316,6 +319,9 @@ async function showAddTaskPopupWindow(workflow) {
 	setPrioBtnforOtherPages();
 }
 
+/**
+* Sets the values of the priority buttons to global variables if the "Add Task" form is not currently open.
+*/
 function setPrioBtnforOtherPages() {
 	if (addTaskOpened == false) {
 		urgentBtn = document.getElementById('addTaskUrgent');

@@ -30,6 +30,9 @@ async function initBoard() {
 	coworkersToAssignTo = transferallUserData();
 }
 
+/**
+* Initializes the Kanban board in normal mode.
+*/
 async function initBoardNormal() {
 	sliderMenuShown = false;
 	await renderBoard();
@@ -309,7 +312,7 @@ function showContributorsPrioIcon(taskIndex) {
 }
 
 /**
- * thie function cache the id of the dragged element.
+ * this function cache the id of the dragged element.
  * @param {string} id - the id is the id of the dragged element.
  */
 function startDrag(id) {
@@ -324,6 +327,10 @@ function allowDrop(ev) {
 	ev.preventDefault();
 }
 
+/**
+ * Moves the current dragged element to the specified work flow area if certain conditions are met.
+ * @param {number} area - The work flow area to move the element to.
+ */
 function moveTo(area) {
 	let doneBarDraggedElement = document.getElementById(`doneBar${currentDraggedElement}`);
 	let doneBarOuterDraggedElement = document.getElementById(`doneBarOuter${currentDraggedElement}`);
@@ -337,6 +344,10 @@ function moveTo(area) {
 	}
 }
 
+/**
+ * Moves the dragged element to a new work flow area.
+ * @param {number} area - The new work flow area the element will be moved to.
+ */
 async function moveToNewArea(area) {
 	joinTaskArray[currentDraggedElement]['workFlowStatus'] = area;
 	await saveTask();
