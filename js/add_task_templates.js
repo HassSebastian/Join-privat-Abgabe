@@ -1,3 +1,7 @@
+/**
+ * this function returns the AddTask HTML for rendering.
+ * @returns - AddTask HTML
+ */
 function generateAddTaskHtml() {
 	return /*html*/ `
 	
@@ -5,9 +9,6 @@ function generateAddTaskHtml() {
 	<div class="addTaskHeadlineDiv">
 		<h2 class="addTHeadline">Add Task</h2>
 	</div>
-
-	
-
 	<div class="mainAddTaskContainer">
 	<div class="taskAddedToBoard" id="taskCreatedIndication">
 				<div class="taskAddedToBoardContainer">
@@ -16,7 +17,6 @@ function generateAddTaskHtml() {
 				</div>
 			</div>
 		<div class="addTaskAddTitleContainer">
-		
 			<div class="addTaskAddTitleBox">
 				<h3 class="subTitleAddTask">Title</h3>
 				<form class="formAddTaskTitle" onsubmit="goToDescripten(); return false">
@@ -77,7 +77,6 @@ function generateAddTaskHtml() {
 				<input required type="date" id="dueDate" min="2023-01-01" class="addTaskResponsiv" />
 				<span class="requiredText" id="dateReq">This field is required</span>
 			</div>
-
 			<div class="addTaskPrio">
 				<h3 class="subTitleAddTask">Prio</h3>
 				<div class="addTaskPrioIcons" id="addTaskPrioIcons">
@@ -96,7 +95,6 @@ function generateAddTaskHtml() {
 				</div>
 				<span class='requiredText' id='prioReq'>This field is required</span>
 			</div>
-
 			<div class="subtask">
 				<h3 class="subTitleAddTask">Subtask</h3>
 				<div class="inputDiv addTaskResponsiv">
@@ -110,7 +108,6 @@ function generateAddTaskHtml() {
 						<img src="../assets/img/akar-icons_check.png" onclick="addSubtask()" />
 					</div>
 				</div>
-
 				<div class="addTaskCheckbox" id="subtaskCheckboxes"></div>
 			</div>
 			<div class="addTaskBtnOuterContainer" id="addTaskBtnOuterContainer">
@@ -124,13 +121,9 @@ function generateAddTaskHtml() {
 					<img src="./assets/img/createb.png" />
 				</button>
 			</div>
+		</div>	
 		</div>
-			
-		</div>
-		
-
 	</div>
-
 </div>
 	`;
 }

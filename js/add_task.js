@@ -26,10 +26,21 @@ let mediumBtn;
 let lowBtn;
 let addTaskOpened = false;
 
+/**
+ * Initializes the add task functionality, rendering the add task interface and initializing subfunctions.
+ */
 async function initAddTask() {
 	transferArray = [];
 	sliderMenuShown = false;
 	await renderAddTask();
+	initSubfunctionAddTask();
+}
+
+/**
+ * Initializes the subfunctions for the add task interface, including rendering the category list, subtasks, 
+ * assignee dropdown menu, due date input, contributors letter, priority button IDs, and other elements.
+ */
+function initSubfunctionAddTask(){
 	renderCategoryList();
 	newCatInputActive = false;
 	renderSubtasks();
@@ -45,6 +56,9 @@ async function initAddTask() {
 	setPrioBtnIdElements();
 }
 
+/**
+ * Sets the global priority button ID elements and opens the add task interface.
+ */
 function setPrioBtnIdElements() {
 	urgentBtn = document.getElementById('addTaskUrgent');
 	mediumBtn = document.getElementById('addTaskMedium');
@@ -262,6 +276,9 @@ function setNewCategoryToList() {
 	}
 }
 
+/**
+ * Checks if a new category item already exists in the add task category list.
+ */
 function checkCategoryList(newCategoryItem) {
 	let categoryName1 = newCategoryItem['category'];
 	let categoryColor1 = newCategoryItem['catColor'];
@@ -516,6 +533,9 @@ function resetRequiredWarnings() {
 	document.getElementById('prioReq').style = 'opacity: 0 !important;';
 }
 
+/**
+ * Clear form data and elements in an add task form.
+ */
 function clearFormularData() {
 	resetRequiredWarnings();
 	clearTaskTitleAndDescription();
@@ -531,11 +551,17 @@ function clearFormularData() {
 	addContactToTaskForceWithCheckBox(loggedInUserIndex);
 }
 
+/**
+ * Clears the task title and description input fields in the HTML form.
+ */
 function clearTaskTitleAndDescription() {
 	document.getElementById('addTaskTitle').value = '';
 	document.getElementById('addTaskDescripten').value = '';
 }
 
+/**
+ * Clears the selected category and resets the category dropdown to its default state
+ */
 function clearSelectedCategory() {
 	document.getElementById('selectedCat').innerHTML = /*html*/`
 	  <input disabled id='selectedCatInput' placeholder='Select task category' autocomplete='off'>
@@ -548,15 +574,24 @@ function clearSelectedCategory() {
 	  <img src="../assets/img/Vector 2.png" class='dropdownImg' id='dropdownImg'>`;
 }
 
+/**
+ * Clears the due date field.
+ */
 function clearDueDate() {
 	document.getElementById('dueDate').value = '';
 }
 
+/**
+ * Clears the selected subtasks and resets the subtask section to its default state.
+ */
 function clearSubtasks() {
 	resetSubtaskSelections();
 	selectedSubtasks = [];
 }
 
+/**
+ * Clears any validation error messages that may be displayed.
+ */
 function clearValidationMessages() {
 	document.getElementById('titleReq').style.opacity = '0';
 	document.getElementById('dateReq').style.opacity = '0';
@@ -564,8 +599,11 @@ function clearValidationMessages() {
 	document.getElementById('catReq').classList.add('listD-none');
 }
 
-// save data to local storage/server!
-
+/**
+*Creates a new task and saves it to the task list.
+@param {string} workflow - The workflow status of the new task.
+@returns {Promise<void>} - A Promise that resolves when the task data is successfully saved.
+*/
 async function createTaskData(workflow) {
 	await loadTask();
 	getDataFromFomular();
@@ -580,18 +618,29 @@ async function createTaskData(workflow) {
 	clearFormularData();
 }
 
+/**
+*Checks if at least one subtask has been selected. If not, adds a default subtask.
+*@returns - {Promise<void>} - Promise object that resolves with no value.
+*/
 async function minOneSubtask() {
 	if (selectedSubtasks.length == 0) {
 		selectedSubtasks = [{ subtaskText: 'Maintask', subtaskStatus: true }];
 	}
 }
 
-// toDo this is a transition function that to have reworked after all data for task card avalable.
+/**
+* Gets the values of the task description and subtask fields from the form and assigns them to the corresponding variables.
+*/
 function getDataFromFomular() {
 	descripten = document.getElementById('addTaskDescripten').value;
 	subTask = document.getElementById('subTask').value;
 }
 
+/**
+* Creates an array of selected coworkers to assign the task to from the list of available coworkers.
+* Only coworkers with a checked checkbox are included in the array.
+* The resulting array is assigned to the global variable assignToArray.
+*/
 async function createAssignToListForSave() {
 	assignToArray = [];
 	for (let i = 0; i < coworkersToAssignTo.length; i++) {
@@ -622,6 +671,9 @@ function fillTaskData(workflow) {
 	catColor = '';
 }
 
+/**
+ * Sets the subtask status for the board to false.
+ */
 function setSubtaskStatusForBoardToFalse() {
 	for (let i = 0; i < selectedSubtasks.length; i++) {
 		selectedSubtasks[i]['subtaskStatus'] = false;
@@ -640,17 +692,25 @@ async function deleteJoinTaskArrayFromServer() {
 	// localStorage.removeItem('joinTaskArray');
 	await backend.deleteItem('joinTaskArray');
 }
-// save data to local storage/server end!
 
-/******************************************************************************** */
+/**
+ * Updates the source of the "clear" image element in the add task form to display a blue "close" logo.
+ */
 function addTaskClearOn() {
 	document.getElementById('addTaskClear').src = '././assets/img/close_logo_blue.png';
 }
 
+/**
+ * Sets the image source of the "addTaskClear" element to "./assets/img/close_logo.png", which changes the appearance of the image.
+ */
 function addTaskClearOff() {
 	document.getElementById('addTaskClear').src = './assets/img/close_logo.png';
 }
 
+/**
+ * Adds priority to task based on selected button.
+ * @param {Number} - prioIdIndex 
+ */
 async function addPrio(prioIdIndex) {
 	let idList = ['addTaskUrgent', 'addTaskMedium', 'addTaskLow'];
 	let selectedId = idList[+prioIdIndex];
@@ -665,10 +725,21 @@ async function addPrio(prioIdIndex) {
 	}
 }
 
+/**
+ * Checks if a button is currently not selected based on the number of its CSS classes.
+ *
+ * @param {number} cListLength - The number of CSS classes of the button.
+ * @returns {boolean} - True if the button is not selected, false otherwise.
+ */
 function btnNotSelected(cListLength) {
 	return cListLength == 1;
 }
 
+/**
+ * Selects and styles the priority button when clicked.
+ * @param {string} selectedId - The id of the selected priority button.
+ * @param {string} btnName - The name of the selected priority button.
+ */
 function selectPrioBtn(selectedId, btnName) {
 	document.getElementById(selectedId).classList.add(`${btnName.toLowerCase()}-color`);
 	document.getElementById(`addTask${btnName}Span`).classList.add('color-white');
@@ -676,12 +747,20 @@ function selectPrioBtn(selectedId, btnName) {
 	prio = btnName;
 }
 
+/**
+ * Removes the selection from the priority button of the given name.
+ * @param {string} btnName - The name of the priority button to deselect.
+ */
 function removeBtnSelection(btnName) {
 	document.getElementById(`addTask${btnName}`).classList.remove(`${btnName.toLowerCase()}-color`);
 	document.getElementById(`addTask${btnName}Span`).classList.remove('color-white');
 	document.getElementById(`addTask${btnName}Img`).src = `./assets/img/${btnName.toLowerCase()}.png`;
 }
 
+/**
+* Unselects other buttons and removes their styling if they are currently selected.
+* @param {string[]} idList - An array of strings representing the IDs of the buttons to unselect.
+*/
 function unselectOtherBtn(idList) {
 	for (let i = 0; i < idList.length; i++) {
 		let selectedId = idList[i];
@@ -695,11 +774,17 @@ function unselectOtherBtn(idList) {
 	}
 }
 
+/**
+ * Checks if a button is currently selected.
+ * @param {number} cListLength - The length of the class list of the button element.
+ * @returns {boolean} - True if the button is currently selected, false otherwise.
+ */
 function btnIsSelected(cListLength) {
 	return cListLength == 2;
 }
 
-// subtask functions
+
+
 function subTaskInputentered() {
 	document.getElementById('subtaskCross').classList.add('d-none');
 	document.getElementById('subTaskImgDiv').classList.remove('d-none');

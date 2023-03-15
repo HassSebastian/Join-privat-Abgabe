@@ -1,7 +1,3 @@
-/*=======================
-   ASSIGN TO FUNCTIONS 
-=======================*/
-
 /**
  * Shows or hides drob down menu of assignTo
  */
@@ -9,6 +5,10 @@ function showHideDropDownAssignTo() {
 	document.getElementById('dropdown2').classList.toggle('listD-none');
 }
 
+/**
+ * Toggles the visibility of the assignee dropdown list and updates the state of the
+ * assignListStatus variable.
+ */
 function enableDisableAssignList() {
 	if (!assignListStatus) {
 		borderBottomOffAssignedBoxButton('addTaskAssignedButton');
@@ -22,6 +22,10 @@ function enableDisableAssignList() {
 	assignListStatus = !assignListStatus;
 }
 
+/**
+ * Toggles the visibility of the assignee dropdown list and updates the state of the
+ * assignListStatus variable to "enabled".
+ */
 function enableAssignList() {
 	showHideDropDownAssignTo();
 	assignListStatus = !assignListStatus;
@@ -91,38 +95,65 @@ function assigendContactEmail() {
 	changeAssignPlaceholderColorToGrey();
 }
 
+/**
+ * Prevents the closing of the Popupcard, if you click on it.
+ */
 function doNotCloseOnClick(event) {
 	event.stopPropagation();
 }
 
+/**
+ * Sets the placeholder text of the selectedAssign input element to the default value.
+ */
 function assignInputPlaceholderToDefaultMode() {
 	document.getElementsByName('selectedAssign')[0].placeholder = `Select contacts to Assign`;
 }
 
+/**
+ * Clears the value of the selectedAssign input element.
+ */
 function assignInputValueToDefault() {
 	document.getElementById('selectedAssign').value = '';
 }
 
+/**
+ * Hides the cancel and confirm buttons for the assignee dropdown list.
+ */
 function hideCancelConfirmButtons() {
 	document.getElementById('assignToCancelConfirmImgContainer').classList.add('d-none');
 }
 
+/**
+ * Shows the assignee dropdown icon.
+ */
 function showAssignDropDownImg() {
 	document.getElementById('assignDropDownImg').classList.remove('d-none');
 }
 
+/**
+ * Disables the selectedAssign input element.
+ */
 function disableInputAddTasAssign() {
 	document.getElementById('selectedAssign').disabled = true;
 }
 
+/**
+ * Changes the color of the selectedAssign input element's placeholder text to grey.
+ */
 function changeAssignPlaceholderColorToGrey() {
 	document.getElementById('selectedAssign').classList.add('greyPlaceholder');
 }
 
+/**
+ * Changes the color of the selectedAssign input element's placeholder text back to the default color.
+ */
 function changeAssignPlaceholderColorToDefault() {
 	document.getElementById('selectedAssign').classList.remove('greyPlaceholder');
 }
 
+/**
+ * Sets the assignee dropdown box back to its default state.
+ */
 function assignBoxBackToDefaultMode() {
 	assignInputPlaceholderToDefaultMode();
 	changeAssignPlaceholderColorToDefault();
