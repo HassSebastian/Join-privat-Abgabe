@@ -218,13 +218,13 @@ function showContactList() {
 	let contactRight = document.getElementById('contactContainerRight');
 	const listing = document.getElementById('listing');
 	if (!listOpen) {
-		document.getElementById('Frame_97').style.marginLeft = '0';
+		document.getElementById('Frame_97').classList.remove('d-none');
 		document.getElementById('contactContainerRight').style.removeProperty('left');
 		document.getElementById('listing').style.removeProperty('display');
 		listOpen = true;
 		contactRight.style.display = 'none';
 	} else if (listOpen && window.innerWidth < 850) {
-		document.getElementById('Frame_97').style.marginLeft = '-460px';
+		document.getElementById('Frame_97').classList.add('d-none');
 		document.getElementById('contactContainerRight').style.left = '0';
 		if (!listing) return;
 		document.getElementById('listing').style.display = 'flex';
