@@ -223,7 +223,7 @@ function showContactList() {
 		document.getElementById('listing').style.removeProperty('display');
 		listOpen = true;
 		contactRight.style.display = 'none';
-	} else if (listOpen && window.innerWidth < 850) {
+	} else if (listOpen && window.innerWidth < 850 && selectedMenuBtnId == 4) {
 		document.getElementById('Frame_97').classList.add('d-none');
 		document.getElementById('contactContainerRight').style.left = '0';
 		if (!listing) return;
