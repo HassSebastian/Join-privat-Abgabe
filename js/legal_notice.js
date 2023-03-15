@@ -7,7 +7,7 @@ async function initLegalNotice() {
     document.querySelector('.sliderMenu').classList.remove('showSliderMenu');
 }
 
-async function renderLegalNotice() {
+function renderLegalNotice() {
     document.getElementById('content').innerHTML = '';
     document.getElementById('content').innerHTML += /*html*/ `
         <div class="legal-wrapper">

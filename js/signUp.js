@@ -61,6 +61,10 @@ async function userSignIn(firstLetter, secondLetter, name, email, password, colo
 	setTimeout(forwardScript, 2000);
 }
 
+/**
+ * Navigates to the login page if no new contact is being added,
+ * otherwise closes the new contact form and waits 500 milliseconds before navigating to the login page.
+ */
 function forwardScript() {
 	if (document.getElementById('new_contact')) {
 		if (document.getElementById('new_contact').classList.contains('add_contact_slide')) {
@@ -74,6 +78,9 @@ function forwardScript() {
 	}
 }
 
+/**
+ * Shows a success message for a contact-related action.
+ */
 function contactSucc() {
 	document.getElementById('contactSucc').classList.remove('d-none');
 	setTimeout(() => {

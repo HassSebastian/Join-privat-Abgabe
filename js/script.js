@@ -34,8 +34,10 @@ let menuSelectorStyles = [
 		menuName: 'btnLegalNotice',
 		url: './legalNotice.html',
 	},
-	{	menuName: 'btnLegalNotice1',
-		url: './legalNotice.html'}
+	{
+		menuName: 'btnLegalNotice1',
+		url: './legalNotice.html'
+	}
 ];
 
 
@@ -43,26 +45,32 @@ let colorUserIndex = ['#02CF2F', '#EE00D6', '#0190E0', '#FF7200', '#FF2500', '#A
 
 let selectedMenuBtnId;
 let includeAttribute = 'w3-include-html';
+let desktopView;
+let viewchange = false;
+
 
 function initLoginStart() {
 	window.location.href = 'loginDesk.html';
 }
 
-
+/**
+ * initializes the init function
+ */
 async function loadApplicableSummary() {
 	init();
 }
 
-
-let desktopView;
-let viewchange = false;
-
+/**
+ * is an async function that includes HTML files and initializes a summary. 
+ */
 async function init() {
 	await includeHTML();
 	initSummary();
 }
 
-
+/**
+ * is also an async function that gets elements with the specified attribute, fetches the file specified in the attribute, and displays the contents of the file if the request was successful.
+ */
 async function includeHTML() {
 	let includeElements = document.querySelectorAll(`[${includeAttribute}]`);
 	for (let i = 0; i < includeElements.length; i++) {
@@ -77,7 +85,10 @@ async function includeHTML() {
 	}
 }
 
-
+/**
+ * sets the styles of the selected menu button based on whether it's the legal notice button or not.
+ * @param {number} menuId 
+ */
 function selectedMenuButton(menuId) {
 	if (selectedMenuNotShownAndNotLegalNotice(menuId)) {
 		setMenuBtnStyle(menuId);
@@ -89,7 +100,9 @@ function selectedMenuButton(menuId) {
 	enableDisableScrollContent();
 }
 
-
+/**
+ * changes the overflow style of the content based on which menu button is selected.
+ */
 function enableDisableScrollContent() {
 	if (selectedMenuBtnId == 4) {
 		document.getElementById('content').style = 'overflow: hidden; overflow-y: hidden;';
@@ -99,17 +112,28 @@ function enableDisableScrollContent() {
 	}
 }
 
-
+/**
+ * and
+ * @param {number} menuId 
+ * @returns 
+ */
 function selectedMenuNotShownAndNotLegalNotice(menuId) {
 	return selectedMenuBtnId != menuId && menuId != 5;
 }
 
-
+/**
+ * 
+ * @param {number} menuId 
+ * @returns  true if the selected menu is not shown and not the legal notice button or if it is the legal notice button and not shown, respectively.
+ */
 function selectedMenuIsLegalNoticeAndNotShown(menuId) {
 	return menuId == 5 && selectedMenuBtnId != 5;
 }
 
-
+/**
+ * sets the style of the selected menu button, including the background color and image, and deselects the previously selected menu button if it is different. 
+ * @param {number} menuId 
+ */
 function setMenuBtnStyle(menuId) {
 	let menuBtnId = menuSelectorStyles[menuId]['menuName'];
 	let img1Id = menuSelectorStyles[menuId]['img1Id'];
@@ -123,7 +147,10 @@ function setMenuBtnStyle(menuId) {
 	}
 }
 
-
+/**
+ * sets the style of the selected menu button if the menu is accessed through the slider
+ * @param {number} menuId 
+ */
 function setMenuBtnStyleSlider(menuId) {
 	let menuBtnId = menuSelectorStyles[menuId]['menuName'];
 	let img1Id = menuSelectorStyles[menuId]['img1Id'];
@@ -134,7 +161,10 @@ function setMenuBtnStyleSlider(menuId) {
 	legalNoticeNotSelectedStyleAdd(menuBtnId, img1Id, img2Id);
 }
 
-
+/**
+ * deselects the menu button if it's accessed through the slider. 
+ * @param {number} menuId 
+ */
 function deselectMenuButtonSlider(menuId) {
 	let menuBtnId = menuSelectorStyles[menuId]['menuName'];
 	let img1Id = menuSelectorStyles[menuId]['img1Id'];
@@ -150,7 +180,12 @@ function deselectMenuButtonSlider(menuId) {
 	}
 }
 
-
+/**
+ * removes the style of the legal notice button if it is not selected. 
+ * @param {number} menuBtnId 
+ * @param {number} img1Id 
+ * @param {number} img2Id 
+ */
 function legalNoticeNotSelectedStyleRemove(menuBtnId, img1Id, img2Id) {
 	document.getElementById(menuBtnId).style = menuSelectorStyles[0]['disabledBackground'];
 	document.getElementById(menuBtnId + '_text').style = menuSelectorStyles[0]['color1'];
@@ -158,7 +193,12 @@ function legalNoticeNotSelectedStyleRemove(menuBtnId, img1Id, img2Id) {
 	document.getElementById(img2Id).classList.remove(menuSelectorStyles[0]['enableImg']);
 }
 
-
+/**
+ * adds the style of the legal notice button if it is not selected.
+ * @param {number} menuBtnId 
+ * @param {number} img1Id 
+ * @param {number} img2Id 
+ */
 function legalNoticeNotSelectedStyleAdd(menuBtnId, img1Id, img2Id) {
 	document.getElementById(menuBtnId).style = menuSelectorStyles[0]['background'];
 	document.getElementById(menuBtnId + '_text').style = menuSelectorStyles[0]['color'];
@@ -166,19 +206,25 @@ function legalNoticeNotSelectedStyleAdd(menuBtnId, img1Id, img2Id) {
 	document.getElementById(img2Id).classList.add(menuSelectorStyles[0]['enableImg']);
 }
 
-
+/**
+ * 
+ * @returns returns the id of the previously selected menu button.
+ */
 function otherMenuBtnPreSelected() {
 	return selectedMenuBtnId;
 }
 
-
+/**
+ * sets the style of the legal notice button. 
+ * @param {number} menuId 
+ */
 function setLegalNoticeBtnStyle(menuId) {
 	let menuBtnId = menuSelectorStyles[menuId]['menuName'];
-	let menuBtnId2 = menuSelectorStyles[menuId+1]['menuName'];
+	let menuBtnId2 = menuSelectorStyles[menuId + 1]['menuName'];
 	if (menuBtnId) {
 		document.getElementById(menuBtnId).style = menuSelectorStyles[0]['background'];
 	}
-	if (menuBtnId2 == 'btnLegalNotice1'){
+	if (menuBtnId2 == 'btnLegalNotice1') {
 		document.getElementById(menuBtnId2).style = menuSelectorStyles[0]['background'];
 	}
 	if (otherMenuBtnPreSelected()) {
@@ -186,7 +232,10 @@ function setLegalNoticeBtnStyle(menuId) {
 	}
 }
 
-
+/**
+ * deselects the menu button, removes the style of the legal notice button if it is not selected, and removes the slider style.
+ * @param {number} menuId 
+ */
 function deselectMenuButton(menuId) {
 	let menuBtnId = menuSelectorStyles[menuId]['menuName'];
 	let img1Id = menuSelectorStyles[menuId]['img1Id'];
@@ -202,42 +251,59 @@ function deselectMenuButton(menuId) {
 	}
 }
 
-
+/**
+ * and
+ * @returns 
+ */
 function legalNoticeNotSelected() {
 	return selectedMenuBtnId != 5;
 }
 
-
+/**
+ * return true if the legal notice button is not selected and is selected, respectively.
+ * @returns 
+ */
 function legalNoticeSelected() {
 	return selectedMenuBtnId == 5;
 }
 
-
+/**
+ * 
+ * @param {number} menuId 
+ */
 async function openSubPage(menuId) {
 	let url = menuSelectorStyles[menuId]['url'];
 	let target = '_parent';
 	await window.open(url, target);
 }
 
-
+/**
+ * his function takes a menuId parameter and opens a new window with the URL associated with that menuId. The await keyword indicates that this function uses promises, and it will wait for the new window to load before continuing execution.
+ */
 function renderList() {
 	renderSummary();
 	renderBoard();
 	renderLegalNotice();
 }
 
-
+/**
+ * This function renders various elements of the web application, including a summary, a board, and a legal notice.
+ */
 function logOutBtn() {
 	document.getElementById('logOut').classList.toggle('logOutOn');
 }
 
-
+/**
+ * This function toggles the class logOutOn on an element with ID 
+ */
 function logOut() {
 	window.location.href = './index.html';
 	localStorage.removeItem('loggedUser');
 }
 
-
+/**
+ * This function sets the background color and text of an element with ID 
+ */
 function loadContributorsLetter() {
 	let colorIndex = allUsers[loggedUser[0]].colorIndex;
 	document.getElementById('contributorsLogoHeadder').style = `background:${colorUserIndex[colorIndex]}`;

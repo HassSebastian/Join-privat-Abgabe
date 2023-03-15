@@ -115,15 +115,10 @@ function calculateRememberDoubleUserCheck(email, password, rememberUser, valueTo
 
 /**
  * It takes two arguments, email and password, and pushes them into an array called rememberUser.
- *
  * Then it converts the array into a string and stores it in localStorage.
- *
  * The function is called when the user clicks the checkbox.
- *
  * The function is called with the email and password values from the form.
- *
  * The function is called from the checkbox's onclick event.
- *
  * The function is called from the check
  * @param email - the email address of the user
  * @param password - the password of the user

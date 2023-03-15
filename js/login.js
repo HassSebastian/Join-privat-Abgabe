@@ -4,20 +4,33 @@ let allUsers = [];
 let guestEmail = 'guest@web.de';
 let forgotEmailIndex;
 
+/**
+ * Logs the user out and redirects to the login page on a mobile device.
+ */
 async function outLogoutMob() {
 	await initLoginMob();
 	window.location.href = 'index.html';
 }
 
+/**
+ * Initializes the login process for the mobile application by setting the backend URL
+ * and loading the necessary tasks.
+ */
 async function initLoginMob() {
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	await loadTask();
 }
 
+/**
+ * Redirects the user to the "forgot password" page.
+ */
 function forgotPassword() {
 	window.location.href = './forgotMyP_sendMail.html';
 }
 
+/**
+ * Logs in a guest user with a hardcoded email and password, sets the values of the email and password input fields on the login page, clears the localStorage, and calls the userLogin function to log in the user.
+ */
 function guestLogIn() {
 	const email = guestEmail;
 	const password = '123456';
@@ -124,13 +137,18 @@ function logInAtLocalstorage() {
 }
 
 /* Sign In */
-
+/**
+ * Hides the login container and shows the sign-up container in mobile view.
+ */
 function notAJoinUserButtonMob() {
 	document.getElementById('logInMasterContainerMob').classList.add('d-none');
 	document.getElementById('signInMasterContainerMob').classList.remove('d-none');
 	document.getElementById('notAJoinUserContainerMob').classList.add('d-none');
 }
 
+/**
+ * Reverts the view to the login screen on mobile by hiding the sign up container, displaying the login container and displaying the "not a join user" option
+ */
 function backToLogInMob() {
 	document.getElementById('logInMasterContainerMob').classList.remove('d-none');
 	document.getElementById('signInMasterContainerMob').classList.add('d-none');
@@ -142,12 +160,19 @@ function backToLogInMob() {
 }
 
 /* Forgot Password */
+/**
+ * Shows the forgot password form in mobile view by updating the visibility of certain HTML elements.
+ */
 function showForgotPasswordMob() {
 	document.getElementById('logInMasterContainerMob').classList.add('d-none');
 	document.getElementById('notAJoinUserContainerMob').classList.add('d-none');
 	document.getElementById('formForgotPassword').classList.remove('d-none');
 }
 
+/**
+ * Validates the input field for the forgot password form and calls the
+ * `inputForgotValueOk` function if the input is not empty.
+ */
 function sendMailButton() {
 	document.getElementById('requiredEmailForgot').classList.remove('requiredOn');
 	document.getElementById('requiredEmailForgot').innerHTML = `This field is required`;
@@ -159,6 +184,12 @@ function sendMailButton() {
 	}
 }
 
+/**
+ * Checks if the input value matches an email in the list of all users.
+ * If a match is found, prepares to show the password reset card.
+ * If no match is found, displays an error message.
+ * @param {string} inputForgotValue - The input value to check against the list of user emails.
+ */
 function inputForgotValueOk(inputForgotValue) {
 	for (i = 0; i < allUsers.length; i++) {
 		let inputComparison = allUsers[i].email;
@@ -172,29 +203,48 @@ function inputForgotValueOk(inputForgotValue) {
 	}
 }
 
+/**
+ * Prepares for showing the password reset card by hiding the "This field is required" message,
+ * adding a class to show the "sent message done" container with a slide animation, and storing
+ * the index of the user who requested the password reset.
+ *
+ * @param {number} i - The index of the user who requested the password reset.
+ */
 function preparationShowPasswordResetCard(i) {
 	document.getElementById('requiredEmailForgot').style = 'color:transparent';
 	document.getElementById('sentMassageDoneMaserContainerMob').classList.add('sentMassageDoneMaserContainerMobSlide');
 	forgotEmailIndex = i;
 }
 
+/**
+ * Checks if the input email is available for password reset and prepares to show the password reset card.
+ */
 function comparisonFailed() {
 	document.getElementById('requiredEmailForgot').classList.add('requiredOn');
 	document.getElementById('requiredEmailForgot').innerHTML = `email is not available`;
 }
 
+/**
+ * Shows the password reset card and hides the forgot password form.
+ */
 function showPasswordResetCard() {
 	document.getElementById('sentMassageDoneMaserContainerMob').classList.add('d-none');
 	document.getElementById('formForgotPassword').classList.add('d-none');
 	document.getElementById('resetPWMasterContainerMob').classList.remove('d-none');
 }
 
+/**
+ * Hides the password reset card and shows the sign-in form.
+ */
 function backToSignInMob() {
 	document.getElementById('resetPWMasterContainerMob').classList.add('d-none');
 	document.getElementById('signInMasterContainerMob').classList.remove('d-none');
 	document.getElementById('pwResetContainerMob').classList.remove('pwResetContainerMobSlide');
 }
 
+/**
+ * Checks the input of the new password and confirm password fields, and updates the password for the user if the new password meets the requirements.
+ */
 function resetbuttonContainerMob() {
 	inputPasswordErrorMessageClear();
 	let inputNewPassword = document.getElementById('inputNewPassword').value;
@@ -210,6 +260,9 @@ function resetbuttonContainerMob() {
 	}
 }
 
+/**
+ * Clears the error messages for the input password fields.
+ */
 function inputPasswordErrorMessageClear() {
 	document.getElementById('requiredNewPassword').classList.remove('requiredOn');
 	document.getElementById('requiredConfirmPassword').classList.remove('requiredOn');
@@ -217,6 +270,9 @@ function inputPasswordErrorMessageClear() {
 	document.getElementById('requiredConfirmPassword').innerHTML = `This field is required`;
 }
 
+/**
+ * Displays an error message when the input password and confirm password fields do not match.
+ */
 function inputPasswordErrorMessage() {
 	document.getElementById('requiredNewPassword').classList.add('requiredOn');
 	document.getElementById('requiredConfirmPassword').classList.add('requiredOn');
@@ -224,6 +280,11 @@ function inputPasswordErrorMessage() {
 	document.getElementById('requiredConfirmPassword').innerHTML = `password is not the same`;
 }
 
+/**
+ * Updates the password for the user with the specified email index to the new password.
+ * @param {number} forgotEmailIndex - The index of the user's email address in the allUsers array.
+ * @param {string} inputNewPassword - The new password to set for the user.
+ */
 function newPasswordCheck(forgotEmailIndex, inputNewPassword) {
 	allUsers[forgotEmailIndex].password = inputNewPassword;
 	saveTask();

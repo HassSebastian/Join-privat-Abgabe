@@ -18,6 +18,9 @@ let inProgressTasks = [];
 let awatingFeedbackTasks = [];
 let doneTasks = [];
 
+/**
+ * Initializes the task summary and loads the data from the backend server.
+ */
 async function initSummary() {
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	await loadTask();
@@ -27,11 +30,17 @@ async function initSummary() {
 	loadSummary();
 }
 
+/**
+ * Resets the values.
+ */
 function resetsValues() {
 	resetCounters();
 	resetsTasksArrays();
 }
 
+/**
+ * Loads the summary page
+ */
 function loadSummary() {
 	renderSummary();
 	selectsSummaryBtnSideMenu();
@@ -49,11 +58,17 @@ function selectsSummaryBtnSideMenu() {
 	selectedMenuButton(1);
 }
 
+/**
+ * Calls functions to greet user and perform greeting animation on smaller screens.
+ */
 function greetingManagement() {
 	greetUser();
 	greetingAnimationSmallerScreens();
 }
 
+/**
+ * Resets the counters used in the application.
+ */
 function resetCounters() {
 	numberInBoard = 0;
 	numberToDo = 0;
@@ -63,6 +78,9 @@ function resetCounters() {
 	numberUrgent = 0;
 }
 
+/**
+ * Resets the arrays that store the tasks in different stages.
+ */
 function resetsTasksArrays() {
 	toDoTasks = [];
 	inProgressTasks = [];
@@ -71,6 +89,9 @@ function resetsTasksArrays() {
 	allUpcomingTasks = [];
 }
 
+/**
+ * Clears the content of the page and generates HTML for the summary view.
+ */
 async function renderSummary() {
 	setInnerHtmlById('content', '');
 	document.getElementById('content').innerHTML += generateSummaryHtml(numberInBoard, numberToDo, numberInProgress, numberAwaitingFeedback, numberDone, numberUrgent);
@@ -111,6 +132,10 @@ function greetUserInMobileUI() {
 	setInnerHtmlById('nameToBeingGreeted', userName());
 }
 
+/**
+ * This function returns the name of the currently logged-in user.
+ * @returns - 
+ */
 function userName() {
 	return allUsers[loggedUser[0]].name;
 }
@@ -214,6 +239,9 @@ function emailMatch(person) {
 	return person.email === emailAddressLoggedUser;
 }
 
+/**
+ * This function asynchronously calls getTasks() and getAmountTasks() functions to retrieve all the necessary task data for the overview page.
+ */
 async function getAllValuesForOverview() {
 	getTasks();
 	getAmountTasks();
@@ -245,12 +273,18 @@ function getAmountTasks() {
 	numberUrgent = allYourUrgentTasks.length;
 }
 
+/**
+ * Shows the next due date of a task and renders it on the page.
+ */
 function showNextDueDate() {
 	getNextDueDate();
 	renderUpcomingDueDate();
 }
 
-//´return next due date of task in joinTaskArray
+/**
+ * Extracts the next upcoming due date from the tasks in the board.
+ * @returns {Date|null} The next upcoming due date, or null if no tasks with due dates are found.
+ */
 function getNextDueDate() {
 	let tasks = tasksInBoard.filter((task) => task.dueDate != null);
 	tasks.forEach((task) => {

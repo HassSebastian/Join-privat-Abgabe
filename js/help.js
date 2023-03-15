@@ -6,7 +6,7 @@ function back() {
     initSummary();
 }
 
-async function renderHelp() {
+function renderHelp() {
     document.getElementById('content').innerHTML = '';
     document.getElementById('content').innerHTML += /*html*/ `
     <div class="helpContainer">

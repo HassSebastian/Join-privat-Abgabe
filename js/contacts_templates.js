@@ -95,17 +95,48 @@ function showLettersHTML(alphabetLetter) {
     `;
 }
 
+/**
+ * Displays a contact query with the given information.
+ * @param {string} name - The name of the person making the query.
+ * @param {string} email - The email address of the person making the query.
+ * @param {string} phone - The phone number of the person making the query.
+ * @param {string} letter - The message of the query.
+ * @param {string} color - The color of the query.
+ * @param {number} i - The index of the query.
+ * @param {HTMLElement} showContact - The element to display the query in.
+ */
 function showContactQuerry(name, email, phone, letter, color, i, showContact) {
     showContact.classList.remove('d-none');
     showContactHelp(name, email, phone, letter, color, i, showContact);
 }
 
+/**
+ * Displays a contact query with the given information.
+ *
+ * @param {string} name - The name of the person making the query.
+ * @param {string} email - The email address of the person making the query.
+ * @param {string} phone - The phone number of the person making the query.
+ * @param {string} letter - The message of the query.
+ * @param {string} color - The color of the query.
+ * @param {number} i - The index of the query.
+ * @param {HTMLElement} showContact - The element to display the query in.
+ */
 function showContactHelp(name, email, phone, letter, color, i, showContact) {
     showContact.innerHTML = '';
     showContact.innerHTML = showContactHTML(name, email, phone, letter, color, i);
     showContact.classList.add('showContactSlide');
 }
 
+/**
+ * Adds a new contact with the given information.
+ *
+ * @param {HTMLInputElement} name - The input element for the name of the new contact.
+ * @param {HTMLInputElement} email - The input element for the email of the new contact.
+ * @param {HTMLInputElement} phone - The input element for the phone number of the new contact.
+ * @param {HTMLSpanElement} newNameRequired - The span element to display the "name required" error message.
+ * @param {HTMLSpanElement} newEmailRequired - The span element to display the "email required" error message.
+ * @param {HTMLSpanElement} newPhoneRequired - The span element to display the "phone required" error message.
+ */
 function addContactHelp(name, email, phone, newNameRequired, newEmailRequired, newPhoneRequired) {
     checkNameInput(name, newNameRequired);
     checkEmailInput(email, newEmailRequired);
@@ -115,6 +146,12 @@ function addContactHelp(name, email, phone, newNameRequired, newEmailRequired, n
     }
 }
 
+/**
+ * Checks the name input element for a value and displays an error message if it is empty.
+ *
+ * @param {HTMLInputElement} name - The input element to check for a name value.
+ * @param {HTMLSpanElement} newNameRequired - The span element to display the "name required" error message.
+ */
 function checkNameInput(name, newNameRequired) {
     if (noNameInput(name)) {
         newNameRequired.classList.remove('d-none');
@@ -125,6 +162,12 @@ function checkNameInput(name, newNameRequired) {
     }
 }
 
+/**
+ * Checks the email input element for a valid email format and displays an error message if it is invalid.
+ *
+ * @param {HTMLInputElement} email - The input element to check for a valid email format.
+ * @param {HTMLSpanElement} newEmailRequired - The span element to display the "email required" error message.
+ */
 function checkEmailInput(email, newEmailRequired) {
     if (noValidEmailInput(email)) {
         newEmailRequired.classList.remove('d-none');
@@ -135,6 +178,12 @@ function checkEmailInput(email, newEmailRequired) {
     }
 }
 
+/**
+ * Checks the phone input element for a phone number and displays an error message if it is empty.
+ *
+ * @param {HTMLInputElement} phone - The input element to check for a phone number.
+ * @param {HTMLSpanElement} newPhoneRequired - The span element to display the "phone required" error message.
+ */
 function checkPhoneInput(phone, newPhoneRequired) {
     if (noPhoneNumber(phone)) {
         newPhoneRequired.classList.remove('d-none');
@@ -145,22 +194,58 @@ function checkPhoneInput(phone, newPhoneRequired) {
     }
 }
 
+/**
+ * Checks if the name input element has no value or starts with a space character.
+ *
+ * @param {HTMLInputElement} name - The input element to check for a name value.
+ * @returns {boolean} - True if the name input has no value or starts with a space character, false otherwise.
+ */
 function noNameInput(name) {
     return name.value.length == 0 || name.value[0] === ' ';
 }
 
+/**
+ * Checks if the email input element has a valid email value.
+ *
+ * @param {HTMLInputElement} email - The input element to check for a valid email value.
+ * @returns {boolean} - True if the email input has an invalid email value, false otherwise.
+ */
 function noValidEmailInput(email) {
     return email.value.length < 8 || !email.value.includes('@') || !email.value.includes('.') || email.value[0] === ' ';
 }
 
+/**
+ * Checks if the phone input element has a valid phone number value.
+ *
+ * @param {HTMLInputElement} phone - The input element to check for a valid phone number value.
+ * @returns {boolean} - True if the phone input has an invalid phone number value, false otherwise.
+ */
 function noPhoneNumber(phone) {
     return phone.value.length < 8 || phone.value[0] === ' ';
 }
 
+/**
+ * Checks if all required information has been typed in by the user.
+ *
+ * @param {HTMLElement} newNameRequired - The element that indicates if the name input is required.
+ * @param {HTMLElement} newEmailRequired - The element that indicates if the email input is required.
+ * @param {HTMLElement} newPhoneRequired - The element that indicates if the phone input is required.
+ * @returns {boolean} - True if all required inputs have been typed in, false otherwise.
+ */
 function allInformationTypedIn(newNameRequired, newEmailRequired, newPhoneRequired) {
     return !newNameRequired.classList.contains('requiredOn') && !newEmailRequired.classList.contains('requiredOn') && !newPhoneRequired.classList.contains('requiredOn');
 }
 
+/**
+ * Checks if the given email address is already taken by another user.
+ *
+ * @param {HTMLElement} newEmailRequired - The element representing the error message for the email input.
+ * @param {string} name - The name value entered by the user.
+ * @param {string} email - The email value entered by the user.
+ * @param {string} phone - The phone number value entered by the user.
+ * @param {string} valueToCheck - The email value to be checked.
+ * @returns {void}
+ */
 function comparisonEmailHelp(newEmailRequired, name, email, phone, valueToCheck) {
     check = 0;
     for (let i = 0; i < allUsers.length; i++) {

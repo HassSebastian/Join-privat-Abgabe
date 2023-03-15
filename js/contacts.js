@@ -98,9 +98,9 @@ function alphabet() {
 }
 
 /**
- * 
- * @param {*} i 
- * @returns 
+ * Opens the form for editing the selected contact if the user is logged in and the contact can be edited.
+ * @param {number} i  - the index of the user in the array
+ * @returns {void}
  */
 function openEditContact(i) {
 	let email = allUsers[i].email;
@@ -153,13 +153,11 @@ function openNewContact() {
 	}, 1);
 }
 
-function closeNewContact() {
-	document.getElementById('new_contact').classList.add('d-none');
-	document.getElementById('boardPopup').classList.add('d-none');
-}
 
-/* 
-!Bitte Änderungen anschauen und absegnen */
+/**
+ * Closes the pop-up window for creating a new contact and hides the form.
+ * @returns {void}
+ */
 function closeNewContact() {
 	const newContact = document.getElementById('new_contact');
 	if (!newContact) {
@@ -171,12 +169,9 @@ function closeNewContact() {
 }
 
 /**
- * If the window width is less than 769px, render the content for mobile, otherwise remove the class
- * 'add_contact_slide' from the element with the id 'edit_contact'.
- *
- * After 500ms, add the class 'd-none' to the element with the id 'edit_contact'.
+ * Closes the pop-up window for creating a new contact and hides the form.
+ * @returns 
  */
-
 function closeEditContact() {
 	const editContact = document.getElementById('edit_contact');
 	if (!editContact) {
@@ -214,6 +209,10 @@ function showContactOf(arr, i) {
 	showContactQuerry(name, email, phone, letter, color, i, showContact);
 }
 
+/**
+ * Shows or hides the contact list, depending on whether it is already open or not.
+ * @returns {void}
+ */
 function showContactList() {
 	let contactRight = document.getElementById('contactContainerRight');
 	const listing = document.getElementById('listing');
@@ -300,7 +299,7 @@ async function editContact(i) {
 }
 
 /**
- * Delets contact on click; function restricted for guest
+ * Checks whether the passed letter matches the passed delete question content.
  * @param {number} i index of user of allUsers Array
  * @returns
  */
@@ -318,10 +317,20 @@ async function deleteContactQuestion(i) {
 	}
 }
 
+/**
+ * Checks whether the passed letter matches the passed delete question content.
+ * @param {string} letter The letter to be compared to the delete question content.
+ * @param {string} deleteQuestionInner The delete question content to which the letter is compared.
+ * @returns {boolean} Returns `true` if the letter matches the delete question content, `false` otherwise.
+ */
 function deletionRequested(letter, deleteQuestionInner) {
 	return letter === deleteQuestionInner;
 }
 
+/**
+ * deletes a user from the array allUsers
+ * @param {number} i - user index
+ */
 async function deleteUser(i) {
 	allUsers.splice(i, 1);
 	await saveTask();

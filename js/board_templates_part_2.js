@@ -18,12 +18,7 @@ function renderAssignToHtml2(taskIndex) {
                 <div  title='${assignToTitle}' style='background-color: ${assignToColor}'>
                     <span class='shortcut'>${nameLetters}</span>
                 </div>
-              
-            
-                
                 `;
-            /* 
-                ! Das Design stimmt nicht. Der NAme soll angezeigt werden und die Symbole untereinander */
         }
     }
 }
@@ -141,51 +136,13 @@ async function renderEditTaskCardHtml(taskIndex) {
             </div>
             <div class="btnsContainerboardTaskCardPopup">
                     <button class='editTaskOkBtn' onclick='getTaskChanges(${taskIndex})'>Ok <img src='../assets/img/akar-icons_check_white.png' ></button>
-                    <button class='deleteButton d-none' id='deleteButton' onclick='deleteButton(${taskIndex})'> <!--edit by Basti-->
+                    <button class='deleteButton d-none' id='deleteButton' onclick='deleteButton(${taskIndex})'> 
                         Delete <img src='../assets/img/akar-icons_check_white.png' >
                     </button>
                 </div>    
         </div>`;
 }
 
-let addTaskContactsResponsiveOn = false;
-let addTaskOpen;
-function startIntervalWhenOff() {
-    const interval = setInterval(() => {
-        if (window.innerWidth > 563 && !addTaskContactsResponsiveOn && addTaskOpen) {
-            showAddTaskPopupWindow();
-            addTaskContactsResponsiveOn = true;
-            clearInterval(interval);
-            startIntervalWhenOn();
-            addTaskOpen = true;
-        }
-    }, 100);
-}
-
-function startIntervalWhenOn() {
-    const interval = setInterval(() => {
-        if (window.innerWidth < 563 && addTaskContactsResponsiveOn && addTaskOpen) {
-            showAddTaskPopupWindow();
-            addTaskContactsResponsiveOn = false;
-            clearInterval(interval);
-            startIntervalWhenOff();
-            addTaskOpen = true;
-        }
-    }, 100);
-}
-
-function addTaskContactAutomaticResponisive() {
-    startIntervalWhenOff();
-    startIntervalWhenOn();
-}
-
-function trackThatAddTaskIsClose() {
-    addTaskOpen = false;
-}
-
-function allowAddTaskPopUp() {
-    addTaskOpen = true;
-}
 /**
  * this function returns the popup Menu html string
  * @returns - Board popup Menu html string.
