@@ -17,7 +17,7 @@ async function outLogoutMob() {
  * and loading the necessary tasks.
  */
 async function initLoginMob() {
-	setURL('https://gruppe-407.developerakademie.net/smallest_backend_ever');
+	setURL('https://sebastian-hass.developerakademie.net/Join2.0/smallest_backend_ever');
 	await loadTask();
 }
 
@@ -33,7 +33,7 @@ function forgotPassword() {
  */
 function guestLogIn() {
 	const email = guestEmail;
-	const password = '123456';
+	const password = '123456aA';
 	document.getElementById('inputEmailLogin').value = email;
 	document.getElementById('inputPasswordLogin').value = password;
 	localStorage.clear();
@@ -177,10 +177,10 @@ function sendMailButton() {
 	document.getElementById('requiredEmailForgot').classList.remove('requiredOn');
 	document.getElementById('requiredEmailForgot').innerHTML = `This field is required`;
 	let inputForgotValue = document.getElementById('inputForgot').value;
-	if (inputForgotValue == '') {
-		document.getElementById('requiredEmailForgot').classList.add('requiredOn');
-	} else {
+	if (emailTest.test(inputForgotValue)) {
 		inputForgotValueOk(inputForgotValue);
+	} else {
+		document.getElementById('requiredEmailForgot').classList.add('requiredOn');
 	}
 }
 
@@ -249,14 +249,14 @@ function resetbuttonContainerMob() {
 	inputPasswordErrorMessageClear();
 	let inputNewPassword = document.getElementById('inputNewPassword').value;
 	let inputConfirmPassword = document.getElementById('inputConfirmPassword').value;
-	if (inputNewPassword == '' || inputConfirmPassword == '') {
-		inputPasswordErrorMessage();
-	} else {
+	if (passwordTest.test(inputNewPassword) || passwordTest.test(inputConfirmPassword)) {
 		if (inputNewPassword == inputConfirmPassword) {
 			newPasswordCheck(forgotEmailIndex, inputNewPassword);
 		} else {
 			inputPasswordErrorMessage();
 		}
+	} else {
+		inputPasswordErrorMessage();
 	}
 }
 
@@ -276,8 +276,8 @@ function inputPasswordErrorMessageClear() {
 function inputPasswordErrorMessage() {
 	document.getElementById('requiredNewPassword').classList.add('requiredOn');
 	document.getElementById('requiredConfirmPassword').classList.add('requiredOn');
-	document.getElementById('requiredNewPassword').innerHTML = `password is not the same`;
-	document.getElementById('requiredConfirmPassword').innerHTML = `password is not the same`;
+	document.getElementById('requiredNewPassword').innerHTML = `min 8 "a-A" + "0-9" OR password is not the same`;
+	document.getElementById('requiredConfirmPassword').innerHTML = `min 8 "a-A" + "0-9" OR password is not the same`;
 }
 
 /**

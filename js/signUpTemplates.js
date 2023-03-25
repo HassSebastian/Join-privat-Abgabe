@@ -1,3 +1,9 @@
+const nameTest = /^[a-zA-Zäöüß]{1,50}\s[a-zA-Zäöüß]{1,50}$/;
+const emailTest = /\S+@\S+\.\S+/;
+const passwordTest = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{8,}$/;
+
+
+
 /**
  * If the input fields are not empty, check if the name field is empty or starts with a space, check if
  * the email field is less than 8 characters, does not contain an @ or ., or starts with a space, check
@@ -13,21 +19,12 @@
  */
 function calculateinputValueTest(name, email, password, requiredName, requiredEmail, requiredPassword) {
 	if (name.value || email.value || password.value) {
-		if (name.value.length == 0 || name.value[0] === ' ') {
-			requiredName.classList.add('requiredOn');
-		} else {
-			requiredName.classList.remove('requiredOn');
-		}
-		if (email.value.length < 8 || !email.value.includes('@') || !email.value.includes('.') || email.value[0] === ' ') {
-			requiredEmail.classList.add('requiredOn');
-		} else {
-			requiredEmail.classList.remove('requiredOn');
-		}
-		if (password.value.length == 0 || password.value[0] === ' ') {
-			requiredPassword.classList.add('requiredOn');
-		} else {
-			requiredPassword.classList.remove('requiredOn');
-		}
+		if (nameTest.test(name.value)) requiredName.classList.remove('requiredOn');
+		else requiredName.classList.add('requiredOn');
+		if (emailTest.test(email.value)) requiredEmail.classList.remove('requiredOn');
+		else requiredEmail.classList.add('requiredOn');
+		if (passwordTest.test(password.value)) requiredPassword.classList.remove('requiredOn');
+		else requiredPassword.classList.add('requiredOn');
 		if (!requiredName.classList.contains('requiredOn') && !requiredEmail.classList.contains('requiredOn') && !requiredPassword.classList.contains('requiredOn')) {
 			emailToCheck(name.value, email.value, password.value);
 		}

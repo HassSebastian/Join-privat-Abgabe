@@ -93,8 +93,8 @@ function contactSucc() {
  * hidden, it changes the type of the password input to text, otherwise it changes it back to password.
  */
 function passwordShowIcon(x) {
-	document.getElementById('passwordLogo').classList.toggle('d-none');
-	document.getElementById('pwShowButton').classList.toggle('d-none');
+	document.getElementById(`passwordLogo${x}`).classList.toggle('d-none');
+	document.getElementById(`pwShowButton${x}`).classList.toggle('d-none');
 	if (document.getElementById('passwordLogo').classList.contains('d-none')) {
 		document.getElementById(`inputPassword${x}`).type = 'text';
 	} else {

@@ -93,7 +93,7 @@ function determineProxySettings() {
 	return '';
 }
 
-setURL('https://gruppe-407.developerakademie.net/smallest_backend_ever');
+setURL('https://sebastian-hass.developerakademie.net/Join2.0/smallest_backend_ever');
 // save and load function for Join Arrays add by Stefan Boskamp at 10.01.2023
 
 let database = [];
@@ -113,12 +113,12 @@ function testSetUser() {
 
 async function saveTask() {
 	await fillDatabaseData();
-	setURL('https://gruppe-407.developerakademie.net/smallest_backend_ever');
+	setURL('https://sebastian-hass.developerakademie.net/Join2.0/smallest_backend_ever');
 	backend.setItem('database', JSON.stringify(database));
 }
 
 async function loadTask() {
-	setURL('https://gruppe-407.developerakademie.net/smallest_backend_ever');
+	setURL('https://sebastian-hass.developerakademie.net/Join2.0/smallest_backend_ever');
 	await downloadFromServer();
 	database = JSON.parse(backend.getItem('database')) || [];
 	joinTaskArray = database[0]['joinTaskArray'];

@@ -10,7 +10,7 @@ function resetRequiredLine(email, password, requiredEmail, requiredPassword) {
 	requiredEmail.classList.remove('requiredOn');
 	requiredPassword.classList.remove('requiredOn');
 	requiredEmail.innerHTML = `This field is required`;
-	requiredPassword.innerHTML = `This field is required`;
+	requiredPassword.innerHTML = `min 8 "a-A" + "0-9"`;
 }
 
 /**
@@ -25,19 +25,11 @@ function resetRequiredLine(email, password, requiredEmail, requiredPassword) {
  */
 function calculateCheckCorrectInput(email, password, requiredEmail, requiredPassword) {
 	if (email.value || password.value) {
-		if (email.value.length < 8 || !email.value.includes('@') || !email.value.includes('.') || email.value[0] === ' ') {
-			requiredEmail.classList.add('requiredOn');
-		} else {
-			requiredEmail.classList.remove('requiredOn');
-		}
-		if (password.value.length == 0 || email.value[0] === ' ') {
-			requiredPassword.classList.add('requiredOn');
-		} else {
-			requiredPassword.classList.remove('requiredOn');
-		}
-		if (!requiredEmail.classList.contains('requiredOn') && !requiredPassword.classList.contains('requiredOn')) {
-			userLogin(email.value, password.value);
-		}
+		if (emailTest.test(email.value)) requiredEmail.classList.remove('requiredOn');
+		else requiredEmail.classList.add('requiredOn');
+		if (passwordTest.test(password.value)) requiredPassword.classList.remove('requiredOn');
+		else requiredPassword.classList.add('requiredOn');
+		if (!requiredEmail.classList.contains('requiredOn') && !requiredPassword.classList.contains('requiredOn')) userLogin(email.value, password.value);
 	} else {
 		requiredEmail.classList.add('requiredOn');
 		requiredPassword.classList.add('requiredOn');

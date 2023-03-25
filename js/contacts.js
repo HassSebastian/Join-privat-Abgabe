@@ -334,6 +334,5 @@ function deletionRequested(letter, deleteQuestionInner) {
 async function deleteUser(i) {
 	allUsers.splice(i, 1);
 	await saveTask();
-	await renderContent();
-	await userInAlphabetArray();
+	setTimeout(initContacts, 100);
 }
