@@ -73,15 +73,15 @@ async function renderEditTaskCardHtml(taskIndex) {
                     <div class='editTaskCardPrioBtn'>
                         <div class='addTaskUrgent' id='addTaskUrgent' onclick='addPrio(0); prioStatusChange(0)'>
                             <span id='addTaskUrgentSpan'>Urgent</span>
-                            <img id='addTaskUrgentImg' src='../assets/img/urgent_arrows.png'>
+                            <img id='addTaskUrgentImg' src='./assets/img/urgent_arrows.png'>
                         </div>
                         <div class='addTaskMedium' id='addTaskMedium' onclick='addPrio(1); prioStatusChange(1)'>
                             <span id='addTaskMediumSpan'>Medium</span>
-                            <img id='addTaskMediumImg' src='../assets/img/prio_medium.png'>
+                            <img id='addTaskMediumImg' src='./assets/img/prio_medium.png'>
                         </div>
                         <div class='addTaskLow' id='addTaskLow' onclick='addPrio(2); prioStatusChange(2)'>
                             <span id='addTaskLowSpan'>Low</span>
-                            <img id='addTaskLowImg' src='../assets/img/prio_low.png'>
+                            <img id='addTaskLowImg' src='./assets/img/prio_low.png'>
                         </div>
                     </div>
                     <span class='requiredText' id='titleReq'>This field is required</span>
@@ -135,9 +135,9 @@ async function renderEditTaskCardHtml(taskIndex) {
                 
             </div>
             <div class="btnsContainerboardTaskCardPopup">
-                    <button class='editTaskOkBtn' onclick='getTaskChanges(${taskIndex})'>Ok <img src='../assets/img/akar-icons_check_white.png' ></button>
+                    <button class='editTaskOkBtn' onclick='getTaskChanges(${taskIndex})'>Ok <img src='./assets/img/akar-icons_check_white.png' ></button>
                     <button class='deleteButton d-none' id='deleteButton' onclick='deleteButton(${taskIndex})'> 
-                        Delete <img src='../assets/img/akar-icons_check_white.png' >
+                        Delete <img src='./assets/img/akar-icons_check_white.png' >
                     </button>
                 </div>    
         </div>`;
@@ -194,11 +194,11 @@ function renderAddTaskPopupHtml(workflow) {
                         <input disabled id='selectedCatInput' placeholder='Select task category' autocomplete='off'>
                         <span id='sColor'></span>
                         <div class='newCategoryImgDiv d-none' id='addTaskNewCatBtn'>
-                            <img src='../assets/img/new_cat_cancel.png'>
-                            <img src='../assets/img/bnt_divider.png' class='btnDivider'>
-                            <img src='../assets/img/akar-icons_check.png'>
+                            <img src='./assets/img/new_cat_cancel.png'>
+                            <img src='./assets/img/bnt_divider.png' class='btnDivider'>
+                            <img src='./assets/img/akar-icons_check.png'>
                         </div>
-                        <img src='../assets/img/Vector 2.png' class='dropdownImg' id='dropdownImg'>
+                        <img src='./assets/img/Vector 2.png' class='dropdownImg' id='dropdownImg'>
                     </button>
                     <span class='listD-none requiredText' id='catReq'>This field is required</span>
                     <ul class='addTaskCatList listD-none' id='CatListDropdown'>
@@ -266,15 +266,15 @@ function renderAddTaskPopupHtml(workflow) {
                     <div class='addTaskPrioIcons'>
                         <div class='addTaskUrgent' id='addTaskUrgent' onclick='addPrio(0)'>
                             <span id='addTaskUrgentSpan'>Urgent</span>
-                            <img id='addTaskUrgentImg' src='../assets/img/urgent_arrows.png'>
+                            <img id='addTaskUrgentImg' src='./assets/img/urgent_arrows.png'>
                         </div>
                         <div class='addTaskMedium' id='addTaskMedium' onclick='addPrio(1)'>
                             <span id='addTaskMediumSpan'>Medium</span>
-                            <img id='addTaskMediumImg' src='../assets/img/prio_medium.png'>
+                            <img id='addTaskMediumImg' src='./assets/img/prio_medium.png'>
                         </div>
                         <div class='addTaskLow' id='addTaskLow' onclick='addPrio(2)'>
                             <span id='addTaskLowSpan'>Low</span>
-                            <img id='addTaskLowImg' src='../assets/img/prio_low.png'>
+                            <img id='addTaskLowImg' src='./assets/img/prio_low.png'>
                         </div>
                     </div>
                     <span class='requiredText' id='prioReq'>This field is required</span>
@@ -284,12 +284,12 @@ function renderAddTaskPopupHtml(workflow) {
                     <div class='inputDiv'>
                         <form onsubmit='addSubtask(); return false' >
                             <input type='text' placeholder='Add new subtask' id='subTask' autocomplete='off' onfocus='subTaskInputentered()' onblur='subTaskInputLeave()' minlength='3'>
-                            <img src='../assets/img/add_cross.png' class='subtaskCross' id='subtaskCross' onclick='enterSubTaskInput()'>
+                            <img src='./assets/img/add_cross.png' class='subtaskCross' id='subtaskCross' onclick='enterSubTaskInput()'>
                         </form>
                         <div class='subTaskImgDiv d-none' id='subTaskImgDiv' >
-                            <img src='../assets/img/new_cat_cancel.png' onclick='resetSubtaskInput()'>
-                            <img src='../assets/img/bnt_divider.png' class='btnDivider'>
-                            <img src='../assets/img/akar-icons_check.png' onclick='addSubtask()'>
+                            <img src='./assets/img/new_cat_cancel.png' onclick='resetSubtaskInput()'>
+                            <img src='./assets/img/bnt_divider.png' class='btnDivider'>
+                            <img src='./assets/img/akar-icons_check.png' onclick='addSubtask()'>
                         </div>
                         
                     </div>
@@ -392,15 +392,15 @@ function renderAddTaskPopupHtml(workflow) {
 				<div class="addTaskPrioIcons" id="addTaskPrioIcons">
 					<div class="addTaskUrgent" id="addTaskUrgent" onclick="addPrio(0)">
 						<span id="addTaskUrgentSpan">Urgent</span>
-						<img id="addTaskUrgentImg" src="../assets/img/urgent_arrows.png" />
+						<img id="addTaskUrgentImg" src="./assets/img/urgent_arrows.png" />
 					</div>
 					<div class="addTaskMedium" id="addTaskMedium" onclick="addPrio(1)">
 						<span id="addTaskMediumSpan">Medium</span>
-						<img id="addTaskMediumImg" src="../assets/img/prio_medium.png" />
+						<img id="addTaskMediumImg" src="./assets/img/prio_medium.png" />
 					</div>
 					<div class="addTaskLow" id="addTaskLow" onclick="addPrio(2)">
 						<span id="addTaskLowSpan">Low</span>
-						<img id="addTaskLowImg" src="../assets/img/prio_low.png" />
+						<img id="addTaskLowImg" src="./assets/img/prio_low.png" />
 					</div>
 				</div>
                 <span class='requiredText' id='prioReq'>This field is required</span>
@@ -411,12 +411,12 @@ function renderAddTaskPopupHtml(workflow) {
 				<div class="inputDiv addTaskResponsiv">
 					<form onsubmit="addSubtask(); return false">
 						<input type="text" placeholder="Add new subtask" id="subTask" autocomplete="off" onfocus="subTaskInputentered()" onblur="subTaskInputLeave()" minlength="3" />
-						<img src="../assets/img/add_cross.png" class="subtaskCross" id="subtaskCross" onclick="enterSubTaskInput()" />
+						<img src="./assets/img/add_cross.png" class="subtaskCross" id="subtaskCross" onclick="enterSubTaskInput()" />
 					</form>
 					<div class="subTaskImgDiv d-none" id="subTaskImgDiv">
-						<img src="../assets/img/new_cat_cancel.png" onclick="resetSubtaskInput()" />
-						<img src="../assets/img/bnt_divider.png" class="btnDivider" />
-						<img src="../assets/img/akar-icons_check.png" onclick="addSubtask()" />
+						<img src="./assets/img/new_cat_cancel.png" onclick="resetSubtaskInput()" />
+						<img src="./assets/img/bnt_divider.png" class="btnDivider" />
+						<img src="./assets/img/akar-icons_check.png" onclick="addSubtask()" />
 					</div>
 				</div>
 

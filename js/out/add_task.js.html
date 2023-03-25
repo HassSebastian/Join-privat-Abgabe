@@ -273,15 +273,15 @@ async function renderAddTask() {
 				&lt;div class='addTaskPrioIcons'>
 					&lt;div class='addTaskUrgent' id='addTaskUrgent' onclick='addPrio(0)'>
 						&lt;span id='addTaskUrgentSpan'>Urgent&lt;/span>
-						&lt;img id='addTaskUrgentImg' src="../assets/img/urgent_arrows.png">
+						&lt;img id='addTaskUrgentImg' src="./assets/img/urgent_arrows.png">
 					&lt;/div>
 					&lt;div class='addTaskMedium' id='addTaskMedium' onclick='addPrio(1)'>
 						&lt;span id='addTaskMediumSpan'>Medium&lt;/span>
-						&lt;img id='addTaskMediumImg' src="../assets/img/prio_medium.png">
+						&lt;img id='addTaskMediumImg' src="./assets/img/prio_medium.png">
 					&lt;/div>
 					&lt;div class='addTaskLow' id='addTaskLow' onclick='addPrio(2)'>
 						&lt;span id='addTaskLowSpan'>Low&lt;/span>
-						&lt;img id='addTaskLowImg' src="../assets/img/prio_low.png">
+						&lt;img id='addTaskLowImg' src="./assets/img/prio_low.png">
 					&lt;/div>
 				&lt;/div>
 			&lt;/div>
@@ -299,16 +299,16 @@ async function renderAddTask() {
 					minlength="3"
 				/>
 				&lt;img
-					src="../assets/img/add_cross.png"
+					src="./assets/img/add_cross.png"
 					class="subtaskCross"
 					id="subtaskCross"
 					onclick="enterSubTaskInput()"
 				/>
 					&lt;/form>
 					&lt;div class='subTaskImgDiv d-none' id='subTaskImgDiv' >
-						&lt;img src="../assets/img/new_cat_cancel.png" onclick='resetSubtaskInput()'>
-						&lt;img src="../assets/img/bnt_divider.png" class='btnDivider'>
-						&lt;img src="../assets/img/akar-icons_check.png" onclick='addSubtask()'>
+						&lt;img src="./assets/img/new_cat_cancel.png" onclick='resetSubtaskInput()'>
+						&lt;img src="./assets/img/bnt_divider.png" class='btnDivider'>
+						&lt;img src="./assets/img/akar-icons_check.png" onclick='addSubtask()'>
 					&lt;/div>
 					
 				&lt;/div>
@@ -501,11 +501,11 @@ function resetCatSelectionHtml() {
         &lt;input disabled id='selectedCatInput' placeholder='Select task category' autocomplete='off'>
         &lt;span id='sColor'>&lt;/span>
         &lt;div class='newCategoryImgDiv d-none' id='addTaskNewCatBtn'>
-            &lt;img src="../assets/img/new_cat_cancel.png">
-            &lt;img src="../assets/img/bnt_divider.png" class='btnDivider'>
-            &lt;img src="../assets/img/akar-icons_check.png">
+            &lt;img src="./assets/img/new_cat_cancel.png">
+            &lt;img src="./assets/img/bnt_divider.png" class='btnDivider'>
+            &lt;img src="./assets/img/akar-icons_check.png">
         &lt;/div>
-        &lt;img src="../assets/img/Vector 2.png" class='dropdownImg' id='dropdownImg'>`;
+        &lt;img src="./assets/img/Vector 2.png" class='dropdownImg' id='dropdownImg'>`;
 }
 
 /**
@@ -554,11 +554,11 @@ function newCategoryInputHtml() {
         &lt;input id='selectedCatInput' placeholder='New Category' autocomplete='off'>
         &lt;span id='sColor'>&lt;/span>
         &lt;div class='newCategoryImgDiv d-none' id='addTaskNewCatBtn'>
-            &lt;img src="../assets/img/new_cat_cancel.png" onclick='resetCatSelection()'>
-            &lt;img src="../assets/img/bnt_divider.png" class='btnDivider'>
-            &lt;img src="../assets/img/akar-icons_check.png" onclick='setNewCategoryToList()'>
+            &lt;img src="./assets/img/new_cat_cancel.png" onclick='resetCatSelection()'>
+            &lt;img src="./assets/img/bnt_divider.png" class='btnDivider'>
+            &lt;img src="./assets/img/akar-icons_check.png" onclick='setNewCategoryToList()'>
         &lt;/div>
-        &lt;img src="../assets/img/Vector 2.png" class='dropdownImg' id='dropdownImg'>`;
+        &lt;img src="./assets/img/Vector 2.png" class='dropdownImg' id='dropdownImg'>`;
 }
 
 /**
@@ -588,7 +588,7 @@ function existingCategoryHtml(newCat, categoryColor) {
 	return /*html*/ `
         &lt;p id='selectedCatInput'>${newCat}&lt;/p>
         &lt;span id='sColor'>&lt;div class='color${categoryColor} addTaskColorDiv'>&lt;/div>&lt;/span>
-        &lt;img src="../assets/img/Vector 2.png" class='dropdownImg' id='dropdownImg'>`;
+        &lt;img src="./assets/img/Vector 2.png" class='dropdownImg' id='dropdownImg'>`;
 }
 
 /**
@@ -701,11 +701,11 @@ function clearFormularData() {
         &lt;input disabled id='selectedCatInput' placeholder='Select task category' autocomplete='off'>
         &lt;span id='sColor'>&lt;/span>
         &lt;div class='newCategoryImgDiv d-none' id='addTaskNewCatBtn'>
-            &lt;img src="../assets/img/new_cat_cancel.png">
-            &lt;img src="../assets/img/bnt_divider.png" class='btnDivider'>
-            &lt;img src="../assets/img/akar-icons_check.png">
+            &lt;img src="./assets/img/new_cat_cancel.png">
+            &lt;img src="./assets/img/bnt_divider.png" class='btnDivider'>
+            &lt;img src="./assets/img/akar-icons_check.png">
         &lt;/div>
-        &lt;img src="../assets/img/Vector 2.png" class='dropdownImg' id='dropdownImg'>`;
+        &lt;img src="./assets/img/Vector 2.png" class='dropdownImg' id='dropdownImg'>`;
 	document.getElementById('dueDate').value = '';
 	resetSubtaskSelections();
 	selectedSubtasks = [];

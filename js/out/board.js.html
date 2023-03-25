@@ -1,32 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>JSDoc: Source: board.js</title>
+	<head>
+		<meta charset="utf-8" />
+		<title>JSDoc: Source: board.js</title>
 
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
-</head>
+		<script src="scripts/prettify/prettify.js"></script>
+		<script src="scripts/prettify/lang-css.js"></script>
+		<!--[if lt IE 9]>
+			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css" />
+		<link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css" />
+	</head>
 
-<body>
+	<body>
+		<div id="main">
+			<h1 class="page-title">Source: board.js</h1>
 
-<div id="main">
-
-    <h1 class="page-title">Source: board.js</h1>
-
-    
-
-
-
-    
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>let workStatusArray = [];
+			<section>
+				<article>
+					<pre class="prettyprint source linenums"><code>let workStatusArray = [];
 let workStatus0Array = [];
 let workStatus1Array = [];
 let workStatus2Array = [];
@@ -889,20 +882,20 @@ async function renderEditTaskCardHtml(){
                 &lt;div class='editTaskCardPrioBtn'>
                     &lt;div class='addTaskUrgent' id='addTaskUrgent' onclick='addPrio(0)'>
                         &lt;span id='addTaskUrgentSpan'>Urgent&lt;/span>
-                        &lt;img id='addTaskUrgentImg' src="../assets/img/urgent_arrows.png">
+                        &lt;img id='addTaskUrgentImg' src="./assets/img/urgent_arrows.png">
                     &lt;/div>
                     &lt;div class='addTaskMedium' id='addTaskMedium' onclick='addPrio(1)'>
                         &lt;span id='addTaskMediumSpan'>Medium&lt;/span>
-                        &lt;img id='addTaskMediumImg' src="../assets/img/prio_medium.png">
+                        &lt;img id='addTaskMediumImg' src="./assets/img/prio_medium.png">
                     &lt;/div>
                     &lt;div class='addTaskLow' id='addTaskLow' onclick='addPrio(2)'>
                         &lt;span id='addTaskLowSpan'>Low&lt;/span>
-                        &lt;img id='addTaskLowImg' src="../assets/img/prio_low.png">
+                        &lt;img id='addTaskLowImg' src="./assets/img/prio_low.png">
                     &lt;/div>
                 &lt;/div>
             &lt;/div>
 
-            &lt;button class='editTaskOkBtn'>Ok &lt;img src="../assets/img/akar-icons_check_white.png" >&lt;/button>
+            &lt;button class='editTaskOkBtn'>Ok &lt;img src="./assets/img/akar-icons_check_white.png" >&lt;/button>
         &lt;/div>`;
 }
 
@@ -1006,11 +999,11 @@ function renderAddTaskPopupHtml(){
                         &lt;input disabled id='selectedCatInput' placeholder='Select task category' autocomplete='off'>
                         &lt;span id='sColor'>&lt;/span>
                         &lt;div class='newCategoryImgDiv d-none' id='addTaskNewCatBtn'>
-                            &lt;img src="../assets/img/new_cat_cancel.png">
-                            &lt;img src="../assets/img/bnt_divider.png" class='btnDivider'>
-                            &lt;img src="../assets/img/akar-icons_check.png">
+                            &lt;img src="./assets/img/new_cat_cancel.png">
+                            &lt;img src="./assets/img/bnt_divider.png" class='btnDivider'>
+                            &lt;img src="./assets/img/akar-icons_check.png">
                         &lt;/div>
-                        &lt;img src="../assets/img/Vector 2.png" class='dropdownImg' id='dropdownImg'>
+                        &lt;img src="./assets/img/Vector 2.png" class='dropdownImg' id='dropdownImg'>
                     &lt;/button>
                     &lt;span class='listD-none requiredText' id='catReq'>This field is required&lt;/span>
                     &lt;ul class="addTaskCatList listD-none" id='CatListDropdown'>
@@ -1028,7 +1021,7 @@ function renderAddTaskPopupHtml(){
 
                 &lt;div class='addTaskAssignedBox' id='addTaskAssignedBox'>
                     &lt;h3>Assigned to&lt;/h3>
-                    &lt;button onclick=enableDisableAssignList()>&lt;span id='selectedAssign'>Select contacts to Assign&lt;/span>&lt;img src="../assets/img/Vector 2.png" class='dropdownImg'>&lt;/button>
+                    &lt;button onclick=enableDisableAssignList()>&lt;span id='selectedAssign'>Select contacts to Assign&lt;/span>&lt;img src="./assets/img/Vector 2.png" class='dropdownImg'>&lt;/button>
                     &lt;span id='assignReq'>This field is required&lt;/span>
                     &lt;ul class="addTaskAssignList listD-none" id="dropdown2">
                         &lt;li>New Assign&lt;/li>
@@ -1053,15 +1046,15 @@ function renderAddTaskPopupHtml(){
                     &lt;div class='addTaskPrioIcons'>
                         &lt;div class='addTaskUrgent' id='addTaskUrgent' onclick='addPrio(0)'>
                             &lt;span id='addTaskUrgentSpan'>Urgent&lt;/span>
-                            &lt;img id='addTaskUrgentImg' src="../assets/img/urgent_arrows.png">
+                            &lt;img id='addTaskUrgentImg' src="./assets/img/urgent_arrows.png">
                         &lt;/div>
                         &lt;div class='addTaskMedium' id='addTaskMedium' onclick='addPrio(1)'>
                             &lt;span id='addTaskMediumSpan'>Medium&lt;/span>
-                            &lt;img id='addTaskMediumImg' src="../assets/img/prio_medium.png">
+                            &lt;img id='addTaskMediumImg' src="./assets/img/prio_medium.png">
                         &lt;/div>
                         &lt;div class='addTaskLow' id='addTaskLow' onclick='addPrio(2)'>
                             &lt;span id='addTaskLowSpan'>Low&lt;/span>
-                            &lt;img id='addTaskLowImg' src="../assets/img/prio_low.png">
+                            &lt;img id='addTaskLowImg' src="./assets/img/prio_low.png">
                         &lt;/div>
                     &lt;/div>
                 &lt;/div>
@@ -1070,12 +1063,12 @@ function renderAddTaskPopupHtml(){
                     &lt;div class='inputDiv'>
                         &lt;form onsubmit='addSubtask(); return false' >
                             &lt;input type="text" placeholder='Add new subtask' id='subTask' autocomplete='off' onfocus='subTaskInputentered()' onblur='subTaskInputLeave()' minlength='3'>
-                            &lt;img src="../assets/img/add_cross.png" class='subtaskCross' id='subtaskCross' onclick='enterSubTaskInput()'>
+                            &lt;img src="./assets/img/add_cross.png" class='subtaskCross' id='subtaskCross' onclick='enterSubTaskInput()'>
                         &lt;/form>
                         &lt;div class='subTaskImgDiv d-none' id='subTaskImgDiv' >
-                            &lt;img src="../assets/img/new_cat_cancel.png" onclick='resetSubtaskInput()'>
-                            &lt;img src="../assets/img/bnt_divider.png" class='btnDivider'>
-                            &lt;img src="../assets/img/akar-icons_check.png" onclick='addSubtask()'>
+                            &lt;img src="./assets/img/new_cat_cancel.png" onclick='resetSubtaskInput()'>
+                            &lt;img src="./assets/img/bnt_divider.png" class='btnDivider'>
+                            &lt;img src="./assets/img/akar-icons_check.png" onclick='addSubtask()'>
                         &lt;/div>
                         
                     &lt;/div>
@@ -1100,25 +1093,102 @@ function renderAddTaskPopupHtml(){
 
 
 // Testarea PopupCard end***********************************************************************************************</code></pre>
-        </article>
-    </section>
+				</article>
+			</section>
+		</div>
 
+		<nav>
+			<h2><a href="index.html">Home</a></h2>
+			<h3>Global</h3>
+			<ul>
+				<li><a href="global.html#addColorToCat">addColorToCat</a></li>
+				<li><a href="global.html#addContactToTaskForceWithCheckBox">addContactToTaskForceWithCheckBox</a></li>
+				<li><a href="global.html#addRemoveToggleForTaskForce">addRemoveToggleForTaskForce</a></li>
+				<li><a href="global.html#allowDrop">allowDrop</a></li>
+				<li><a href="global.html#assigendContactEmail">assigendContactEmail</a></li>
+				<li><a href="global.html#assignInputAutoFocus">assignInputAutoFocus</a></li>
+				<li><a href="global.html#awaitingFeedbackHtml">awaitingFeedbackHtml</a></li>
+				<li><a href="global.html#boardHtml">boardHtml</a></li>
+				<li><a href="global.html#borderBottomOffAssignedBoxButton">borderBottomOffAssignedBoxButton</a></li>
+				<li><a href="global.html#borderBottomOnAssignedBoxButton">borderBottomOnAssignedBoxButton</a></li>
+				<li><a href="global.html#categoryColorAvailable">categoryColorAvailable</a></li>
+				<li><a href="global.html#categoryListAndNewCategoryInputNotActive">categoryListAndNewCategoryInputNotActive</a></li>
+				<li><a href="global.html#checkInputs">checkInputs</a></li>
+				<li><a href="global.html#chooseColorForTaskForceBadge">chooseColorForTaskForceBadge</a></li>
+				<li><a href="global.html#createWorkStatusArrays">createWorkStatusArrays</a></li>
+				<li><a href="global.html#createWorkStatusJson">createWorkStatusJson</a></li>
+				<li><a href="global.html#disablePopupWindow">disablePopupWindow</a></li>
+				<li><a href="global.html#doNotCloseOnClick">doNotCloseOnClick</a></li>
+				<li><a href="global.html#doneHtml">doneHtml</a></li>
+				<li><a href="global.html#dropdownCategoryListHtml">dropdownCategoryListHtml</a></li>
+				<li><a href="global.html#dropdownCategoryListHtml1">dropdownCategoryListHtml1</a></li>
+				<li><a href="global.html#enableAssignList">enableAssignList</a></li>
+				<li><a href="global.html#enableDisableAssignList">enableDisableAssignList</a></li>
+				<li><a href="global.html#enableDisableCatList">enableDisableCatList</a></li>
+				<li><a href="global.html#enablePopupWindow">enablePopupWindow</a></li>
+				<li><a href="global.html#existingCategoryHtml">existingCategoryHtml</a></li>
+				<li><a href="global.html#fillTaskData">fillTaskData</a></li>
+				<li><a href="global.html#findIndexOfMemberOfTaskForce">findIndexOfMemberOfTaskForce</a></li>
+				<li><a href="global.html#generateBadgesTaskForceHtml">generateBadgesTaskForceHtml</a></li>
+				<li><a href="global.html#getReqiredFieldValues">getReqiredFieldValues</a></li>
+				<li><a href="global.html#highlight">highlight</a></li>
+				<li><a href="global.html#inProgressHtml">inProgressHtml</a></li>
+				<li><a href="global.html#joinTaskArrayExistInStorage">joinTaskArrayExistInStorage</a></li>
+				<li><a href="global.html#loadExitingCategories">loadExitingCategories</a></li>
+				<li><a href="global.html#loadJSONFromServer">loadJSONFromServer</a></li>
+				<li><a href="global.html#loadTask">loadTask</a></li>
+				<li><a href="global.html#moveTo">moveTo</a></li>
+				<li><a href="global.html#newCategoryCreationIsSelected">newCategoryCreationIsSelected</a></li>
+				<li><a href="global.html#newCategoryInputHtml">newCategoryInputHtml</a></li>
+				<li><a href="global.html#notShowAddDiv">notShowAddDiv</a></li>
+				<li><a href="global.html#pushTaskData">pushTaskData</a></li>
+				<li><a href="global.html#removeHighlight">removeHighlight</a></li>
+				<li><a href="global.html#renderAddTask">renderAddTask</a></li>
+				<li><a href="global.html#renderAddTaskPopup">renderAddTaskPopup</a></li>
+				<li><a href="global.html#renderAddTaskPopupHtml">renderAddTaskPopupHtml</a></li>
+				<li><a href="global.html#renderAllCards">renderAllCards</a></li>
+				<li><a href="global.html#renderAwaitingFeedbackCards">renderAwaitingFeedbackCards</a></li>
+				<li><a href="global.html#renderBadgesMemberOfTaskForce">renderBadgesMemberOfTaskForce</a></li>
+				<li><a href="global.html#renderBoard">renderBoard</a></li>
+				<li><a href="global.html#renderCategoryList">renderCategoryList</a></li>
+				<li><a href="global.html#renderContactsInAssignDropDownMenu">renderContactsInAssignDropDownMenu</a></li>
+				<li><a href="global.html#renderDoneCards">renderDoneCards</a></li>
+				<li><a href="global.html#renderInProgressCards">renderInProgressCards</a></li>
+				<li><a href="global.html#renderPopupTaskCard">renderPopupTaskCard</a></li>
+				<li><a href="global.html#renderSubtaskHtml">renderSubtaskHtml</a></li>
+				<li><a href="global.html#renderToDoCards">renderToDoCards</a></li>
+				<li><a href="global.html#requiredFieldAreNotValid">requiredFieldAreNotValid</a></li>
+				<li><a href="global.html#resetCatSelection">resetCatSelection</a></li>
+				<li><a href="global.html#resetCatSelectionHtml">resetCatSelectionHtml</a></li>
+				<li><a href="global.html#resetRequiredWarnings">resetRequiredWarnings</a></li>
+				<li><a href="global.html#resetWorkStatusArrays">resetWorkStatusArrays</a></li>
+				<li><a href="global.html#saveJSONToServer">saveJSONToServer</a></li>
+				<li><a href="global.html#saveTask">saveTask</a></li>
+				<li><a href="global.html#selectCategory">selectCategory</a></li>
+				<li><a href="global.html#setCategoryBackgroundColorForWorkStatus0">setCategoryBackgroundColorForWorkStatus0</a></li>
+				<li><a href="global.html#setCategoryBackgroundColorForWorkStatus1">setCategoryBackgroundColorForWorkStatus1</a></li>
+				<li><a href="global.html#setCategoryBackgroundColorForWorkStatus2">setCategoryBackgroundColorForWorkStatus2</a></li>
+				<li><a href="global.html#setCategoryBackgroundColorForWorkStatus3">setCategoryBackgroundColorForWorkStatus3</a></li>
+				<li><a href="global.html#setNewCategoryToList">setNewCategoryToList</a></li>
+				<li><a href="global.html#setRequiredTextWarnings">setRequiredTextWarnings</a></li>
+				<li><a href="global.html#setSettingsForExistingCategory">setSettingsForExistingCategory</a></li>
+				<li><a href="global.html#setSettingsForNewCategoryInput">setSettingsForNewCategoryInput</a></li>
+				<li><a href="global.html#setTaskCardPopupCatColor">setTaskCardPopupCatColor</a></li>
+				<li><a href="global.html#setTaskCardPopupPrioBackground">setTaskCardPopupPrioBackground</a></li>
+				<li><a href="global.html#showAddDiv">showAddDiv</a></li>
+				<li><a href="global.html#startDrag">startDrag</a></li>
+				<li><a href="global.html#stopClose">stopClose</a></li>
+				<li><a href="global.html#toDoCardHtml">toDoCardHtml</a></li>
+			</ul>
+		</nav>
 
+		<br class="clear" />
 
+		<footer>Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Fri Dec 30 2022 13:00:23 GMT+0100 (Mitteleuropäische Normalzeit)</footer>
 
-</div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addColorToCat">addColorToCat</a></li><li><a href="global.html#addContactToTaskForceWithCheckBox">addContactToTaskForceWithCheckBox</a></li><li><a href="global.html#addRemoveToggleForTaskForce">addRemoveToggleForTaskForce</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#assigendContactEmail">assigendContactEmail</a></li><li><a href="global.html#assignInputAutoFocus">assignInputAutoFocus</a></li><li><a href="global.html#awaitingFeedbackHtml">awaitingFeedbackHtml</a></li><li><a href="global.html#boardHtml">boardHtml</a></li><li><a href="global.html#borderBottomOffAssignedBoxButton">borderBottomOffAssignedBoxButton</a></li><li><a href="global.html#borderBottomOnAssignedBoxButton">borderBottomOnAssignedBoxButton</a></li><li><a href="global.html#categoryColorAvailable">categoryColorAvailable</a></li><li><a href="global.html#categoryListAndNewCategoryInputNotActive">categoryListAndNewCategoryInputNotActive</a></li><li><a href="global.html#checkInputs">checkInputs</a></li><li><a href="global.html#chooseColorForTaskForceBadge">chooseColorForTaskForceBadge</a></li><li><a href="global.html#createWorkStatusArrays">createWorkStatusArrays</a></li><li><a href="global.html#createWorkStatusJson">createWorkStatusJson</a></li><li><a href="global.html#disablePopupWindow">disablePopupWindow</a></li><li><a href="global.html#doNotCloseOnClick">doNotCloseOnClick</a></li><li><a href="global.html#doneHtml">doneHtml</a></li><li><a href="global.html#dropdownCategoryListHtml">dropdownCategoryListHtml</a></li><li><a href="global.html#dropdownCategoryListHtml1">dropdownCategoryListHtml1</a></li><li><a href="global.html#enableAssignList">enableAssignList</a></li><li><a href="global.html#enableDisableAssignList">enableDisableAssignList</a></li><li><a href="global.html#enableDisableCatList">enableDisableCatList</a></li><li><a href="global.html#enablePopupWindow">enablePopupWindow</a></li><li><a href="global.html#existingCategoryHtml">existingCategoryHtml</a></li><li><a href="global.html#fillTaskData">fillTaskData</a></li><li><a href="global.html#findIndexOfMemberOfTaskForce">findIndexOfMemberOfTaskForce</a></li><li><a href="global.html#generateBadgesTaskForceHtml">generateBadgesTaskForceHtml</a></li><li><a href="global.html#getReqiredFieldValues">getReqiredFieldValues</a></li><li><a href="global.html#highlight">highlight</a></li><li><a href="global.html#inProgressHtml">inProgressHtml</a></li><li><a href="global.html#joinTaskArrayExistInStorage">joinTaskArrayExistInStorage</a></li><li><a href="global.html#loadExitingCategories">loadExitingCategories</a></li><li><a href="global.html#loadJSONFromServer">loadJSONFromServer</a></li><li><a href="global.html#loadTask">loadTask</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#newCategoryCreationIsSelected">newCategoryCreationIsSelected</a></li><li><a href="global.html#newCategoryInputHtml">newCategoryInputHtml</a></li><li><a href="global.html#notShowAddDiv">notShowAddDiv</a></li><li><a href="global.html#pushTaskData">pushTaskData</a></li><li><a href="global.html#removeHighlight">removeHighlight</a></li><li><a href="global.html#renderAddTask">renderAddTask</a></li><li><a href="global.html#renderAddTaskPopup">renderAddTaskPopup</a></li><li><a href="global.html#renderAddTaskPopupHtml">renderAddTaskPopupHtml</a></li><li><a href="global.html#renderAllCards">renderAllCards</a></li><li><a href="global.html#renderAwaitingFeedbackCards">renderAwaitingFeedbackCards</a></li><li><a href="global.html#renderBadgesMemberOfTaskForce">renderBadgesMemberOfTaskForce</a></li><li><a href="global.html#renderBoard">renderBoard</a></li><li><a href="global.html#renderCategoryList">renderCategoryList</a></li><li><a href="global.html#renderContactsInAssignDropDownMenu">renderContactsInAssignDropDownMenu</a></li><li><a href="global.html#renderDoneCards">renderDoneCards</a></li><li><a href="global.html#renderInProgressCards">renderInProgressCards</a></li><li><a href="global.html#renderPopupTaskCard">renderPopupTaskCard</a></li><li><a href="global.html#renderSubtaskHtml">renderSubtaskHtml</a></li><li><a href="global.html#renderToDoCards">renderToDoCards</a></li><li><a href="global.html#requiredFieldAreNotValid">requiredFieldAreNotValid</a></li><li><a href="global.html#resetCatSelection">resetCatSelection</a></li><li><a href="global.html#resetCatSelectionHtml">resetCatSelectionHtml</a></li><li><a href="global.html#resetRequiredWarnings">resetRequiredWarnings</a></li><li><a href="global.html#resetWorkStatusArrays">resetWorkStatusArrays</a></li><li><a href="global.html#saveJSONToServer">saveJSONToServer</a></li><li><a href="global.html#saveTask">saveTask</a></li><li><a href="global.html#selectCategory">selectCategory</a></li><li><a href="global.html#setCategoryBackgroundColorForWorkStatus0">setCategoryBackgroundColorForWorkStatus0</a></li><li><a href="global.html#setCategoryBackgroundColorForWorkStatus1">setCategoryBackgroundColorForWorkStatus1</a></li><li><a href="global.html#setCategoryBackgroundColorForWorkStatus2">setCategoryBackgroundColorForWorkStatus2</a></li><li><a href="global.html#setCategoryBackgroundColorForWorkStatus3">setCategoryBackgroundColorForWorkStatus3</a></li><li><a href="global.html#setNewCategoryToList">setNewCategoryToList</a></li><li><a href="global.html#setRequiredTextWarnings">setRequiredTextWarnings</a></li><li><a href="global.html#setSettingsForExistingCategory">setSettingsForExistingCategory</a></li><li><a href="global.html#setSettingsForNewCategoryInput">setSettingsForNewCategoryInput</a></li><li><a href="global.html#setTaskCardPopupCatColor">setTaskCardPopupCatColor</a></li><li><a href="global.html#setTaskCardPopupPrioBackground">setTaskCardPopupPrioBackground</a></li><li><a href="global.html#showAddDiv">showAddDiv</a></li><li><a href="global.html#startDrag">startDrag</a></li><li><a href="global.html#stopClose">stopClose</a></li><li><a href="global.html#toDoCardHtml">toDoCardHtml</a></li></ul>
-</nav>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Fri Dec 30 2022 13:00:23 GMT+0100 (Mitteleuropäische Normalzeit)
-</footer>
-
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
-</body>
+		<script>
+			prettyPrint();
+		</script>
+		<script src="scripts/linenumber.js"></script>
+	</body>
 </html>

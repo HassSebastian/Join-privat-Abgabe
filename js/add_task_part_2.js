@@ -170,11 +170,11 @@ function clearSelectedCategory() {
 	  <input disabled id='selectedCatInput' placeholder='Select task category' autocomplete='off'>
 	  <span id='sColor'></span>
 	  <div class='newCategoryImgDiv d-none' id='addTaskNewCatBtn'>
-		<img src="../assets/img/new_cat_cancel.png">
-		<img src="../assets/img/bnt_divider.png" class='btnDivider'>
-		<img src="../assets/img/akar-icons_check.png">
+		<img src="./assets/img/new_cat_cancel.png">
+		<img src="./assets/img/bnt_divider.png" class='btnDivider'>
+		<img src="./assets/img/akar-icons_check.png">
 	  </div>
-	  <img src="../assets/img/Vector 2.png" class='dropdownImg' id='dropdownImg'>`;
+	  <img src="./assets/img/Vector 2.png" class='dropdownImg' id='dropdownImg'>`;
 }
 
 /**
