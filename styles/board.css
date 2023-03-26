@@ -624,7 +624,7 @@ boardSubheaders > * {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0px;
+	margin-bottom: 8px;
 	height: 30px;
 	left: 0px;
 	top: 0px;
@@ -648,7 +648,7 @@ boardSubheaders > * {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0px;
+	margin-bottom: 8px;
 	height: 30px;
 	left: 276px;
 	top: 0px;
@@ -672,7 +672,7 @@ boardSubheaders > * {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0px;
+	margin-bottom: 8px;
 	gap: 6px;
 	height: 30px;
 	left: 545px;
@@ -697,7 +697,7 @@ boardSubheaders > * {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0px;
+	margin-bottom: 8px;
 	height: 30px;
 	left: 828px;
 	top: 0px;

@@ -69,7 +69,7 @@ function pushNewSubtaskDatatoArray(subTaskText) {
  * @param {number} i - The index of the subtask object to be deleted.
  */
 function deleteSubtask(i) {
-	subTaskArray.splice(i);
+	subTaskArray.splice(i, 1);
 	renderSubtasks();
 	createSubtaskListToSave();
 }

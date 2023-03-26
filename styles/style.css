@@ -56,6 +56,7 @@ nav {
 
 table {
 	border-spacing: 0px;
+	width: 100%;
 }
 
 td {
@@ -202,6 +203,15 @@ tr td:nth-child(3) {
 
 #btnLegalNotice {
 	cursor: pointer;
+	width: 100%;
+}
+
+#btnLegalNotice td {
+	width: 44px !important;
+}
+
+#btnLegalNotice img {
+	margin-right: 16px;
 }
 
 #btnLegalNotice:hover {
@@ -215,9 +225,6 @@ tr td:nth-child(3) {
 #btnLegalNotice1:hover {
 	background-color: #091931 !important;
 }
-
-
-
 
 .rightContainer {
 	height: 100vh;
@@ -449,6 +456,13 @@ tr td:nth-child(3) {
 	flex-direction: column;
 	align-items: center;
 	gap: 6px;
+	height: 100%;
+	padding-top: 3%;
+	width: 33%;
+}
+
+.mobileMenuBtnContainer:hover {
+	background-color: #091931;
 }
 
 .mobileMenuBtnContainer img {

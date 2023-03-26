@@ -1,5 +1,6 @@
 async function initHelp() {
     await renderHelp();
+    logOutBtn();
 }
 
 function back() {

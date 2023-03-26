@@ -330,7 +330,7 @@ function openEditContactHTML(color, letter, name, email, phone, i) {
                             <input class="inputName" id="editUserName" type="text" value="${name}">
                             <img src="./assets/img/name_logo.png" alt="">
                         </div>
-                        <span class="required d-none">This field is required</span>
+                        <span class="required d-none">First and Last Name</span>
                     </div>
                     <div class="nameContainer">
                         <div class="inputEditContainer">

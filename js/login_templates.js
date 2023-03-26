@@ -10,7 +10,7 @@ function resetRequiredLine(email, password, requiredEmail, requiredPassword) {
 	requiredEmail.classList.remove('requiredOn');
 	requiredPassword.classList.remove('requiredOn');
 	requiredEmail.innerHTML = `This field is required`;
-	requiredPassword.innerHTML = `min 8 "a-A" + "0-9"`;
+	requiredPassword.innerHTML = `min 8 min "a" min "A" min "0-9"`;
 }
 
 /**

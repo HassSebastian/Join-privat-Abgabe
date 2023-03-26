@@ -276,8 +276,8 @@ function inputPasswordErrorMessageClear() {
 function inputPasswordErrorMessage() {
 	document.getElementById('requiredNewPassword').classList.add('requiredOn');
 	document.getElementById('requiredConfirmPassword').classList.add('requiredOn');
-	document.getElementById('requiredNewPassword').innerHTML = `min 8 "a-A" + "0-9" OR password is not the same`;
-	document.getElementById('requiredConfirmPassword').innerHTML = `min 8 "a-A" + "0-9" OR password is not the same`;
+	document.getElementById('requiredNewPassword').innerHTML = `min 8 min "a" min "A" min "0-9" OR password is not the same`;
+	document.getElementById('requiredConfirmPassword').innerHTML = `min 8 min "a" min "A" min "0-9" OR password is not the same`;
 }
 
 /**

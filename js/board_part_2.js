@@ -238,16 +238,24 @@ function getTaskChanges(taskIndex) {
 	let boardEditedTitle = document.getElementById('boardEditTitle').value;
 	let boardEditedDescripten = document.getElementById('boardEditDecription').value;
 	let boardEditedDueDate = document.getElementById('boardEditDueDate').value;
-	if (!boardEditedTitle || !boardEditedDescripten) {
+	if (!boardEditedTitle || !boardEditedDescripten || checkPrioSel()) {
 		if (!boardEditedTitle) {
 			document.getElementById('titleEditReq').style = "color:red";
 		}
 		if (!boardEditedDescripten) {
 			document.getElementById('descEditReq').style = "color:red";
 		}
+		if (checkPrioSel()) {
+			document.getElementById('titleReq').style = "opacity: 1";
+		}
 	} else {
 		saveEditTask(taskIndex, boardEditedTitle, boardEditedDescripten, boardEditedDueDate);
 	}
+}
+
+
+function checkPrioSel() {
+	return !addTaskUrgent.classList.contains('urgent-color') && !addTaskMedium.classList.contains('medium-color') && !addTaskLow.classList.contains('low-color');
 }
 
 /**

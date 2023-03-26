@@ -87,7 +87,7 @@ function checkPriorityExists() {
 }
 
 function noPrioritySelected() {
-	const notSelected = !urgentBtn.classList.contains('urgent-color') && !mediumBtn.classList.contains('medium-color') && !lowBtn.classList.contains('low-color');
+	const notSelected = !urgentBtn.classList.contains('urgent-color') && !mediumBtn.classList.contains('medium-color') && !lowBtn.classList.contains('low-color') && !addTaskUrgent.classList.contains('urgent-color') && !addTaskMedium.classList.contains('medium-color') && !addTaskLow.classList.contains('low-color');
 	return notSelected;
 }
 
@@ -215,7 +215,7 @@ async function createTaskData(workflow) {
 	fillTaskData(workflow);
 	pushTaskData();
 	saveTask();
-	showAddDiv();
+	// showAddDiv();
 	setTimeout(initBoard, 1200);
 	resetAssignToList();
 	clearFormularData();
