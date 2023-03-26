@@ -153,7 +153,7 @@ function addContactHelp(name, email, phone, newNameRequired, newEmailRequired, n
  * @param {HTMLSpanElement} newNameRequired - The span element to display the "name required" error message.
  */
 function checkNameInput(name, newNameRequired) {
-    if (noNameInput(name)) {
+    if (!noNameInput(name)) {
         newNameRequired.classList.remove('d-none');
         newNameRequired.classList.add('requiredOn');
     } else {
@@ -169,7 +169,7 @@ function checkNameInput(name, newNameRequired) {
  * @param {HTMLSpanElement} newEmailRequired - The span element to display the "email required" error message.
  */
 function checkEmailInput(email, newEmailRequired) {
-    if (noValidEmailInput(email)) {
+    if (!noValidEmailInput(email)) {
         newEmailRequired.classList.remove('d-none');
         newEmailRequired.classList.add('requiredOn');
     } else {
@@ -201,7 +201,7 @@ function checkPhoneInput(phone, newPhoneRequired) {
  * @returns {boolean} - True if the name input has no value or starts with a space character, false otherwise.
  */
 function noNameInput(name) {
-    return name.value.length == 0 || name.value[0] === ' ';
+    return nameTest.test(name.value);
 }
 
 /**
@@ -211,7 +211,7 @@ function noNameInput(name) {
  * @returns {boolean} - True if the email input has an invalid email value, false otherwise.
  */
 function noValidEmailInput(email) {
-    return email.value.length < 8 || !email.value.includes('@') || !email.value.includes('.') || email.value[0] === ' ';
+    return emailTest.test(email.value);
 }
 
 /**
@@ -395,7 +395,7 @@ function openNewContactHTML() {
                                 <input class="inputName" id="newUserName" type="text" placeholder="Name" required>
                                 <img src="./assets/img/name_logo.png" alt="">
                             </div>
-                            <span class="required d-none" id="newContentNameRequired">This field is required</span>
+                            <span class="required d-none" id="newContentNameRequired">First and Last Name</span>
                         </div>
                         <div class="nameContainer">
                             <div class="inputEditContainer">
@@ -409,7 +409,7 @@ function openNewContactHTML() {
                                 <input class="inputName" id="newUserPhone" type="number" placeholder="Phone" required>
                                 <img src="./assets/img/phoneLogo.png" alt="">
                             </div>
-                            <span class="required d-none" id="newContentPhoneRequired">This field is required</span>
+                            <span class="required d-none" id="newContentPhoneRequired">min 8 numbers</span>
                         </div>
                     </div>
                 </div>
