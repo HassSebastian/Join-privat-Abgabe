@@ -459,6 +459,7 @@ tr td:nth-child(3) {
 	height: 100%;
 	padding-top: 3%;
 	width: 33%;
+	cursor: pointer;
 }
 
 .mobileMenuBtnContainer img {
