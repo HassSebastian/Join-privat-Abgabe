@@ -28,6 +28,7 @@ async function initSummary() {
 	selectedMenuButton(1);
 	await loadAmountsForSummary();
 	loadSummary();
+	initSummaryMobHighlight();
 }
 
 /**
@@ -349,3 +350,5 @@ function yesterday() {
 	let yesterday = today.setDate(today.getDate() - 1);
 	return yesterday;
 }
+
+

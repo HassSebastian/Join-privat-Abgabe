@@ -28,6 +28,7 @@ async function initBoard() {
 	renderAllCards();
 	loadContributorsLetter();
 	coworkersToAssignTo = transferallUserData();
+	initBoardMobHighlight();
 }
 
 /**

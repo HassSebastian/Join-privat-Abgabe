@@ -309,3 +309,35 @@ function loadContributorsLetter() {
 	document.getElementById('contributorsLogoHeadder').style = `background:${colorUserIndex[colorIndex]}`;
 	document.getElementById('contributorsLogoHeadderLetters').innerHTML = `<p style='color:white'>${allUsers[loggedUser].firstSecondLetter}</p>`;
 }
+
+
+function initSummaryMobHighlight() {
+	document.getElementById('initSummaryMob').classList.add('initMobHighlight');
+	document.getElementById('initBoardMob').classList.remove('initMobHighlight');
+	document.getElementById('initAddTaskMob').classList.remove('initMobHighlight');
+	document.getElementById('initContactsMob').classList.remove('initMobHighlight');
+}
+
+
+function initBoardMobHighlight() {
+	document.getElementById('initSummaryMob').classList.remove('initMobHighlight');
+	document.getElementById('initBoardMob').classList.add('initMobHighlight');
+	document.getElementById('initAddTaskMob').classList.remove('initMobHighlight');
+	document.getElementById('initContactsMob').classList.remove('initMobHighlight');
+}
+
+
+function initAddTaskMobHighlight() {
+	document.getElementById('initSummaryMob').classList.remove('initMobHighlight');
+	document.getElementById('initBoardMob').classList.remove('initMobHighlight');
+	document.getElementById('initAddTaskMob').classList.add('initMobHighlight');
+	document.getElementById('initContactsMob').classList.remove('initMobHighlight');
+}
+
+
+function initContactsMobHighlight() {
+	document.getElementById('initSummaryMob').classList.remove('initMobHighlight');
+	document.getElementById('initBoardMob').classList.remove('initMobHighlight');
+	document.getElementById('initAddTaskMob').classList.remove('initMobHighlight');
+	document.getElementById('initContactsMob').classList.add('initMobHighlight');
+}

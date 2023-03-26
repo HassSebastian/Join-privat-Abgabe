@@ -34,13 +34,14 @@ async function initAddTask() {
 	sliderMenuShown = false;
 	await renderAddTask();
 	initSubfunctionAddTask();
+	initAddTaskMobHighlight();
 }
 
 /**
  * Initializes the subfunctions for the add task interface, including rendering the category list, subtasks, 
  * assignee dropdown menu, due date input, contributors letter, priority button IDs, and other elements.
  */
-function initSubfunctionAddTask(){
+function initSubfunctionAddTask() {
 	renderCategoryList();
 	newCatInputActive = false;
 	renderSubtasks();

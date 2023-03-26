@@ -461,10 +461,6 @@ tr td:nth-child(3) {
 	width: 33%;
 }
 
-.mobileMenuBtnContainer:hover {
-	background-color: #091931;
-}
-
 .mobileMenuBtnContainer img {
 	height: 30px;
 	width: 30px;
@@ -481,6 +477,10 @@ tr td:nth-child(3) {
 	font-weight: 400;
 	font-size: 16px;
 	color: #cdcdcd;
+}
+
+.initMobHighlight {
+	background-color: #091931;
 }
 
 @media screen and (max-width: 1500px) {

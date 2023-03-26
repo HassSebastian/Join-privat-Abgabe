@@ -44,6 +44,7 @@ async function initContacts() {
 	await userInAlphabetArray();
 	loadContributorsLetter();
 	coworkersToAssignTo = transferallUserData();
+	initContactsMobHighlight();
 }
 
 /**
